@@ -16,8 +16,6 @@ public class WarGameActivity extends AppCompatActivity {
     WarGame x = new WarGame();
     x.play();
 
-    Intent intent = getIntent();
-
     TextView textView = findViewById(R.id.textView3);
     textView.setText(x.toString());
 
