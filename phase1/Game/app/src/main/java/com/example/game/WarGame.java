@@ -5,15 +5,15 @@ import java.util.ArrayList;
 public class WarGame {
 
   Cards c;
-  Person A;
-  Person B;
+  WarPlayer A;
+  WarPlayer B;
   private int count = 0;
   private ArrayList<Integer> temp = new ArrayList<>();
 
   public WarGame() {
     c = new Cards();
-    A = new Person(c, "PersonA");
-    B = new Person(c, "PersonB");
+    A = new WarPlayer(c, "PersonA");
+    B = new WarPlayer(c, "PersonB");
   }
 
   public void play() {
