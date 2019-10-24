@@ -61,7 +61,11 @@ public class PictureGame {
             i++;
         }
     }
-    public boolean isHiddenImage(String imageId){
+
+    void play(){
+        // play gamee
+    }
+    private boolean isHiddenImage(String imageId){
         // return whether this image is to be found or not
         for (Picture pic: pictures){
             if(pic.getName().equals(imageId)){
