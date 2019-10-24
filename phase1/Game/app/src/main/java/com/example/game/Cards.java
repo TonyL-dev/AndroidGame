@@ -3,28 +3,28 @@ package com.example.game;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Cards {
+class Cards {
 
     private ArrayList<Card> deck = new ArrayList<>();
 
-    public Cards() {
+    Cards() {
         init();
         shuffle();
     }
 
     private void init() {
-        for (int i = 1; i <= 4; i++) {
-            for (int j = 1; j <= 13; j++) {
-                deck.add(new Card(i, j));
+        for (int suit = 1; suit <= 4; suit++) {
+            for (int denomination = 1; denomination <= 13; denomination++) {
+                deck.add(new Card(suit, denomination));
             }
         }
     }
 
-    public void shuffle() {
+    private void shuffle() {
         Collections.shuffle(deck);
     }
 
-    public ArrayList<Card> getCards() {
+    ArrayList<Card> getCards() {
         return deck;
     }
 }

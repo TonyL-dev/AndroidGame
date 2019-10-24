@@ -8,44 +8,43 @@ public class WarPlayer extends Player {
     private ArrayList<Card> hand;
     private Cards deckOfCards;
     private int score = 0;
-    private String Name;
+    private String name;
 
-    public WarPlayer(Cards cards, String name) {
+    WarPlayer(Cards cards, String name) {
         super();
-        Name = name;
+        this.name = name;
         deckOfCards = cards;
         hand = new ArrayList<>();
         addCards();
-        System.out.println(Name + "---" + hand);
+        System.out.println(this.name + "---" + hand);
     }
 
-    public void addCards() {
+    private void addCards() {
         for (int i = 0; i < 26; i++) {
             hand.add(deckOfCards.getCards().get(i));
         }
-        for (int i = 0; i < 26; i++) {
-            deckOfCards.getCards().remove(0);
-        }
+        deckOfCards.getCards().subList(0, 26).clear();
     }
 
-    public ArrayList<Card> getHand() {
+    ArrayList<Card> getHand() {
         return hand;
     }
 
-    public ArrayList<Card> removeHand(int i) {
+    ArrayList<Card> removeHand(int i) {
         hand.remove(i);
         return hand;
     }
 
-    public void addScore() {
+    void addScore() {
         score += 1;
     }
 
-    public int getScore() {
+    int getScore() {
         return score;
     }
 
+    @Override
     public String toString() {
-        return (Name + ": " + hand);
+        return (this.name + ": " + hand);
     }
 }

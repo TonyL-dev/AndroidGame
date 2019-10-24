@@ -5,12 +5,12 @@ public class Card {
     private int denomination;
     private int suit;
 
-    public Card(int a, int b) {
-        suit = a;
-        denomination = b;
+    Card(int suit, int denomination) {
+        this.suit = suit;
+        this.denomination = denomination;
     }
 
-    public int getDenomination() {
+    int getDenomination() {
         return denomination;
     }
 
@@ -18,24 +18,25 @@ public class Card {
         return suit;
     }
 
+    @Override
     public String toString() {
-        String x;
+        String suitAsString;
         switch (suit) {
             case 1:
-                x = "Spade";
+                suitAsString = "Spade";
                 break;
             case 2:
-                x = "Heart";
+                suitAsString = "Heart";
                 break;
             case 3:
-                x = "Club";
+                suitAsString = "Club";
                 break;
             case 4:
-                x = "Diamond";
+                suitAsString = "Diamond";
                 break;
             default:
-                x = "Empty";
+                suitAsString = "Empty";
         }
-        return (denomination + " of " + x);
+        return (denomination + " of " + suitAsString);
     }
 }
