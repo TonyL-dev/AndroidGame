@@ -5,50 +5,47 @@ import java.util.ArrayList;
 //A War game player
 public class WarPlayer extends Player {
 
-  private ArrayList<Integer> hand;
-  private Cards deckOfCards;
-  private int score = 0;
-  private String Name;
+    private ArrayList<Card> hand;
+    private Cards deckOfCards;
+    private int score = 0;
+    private String Name;
 
-  public WarPlayer(Cards cards, String name) {
-    super();
-    Name = name;
-    deckOfCards = cards;
-    hand = new ArrayList<>();
-    addCards();
-  }
+    public WarPlayer(Cards cards, String name) {
+        super();
+        Name = name;
+        deckOfCards = cards;
+        hand = new ArrayList<>();
+        addCards();
+        System.out.println(Name + "---" + hand);
+    }
 
-  public void addCards() {
-    if (deckOfCards.getCards()[0] != 0) {
-      for (int i = 0; i < deckOfCards.getCards().length / 2; i++) {
-        hand.add(deckOfCards.getCards()[i]);
-        deckOfCards.getCards()[i] = 0;
-      }
-    } else
-      for (int i = 0; i < deckOfCards.getCards().length / 2; i++) {
-        hand.add(deckOfCards.getCards()[i + deckOfCards.getCards().length / 2]);
-        deckOfCards.getCards()[i + deckOfCards.getCards().length / 2] = 0;
-      }
-  }
+    public void addCards() {
+        for (int i = 0; i < 26; i++) {
+            hand.add(deckOfCards.getCards().get(i));
+        }
+        for (int i = 0; i < 26; i++) {
+            deckOfCards.getCards().remove(0);
+        }
+    }
 
-  public ArrayList<Integer> getHand() {
-    return hand;
-  }
+    public ArrayList<Card> getHand() {
+        return hand;
+    }
 
-  public ArrayList<Integer> removeHand(int i) {
-    hand.remove(i);
-    return hand;
-  }
+    public ArrayList<Card> removeHand(int i) {
+        hand.remove(i);
+        return hand;
+    }
 
-  public void addScore() {
-    score += 1;
-  }
+    public void addScore() {
+        score += 1;
+    }
 
-  public int getScore() {
-    return score;
-  }
+    public int getScore() {
+        return score;
+    }
 
-  public String toString() {
-    return (Name + ": " + hand);
-  }
+    public String toString() {
+        return (Name + ": " + hand);
+    }
 }
