@@ -8,41 +8,36 @@ import android.graphics.BitmapFactory;
 
 public class PictureGame {
     // list of ALL the pictures in the game
-    private Picture[] pictures = new Picture[10];
+    private Picture[] pictures = new Picture[8];
     // to generate list of pictures
     private Random rand = new Random();
     // initialize HashMap of string and bitmap
     private Map<String, Bitmap> pictureMap  = new HashMap<String, Bitmap>() {{
-        // creating apple
-        Bitmap bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
+        Bitmap bitmap;
+
+        bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
         put("apple", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
-        put("key2", bitmap);
+        bitmap = BitmapFactory.decodeFile("picturegame/banana.png");
+        put("banana", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
-        put("key2", bitmap);
+        bitmap = BitmapFactory.decodeFile("picturegame/blueberry.png");
+        put("blueberry", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
-        put("key2", bitmap);
+        bitmap = BitmapFactory.decodeFile("picturegame/cherry.png");
+        put("cherry", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
-        put("key2", bitmap);
+        bitmap = BitmapFactory.decodeFile("picturegame/coconut.png");
+        put("coconut", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
-        put("key2", bitmap);
+        bitmap = BitmapFactory.decodeFile("picturegame/grapefruit.png");
+        put("grapefruit", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
-        put("key2", bitmap);
+        bitmap = BitmapFactory.decodeFile("picturegame/peach.png");
+        put("peach", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
-        put("key2", bitmap);
-
-        bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
-        put("key2", bitmap);
-
-        bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
-        put("key2", bitmap);
+        bitmap = BitmapFactory.decodeFile("picturegame/tomato.png");
+        put("tomato", bitmap);
     }};
 
     PictureGame(){
@@ -65,5 +60,16 @@ public class PictureGame {
             // increase i by 1
             i++;
         }
+    }
+    public boolean isHiddenImage(String imageId){
+        // return whether this image is to be found or not
+        for (Picture pic: pictures){
+            if(pic.getName().equals(imageId)){
+                // if this is the picture that has been clicked, return whether it is hidden or not
+                return pic.getIsHiddenImage();
+            }
+        }
+        // else return false
+        return false;
     }
 }
