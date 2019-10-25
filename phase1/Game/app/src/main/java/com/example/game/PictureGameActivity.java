@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.view.View;
+import android.content.Intent;
+import android.os.Bundle;
 
 public class PictureGameActivity extends AppCompatActivity {
 
@@ -16,7 +18,11 @@ public class PictureGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_game);
 
-        pictureGame = new PictureGame();
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        Player newPlayer = (Player) bundle.getSerializable("player");
+
+        pictureGame = new PictureGame(newPlayer);
         textView = findViewById(R.id.listOfFruits);
         textView.setText(pictureGame.fruitsToFind());
 
