@@ -15,28 +15,28 @@ public class PictureGame {
     private Map<String, Bitmap> pictureMap  = new HashMap<String, Bitmap>() {{
         Bitmap bitmap;
 
-        bitmap = BitmapFactory.decodeFile("picturegame/apple.png");
+        bitmap = BitmapFactory.decodeFile("drawable/apple.png");
         put("apple", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/banana.png");
+        bitmap = BitmapFactory.decodeFile("drawable/banana.png");
         put("banana", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/blueberry.png");
+        bitmap = BitmapFactory.decodeFile("drawable/blueberry.png");
         put("blueberry", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/cherry.png");
+        bitmap = BitmapFactory.decodeFile("drawable/cherry.png");
         put("cherry", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/coconut.png");
+        bitmap = BitmapFactory.decodeFile("drawable/coconut.png");
         put("coconut", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/grapefruit.png");
+        bitmap = BitmapFactory.decodeFile("drawable/grapefruit.png");
         put("grapefruit", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/peach.png");
+        bitmap = BitmapFactory.decodeFile("drawable/peach.png");
         put("peach", bitmap);
 
-        bitmap = BitmapFactory.decodeFile("picturegame/tomato.png");
+        bitmap = BitmapFactory.decodeFile("drawable/tomato.png");
         put("tomato", bitmap);
     }};
 
@@ -62,21 +62,18 @@ public class PictureGame {
         }
     }
 
-    void play(){
-        // play gamee
-    }
-
     public String fruitsToFind(){
-        String listOfFruits = "";
+        StringBuilder listOfFruits = new StringBuilder();
+
         for (Picture pic: pictures){
             if(pic.getIsHiddenImage()){
-                listOfFruits.concat(pic.getName() + "\n");
+                listOfFruits.append(pic.getName() + "\n");
             }
         }
-        return listOfFruits;
+        return listOfFruits.toString();
     }
 
-    private boolean isHiddenImage(String imageId){
+    boolean isHiddenImage(String imageId){
         // return whether this image is to be found or not
         for (Picture pic: pictures){
             if(pic.getName().equals(imageId)){
@@ -86,5 +83,14 @@ public class PictureGame {
         }
         // else return false
         return false;
+    }
+
+    String foundHiddenImage(String imageId){
+        for (Picture pic: pictures){
+            if(pic.getName().equals(imageId)){
+                pic.setIsHiddenImage(false);
+            }
+        }
+        return fruitsToFind();
     }
 }

@@ -28,4 +28,7 @@ public class Picture {
         // return Bitmap of this image
         return image;
     }
+    public void setIsHiddenImage(boolean x){
+        isHiddenImage = x;
+    }
 }

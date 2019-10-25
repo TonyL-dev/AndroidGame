@@ -5,16 +5,19 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="imageClick"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/blueberry"
+        android:tag="blueberry"
         android:layout_width="118dp"
         android:layout_height="103dp"
         android:layout_marginTop="160dp"
         android:layout_marginEnd="152dp"
         android:clickable="true"
         android:contentDescription="@null"
+        android:onClick="imageClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,11 +27,13 @@
 
     <ImageView
         android:id="@+id/apple"
+        android:tag="apple"
         android:layout_width="143dp"
         android:layout_height="75dp"
         android:layout_marginTop="304dp"
         android:clickable="true"
         android:contentDescription="@null"
+        android:onClick="imageClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +43,7 @@
 
     <ImageView
         android:id="@+id/banana"
+        android:tag="banana"
         android:layout_width="169dp"
         android:layout_height="162dp"
         android:layout_marginStart="64dp"
@@ -45,6 +51,7 @@
         android:layout_marginBottom="698dp"
         android:clickable="true"
         android:contentDescription="@null"
+        android:onClick="imageClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.028"
@@ -56,11 +63,13 @@
 
     <ImageView
         android:id="@+id/coconut"
+        android:tag="coconut"
         android:layout_width="151dp"
         android:layout_height="140dp"
         android:layout_marginTop="228dp"
         android:clickable="true"
         android:contentDescription="@null"
+        android:onClick="imageClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.965"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,11 +79,13 @@
 
     <ImageView
         android:id="@+id/grapefruit"
+        android:tag="grapefruit"
         android:layout_width="133dp"
         android:layout_height="112dp"
         android:layout_marginTop="72dp"
         android:clickable="true"
         android:contentDescription="@null"
+        android:onClick="imageClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.902"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,11 +95,13 @@
 
     <ImageView
         android:id="@+id/peach"
+        android:tag="peach"
         android:layout_width="154dp"
         android:layout_height="141dp"
         android:layout_marginTop="372dp"
         android:clickable="true"
         android:contentDescription="@null"
+        android:onClick="imageClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.879"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,11 +111,13 @@
 
     <ImageView
         android:id="@+id/tomato"
+        android:tag="tomato"
         android:layout_width="153dp"
         android:layout_height="133dp"
         android:layout_marginTop="388dp"
         android:clickable="true"
         android:contentDescription="@null"
+        android:onClick="imageClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,11 +127,13 @@
 
     <ImageView
         android:id="@+id/cherry"
+        android:tag="cherry"
         android:layout_width="160dp"
         android:layout_height="169dp"
         android:layout_marginTop="212dp"
         android:clickable="true"
         android:contentDescription="@null"
+        android:onClick="imageClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
@@ -145,4 +162,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
