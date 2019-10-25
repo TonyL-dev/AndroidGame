@@ -15,12 +15,11 @@ public class Picture {
         name = y;
         image = z;
     }
-
-    public boolean getIsHiddenImage(){
+    boolean getIsHiddenImage(){
         // return value of isHiddenImage
         return isHiddenImage;
     }
-    public String getName(){
+    String getName(){
         // return name of this Picture
         return name;
     }
@@ -28,7 +27,7 @@ public class Picture {
         // return Bitmap of this image
         return image;
     }
-    public void setIsHiddenImage(boolean x){
+    void setIsHiddenImage(boolean x){
         // set the isHiddenImage attribute of this picture
         isHiddenImage = x;
     }

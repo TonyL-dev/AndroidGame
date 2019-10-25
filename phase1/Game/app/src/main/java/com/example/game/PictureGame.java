@@ -6,11 +6,10 @@ import java.util.Random;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-public class PictureGame {
+class PictureGame {
     // list of ALL the pictures in the game
-    private Picture[] pictures = new Picture[8];
+    private Picture[] pictures = new Picture[12];
     // to generate list of pictures
-    private Random rand = new Random();
     // initialize HashMap of string and bitmap
     private Map<String, Bitmap> pictureMap  = new HashMap<String, Bitmap>() {{
         Bitmap bitmap;
@@ -38,10 +37,23 @@ public class PictureGame {
 
         bitmap = BitmapFactory.decodeFile("drawable/tomato.png");
         put("tomato", bitmap);
+
+        bitmap = BitmapFactory.decodeFile("drawable/lemon.png");
+        put("lemon", bitmap);
+
+        bitmap = BitmapFactory.decodeFile("drawable/cantaloupe.png");
+        put("cantaloupe", bitmap);
+
+        bitmap = BitmapFactory.decodeFile("drawable/pear.png");
+        put("pear", bitmap);
+
+        bitmap = BitmapFactory.decodeFile("drawable/strawberry.png");
+        put("strawberry", bitmap);
     }};
 
     PictureGame(){
         // in here create the array of pictures
+        Random rand = new Random();
         int i = 0;
         for (Map.Entry<String, Bitmap> entry : pictureMap.entrySet()) {
 
@@ -62,7 +74,7 @@ public class PictureGame {
         }
     }
 
-    public String fruitsToFind(){
+    String fruitsToFind(){
         // returns string of fruits to be found
         StringBuilder listOfFruits = new StringBuilder();
 
