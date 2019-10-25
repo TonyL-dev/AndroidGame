@@ -10,24 +10,28 @@ public class Picture {
     // the picture that represents this picture
     private Bitmap image;
 
-    Picture(boolean x, String y, Bitmap z){
+    Picture(boolean x, String y, Bitmap z) {
         isHiddenImage = x;
         name = y;
         image = z;
     }
-    boolean getIsHiddenImage(){
+
+    boolean getIsHiddenImage() {
         // return value of isHiddenImage
         return isHiddenImage;
     }
-    String getName(){
+
+    String getName() {
         // return name of this Picture
         return name;
     }
-    public Bitmap getImage(){
+
+    public Bitmap getImage() {
         // return Bitmap of this image
         return image;
     }
-    void setIsHiddenImage(boolean x){
+
+    void setIsHiddenImage(boolean x) {
         // set the isHiddenImage attribute of this picture
         isHiddenImage = x;
     }

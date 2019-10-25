@@ -22,12 +22,12 @@ public class PictureGameActivity extends AppCompatActivity {
 
     }
 
-    public void imageClick(View view){
+    public void imageClick(View view) {
         // runs when image is clicked on
         String fruit = view.getTag().toString();
         boolean isHiddenImage = pictureGame.isHiddenImage(fruit);
 
-        if(isHiddenImage){
+        if (isHiddenImage) {
             // if player finds an image
 
             // find the updated set of fruits to look for

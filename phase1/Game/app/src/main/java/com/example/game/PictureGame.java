@@ -3,6 +3,7 @@ package com.example.game;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
@@ -11,7 +12,7 @@ class PictureGame {
     private Picture[] pictures = new Picture[12];
     // to generate list of pictures
     // initialize HashMap of string and bitmap
-    private Map<String, Bitmap> pictureMap  = new HashMap<String, Bitmap>() {{
+    private Map<String, Bitmap> pictureMap = new HashMap<String, Bitmap>() {{
         Bitmap bitmap;
 
         bitmap = BitmapFactory.decodeFile("drawable/apple.png");
@@ -51,7 +52,7 @@ class PictureGame {
         put("strawberry", bitmap);
     }};
 
-    PictureGame(){
+    PictureGame() {
         // in here create the array of pictures
         Random rand = new Random();
         int i = 0;
@@ -74,22 +75,22 @@ class PictureGame {
         }
     }
 
-    String fruitsToFind(){
+    String fruitsToFind() {
         // returns string of fruits to be found
         StringBuilder listOfFruits = new StringBuilder();
 
-        for (Picture pic: pictures){
-            if(pic.getIsHiddenImage()){
+        for (Picture pic : pictures) {
+            if (pic.getIsHiddenImage()) {
                 listOfFruits.append(pic.getName() + "\n");
             }
         }
         return listOfFruits.toString();
     }
 
-    boolean isHiddenImage(String imageId){
+    boolean isHiddenImage(String imageId) {
         // return whether this image is to be found or not
-        for (Picture pic: pictures){
-            if(pic.getName().equals(imageId)){
+        for (Picture pic : pictures) {
+            if (pic.getName().equals(imageId)) {
                 // if this is the picture that has been clicked, return whether it is hidden or not
                 return pic.getIsHiddenImage();
             }
@@ -98,12 +99,12 @@ class PictureGame {
         return false;
     }
 
-    String foundHiddenImage(String imageId){
+    String foundHiddenImage(String imageId) {
         // runs when you found an image
 
         // sets the found picture .isHiddenImage to false since we don't need to find it anymore
-        for (Picture pic: pictures){
-            if(pic.getName().equals(imageId)){
+        for (Picture pic : pictures) {
+            if (pic.getName().equals(imageId)) {
                 pic.setIsHiddenImage(false);
             }
         }

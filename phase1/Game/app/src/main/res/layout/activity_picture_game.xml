@@ -10,7 +10,6 @@
 
     <ImageView
         android:id="@+id/blueberry"
-        android:tag="blueberry"
         android:layout_width="118dp"
         android:layout_height="103dp"
         android:layout_marginTop="160dp"
@@ -18,6 +17,7 @@
         android:clickable="true"
         android:contentDescription="@null"
         android:onClick="imageClick"
+        android:tag="blueberry"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,13 +27,13 @@
 
     <ImageView
         android:id="@+id/apple"
-        android:tag="apple"
         android:layout_width="143dp"
         android:layout_height="75dp"
         android:layout_marginTop="304dp"
         android:clickable="true"
         android:contentDescription="@null"
         android:onClick="imageClick"
+        android:tag="apple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,13 +63,13 @@
 
     <ImageView
         android:id="@+id/coconut"
-        android:tag="coconut"
         android:layout_width="151dp"
         android:layout_height="140dp"
         android:layout_marginTop="228dp"
         android:clickable="true"
         android:contentDescription="@null"
         android:onClick="imageClick"
+        android:tag="coconut"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.965"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,13 +79,13 @@
 
     <ImageView
         android:id="@+id/grapefruit"
-        android:tag="grapefruit"
         android:layout_width="133dp"
         android:layout_height="112dp"
         android:layout_marginTop="72dp"
         android:clickable="true"
         android:contentDescription="@null"
         android:onClick="imageClick"
+        android:tag="grapefruit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.902"
         app:layout_constraintStart_toStartOf="parent"
