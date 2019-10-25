@@ -13,8 +13,11 @@ public class PictureGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_game);
 
-        PictureGame x = new PictureGame();
-        x.play();
+//        PictureGame x = new PictureGame();
+//        TextView textView = findViewById(R.id.listOfFruits);
+//        textView.setText(x.fruitsToFind());
+
+        // x.play();
 
     }
 }

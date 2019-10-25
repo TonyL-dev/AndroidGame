@@ -65,6 +65,17 @@ public class PictureGame {
     void play(){
         // play gamee
     }
+
+    public String fruitsToFind(){
+        String listOfFruits = "";
+        for (Picture pic: pictures){
+            if(pic.getIsHiddenImage()){
+                listOfFruits.concat(pic.getName() + "\n");
+            }
+        }
+        return listOfFruits;
+    }
+
     private boolean isHiddenImage(String imageId){
         // return whether this image is to be found or not
         for (Picture pic: pictures){
