@@ -63,6 +63,7 @@ public class PictureGame {
     }
 
     public String fruitsToFind(){
+        // returns string of fruits to be found
         StringBuilder listOfFruits = new StringBuilder();
 
         for (Picture pic: pictures){
@@ -86,11 +87,15 @@ public class PictureGame {
     }
 
     String foundHiddenImage(String imageId){
+        // runs when you found an image
+
+        // sets the found picture .isHiddenImage to false since we don't need to find it anymore
         for (Picture pic: pictures){
             if(pic.getName().equals(imageId)){
                 pic.setIsHiddenImage(false);
             }
         }
+        // return new fruits to find
         return fruitsToFind();
     }
 }

@@ -29,6 +29,7 @@ public class Picture {
         return image;
     }
     public void setIsHiddenImage(boolean x){
+        // set the isHiddenImage attribute of this picture
         isHiddenImage = x;
     }
 }

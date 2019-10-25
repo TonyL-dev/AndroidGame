@@ -2,9 +2,7 @@ package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
 
@@ -30,8 +28,13 @@ public class PictureGameActivity extends AppCompatActivity {
         boolean isHiddenImage = pictureGame.isHiddenImage(fruit);
 
         if(isHiddenImage){
+            // if player finds an image
+
+            // find the updated set of fruits to look for
             String newFruits = pictureGame.foundHiddenImage(fruit);
+            // set textview to those new fruits
             textView.setText(newFruits);
+            // hide the fruit that was found
             view.setVisibility(View.INVISIBLE);
         }
 
