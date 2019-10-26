@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.view.View;
 import android.content.Intent;
-import android.os.Bundle;
+import java.text.DecimalFormat;
 
 public class PictureGameActivity extends AppCompatActivity {
 
@@ -14,7 +14,11 @@ public class PictureGameActivity extends AppCompatActivity {
     TextView textView;
 
     //player
-    Player newPlayer;
+    private Player newPlayer;
+
+    long start = System.nanoTime();
+
+    DecimalFormat df = new DecimalFormat("####0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +32,6 @@ public class PictureGameActivity extends AppCompatActivity {
         pictureGame = new PictureGame(newPlayer);
         textView = findViewById(R.id.listOfFruits);
         textView.setText(pictureGame.fruitsToFind());
-
     }
 
     public void imageClick(View view) {
@@ -47,12 +50,19 @@ public class PictureGameActivity extends AppCompatActivity {
 
                 if (newFruits.equals("")) {
                     // if the player has won the game
-                    textView.setText("You won the game!");
+                    long end = System.nanoTime();
+                    long time = end - start;
+                    double timeInSeconds= (double) time / 1_000_000_000;
+                    newPlayer.addTime(timeInSeconds);
+                    textView.setText("\nYou won the game! " +
+                            "\nMoving on to the next level in 3 seconds" +
+                            "\n\nTime taken to complete this game: " + df.format(timeInSeconds)+
+                            " seconds");
                     Intent intent = new Intent(this, WarGameActivity.class);
-                    startActivity(intent);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("player", newPlayer);
                     intent.putExtras(bundle);
+                    startActivity(intent);
                 } else {
                     // else keep playing
                     textView.setText(newFruits);

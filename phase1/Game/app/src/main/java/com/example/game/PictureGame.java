@@ -121,13 +121,4 @@ class PictureGame {
         return fruitsToFind();
     }
 
-    boolean isGameFinished()
-    {
-        for (Picture pic : pictures) {
-            if (pic.getIsHiddenImage()){
-                return false;
-            }
-        }
-        return true;
-    }
 }

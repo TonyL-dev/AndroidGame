@@ -8,7 +8,7 @@ public class Player implements Serializable {
 
     private int points;
 
-    private int time;
+    private double time=0;
 
     private String name;
 
@@ -40,6 +40,11 @@ public class Player implements Serializable {
         return this.points;
     }
 
+    public double getTime()
+    {
+        return this.time;
+    }
+
     public void setName(String newName)
     {
         this.name = newName;
@@ -58,5 +63,10 @@ public class Player implements Serializable {
     public void subtractPoints()
     {
         this.points-=100;
+    }
+
+    public void addTime(double additionalTime)
+    {
+        this.time+=additionalTime;
     }
 }
