@@ -12,7 +12,7 @@ class PictureGame {
     private Picture[] pictures = new Picture[12];
 
     //player
-    Player newPlayer;
+    private Player newPlayer;
 
     // to generate list of pictures
     // initialize HashMap of string and bitmap

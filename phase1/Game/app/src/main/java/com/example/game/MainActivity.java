@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
   Button submitButton;
 
+  Player newPlayer;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -29,15 +31,15 @@ public class MainActivity extends AppCompatActivity {
     submitButton = (Button) findViewById(R.id.button);
   }
 
-//  public void playWarGame(View view) {
-//    Intent intent = new Intent(this, WarGameActivity.class);
-//    startActivity(intent);
-//  }
-
-  public void playPictureGame(View view){
+  public void createPlayer(View view) {
     username = userNameInput.getText().toString();
     password = passwordInput.getText().toString();
-    Player newPlayer = new Player(username, password);
+    newPlayer = new Player(username, password);
+    ((EditText) findViewById(R.id.userNameInput)).setText("");
+    ((EditText) findViewById(R.id.passwordInput)).setText("");
+  }
+
+  public void playPictureGame(View view){
     Intent intent = new Intent(this, PictureGameActivity.class);
     Bundle bundle = new Bundle();
     bundle.putSerializable("player", newPlayer);
