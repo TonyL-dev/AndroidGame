@@ -5,14 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+  String username, password;
+
+  EditText userNameInput;
+  EditText passwordInput;
+
+  Button submitButton;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    userNameInput = (EditText) findViewById(R.id.userNameInput);
+    passwordInput = (EditText) findViewById(R.id.passwordInput);
+
+    submitButton = (Button) findViewById(R.id.button);
   }
 
   public void playWarGame(View view) {
@@ -21,7 +35,13 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void playPictureGame(View view){
+    username = userNameInput.getText().toString();
+    password = passwordInput.getText().toString();
+    Player newPlayer = new Player(username, password);
     Intent intent = new Intent(this, PictureGameActivity.class);
+    Bundle bundle = new Bundle();
+    bundle.putSerializable("player", newPlayer);
+    intent.putExtras(bundle);
     startActivity(intent);
   }
 }

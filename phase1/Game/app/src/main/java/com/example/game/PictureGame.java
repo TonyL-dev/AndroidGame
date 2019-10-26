@@ -52,7 +52,7 @@ class PictureGame {
         put("strawberry", bitmap);
     }};
 
-    PictureGame() {
+    PictureGame(Player player) {
         // in here create the array of pictures
         Random rand = new Random();
         int i = 0;
