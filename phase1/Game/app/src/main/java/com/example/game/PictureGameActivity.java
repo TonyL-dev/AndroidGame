@@ -33,7 +33,15 @@ public class PictureGameActivity extends AppCompatActivity {
             // find the updated set of fruits to look for
             String newFruits = pictureGame.foundHiddenImage(fruit);
             // set textview to those new fruits
-            textView.setText(newFruits);
+
+            if(newFruits.equals("")){
+                // if the player has won the game
+                textView.setText("You won the game!");
+            }
+            else{
+                // else keep playing
+                textView.setText(newFruits);
+            }
             // hide the fruit that was found
             view.setVisibility(View.INVISIBLE);
         }
