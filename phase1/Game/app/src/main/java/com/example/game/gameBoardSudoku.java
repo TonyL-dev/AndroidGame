@@ -1,4 +1,4 @@
-package com.example.game.Sudoku;//复制过去的时候这个改成自己的pkg name。
+package com.example.game;//复制过去的时候这个改成自己的pkg name。
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class chessboard extends View {
+public class gameBoardSudoku extends View {
 
     //the chessboard used to display the numbers.
     float w; // width of one tile
@@ -16,11 +16,11 @@ public class chessboard extends View {
     Paint sPaint;
 
 
-    public chessboard(Context context) {
+    public gameBoardSudoku(Context context) {
         super(context);
     }
 
-    public chessboard(Context context, AttributeSet attributeSet) {
+    public gameBoardSudoku(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         sPaint = new Paint();
     }

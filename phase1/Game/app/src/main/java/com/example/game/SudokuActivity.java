@@ -1,4 +1,4 @@
-package com.example.game.Sudoku;
+package com.example.game;
 
 import android.os.Bundle;
 
