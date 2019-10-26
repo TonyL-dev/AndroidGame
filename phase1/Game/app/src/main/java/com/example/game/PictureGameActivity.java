@@ -13,6 +13,9 @@ public class PictureGameActivity extends AppCompatActivity {
     private PictureGame pictureGame;
     TextView textView;
 
+    //player
+    Player newPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +23,7 @@ public class PictureGameActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        Player newPlayer = (Player) bundle.getSerializable("player");
+        newPlayer = (Player) bundle.getSerializable("player");
 
         pictureGame = new PictureGame(newPlayer);
         textView = findViewById(R.id.listOfFruits);
@@ -30,26 +33,35 @@ public class PictureGameActivity extends AppCompatActivity {
 
     public void imageClick(View view) {
         // runs when image is clicked on
-        String fruit = view.getTag().toString();
-        boolean isHiddenImage = pictureGame.isHiddenImage(fruit);
+        if (view.getTag()!=null) {
+            String fruit = view.getTag().toString();
+            boolean isHiddenImage = pictureGame.isHiddenImage(fruit);
 
-        if (isHiddenImage) {
-            // if player finds an image
+            if (isHiddenImage) {
+                // if player finds an image
 
-            // find the updated set of fruits to look for
-            String newFruits = pictureGame.foundHiddenImage(fruit);
-            // set textview to those new fruits
-
-            if(newFruits.equals("")){
-                // if the player has won the game
-                textView.setText("You won the game!");
-            }
-            else{
-                // else keep playing
+                // find the updated set of fruits to look for
+                String newFruits = pictureGame.foundHiddenImage(fruit);
+                // set textview to those new fruits
                 textView.setText(newFruits);
+                // hide the fruit that was found
+                view.setVisibility(View.INVISIBLE);
+
+                //check if all fruits are found
+                boolean isGameFinished = pictureGame.isGameFinished();
+
+                if(isGameFinished)
+                {
+                    Intent intent = new Intent(this, WarGameActivity.class);
+                    startActivity(intent);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("player", newPlayer);
+                    intent.putExtras(bundle);
+                }
+
             }
-            // hide the fruit that was found
-            view.setVisibility(View.INVISIBLE);
+            else
+                newPlayer.subtractPoints();
         }
 
     }

@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
     submitButton = (Button) findViewById(R.id.button);
   }
 
-  public void playWarGame(View view) {
-    Intent intent = new Intent(this, WarGameActivity.class);
-    startActivity(intent);
-  }
+//  public void playWarGame(View view) {
+//    Intent intent = new Intent(this, WarGameActivity.class);
+//    startActivity(intent);
+//  }
 
   public void playPictureGame(View view){
     username = userNameInput.getText().toString();

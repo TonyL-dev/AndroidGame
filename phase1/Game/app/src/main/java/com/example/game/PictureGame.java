@@ -10,6 +10,10 @@ import android.graphics.BitmapFactory;
 class PictureGame {
     // list of ALL the pictures in the game
     private Picture[] pictures = new Picture[12];
+
+    //player
+    Player newPlayer;
+
     // to generate list of pictures
     // initialize HashMap of string and bitmap
     private Map<String, Bitmap> pictureMap = new HashMap<String, Bitmap>() {{
@@ -55,6 +59,8 @@ class PictureGame {
     PictureGame(Player player) {
         // in here create the array of pictures
         Random rand = new Random();
+        newPlayer=player;
+
         int i = 0;
         for (Map.Entry<String, Bitmap> entry : pictureMap.entrySet()) {
 
@@ -108,7 +114,20 @@ class PictureGame {
                 pic.setIsHiddenImage(false);
             }
         }
+
+        newPlayer.addPoints();
+        System.out.println(newPlayer.getPoints());
         // return new fruits to find
         return fruitsToFind();
+    }
+
+    boolean isGameFinished()
+    {
+        for (Picture pic : pictures) {
+            if (pic.getIsHiddenImage()){
+                return false;
+            }
+        }
+        return true;
     }
 }

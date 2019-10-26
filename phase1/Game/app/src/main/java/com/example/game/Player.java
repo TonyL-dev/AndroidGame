@@ -35,6 +35,11 @@ public class Player implements Serializable {
         return this.password;
     }
 
+    public int getPoints()
+    {
+        return this.points;
+    }
+
     public void setName(String newName)
     {
         this.name = newName;
@@ -43,5 +48,15 @@ public class Player implements Serializable {
     public void setPassword(String newPassword)
     {
         this.password = newPassword;
+    }
+
+    public void addPoints()
+    {
+        this.points+=100;
+    }
+
+    public void subtractPoints()
+    {
+        this.points-=100;
     }
 }
