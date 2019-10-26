@@ -27,6 +27,7 @@ public class WarGameActivity extends AppCompatActivity {
     }
 
     System.out.println(newPlayer.getPoints());
+    System.out.println(newPlayer.getTime(1));
     WarGame x = new WarGame();
     x.play();
 

@@ -1,6 +1,7 @@
 package com.example.game;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 //The player player
 public class Player implements Serializable {
@@ -8,7 +9,7 @@ public class Player implements Serializable {
 
     private int points;
 
-    private double time=0;
+    private ArrayList <Double> time = new ArrayList <Double>();
 
     private String name;
 
@@ -40,9 +41,9 @@ public class Player implements Serializable {
         return this.points;
     }
 
-    public double getTime()
+    public double getTime(int gameNum)
     {
-        return this.time;
+        return this.time.get(gameNum-1);
     }
 
     public void setName(String newName)
@@ -67,6 +68,6 @@ public class Player implements Serializable {
 
     public void addTime(double additionalTime)
     {
-        this.time+=additionalTime;
+        this.time.add(additionalTime);
     }
 }
