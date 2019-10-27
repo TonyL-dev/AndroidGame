@@ -3,48 +3,46 @@ package com.example.game;
 import java.util.ArrayList;
 
 //A War game player
-public class WarPlayer extends Player {
+class WarPlayer extends Player {
 
     private ArrayList<Card> hand;
-    private Cards deckOfCards;
     private int score = 0;
-    private String name;
 
-    WarPlayer(Cards cards, String name) {
+    WarPlayer(Deck cards, String name) {
         super();
-        this.name = name;
-        deckOfCards = cards;
+        this.setName(name);
+
         hand = new ArrayList<>();
-        addCards();
-        System.out.println(this.name + "---" + hand);
+        addCards(cards);
+        System.out.println(this.getName() + "---" + hand);
     }
 
-    private void addCards() {
+    private void addCards(Deck deckOfCards) {
+        //give half the deck to player
         for (int i = 0; i < 26; i++) {
-            hand.add(deckOfCards.getCards().get(i));
+            hand.add(deckOfCards.getNextCard());
         }
-        deckOfCards.getCards().subList(0, 26).clear();
     }
 
+    void addCards(ArrayList<Card> cards) {
+        hand.addAll(cards);
+    }
+
+    //make immutable in the future?
     ArrayList<Card> getHand() {
         return hand;
     }
 
-    ArrayList<Card> removeHand(int i) {
-        hand.remove(i);
-        return hand;
+    Card getNextCard() {
+        return hand.remove(0);
     }
 
-    void addScore() {
-        score += 1;
+    void addScore(int size) {
+        score += size;
     }
 
     int getScore() {
         return score;
     }
 
-    @Override
-    public String toString() {
-        return (this.name + ": " + hand);
-    }
 }

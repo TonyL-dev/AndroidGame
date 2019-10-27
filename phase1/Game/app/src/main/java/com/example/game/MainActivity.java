@@ -46,4 +46,12 @@ public class MainActivity extends AppCompatActivity {
     intent.putExtras(bundle);
     startActivity(intent);
   }
+
+  public void playWarGame(View view) {
+    Intent intent = new Intent(this, WarGameActivity.class);
+//    Bundle bundle = new Bundle();
+//    bundle.putSerializable("player", newPlayer);
+//    intent.putExtras(bundle);
+    startActivity(intent);
+  }
 }

@@ -1,42 +1,34 @@
 package com.example.game;
 
+enum Suit {
+    Clubs,
+    Diamonds,
+    Spades,
+    Hearts
+}
+
 public class Card {
 
     private int denomination;
-    private int suit;
+    private Suit suit;
+    private String cardText;
 
-    Card(int suit, int denomination) {
+    Card(Suit suit, int denomination, String cardText) {
         this.suit = suit;
         this.denomination = denomination;
+        this.cardText = cardText;
     }
 
     int getDenomination() {
         return denomination;
     }
 
-    public int getSuit() {
+    public Suit getSuit() {
         return suit;
     }
 
     @Override
     public String toString() {
-        String suitAsString;
-        switch (suit) {
-            case 1:
-                suitAsString = "Spade";
-                break;
-            case 2:
-                suitAsString = "Heart";
-                break;
-            case 3:
-                suitAsString = "Club";
-                break;
-            case 4:
-                suitAsString = "Diamond";
-                break;
-            default:
-                suitAsString = "Empty";
-        }
-        return (denomination + " of " + suitAsString);
+        return cardText;
     }
 }
