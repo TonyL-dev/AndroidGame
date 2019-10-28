@@ -9,17 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.EditText;
 
 //WarGame那里还要link到这个界面 （在WarGameEndScreen class里）（好像可以直接在xml里搞）
-//虽然写上了但我感觉不需要newPlayer这个variable
 
 public class SudokuActivity extends AppCompatActivity {
 
     Player newPlayer;
-    private SudokuGame sudokuGame;
+    public SudokuGame sudokuGame;
 
 
     public SudokuActivity() {
         SudokuGame sudokuGame = new SudokuGame();
-        long start = System.nanoTime(); //pictureGame把这行写在constructor外面了但我觉得在里面
+
     }
 
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,21 +6,20 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class gameBoardSudoku extends View {
+public class SudokuGameBoard extends View {
 
     //the chessboard used to display the numbers.
     float w; // width of one tile
     float h; //height of one tile
-    float x1;//The top left x-coordinate
-    float y1;//The top left y-coordinate
+
     Paint sPaint;
 
 
-    public gameBoardSudoku(Context context) {
+    public SudokuGameBoard(Context context) {
         super(context);
     }
 
-    public gameBoardSudoku(Context context, AttributeSet attributeSet) {
+    public SudokuGameBoard(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         sPaint = new Paint();
     }
@@ -138,7 +137,7 @@ public class gameBoardSudoku extends View {
         sPaint.setTextAlign(Paint.Align.CENTER);
         sPaint.setTextSize(60);
         for (int i = 0; i < 9; i++) {
-            String num = toString().valueOf(default2.charAt(i));
+            String num = toString().valueOf(default7.charAt(i));
             if (!num.equals("0")) {
                 float x = 120*i +60;
                 canvas.drawText(num, x, 1157, sPaint);
