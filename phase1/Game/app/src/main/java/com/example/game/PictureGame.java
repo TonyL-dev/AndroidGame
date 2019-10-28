@@ -59,7 +59,7 @@ class PictureGame {
     PictureGame(Player player) {
         // in here create the array of pictures
         Random rand = new Random();
-        newPlayer=player;
+        newPlayer = player;
 
         int i = 0;
         for (Map.Entry<String, Bitmap> entry : pictureMap.entrySet()) {

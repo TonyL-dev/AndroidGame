@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.view.View;
 import android.content.Intent;
+
 import java.text.DecimalFormat;
 
 public class PictureGameActivity extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class PictureGameActivity extends AppCompatActivity {
     public void imageClick(View view) {
         // runs when image is clicked on
 
-        if (view.getTag()!=null) {
+        if (view.getTag() != null) {
             String fruit = view.getTag().toString();
             boolean isHiddenImage = pictureGame.isHiddenImage(fruit);
 
@@ -52,11 +53,11 @@ public class PictureGameActivity extends AppCompatActivity {
                     // if the player has won the game
                     long end = System.nanoTime();
                     long time = end - start;
-                    double timeInSeconds= (double) time / 1_000_000_000;
+                    double timeInSeconds = (double) time / 1_000_000_000;
                     newPlayer.addTime(timeInSeconds);
                     textView.setText("\nYou won the game! " +
                             "\nMoving on to the next level in 3 seconds" +
-                            "\n\nTime taken to complete this game: " + df.format(timeInSeconds)+
+                            "\n\nTime taken to complete this game: " + df.format(timeInSeconds) +
                             " seconds");
                     Intent intent = new Intent(this, WarGameActivity.class);
                     Bundle bundle = new Bundle();
