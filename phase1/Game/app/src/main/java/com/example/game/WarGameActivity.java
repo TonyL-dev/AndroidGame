@@ -16,28 +16,28 @@ public class WarGameActivity extends AppCompatActivity {
     Player newPlayer;
     private WarGame game;
 
-    public WarGameActivity() {
-        game = new WarGame();
-    }
+    long start = System.nanoTime();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_war_game);
         //setContentView(R.layout.activity_test);
-//    Intent intent = getIntent();
-//    Bundle bundle = intent.getExtras();
-//    newPlayer = (Player) bundle.getSerializable("player");
-//
-//    try {
-//      Thread.sleep(3000);
-//    } catch(InterruptedException ex) {
-//      Thread.currentThread().interrupt();
-//    }
-//
-//    System.out.println(newPlayer.getPoints());
-//    System.out.println(newPlayer.getTime(1));
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        newPlayer = (Player) bundle.getSerializable("player");
 
+        try {
+          Thread.sleep(3000);
+        } catch(InterruptedException ex) {
+          Thread.currentThread().interrupt();
+        }
+
+        System.out.println(newPlayer.getPoints());
+
+        System.out.println(newPlayer.getTime(1));
+
+        game = new WarGame(newPlayer);
 
         final TextView cardsA = findViewById(R.id.cardRemainingA);
         cardsA.setText("Cards remaining:" + game.getCardsRemainingA());
@@ -77,9 +77,14 @@ public class WarGameActivity extends AppCompatActivity {
 
     //open the screen to display who won and transition to the next game
     public void openScoreScreen() {
+        long end = System.nanoTime();
+        long time = end - start;
+        double timeInSeconds = (double) time / 1_000_000_000;
+        newPlayer.addTime(timeInSeconds);
         Intent intent = new Intent(this, WarGameEndScreen.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("points", game.toString());
+        bundle.putSerializable("player", newPlayer);
         intent.putExtras(bundle);
         startActivity(intent);
     }

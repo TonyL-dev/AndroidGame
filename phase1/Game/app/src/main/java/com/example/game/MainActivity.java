@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void playPictureGame(View view){
+    if (newPlayer==null)
+      newPlayer = new Player();
     Intent intent = new Intent(this, PictureGameActivity.class);
     Bundle bundle = new Bundle();
     bundle.putSerializable("player", newPlayer);

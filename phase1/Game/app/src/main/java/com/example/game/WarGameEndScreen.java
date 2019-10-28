@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class WarGameEndScreen extends AppCompatActivity {
+
+    Player newPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +25,12 @@ public class WarGameEndScreen extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         String stats = bundle.getString("points");
+        newPlayer = (Player) bundle.getSerializable("player");
 
         TextView textView = findViewById(R.id.endGameStats);
         textView.setText(stats);
+        System.out.println(stats);
+        System.out.println(newPlayer.getTime(2));
+        System.out.println(newPlayer.getPoints());
     }
 }

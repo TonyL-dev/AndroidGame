@@ -16,7 +16,8 @@ public class Player implements Serializable {
     private String password;
 
     public Player() {
-
+        this.name = "Default";
+        this.password = "1234";
     }
 
     public Player(String username, String password) {
@@ -50,6 +51,10 @@ public class Player implements Serializable {
 
     public void addPoints() {
         this.points += 100;
+    }
+
+    public void addPoints(int newPoints) {
+        this.points += newPoints;
     }
 
     public void subtractPoints() {
