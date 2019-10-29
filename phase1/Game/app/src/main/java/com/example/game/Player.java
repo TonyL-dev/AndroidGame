@@ -18,7 +18,7 @@ public class Player implements Serializable {
 
     private int colour=0;
 
-    private int multiplier;
+    private int multiplier=1;
 
     private int numFruits;
 
