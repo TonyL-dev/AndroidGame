@@ -10,10 +10,11 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-  String username, password;
+  String username, password, colour;
 
   EditText userNameInput;
   EditText passwordInput;
+  EditText colourInput;
 
   Button submitButton;
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     userNameInput = (EditText) findViewById(R.id.userNameInput);
     passwordInput = (EditText) findViewById(R.id.passwordInput);
+    colourInput = (EditText) findViewById(R.id.colourInput);
 
     submitButton = (Button) findViewById(R.id.button);
   }
@@ -33,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
   public void createPlayer(View view) {
     username = userNameInput.getText().toString();
     password = passwordInput.getText().toString();
-    newPlayer = new Player(username, password);
+    colour = colourInput.getText().toString();
+    newPlayer = new Player(username, password, colour);
     ((EditText) findViewById(R.id.userNameInput)).setText("");
     ((EditText) findViewById(R.id.passwordInput)).setText("");
+    ((EditText) findViewById(R.id.colourInput)).setText("");
   }
 
   public void playPictureGame(View view){
