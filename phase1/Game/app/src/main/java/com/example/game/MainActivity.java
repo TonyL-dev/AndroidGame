@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,5 +54,18 @@ public class MainActivity extends AppCompatActivity {
     bundle.putSerializable("player", newPlayer);
     intent.putExtras(bundle);
     startActivity(intent);
+  }
+
+  public void playSudoku(View view){
+    Intent intent = new Intent(this, SudokuActivity.class);
+    startActivity(intent);
+  }
+
+  public void endSudoku(View view){
+    // click on the continue button of Sudoku and will go to this interface.
+    Intent intent = new Intent(this, SudokuEndScreenActivity.class);
+    startActivity(intent);
+
+
   }
 }
