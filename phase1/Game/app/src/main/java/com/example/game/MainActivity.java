@@ -70,7 +70,13 @@ public class MainActivity extends AppCompatActivity {
     startActivity(intent);
   }
 
-
+  public void playSudoku(View view) {
+    Intent intent = new Intent(this, SudokuActivity.class);
+    Bundle bundle = new Bundle();
+    bundle.putSerializable("player", newPlayer);
+    intent.putExtras(bundle);
+    startActivity(intent);
+  }
 
   public void endSudoku(View view){
     // click on the continue button of Sudoku and will go to this interface.

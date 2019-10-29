@@ -12,6 +12,17 @@ public class SudokuGameBoard extends View {
     float w; // width of one tile
     float h; //height of one tile
 
+    int[] default9 = {0,0,4,1,9,0,2,0,0};
+    int[] default8 = {8,0,1,4,5,6,0,0,3};
+    int[] default7 = {0,7,0,0,0,0,0,0,0};
+    int[] default6 = {2,4,0,8,0,0,6,9,0};
+    int[] default5 = {0,0,0,0,0,0,0,0,0};
+    int[] default4 = {0,0,9,6,0,4,0,5,0};
+    int[] default3 = {0,1,6,0,0,8,0,4,9};
+    int[] default2 = {0,0,0,9,4,0,0,0,7};
+    int[] default1 = {0,0,0,0,0,0,0,0,0};
+    int[][] board = {default1, default2, default3, default4,default5, default6, default7,default8,default9};
+
     Paint sPaint;
 
 
@@ -44,15 +55,11 @@ public class SudokuGameBoard extends View {
         }
     }
 
-    int[] default9 = {0,0,4,1,9,0,2,0,0};
-    int[] default8 = {8,0,1,4,5,6,0,0,3};
-    int[] default7 = {0,7,0,0,0,0,0,0,0};
-    int[] default6 = {2,4,0,8,0,0,6,9,0};
-    int[] default5 = {0,0,0,0,0,0,0,0,0};
-    int[] default4 = {0,0,9,6,0,4,0,5,0};
-    int[] default3 = {0,1,6,0,0,8,0,4,9};
-    int[] default2 = {0,0,0,9,4,0,0,0,7};
-    int[] default1 = {0,0,0,0,0,0,0,0,0};
+
+
+    public int[][] getBoard(){
+        return board;
+    }
 
     public void drawDefaultNum1(Canvas canvas) {
         sPaint.setColor(Color.BLUE);
