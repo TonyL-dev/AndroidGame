@@ -1,5 +1,7 @@
 package com.example.game;
 
+import java.util.ArrayList;
+
 public class SudokuGame {
 
     private Player newPlayer;
@@ -26,32 +28,30 @@ public class SudokuGame {
         //To check whether a user input is possible.
         //x is the column of the input,y is the row of the input.
         //!!!gameboard is a changing variable derived from the modifying funciotn.
-        int i = 0;
         //gameboard =
-        if( gameboard[y][x] != 0){
+        if( gameboard[x-1][y-1] != 0){
             return false;
         }
-        while (i < 9) {
-            if (gameboard[y ][i] == a) {
+        for (int i = 0; i < 9; i++) {
+            if (gameboard[x - 1 ][i] == a) {
                 return false;
-            } else {
-                i++;
             }
         }return true;
     }
 
-//    public boolean check_column_availablity(int a, int x, int y, int[][] gameboard){
-//        //To check whether a user input is possible.
-//        //x is the column of the input,y is the row of the input.
-//        //!!!gameboard is a changing variable derived from the modifying funciotn.
-//
-//    }
-//
-//    public boolean check_3x3_availability(int a, int x, int y, int[][] gameboard){
-//        //To check whether a user input is possible.
-//        //x is the column of the input,y is the row of the input.
-//        //!!!gameboard is a changing variable derived from the modifying funciotn.
-//    }
+    public boolean check_column_availablity(int a, int x, int y, int[][] gameboard){
+        //To check whether a user input is possible.
+        //x is the column of the input,y is the row of the input.
+        //!!!gameboard is a changing variable derived from the modifying funciotn.
+
+        //gameboard = ^……
+        for (int i = 0; i < 9; i ++){
+            if (gameboard[i][y-1] == a){
+                return false;
+            }
+        }return true;
+    }
+
 }
 
 

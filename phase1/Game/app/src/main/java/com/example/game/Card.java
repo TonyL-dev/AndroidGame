@@ -29,6 +29,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return cardText;
+        return cardText + " of " + suit.toString();
     }
 }

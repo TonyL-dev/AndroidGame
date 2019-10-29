@@ -18,7 +18,7 @@ class Deck {
     private ArrayList<Card> createCards() {
         for (int denomination = 2; denomination <= 14; denomination++){
             for(Suit suit : Suit.values()){
-                deck.add(new Card(suit, denomination, abbreviationName (denomination, suit)));
+                deck.add(new Card(suit, denomination,abbreviationName(denomination)));
             }
         }
         shuffle();
@@ -26,7 +26,7 @@ class Deck {
     }
 
     //An abbreviation for the card
-    private String abbreviationName(int denomination, Suit suit) {
+    private String abbreviationName(int denomination) {
         String value;
         if (denomination >= 2 && denomination <= 10)
             value = String.valueOf(denomination);
@@ -41,7 +41,7 @@ class Deck {
         else
             value = "NONE";
         //the value and the first letter of the suit
-        return value + suit.toString().charAt(0);
+        return value;
     }
 
     Card getNextCard(){

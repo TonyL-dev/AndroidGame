@@ -4,6 +4,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * WarGame class
+ */
 public class WarGame {
 
     private WarPlayer playerA;
@@ -13,8 +16,8 @@ public class WarGame {
 
     WarGame(Player newPlayer) {
         Deck deckOfCards = new Deck();
-        playerA = new WarPlayer(deckOfCards, "PersonA");
-        playerB = new WarPlayer(deckOfCards, "PersonB");
+        playerA = new WarPlayer(deckOfCards);
+        playerB = new WarPlayer(deckOfCards);
         this.newPlayer=newPlayer;
     }
 

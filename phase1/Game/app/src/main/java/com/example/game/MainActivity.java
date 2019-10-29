@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void playWarGame(View view) {
+    if (newPlayer==null)
+      newPlayer = new Player();
     Intent intent = new Intent(this, WarGameActivity.class);
     Bundle bundle = new Bundle();
     bundle.putSerializable("player", newPlayer);
