@@ -4,6 +4,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * WarGame class
+ */
 public class WarGame {
 
     private WarPlayer playerA;
