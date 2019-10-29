@@ -18,7 +18,7 @@ public class Player implements Serializable {
 
     private int colour=0;
 
-    private int multiplier=1;
+    private int multiplier;
 
     private int numFruits;
 
@@ -31,8 +31,16 @@ public class Player implements Serializable {
                   String numFruits) {
         this.name = username;
         this.password = password;
-        this.multiplier = Integer.parseInt(multiplier);
-        this.numFruits = Integer.parseInt(numFruits);
+        if (multiplier.equals(""))
+            this.multiplier=1;
+        else
+            this.multiplier = Integer.parseInt(multiplier);
+        if (numFruits.equals(""))
+            this.numFruits=0;
+        else if (Integer.parseInt(numFruits)<0)
+            this.numFruits=0;
+        else
+            this.numFruits = Integer.parseInt(numFruits);
 
         if (colour.equalsIgnoreCase("green"))
             this.colour = 0xFF00FF00;
