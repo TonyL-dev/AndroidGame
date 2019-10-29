@@ -40,18 +40,18 @@ public class SudokuGame {
         }return true;
     }
 
-    public boolean check_column_availablity(int a, int x, int y, int[][] gameboard){
-        //To check whether a user input is possible.
-        //x is the column of the input,y is the row of the input.
-        //!!!gameboard is a changing variable derived from the modifying funciotn.
-
-    }
-
-    public boolean check_3x3_availability(int a, int x, int y, int[][] gameboard){
-        //To check whether a user input is possible.
-        //x is the column of the input,y is the row of the input.
-        //!!!gameboard is a changing variable derived from the modifying funciotn.
-    }
+//    public boolean check_column_availablity(int a, int x, int y, int[][] gameboard){
+//        //To check whether a user input is possible.
+//        //x is the column of the input,y is the row of the input.
+//        //!!!gameboard is a changing variable derived from the modifying funciotn.
+//
+////    }
+//
+//    public boolean check_3x3_availability(int a, int x, int y, int[][] gameboard){
+//        //To check whether a user input is possible.
+//        //x is the column of the input,y is the row of the input.
+//        //!!!gameboard is a changing variable derived from the modifying funciotn.
+//    }
 }
 
 
