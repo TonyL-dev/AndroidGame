@@ -22,7 +22,6 @@ public class WarGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_war_game);
-        //setContentView(R.layout.activity_test);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");

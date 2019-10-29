@@ -1,5 +1,6 @@
 package com.example.game;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,22 +16,27 @@ public class WarGameEndScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_war_game);
 
-        Button nextGame = findViewById(R.id.nextGame);
-        nextGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         Bundle bundle = getIntent().getExtras();
         String stats = bundle.getString("points");
         newPlayer = (Player) bundle.getSerializable("player");
 
         TextView textView = findViewById(R.id.endGameStats);
-        textView.setText(stats);
+        textView.setText(stats + newPlayer.toString());
         System.out.println(stats);
         System.out.println(newPlayer.getTime(2));
         System.out.println(newPlayer.getPoints());
+
+        Button nextGame = findViewById(R.id.nextGame);
+        nextGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent = new Intent(this, WarGameEndScreen.class);
+                //Bundle bundle = new Bundle();
+                //bundle.putSerializable("points", game.toString());
+                //bundle.putSerializable("player", newPlayer);
+                //intent.putExtras(bundle);
+                //startActivity(intent);
+            }
+        });
     }
 }

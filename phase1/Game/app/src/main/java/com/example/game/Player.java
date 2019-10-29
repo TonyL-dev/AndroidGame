@@ -64,4 +64,13 @@ public class Player implements Serializable {
     public void addTime(double additionalTime) {
         this.time.add(additionalTime);
     }
+
+    public String toString(){
+        int gameNum = this.time.size();
+        double totalGameTime = 0;
+        for(double gameTime: time)
+            totalGameTime += gameTime;
+        return "\n\n This game took you " + getTime(gameNum) + " seconds." +
+                "\n In total you have taken " + totalGameTime + " seconds! You got this!";
+    }
 }
