@@ -16,7 +16,8 @@ public class Player implements Serializable {
     private String password;
 
     public Player() {
-
+        this.name = "Default";
+        this.password = "1234";
     }
 
     public Player(String username, String password) {
@@ -52,11 +53,24 @@ public class Player implements Serializable {
         this.points += 100;
     }
 
+    public void addPoints(int newPoints) {
+        this.points += newPoints;
+    }
+
     public void subtractPoints() {
         this.points -= 100;
     }
 
     public void addTime(double additionalTime) {
         this.time.add(additionalTime);
+    }
+
+    public String toString(){
+        int gameNum = this.time.size();
+        double totalGameTime = 0;
+        for(double gameTime: time)
+            totalGameTime += gameTime;
+        return "\n\n This game took you " + getTime(gameNum) + " seconds." +
+                "\n In total you have taken " + totalGameTime + " seconds! You got this!";
     }
 }

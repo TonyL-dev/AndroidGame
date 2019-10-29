@@ -9,11 +9,13 @@ public class WarGame {
     private WarPlayer playerA;
     private WarPlayer playerB;
     private Card[] lastCards = new Card[2];
+    private Player newPlayer;
 
-    WarGame() {
+    WarGame(Player newPlayer) {
         Deck deckOfCards = new Deck();
         playerA = new WarPlayer(deckOfCards, "PersonA");
         playerB = new WarPlayer(deckOfCards, "PersonB");
+        this.newPlayer=newPlayer;
     }
 
     //how many cards you have left
@@ -91,6 +93,7 @@ public class WarGame {
 
     @Override
     public String toString() {
+        newPlayer.addPoints(playerA.getScore());
         if (playerA.getScore() < playerB.getScore()) {
             return ("Player B won!!! With a score of " + playerB.getScore() + "\nYou have a score of " + playerA.getScore());
         } else if (playerA.getScore() > playerB.getScore()) {
