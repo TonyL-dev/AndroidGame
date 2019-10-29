@@ -18,7 +18,6 @@ public class SudokuActivity extends AppCompatActivity {
 
     public SudokuActivity() {
         SudokuGame sudokuGame = new SudokuGame();
-
     }
 
     protected void onCreate(Bundle savedInstanceState) {

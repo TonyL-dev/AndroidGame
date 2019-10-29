@@ -32,10 +32,6 @@ public class WarGameActivity extends AppCompatActivity {
           Thread.currentThread().interrupt();
         }
 
-        System.out.println(newPlayer.getPoints());
-
-        System.out.println(newPlayer.getTime(1));
-
         game = new WarGame(newPlayer);
 
         final TextView cardsA = findViewById(R.id.cardRemainingA);
