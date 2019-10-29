@@ -26,8 +26,8 @@
 
     <Button
         android:id="@+id/nextGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="79dp"
+        android:layout_height="39dp"
         android:onClick="playSudoku"
         android:text="next game"
         app:layout_constraintBottom_toBottomOf="parent"

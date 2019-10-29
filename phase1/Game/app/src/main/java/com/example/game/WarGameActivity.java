@@ -27,9 +27,9 @@ public class WarGameActivity extends AppCompatActivity {
         newPlayer = (Player) bundle.getSerializable("player");
 
         try {
-          Thread.sleep(3000);
-        } catch(InterruptedException ex) {
-          Thread.currentThread().interrupt();
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
         }
 
         System.out.println(newPlayer.getPoints());
@@ -87,7 +87,6 @@ public class WarGameActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-    public void playSudoku(View view){
-        Intent intent = new Intent(this, SudokuActivity.class);
-        startActivity(intent);
-    }}
+
+
+}
