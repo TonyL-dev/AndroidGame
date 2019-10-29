@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class WarGameEndScreen extends AppCompatActivity {
 
     Player newPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,20 +23,16 @@ public class WarGameEndScreen extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.endGameStats);
         textView.setText(stats + newPlayer.toString());
-        System.out.println(stats);
-        System.out.println(newPlayer.getTime(2));
-        System.out.println(newPlayer.getPoints());
 
         Button nextGame = findViewById(R.id.nextGame);
         nextGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(this, WarGameEndScreen.class);
-                //Bundle bundle = new Bundle();
-                //bundle.putSerializable("points", game.toString());
-                //bundle.putSerializable("player", newPlayer);
-                //intent.putExtras(bundle);
-                //startActivity(intent);
+                Intent intent = new Intent(v.getContext(), SudokuActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("player", newPlayer);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }

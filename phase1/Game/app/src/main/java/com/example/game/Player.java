@@ -1,12 +1,11 @@
 package com.example.game;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 //The player player
 public class Player implements Serializable {
-    //TODO: Statistic variables
-
     private int points;
 
     private ArrayList<Double> time = new ArrayList<Double>();
@@ -15,14 +14,25 @@ public class Player implements Serializable {
 
     private String password;
 
+    private static DecimalFormat df = new DecimalFormat("####0.00");
+
+    private int colour=0;
+
     public Player() {
         this.name = "Default";
         this.password = "1234";
     }
 
-    public Player(String username, String password) {
+    public Player(String username, String password, String colour) {
         this.name = username;
         this.password = password;
+
+        if (colour.equalsIgnoreCase("green"))
+            this.colour = 0xFF00FF00;
+        else if (colour.equalsIgnoreCase("red"))
+            this.colour = 0xAAFF0000;
+        else
+            this.colour = 0;
     }
 
     public String getName() {
@@ -70,7 +80,9 @@ public class Player implements Serializable {
         double totalGameTime = 0;
         for(double gameTime: time)
             totalGameTime += gameTime;
-        return "\n\n This game took you " + getTime(gameNum) + " seconds." +
-                "\n In total you have taken " + totalGameTime + " seconds! You got this!";
+        return "\n\n You have " + getPoints() + " points now."+
+                "\n\n This game took you " + df.format(getTime(gameNum)) + " seconds." +
+                "\n In total you have taken " + df.format(totalGameTime) + " seconds! " +
+                " You got this!";
     }
 }

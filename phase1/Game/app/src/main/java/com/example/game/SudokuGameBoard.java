@@ -12,6 +12,17 @@ public class SudokuGameBoard extends View {
     float w; // width of one tile
     float h; //height of one tile
 
+    int[] default9 = {0,0,4,1,9,0,2,0,0};
+    int[] default8 = {8,0,1,4,5,6,0,0,3};
+    int[] default7 = {0,7,0,0,0,0,0,0,0};
+    int[] default6 = {2,4,0,8,0,0,6,9,0};
+    int[] default5 = {0,0,0,0,0,0,0,0,0};
+    int[] default4 = {0,0,9,6,0,4,0,5,0};
+    int[] default3 = {0,1,6,0,0,8,0,4,9};
+    int[] default2 = {0,0,0,9,4,0,0,0,7};
+    int[] default1 = {0,0,0,0,0,0,0,0,0};
+    int[][] board = {default1, default2, default3, default4,default5, default6, default7,default8,default9};
+
     Paint sPaint;
 
 
@@ -44,26 +55,22 @@ public class SudokuGameBoard extends View {
         }
     }
 
-    String default9 = "004190200";
-    String default8 = "801456003";
-    String default7 = "070000000";
-    String default6 = "240800690";
-    String default5 = "000000000";
-    String default4 = "009604050";
-    String default3 = "016008049";
-    String default2 = "000940007";
-    String default1 = "000000000";
 
+
+    public int[][] getBoard(){
+        return board;
+    }
 
     public void drawDefaultNum1(Canvas canvas) {
         sPaint.setColor(Color.BLUE);
         sPaint.setTextAlign(Paint.Align.CENTER);
         sPaint.setTextSize(60);
         for (int i = 0; i < 9; i++) {
-            String num = toString().valueOf(default1.charAt(i));
+            String num = Integer.toString(default1[i]);
             if (!num.equals("0")) {
                 float x = 120*i +60;
                 canvas.drawText(num, x, 89, sPaint);
+
             }
         }
     }
@@ -73,7 +80,7 @@ public class SudokuGameBoard extends View {
         sPaint.setTextAlign(Paint.Align.CENTER);
         sPaint.setTextSize(60);
         for (int i = 0; i < 9; i++) {
-            String num = toString().valueOf(default2.charAt(i));
+            String num = Integer.toString(default2[i]);
             if (!num.equals("0")) {
                 float x = 120*i +60;
                 canvas.drawText(num, x, 267, sPaint);
@@ -86,7 +93,7 @@ public class SudokuGameBoard extends View {
         sPaint.setTextAlign(Paint.Align.CENTER);
         sPaint.setTextSize(60);
         for (int i = 0; i < 9; i++) {
-            String num = toString().valueOf(default3.charAt(i));
+            String num = Integer.toString(default3[i]);
             if (!num.equals("0")) {
                 float x = 120*i +60;
                 canvas.drawText(num, x, 445, sPaint);
@@ -99,7 +106,7 @@ public class SudokuGameBoard extends View {
         sPaint.setTextAlign(Paint.Align.CENTER);
         sPaint.setTextSize(60);
         for (int i = 0; i < 9; i++) {
-            String num = toString().valueOf(default4.charAt(i));
+            String num = Integer.toString(default4[i]);
             if (!num.equals("0")) {
                 float x = 120*i +60;
                 canvas.drawText(num, x, 623, sPaint);
@@ -112,7 +119,7 @@ public class SudokuGameBoard extends View {
         sPaint.setTextAlign(Paint.Align.CENTER);
         sPaint.setTextSize(60);
         for (int i = 0; i < 9; i++) {
-            String num = toString().valueOf(default5.charAt(i));
+            String num = Integer.toString(default5[i]);
             if (!num.equals("0")) {
                 float x = 120*i +60;
                 canvas.drawText(num, x, 801, sPaint);
@@ -124,7 +131,7 @@ public class SudokuGameBoard extends View {
         sPaint.setTextAlign(Paint.Align.CENTER);
         sPaint.setTextSize(60);
         for (int i = 0; i < 9; i++) {
-            String num = toString().valueOf(default6.charAt(i));
+            String num = Integer.toString(default6[i]);
             if (!num.equals("0")) {
                 float x = 120*i +60;
                 canvas.drawText(num, x, 979, sPaint);
@@ -137,7 +144,7 @@ public class SudokuGameBoard extends View {
         sPaint.setTextAlign(Paint.Align.CENTER);
         sPaint.setTextSize(60);
         for (int i = 0; i < 9; i++) {
-            String num = toString().valueOf(default7.charAt(i));
+            String num = Integer.toString(default7[i]);
             if (!num.equals("0")) {
                 float x = 120*i +60;
                 canvas.drawText(num, x, 1157, sPaint);
@@ -150,7 +157,7 @@ public class SudokuGameBoard extends View {
         sPaint.setTextAlign(Paint.Align.CENTER);
         sPaint.setTextSize(60);
         for (int i = 0; i < 9; i++) {
-            String num = toString().valueOf(default8.charAt(i));
+            String num = Integer.toString(default8[i]);
             if (!num.equals("0")) {
                 float x = 120*i +60;
                 canvas.drawText(num, x, 1335, sPaint);
@@ -163,10 +170,11 @@ public class SudokuGameBoard extends View {
         sPaint.setTextAlign(Paint.Align.CENTER);
         sPaint.setTextSize(60);
         for (int i = 0; i < 9; i++) {
-            String num = toString().valueOf(default9.charAt(i));
-            if (!num.equals("0")) {
+            int num = default9[i];
+            if (num !=(0)) {
                 float x = 120*i +60;
-                canvas.drawText(num, x, 1513, sPaint);
+                String n = Integer.toString(num);
+                canvas.drawText(n, x, 1513, sPaint);
             }
         }
     }
