@@ -87,4 +87,7 @@ public class WarGameActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-}
+    public void playSudoku(View view){
+        Intent intent = new Intent(this, SudokuActivity.class);
+        startActivity(intent);
+    }}
