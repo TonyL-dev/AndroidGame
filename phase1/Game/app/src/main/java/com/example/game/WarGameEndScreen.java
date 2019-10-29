@@ -23,6 +23,8 @@ public class WarGameEndScreen extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.endGameStats);
         textView.setText(stats + newPlayer.toString());
+        if (newPlayer.getColour()!=0)
+            textView.setTextColor(newPlayer.getColour());
 
         Button nextGame = findViewById(R.id.nextGame);
         nextGame.setOnClickListener(new View.OnClickListener() {

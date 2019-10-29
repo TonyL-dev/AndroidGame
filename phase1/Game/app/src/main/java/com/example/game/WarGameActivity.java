@@ -43,6 +43,13 @@ public class WarGameActivity extends AppCompatActivity {
         final TextView cardPlayedA = findViewById(R.id.currentCardA);
         final TextView cardPlayedB = findViewById(R.id.currentCardB);
 
+        if (newPlayer.getColour()!=0) {
+            cardsA.setTextColor(newPlayer.getColour());
+            cardsB.setTextColor(newPlayer.getColour());
+            cardPlayedA.setTextColor(newPlayer.getColour());
+            cardPlayedB.setTextColor(newPlayer.getColour());
+        }
+
         Button button = (Button) findViewById(R.id.playButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +73,6 @@ public class WarGameActivity extends AppCompatActivity {
                 openScoreScreen();
             }
         });
-
-
     }
 
     //open the screen to display who won and transition to the next game

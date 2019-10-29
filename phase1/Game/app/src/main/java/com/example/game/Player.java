@@ -18,14 +18,21 @@ public class Player implements Serializable {
 
     private int colour=0;
 
+    private int multiplier=1;
+
+    private int numFruits;
+
     public Player() {
         this.name = "Default";
         this.password = "1234";
     }
 
-    public Player(String username, String password, String colour) {
+    public Player(String username, String password, String colour, String multiplier,
+                  String numFruits) {
         this.name = username;
         this.password = password;
+        this.multiplier = Integer.parseInt(multiplier);
+        this.numFruits = Integer.parseInt(numFruits);
 
         if (colour.equalsIgnoreCase("green"))
             this.colour = 0xFF00FF00;
@@ -47,6 +54,18 @@ public class Player implements Serializable {
         return this.points;
     }
 
+    public int getColour() {
+        return this.colour;
+    }
+
+    public int getMultiplier() {
+        return this.multiplier;
+    }
+
+    public int getNumFruits() {
+        return this.numFruits;
+    }
+
     public double getTime(int gameNum) {
         return this.time.get(gameNum - 1);
     }
@@ -60,15 +79,15 @@ public class Player implements Serializable {
     }
 
     public void addPoints() {
-        this.points += 100;
+        this.points += this.multiplier;
     }
 
     public void addPoints(int newPoints) {
-        this.points += newPoints;
+        this.points += newPoints*this.multiplier;
     }
 
     public void subtractPoints() {
-        this.points -= 100;
+        this.points -= this.multiplier;
     }
 
     public void addTime(double additionalTime) {
