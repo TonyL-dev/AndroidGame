@@ -4,6 +4,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * WarGame class
+ */
 public class WarGame {
 
     private WarPlayer playerA;
@@ -13,8 +16,8 @@ public class WarGame {
 
     WarGame(Player newPlayer) {
         Deck deckOfCards = new Deck();
-        playerA = new WarPlayer(deckOfCards, "PersonA");
-        playerB = new WarPlayer(deckOfCards, "PersonB");
+        playerA = new WarPlayer(deckOfCards);
+        playerB = new WarPlayer(deckOfCards);
         this.newPlayer=newPlayer;
     }
 
@@ -95,9 +98,12 @@ public class WarGame {
     public String toString() {
         newPlayer.addPoints(playerA.getScore());
         if (playerA.getScore() < playerB.getScore()) {
-            return ("Player B won!!! With a score of " + playerB.getScore() + "\nYou have a score of " + playerA.getScore());
+            return ("Player B won!!! With a score of " + playerB.getScore()*
+                    newPlayer.getMultiplier() + "\nYou have a score of " + playerA.getScore()
+                    *newPlayer.getMultiplier());
         } else if (playerA.getScore() > playerB.getScore()) {
-            return ("You won!!! With a score of " + playerA.getScore() + "\nPlayer B has a score of " + playerB.getScore());
+            return ("You won!!! With a score of " + playerA.getScore()*newPlayer.getMultiplier()
+                    + "\nPlayer B has a score of " + playerB.getScore()*newPlayer.getMultiplier());
         } else {
             return ("TIED---");
         }

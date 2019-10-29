@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 public class PictureGameActivity extends AppCompatActivity {
 
     private PictureGame pictureGame;
-    TextView textView;
+    TextView textView, textView2;
 
     //player
     private Player newPlayer;
@@ -31,8 +31,14 @@ public class PictureGameActivity extends AppCompatActivity {
         newPlayer = (Player) bundle.getSerializable("player");
 
         pictureGame = new PictureGame(newPlayer);
+        textView2 = findViewById(R.id.textView2);
         textView = findViewById(R.id.listOfFruits);
         textView.setText(pictureGame.fruitsToFind());
+        if (newPlayer.getColour()!=0) {
+            textView.setTextColor(newPlayer.getColour());
+            textView2.setTextColor(newPlayer.getColour());
+        }
+
     }
 
     public void imageClick(View view) {

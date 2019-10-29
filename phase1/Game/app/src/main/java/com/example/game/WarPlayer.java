@@ -8,9 +8,8 @@ class WarPlayer extends Player {
     private ArrayList<Card> hand;
     private int score = 0;
 
-    WarPlayer(Deck cards, String name) {
+    WarPlayer(Deck cards) {
         super();
-        this.setName(name);
 
         hand = new ArrayList<>();
         addCards(cards);
