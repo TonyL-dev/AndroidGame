@@ -37,6 +37,10 @@ public class SudokuActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
 
+        if (newPlayer.getbackColour()!=0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        }
+
         sudokuGame = new SudokuGame(newPlayer, SudokuGameBoard.toHM(SudokuGameBoard.sudo));
 
         b1 = findViewById(R.id.button);
