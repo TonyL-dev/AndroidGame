@@ -121,18 +121,17 @@
 
     <EditText
         android:id="@+id/editText6"
-        android:layout_width="44dp"
+        android:layout_width="42dp"
         android:layout_height="69dp"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
+        android:background="@null"
         android:ems="10"
+        android:gravity="center"
         android:inputType="number"
+        android:tag="16"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@id/editText5"
-        app:layout_constraintTop_toTopOf="@id/editText5"
-        android:tag="16"
-        android:background="@null"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="@id/editText5" />
 
     <EditText
         android:id="@+id/editText7"
@@ -169,15 +168,15 @@
         android:layout_width="42dp"
         android:layout_height="69dp"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
+        android:background="@null"
         android:ems="10"
+        android:gravity="center"
         android:inputType="number"
+        android:onClick="endSudoku"
+        android:tag="19"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@id/editText8"
-        app:layout_constraintTop_toTopOf="@id/editText5"
-        android:tag="19"
-        android:background="@null"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="@id/editText5" />
 
     <EditText
         android:id="@+id/editText10"
