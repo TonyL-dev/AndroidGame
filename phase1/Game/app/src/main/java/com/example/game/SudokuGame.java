@@ -19,7 +19,7 @@ public class SudokuGame {
     int[][] initBoard = {default1, default2, default3, default4, default5, default6, default7, default8, default9};
     static int[][] board;
     int endpoint;
-    static int points;
+    int points;
 
 
     public SudokuGame(Player player) {
@@ -54,7 +54,7 @@ public class SudokuGame {
         }return true;
     }
 
-    public static int endPoint(){
+    public int endPoint(){
         // Take a gameboard as an input,
         int num = 0;
         //calculate the number of zero in the board and add to the int endpoint.
