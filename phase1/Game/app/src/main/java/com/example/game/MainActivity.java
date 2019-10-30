@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     ((EditText) findViewById(R.id.numFruits)).setText("");
   }
 
+
   public void playPictureGame(View view){
     if (newPlayer==null)
       newPlayer = new Player();
@@ -84,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
   public void endSudoku(View view){
     // click on the continue button of Sudoku and will go to this interface.
     Intent intent = new Intent(this, SudokuEndScreenActivity.class);
+    Bundle bundle = new Bundle();
+    bundle.putSerializable("player", newPlayer);
+    intent.putExtras(bundle);
     startActivity(intent);
   }
 }

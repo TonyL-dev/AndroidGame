@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.EditText;
+
 
 
 
@@ -25,6 +27,7 @@ public class SudokuActivity extends AppCompatActivity {
             t17,t18,t19,t20,t21,t22,t23,t24,t25,t26,t27,t28,t29,t30,
             t31,t32,t33,t34,t35,t36,t37,t38,t39,t40,t41,t42,t43,t44,
             t45,t46,t47,t48,t49,t50,t51,t52,t53;
+    Button b1;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class SudokuActivity extends AppCompatActivity {
         newPlayer = (Player) bundle.getSerializable("player");
 
         sudokuGame = new SudokuGame(newPlayer, SudokuGameBoard.toHM(SudokuGameBoard.sudo));
+
+        b1 =findViewById(R.id.button);
 
 
         t1 =findViewById(R.id.editText1);
@@ -116,7 +121,7 @@ public class SudokuActivity extends AppCompatActivity {
                 @Override
                 public void afterTextChanged(Editable editable) {
                     hideKeyboard(input);
-                    if (!sudokuGame.insert(Integer.valueOf(input.getText().toString()),
+                    if (!input.getText().toString().equals("") && !sudokuGame.insert(Integer.valueOf(input.getText().toString()),
                             (int)(((String)input.getTag()).charAt(0)),
                             (int)(((String)input.getTag()).charAt(1)),
                             sudokuGame.sudoku)){
@@ -147,8 +152,14 @@ public class SudokuActivity extends AppCompatActivity {
     }
 
 
-
+    public void endSudoku(View view) {
+        Intent intent = new Intent(this, SudokuEndScreenActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("player", newPlayer);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
+}
 
 
 

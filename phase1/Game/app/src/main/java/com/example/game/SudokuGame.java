@@ -192,7 +192,7 @@ public class SudokuGame {
 
         for (ArrayList<ArrayList<Integer>> bundle:dim){
             for (ArrayList<Integer> position: bundle){
-                if (position.equals(key)){
+                if (position == (key)){
                     for (ArrayList<Integer> pos:bundle){
                         if (Input == (s.get(pos))){
                             return false;
@@ -207,24 +207,24 @@ public class SudokuGame {
     public boolean checkCol(int Input, int x, HashMap<ArrayList<Integer>,Integer> s){
 
         for (ArrayList<Integer> position:s.keySet()){
-            if (position.get(0).equals(x)){
+            if (position.get(0) == (x)){
                 if (Input == (s.get(position))){
                     return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     public boolean checkRow(int Input, int y, HashMap<ArrayList<Integer>,Integer> s){
         for (ArrayList<Integer> position:s.keySet()){
-            if (position.get(1).equals(y)){
+            if (position.get(1) == (y)){
                 if (Input == (s.get(position))){
                     return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     public boolean insert(int Input, int x, int y, HashMap<ArrayList<Integer>,Integer> s){

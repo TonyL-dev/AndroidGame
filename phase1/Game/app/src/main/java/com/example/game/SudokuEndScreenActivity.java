@@ -10,14 +10,14 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
     long endSudoku = System.nanoTime();
     TextView textView;
     public Player newPlayer;
-    long time;
-    int endpoint = sudokuGame.endPoint();
-
-    public long get_time_used(SudokuGame sudokuGame){
-
-        time = this.endSudoku - sudokuGame.startSudoku;
-        return time;
-    }
+//    long time;
+//    int endpoint = sudokuGame.endPoint();
+//
+//    public long get_time_used(SudokuGame sudokuGame){
+//
+//        time = this.endSudoku - sudokuGame.startSudoku;
+//        return time;
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +27,10 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
         textView = findViewById(R.id.endState);
-        get_time_used(sudokuGame);
-        int score = endpoint;
-        String s = "You have spent" + time + "seconds on this game."+"Your score is" + score;
-        textView.setText(s);
+//        get_time_used(sudokuGame);
+//        int score = endpoint;
+//        String s = "You have spent" + time + "seconds on this game."+"Your score is" + score;
+//        textView.setText(s);
 
 
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SudokuActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.draft.chessboard
+    <com.example.game.SudokuGameBoard
         android:id="@+id/chessboard"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -40,8 +40,8 @@
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="23dp"
-        android:layout_marginRight="23dp"
         android:text="Continue"
+        android:onClick="endSudoku"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
