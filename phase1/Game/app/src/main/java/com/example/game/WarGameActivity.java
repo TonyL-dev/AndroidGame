@@ -83,7 +83,7 @@ public class WarGameActivity extends AppCompatActivity {
         long end = System.nanoTime();
         long time = end - start;
         double timeInSeconds = (double) time / 1_000_000_000;
-        newPlayer.addTime(timeInSeconds);
+        newPlayer.addTime(timeInSeconds - 3);
         Intent intent = new Intent(this, WarGameEndScreenActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("points", game.toString());
