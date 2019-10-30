@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
   Player newPlayer;
 
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -84,7 +85,5 @@ public class MainActivity extends AppCompatActivity {
     // click on the continue button of Sudoku and will go to this interface.
     Intent intent = new Intent(this, SudokuEndScreenActivity.class);
     startActivity(intent);
-
-
   }
 }

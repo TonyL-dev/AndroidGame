@@ -6,24 +6,32 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
 public class SudokuGameBoard extends View {
 
     //the chessboard used to display the numbers.
     float w; // width of one tile
     float h; //height of one tile
 
-    int[] default9 = {0,0,4,1,9,0,2,0,0};
-    int[] default8 = {8,0,1,4,5,6,0,0,3};
-    int[] default7 = {0,7,0,0,0,0,0,0,0};
-    int[] default6 = {2,4,0,8,0,0,6,9,0};
-    int[] default5 = {0,0,0,0,0,0,0,0,0};
-    int[] default4 = {0,0,9,6,0,4,0,5,0};
-    int[] default3 = {0,1,6,0,0,8,0,4,9};
-    int[] default2 = {0,0,0,9,4,0,0,0,7};
-    int[] default1 = {0,0,0,0,0,0,0,0,0};
-    int[][] board = {default1, default2, default3, default4,default5, default6, default7,default8,default9};
+
+    static int[] default9 = {0,0,4,1,9,0,2,0,0};
+    static int[] default8 = {8,0,1,4,5,6,0,0,3};
+    static int[] default7 = {0,7,0,0,0,0,0,0,0};
+    static int[] default6 = {2,4,0,8,0,0,6,9,0};
+    static int[] default5 = {0,0,0,0,0,0,0,0,0};
+    static int[] default4 = {0,0,9,6,0,4,0,5,0};
+    static int[] default3 = {0,1,6,0,0,8,0,4,9};
+    static int[] default2 = {0,0,0,9,4,0,0,0,7};
+    static int[] default1 = {0,0,0,0,0,0,0,0,0};
+    static int[][] sudo = {default1,default2,default3,default4,default5,default6,default7,default8,default9};
 
     Paint sPaint;
+
+
+
 
 
     public SudokuGameBoard(Context context) {
@@ -56,10 +64,6 @@ public class SudokuGameBoard extends View {
     }
 
 
-
-    public int[][] getBoard(){
-        return board;
-    }
 
     public void drawDefaultNum1(Canvas canvas) {
         sPaint.setColor(Color.BLUE);
@@ -194,6 +198,24 @@ public class SudokuGameBoard extends View {
         drawDefaultNum9(canvas);
         canvas.save();
         super.onDraw(canvas);
+    }
+
+    static HashMap<ArrayList<Integer>, Integer> toHM(int[][] s){
+        HashMap<ArrayList<Integer>, Integer> sudokuDesign = new HashMap<>();
+        int y = 0;
+        for (int[] i :s){
+            y = y + 1;
+            int x = 0;
+            for (int j:i){
+                x = x + 1;
+                ArrayList<Integer> a = new ArrayList<>();
+                a.add(y);
+                a.add(x);
+//                int[] position = {y,x};
+                sudokuDesign.put(a, j);
+            }
+        }
+        return sudokuDesign;
     }
 
 
