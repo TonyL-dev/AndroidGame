@@ -1,6 +1,7 @@
 package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -33,38 +34,44 @@ public class PictureGameActivity extends AppCompatActivity {
         pictureGame = new PictureGame(newPlayer);
         textView2 = findViewById(R.id.textView2);
         textView = findViewById(R.id.listOfFruits);
+
+        ConstraintLayout relativeLayout = (ConstraintLayout) findViewById(R.id.linearLayout);
+
         textView.setText(pictureGame.fruitsToFind());
-        if (newPlayer.getColour()!=0) {
+
+        if (newPlayer.getColour() != 0) {
             textView.setTextColor(newPlayer.getColour());
             textView2.setTextColor(newPlayer.getColour());
+        }
+
+        if (newPlayer.getbackColour() != 0) {
+            relativeLayout.setBackgroundColor(newPlayer.getbackColour());
         }
 
     }
 
     public void imageClick(View view) {
         // runs when image is clicked on
-
         if (view.getTag() != null) {
             String fruit = view.getTag().toString();
             boolean isHiddenImage = pictureGame.isHiddenImage(fruit);
 
             if (isHiddenImage) {
                 // if player finds an image
-
                 // find the updated set of fruits to look for
                 String newFruits = pictureGame.foundHiddenImage(fruit);
-                // set textview to those new fruits
 
+                // set textview to those new fruits
                 if (newFruits.equals("")) {
                     // if the player has won the game
                     long end = System.nanoTime();
                     long time = end - start;
                     double timeInSeconds = (double) time / 1_000_000_000;
                     newPlayer.addTime(timeInSeconds);
-                    textView.setText("\nYou won the game! " +
-                            "\nMoving on to the next level in 3 seconds" +
-                            "\n\nTime taken to complete this game: " + df.format(timeInSeconds) +
-                            " seconds");
+                    textView.setText("");
+                    textView2.setText("");
+                    textView.setTextSize(18);
+                    textView.setText(newPlayer.toString());
                     Intent intent = new Intent(this, WarGameActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("player", newPlayer);
@@ -75,11 +82,10 @@ public class PictureGameActivity extends AppCompatActivity {
                     textView.setText(newFruits);
                 }
                 // hide the fruit that was found
-                view.setVisibility(View.INVISIBLE);
+                view.setVisibility(View.GONE);
             } else
                 newPlayer.subtractPoints();
         }
-
 
     }
 }

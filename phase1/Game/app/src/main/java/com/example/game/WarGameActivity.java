@@ -31,13 +31,8 @@ public class WarGameActivity extends AppCompatActivity {
             Thread.currentThread().interrupt();
         }
 
+        System.out.println(newPlayer.getColour());
         game = new WarGame(newPlayer);
-        if (newPlayer.getColour() != 0) {
-            cardsA.setTextColor(newPlayer.getColour());
-            cardsB.setTextColor(newPlayer.getColour());
-            cardPlayedA.setTextColor(newPlayer.getColour());
-            cardPlayedB.setTextColor(newPlayer.getColour());
-        }
 
         cardsA = findViewById(R.id.cardRemainingA);
         cardsA.setText("Cards remaining:" + game.getCardsRemainingA());
@@ -47,6 +42,17 @@ public class WarGameActivity extends AppCompatActivity {
 
         cardPlayedA = findViewById(R.id.currentCardA);
         cardPlayedB = findViewById(R.id.currentCardB);
+
+        if (newPlayer.getColour() != 0) {
+            cardsA.setTextColor(newPlayer.getColour());
+            cardsB.setTextColor(newPlayer.getColour());
+            cardPlayedA.setTextColor(newPlayer.getColour());
+            cardPlayedB.setTextColor(newPlayer.getColour());
+        }
+
+        if (newPlayer.getbackColour() != 0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        }
 
         //    Button button = (Button) findViewById(R.id.playButton);
         //    button.setOnClickListener(

@@ -16,9 +16,9 @@ class Deck {
     }
 
     private ArrayList<Card> createCards() {
-        for (int denomination = 2; denomination <= 14; denomination++){
-            for(Suit suit : Suit.values()){
-                deck.add(new Card(suit, denomination,abbreviationName(denomination)));
+        for (int denomination = 2; denomination <= 14; denomination++) {
+            for (Suit suit : Suit.values()) {
+                deck.add(new Card(suit, denomination, abbreviationName(denomination)));
             }
         }
         shuffle();
@@ -44,7 +44,7 @@ class Deck {
         return value;
     }
 
-    Card getNextCard(){
+    Card getNextCard() {
         return deck.remove(0);
     }
 }

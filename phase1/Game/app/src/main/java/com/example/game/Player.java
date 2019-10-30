@@ -16,11 +16,11 @@ public class Player implements Serializable {
 
     private static DecimalFormat df = new DecimalFormat("####0.00");
 
-    private int colour=0;
+    private int colour = 0;
 
-    private int multiplier=1;
+    private int multiplier = 1;
 
-    private int numFruits;
+    private int backColour = 0;
 
     public Player() {
         this.name = "Default";
@@ -28,23 +28,23 @@ public class Player implements Serializable {
     }
 
     public Player(String username, String password, String colour, String multiplier,
-                  String numFruits) {
+                  String backColour) {
         this.name = username;
         this.password = password;
 
         if (multiplier.equals(""))
-            this.multiplier=1;
-        else if (Integer.parseInt(multiplier)<=0)
+            this.multiplier = 1;
+        else if (Integer.parseInt(multiplier) <= 0)
             this.multiplier = 1;
         else
             this.multiplier = Integer.parseInt(multiplier);
 
-        if (numFruits.equals(""))
-            this.numFruits=0;
-        else if (Integer.parseInt(numFruits)<0)
-            this.numFruits=0;
+        if (backColour.equalsIgnoreCase("blue"))
+            this.backColour = 0xAA00BFFF;
+        else if (backColour.equalsIgnoreCase("purple"))
+            this.backColour = 0xAA9900FF;
         else
-            this.numFruits = Integer.parseInt(numFruits);
+            this.backColour = 0;
 
         if (colour.equalsIgnoreCase("green"))
             this.colour = 0xFF00FF00;
@@ -62,23 +62,23 @@ public class Player implements Serializable {
         return this.password;
     }
 
-    public int getPoints() {
+    int getPoints() {
         return this.points;
     }
 
-    public int getColour() {
+    int getColour() {
         return this.colour;
     }
 
-    public int getMultiplier() {
+    int getMultiplier() {
         return this.multiplier;
     }
 
-    public int getNumFruits() {
-        return this.numFruits;
+    int getbackColour() {
+        return this.backColour;
     }
 
-    public double getTime(int gameNum) {
+    private double getTime(int gameNum) {
         return this.time.get(gameNum - 1);
     }
 
@@ -90,30 +90,29 @@ public class Player implements Serializable {
         this.password = newPassword;
     }
 
-    public void addPoints() {
+    void addPoints() {
         this.points += this.multiplier;
     }
 
-    public void addPoints(int newPoints) {
-        this.points += newPoints*this.multiplier;
+    void addPoints(int newPoints) {
+        this.points += newPoints * this.multiplier;
     }
 
-    public void subtractPoints() {
+    void subtractPoints() {
         this.points -= this.multiplier;
     }
 
-    public void addTime(double additionalTime) {
+    void addTime(double additionalTime) {
         this.time.add(additionalTime);
     }
 
-    public String toString(){
+    public String toString() {
         int gameNum = this.time.size();
         double totalGameTime = 0;
-        for(double gameTime: time)
+        for (double gameTime : time)
             totalGameTime += gameTime;
-        return "\n\n You have " + getPoints() + " points now."+
-                "\n\n This game took you " + df.format(getTime(gameNum)) + " seconds." +
-                "\n In total you have taken " + df.format(totalGameTime) + " seconds! " +
-                " You got this!";
+        return "\nYou have " + getPoints() + " points now." +
+                "\n\nThis game took you " + df.format(getTime(gameNum)) + " seconds." +
+                "\nIn total you have taken " + df.format(totalGameTime) + " seconds! ";
     }
 }
