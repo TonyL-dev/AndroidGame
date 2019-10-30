@@ -16,11 +16,11 @@ public class Player implements Serializable {
 
     private static DecimalFormat df = new DecimalFormat("####0.00");
 
-    private int colour=0;
+    private int colour = 0;
 
-    private int multiplier=1;
+    private int multiplier = 1;
 
-    private int backColour=0;
+    private int backColour = 0;
 
     public Player() {
         this.name = "Default";
@@ -33,8 +33,8 @@ public class Player implements Serializable {
         this.password = password;
 
         if (multiplier.equals(""))
-            this.multiplier=1;
-        else if (Integer.parseInt(multiplier)<=0)
+            this.multiplier = 1;
+        else if (Integer.parseInt(multiplier) <= 0)
             this.multiplier = 1;
         else
             this.multiplier = Integer.parseInt(multiplier);
@@ -95,7 +95,7 @@ public class Player implements Serializable {
     }
 
     public void addPoints(int newPoints) {
-        this.points += newPoints*this.multiplier;
+        this.points += newPoints * this.multiplier;
     }
 
     public void subtractPoints() {
@@ -106,12 +106,12 @@ public class Player implements Serializable {
         this.time.add(additionalTime);
     }
 
-    public String toString(){
+    public String toString() {
         int gameNum = this.time.size();
         double totalGameTime = 0;
-        for(double gameTime: time)
+        for (double gameTime : time)
             totalGameTime += gameTime;
-        return "\nYou have " + getPoints() + " points now."+
+        return "\nYou have " + getPoints() + " points now." +
                 "\n\nThis game took you " + df.format(getTime(gameNum)) + " seconds." +
                 "\nIn total you have taken " + df.format(totalGameTime) + " seconds! ";
     }

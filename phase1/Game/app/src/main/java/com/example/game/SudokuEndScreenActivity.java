@@ -1,6 +1,7 @@
 package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,10 +33,10 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
         textView.setTextSize(23);
         textView.setText(newPlayer.toString());
 
-        if (newPlayer.getColour()!=0)
+        if (newPlayer.getColour() != 0)
             textView.setTextColor(newPlayer.getColour());
 
-        if (newPlayer.getbackColour()!=0) {
+        if (newPlayer.getbackColour() != 0) {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
         }
 
@@ -56,6 +57,6 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
 //        textView.setText(s);
 
 
-    }
+}
 
 

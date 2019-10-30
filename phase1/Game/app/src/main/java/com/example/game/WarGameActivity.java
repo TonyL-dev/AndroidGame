@@ -50,7 +50,7 @@ public class WarGameActivity extends AppCompatActivity {
             cardPlayedB.setTextColor(newPlayer.getColour());
         }
 
-        if (newPlayer.getbackColour()!=0) {
+        if (newPlayer.getbackColour() != 0) {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
         }
 

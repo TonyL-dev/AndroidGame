@@ -83,7 +83,7 @@ class PictureGame {
             i++;
         }
 
-        if (j==12){
+        if (j == 12) {
             int m = rand.nextInt(12);
             pictures[m].setIsHiddenImage(true);
         }
