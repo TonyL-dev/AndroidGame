@@ -21,7 +21,7 @@ public class SudokuGameBoard extends View {
     static int[] default8 = {8,0,1,4,5,6,0,0,3};
     static int[] default7 = {0,7,0,0,0,0,0,0,0};
     static int[] default6 = {2,4,0,8,0,0,6,9,0};
-    static int[] default5 = {0,0,0,0,0,0,0,0,0};
+    static int[] default5 = {0,0,0,0,0,0,0,0,4};
     static int[] default4 = {0,0,9,6,0,4,0,5,0};
     static int[] default3 = {0,1,6,0,0,8,0,4,9};
     static int[] default2 = {0,0,0,9,4,0,0,0,7};
