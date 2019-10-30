@@ -62,23 +62,23 @@ public class Player implements Serializable {
         return this.password;
     }
 
-    public int getPoints() {
+    int getPoints() {
         return this.points;
     }
 
-    public int getColour() {
+    int getColour() {
         return this.colour;
     }
 
-    public int getMultiplier() {
+    int getMultiplier() {
         return this.multiplier;
     }
 
-    public int getbackColour() {
+    int getbackColour() {
         return this.backColour;
     }
 
-    public double getTime(int gameNum) {
+    private double getTime(int gameNum) {
         return this.time.get(gameNum - 1);
     }
 
@@ -90,19 +90,19 @@ public class Player implements Serializable {
         this.password = newPassword;
     }
 
-    public void addPoints() {
+    void addPoints() {
         this.points += this.multiplier;
     }
 
-    public void addPoints(int newPoints) {
+    void addPoints(int newPoints) {
         this.points += newPoints * this.multiplier;
     }
 
-    public void subtractPoints() {
+    void subtractPoints() {
         this.points -= this.multiplier;
     }
 
-    public void addTime(double additionalTime) {
+    void addTime(double additionalTime) {
         this.time.add(additionalTime);
     }
 

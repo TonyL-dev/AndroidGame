@@ -1,14 +1,8 @@
 package com.example.game;
 
-import android.os.Bundle;
-import android.widget.EditText;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-
 
 public class SudokuGame {
 
@@ -27,7 +21,7 @@ public class SudokuGame {
     private ArrayList<ArrayList<Integer>> ThreeByThreeBundle9 = new ArrayList<ArrayList<Integer>>();
 
 
-    public SudokuGame(Player player, HashMap<ArrayList<Integer>, Integer> sudoku) {
+    SudokuGame(Player player, HashMap<ArrayList<Integer>, Integer> sudoku) {
         this.newPlayer = player;
         this.sudoku = sudoku;
     }
@@ -43,7 +37,7 @@ public class SudokuGame {
     }
 
 
-    public ArrayList<ArrayList<Integer>> getThreeByThreeBundle1() {
+    private ArrayList<ArrayList<Integer>> getThreeByThreeBundle1() {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
         for (int i = 1; i < 4; i++) {
             for (int j = 1; j < 4; j++) {
@@ -56,7 +50,7 @@ public class SudokuGame {
         return ans;
     }
 
-    public ArrayList<ArrayList<Integer>> getThreeByThreeBundle2() {
+    private ArrayList<ArrayList<Integer>> getThreeByThreeBundle2() {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
         for (int i = 4; i < 7; i++) {
             for (int j = 1; j < 4; j++) {
@@ -69,7 +63,7 @@ public class SudokuGame {
         return ans;
     }
 
-    public ArrayList<ArrayList<Integer>> getThreeByThreeBundle3() {
+    private ArrayList<ArrayList<Integer>> getThreeByThreeBundle3() {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
         for (int i = 7; i < 10; i++) {
             for (int j = 1; j < 4; j++) {
@@ -82,7 +76,7 @@ public class SudokuGame {
         return ans;
     }
 
-    public ArrayList<ArrayList<Integer>> getThreeByThreeBundle4() {
+    private ArrayList<ArrayList<Integer>> getThreeByThreeBundle4() {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
         for (int i = 4; i < 7; i++) {
             for (int j = 1; j < 4; j++) {
@@ -95,7 +89,7 @@ public class SudokuGame {
         return ans;
     }
 
-    public ArrayList<ArrayList<Integer>> getThreeByThreeBundle5() {
+    private ArrayList<ArrayList<Integer>> getThreeByThreeBundle5() {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
         for (int i = 4; i < 7; i++) {
             for (int j = 4; j < 7; j++) {
@@ -108,7 +102,7 @@ public class SudokuGame {
         return ans;
     }
 
-    public ArrayList<ArrayList<Integer>> getThreeByThreeBundle6() {
+    private ArrayList<ArrayList<Integer>> getThreeByThreeBundle6() {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
         for (int i = 4; i < 7; i++) {
             for (int j = 7; j < 10; j++) {
@@ -121,7 +115,7 @@ public class SudokuGame {
         return ans;
     }
 
-    public ArrayList<ArrayList<Integer>> getThreeByThreeBundle7() {
+    private ArrayList<ArrayList<Integer>> getThreeByThreeBundle7() {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
         for (int i = 7; i < 10; i++) {
             for (int j = 1; j < 4; j++) {
@@ -134,7 +128,7 @@ public class SudokuGame {
         return ans;
     }
 
-    public ArrayList<ArrayList<Integer>> getThreeByThreeBundle8() {
+    private ArrayList<ArrayList<Integer>> getThreeByThreeBundle8() {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
         for (int i = 7; i < 10; i++) {
             for (int j = 4; j < 7; j++) {
@@ -147,7 +141,7 @@ public class SudokuGame {
         return ans;
     }
 
-    public ArrayList<ArrayList<Integer>> getThreeByThreeBundle9() {
+    private ArrayList<ArrayList<Integer>> getThreeByThreeBundle9() {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
         for (int i = 7; i < 10; i++) {
             for (int j = 7; j < 10; j++) {
@@ -166,7 +160,7 @@ public class SudokuGame {
                     ThreeByThreeBundle7, ThreeByThreeBundle8, ThreeByThreeBundle9)
     );
 
-    public ArrayList<ArrayList<ArrayList<Integer>>> getSudokuDimension() {
+    private ArrayList<ArrayList<ArrayList<Integer>>> getSudokuDimension() {
         ArrayList<ArrayList<ArrayList<Integer>>> ans = new ArrayList<ArrayList<ArrayList<Integer>>>();
         ans.add(getThreeByThreeBundle1());
         ans.add(getThreeByThreeBundle2());
@@ -181,7 +175,7 @@ public class SudokuGame {
     }
 
 
-    public boolean checkThreeByThree(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
+    private boolean checkThreeByThree(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
         ArrayList<Integer> key = new ArrayList<Integer>();
         key.add(x);
         key.add(y);
@@ -202,7 +196,7 @@ public class SudokuGame {
         return true;
     }
 
-    public boolean checkCol(int Input, int x, HashMap<ArrayList<Integer>, Integer> s) {
+    private boolean checkCol(int Input, int x, HashMap<ArrayList<Integer>, Integer> s) {
 
         for (ArrayList<Integer> position : s.keySet()) {
             if (position.get(0) == (x)) {
@@ -214,7 +208,7 @@ public class SudokuGame {
         return true;
     }
 
-    public boolean checkRow(int Input, int y, HashMap<ArrayList<Integer>, Integer> s) {
+    private boolean checkRow(int Input, int y, HashMap<ArrayList<Integer>, Integer> s) {
         for (ArrayList<Integer> position : s.keySet()) {
             if (position.get(1) == (y)) {
                 if (Input == (s.get(position))) {
@@ -225,7 +219,7 @@ public class SudokuGame {
         return true;
     }
 
-    public boolean insert(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
+    boolean insert(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
         ArrayList<Integer> key = new ArrayList<Integer>();
         key.add(x);
         key.add(y);
