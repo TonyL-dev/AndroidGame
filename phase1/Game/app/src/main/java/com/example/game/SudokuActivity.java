@@ -1,40 +1,155 @@
 package com.example.game;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioTrack;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.view.View;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.EditText;
 
-//WarGame那里还要link到这个界面 （在WarGameEndScreen class里）（好像可以直接在xml里搞）
+
 
 public class SudokuActivity extends AppCompatActivity {
 
-    //   Player newPlayer;
-//    public SudokuGame sudokuGame;
+    Player newPlayer;
+    public SudokuGame sudokuGame;
+    EditText t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,
+            t17,t18,t19,t20,t21,t22,t23,t24,t25,t26,t27,t28,t29,t30,
+            t31,t32,t33,t34,t35,t36,t37,t38,t39,t40,t41,t42,t43,t44,
+            t45,t46,t47,t48,t49,t50,t51,t52,t53;
 
-
-//    public SudokuActivity() {
-    //      SudokuGame sudokuGame = new SudokuGame();
-
-//    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudoku);
-        //上面两行是主页面
-        //好像下面这三行的意思是有这个才能得到从wargame得到的信号
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        //     newPlayer = (Player) bundle.getSerializable("player");
+        newPlayer = (Player) bundle.getSerializable("player");
 
-        //   sudokuGame = new SudokuGame();
-        //？上面这行在constructor里写还是在这里写 还是都要写这俩是不一样的
+        sudokuGame = new SudokuGame(newPlayer, SudokuGameBoard.toHM(SudokuGameBoard.sudo));
+
+
+        t1 =findViewById(R.id.editText1);
+        t2 =findViewById(R.id.editText2);
+        t3 =findViewById(R.id.editText3);
+        t4 =findViewById(R.id.editText4);
+        t5 =findViewById(R.id.editText5);
+        t6 =findViewById(R.id.editText6);
+        t7 =findViewById(R.id.editText7);
+        t8 =findViewById(R.id.editText8);
+        t9 =findViewById(R.id.editText9);
+        t10 =findViewById(R.id.editText10);
+        t11 =findViewById(R.id.editText11);
+        t12 =findViewById(R.id.editText12);
+        t13 =findViewById(R.id.editText13);
+        t14 =findViewById(R.id.editText14);
+        t15 =findViewById(R.id.editText15);
+        t16 =findViewById(R.id.editText16);
+        t17 =findViewById(R.id.editText17);
+        t18 =findViewById(R.id.editText18);
+        t19 =findViewById(R.id.editText19);
+        t20 =findViewById(R.id.editText20);
+        t21 =findViewById(R.id.editText21);
+        t22 =findViewById(R.id.editText22);
+        t23 =findViewById(R.id.editText23);
+        t24 =findViewById(R.id.editText24);
+        t25 =findViewById(R.id.editText25);
+        t26 =findViewById(R.id.editText26);
+        t27 =findViewById(R.id.editText27);
+        t28 =findViewById(R.id.editText28);
+        t29 =findViewById(R.id.editText29);
+        t30 =findViewById(R.id.editText30);
+        t31 =findViewById(R.id.editText31);
+        t32 =findViewById(R.id.editText32);
+        t33 =findViewById(R.id.editText33);
+        t34 =findViewById(R.id.editText34);
+        t35 =findViewById(R.id.editText35);
+        t36 =findViewById(R.id.editText36);
+        t37 =findViewById(R.id.editText37);
+        t38 =findViewById(R.id.editText38);
+        t39 =findViewById(R.id.editText39);
+        t40 =findViewById(R.id.editText40);
+        t41 =findViewById(R.id.editText41);
+        t42 =findViewById(R.id.editText42);
+        t43 =findViewById(R.id.editText43);
+        t44 =findViewById(R.id.editText44);
+        t45 =findViewById(R.id.editText45);
+        t46 =findViewById(R.id.editText46);
+        t47 =findViewById(R.id.editText47);
+        t48 =findViewById(R.id.editText48);
+        t49 =findViewById(R.id.editText49);
+        t50 =findViewById(R.id.editText50);
+        t51 =findViewById(R.id.editText51);
+        t52 =findViewById(R.id.editText52);
+        t53 =findViewById(R.id.editText53);
+
+
+
+
+
+        EditText[] inputs = {t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,
+                t17,t18,t19,t20,t21,t22,t23,t24,t25,t26,t27,t28,t29,t30,
+                t31,t32,t33,t34,t35,t36,t37,t38,t39,t40,t41,t42,t43,t44,
+                t45,t46,t47,t48,t49,t50,t51,t52,t53};
+
+        for (final EditText input:inputs){
+            input.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    hideKeyboard(input);
+                    if (!sudokuGame.insert(Integer.valueOf(input.getText().toString()),
+                            (int)(((String)input.getTag()).charAt(0)),
+                            (int)(((String)input.getTag()).charAt(1)),
+                            sudokuGame.sudoku)){
+                        DialogInterface.OnClickListener r = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                input.getText().clear();
+
+                            }
+                        };
+                        AlertDialog.Builder builder = new AlertDialog.Builder(SudokuActivity.this);
+                        builder.setMessage("Invalid Number").setPositiveButton("ok", r);
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    }
+                }
+            });
+        }
+    }
+
+    public static void hideKeyboard(View view) {
+        if (view != null) {
+            InputMethodManager inputManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputManager != null){
+                inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        }
     }
 
 
-}
+
+    }
+
+
 
 
