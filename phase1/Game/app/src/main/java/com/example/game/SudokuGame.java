@@ -13,7 +13,7 @@ import java.util.List;
 public class SudokuGame {
 
     private Player newPlayer;
-    long startSudoku = System.nanoTime();
+
     HashMap<ArrayList<Integer>, Integer> sudoku;
 
     private ArrayList<ArrayList<Integer>> ThreeByThreeBundle1 = new ArrayList<ArrayList<Integer>>();

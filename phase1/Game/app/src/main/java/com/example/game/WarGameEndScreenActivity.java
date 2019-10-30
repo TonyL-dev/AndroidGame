@@ -26,6 +26,10 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
         if (newPlayer.getColour()!=0)
             textView.setTextColor(newPlayer.getColour());
 
+        if (newPlayer.getbackColour()!=0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        }
+
         Button nextGame = findViewById(R.id.nextGame);
     nextGame.setOnClickListener(
         new View.OnClickListener() {

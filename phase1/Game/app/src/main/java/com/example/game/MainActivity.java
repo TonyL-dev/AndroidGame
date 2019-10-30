@@ -11,13 +11,13 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-  String username, password, colour, multiplier, numberOfFruits;
+  String username, password, colour, multiplier, backColour;
 
   EditText userNameInput;
   EditText passwordInput;
   EditText colourInput;
   EditText scoreMultiplier;
-  EditText numFruits;
+  EditText backColourText;
 
   Button submitButton;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     passwordInput = (EditText) findViewById(R.id.passwordInput);
     colourInput = (EditText) findViewById(R.id.colourInput);
     scoreMultiplier = (EditText) findViewById(R.id.scoreMultiply);
-    numFruits = (EditText) findViewById(R.id.numFruits);
+    backColourText = (EditText) findViewById(R.id.backColour);
 
     submitButton = (Button) findViewById(R.id.button);
 
@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
     password = passwordInput.getText().toString();
     colour = colourInput.getText().toString();
     multiplier = scoreMultiplier.getText().toString();
-    numberOfFruits = numFruits.getText().toString();
-    newPlayer = new Player(username, password, colour, multiplier, numberOfFruits);
+    backColour = backColourText.getText().toString();
+    newPlayer = new Player(username, password, colour, multiplier, backColour);
     ((EditText) findViewById(R.id.userNameInput)).setText("");
     ((EditText) findViewById(R.id.passwordInput)).setText("");
     ((EditText) findViewById(R.id.colourInput)).setText("");
     ((EditText) findViewById(R.id.scoreMultiply)).setText("");
-    ((EditText) findViewById(R.id.numFruits)).setText("");
+    ((EditText) findViewById(R.id.backColour)).setText("");
   }
 
 

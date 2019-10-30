@@ -3,6 +3,8 @@ package com.example.game;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.style.BackgroundColorSpan;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
 import android.content.Intent;
@@ -39,6 +41,12 @@ public class PictureGameActivity extends AppCompatActivity {
             textView2.setTextColor(newPlayer.getColour());
         }
 
+        if (newPlayer.getbackColour()!=0) {
+            textView.setBackgroundColor(newPlayer.getbackColour());
+            textView2.setBackgroundColor(newPlayer.getbackColour());
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        }
+
     }
 
     public void imageClick(View view) {
@@ -61,10 +69,10 @@ public class PictureGameActivity extends AppCompatActivity {
                     long time = end - start;
                     double timeInSeconds = (double) time / 1_000_000_000;
                     newPlayer.addTime(timeInSeconds);
-                    textView.setText("\nYou won the game! " +
-                            "\nMoving on to the next level in 3 seconds" +
-                            "\n\nTime taken to complete this game: " + df.format(timeInSeconds) +
-                            " seconds");
+                    textView.setText("");
+                    textView2.setText("");
+                    textView.setTextSize(18);
+                    textView.setText(newPlayer.toString());
                     Intent intent = new Intent(this, WarGameActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("player", newPlayer);

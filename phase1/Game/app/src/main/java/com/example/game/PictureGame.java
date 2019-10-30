@@ -62,6 +62,8 @@ class PictureGame {
         newPlayer = player;
 
         int i = 0;
+        int j = 0;
+
         for (Map.Entry<String, Bitmap> entry : pictureMap.entrySet()) {
 
             String key = entry.getKey(); // the name of the image
@@ -73,11 +75,17 @@ class PictureGame {
                 found = true;
             } else {
                 found = false;
+                j++;
             }
             Picture pic = new Picture(found, key, value);
             pictures[i] = pic;
             // increase i by 1
             i++;
+        }
+
+        if (j==12){
+            int m = rand.nextInt(12);
+            pictures[m].setIsHiddenImage(true);
         }
     }
 

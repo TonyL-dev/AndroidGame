@@ -17,8 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.EditText;
 
 
-
-
 public class SudokuActivity extends AppCompatActivity {
 
     Player newPlayer;
@@ -28,6 +26,8 @@ public class SudokuActivity extends AppCompatActivity {
             t31,t32,t33,t34,t35,t36,t37,t38,t39,t40,t41,t42,t43,t44,
             t45,t46,t47,t48,t49,t50,t51,t52,t53;
     Button b1;
+
+    long startSudoku = System.nanoTime();
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +153,10 @@ public class SudokuActivity extends AppCompatActivity {
 
 
     public void endSudoku(View view) {
+        long endSudoku = System.nanoTime();
+        long time = endSudoku - startSudoku;
+        double timeInSeconds = (double) time / 1_000_000_000;
+        newPlayer.addTime(timeInSeconds);
         Intent intent = new Intent(this, SudokuEndScreenActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("player", newPlayer);

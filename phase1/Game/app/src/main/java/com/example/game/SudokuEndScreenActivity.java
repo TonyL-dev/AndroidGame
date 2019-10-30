@@ -3,11 +3,12 @@ package com.example.game;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class SudokuEndScreenActivity extends AppCompatActivity {
-    SudokuGame sudokuGame;
-    long endSudoku = System.nanoTime();
+
     TextView textView;
     public Player newPlayer;
 //    long time;
@@ -27,6 +28,24 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
         textView = findViewById(R.id.endState);
+
+        textView.setTextSize(23);
+        textView.setText(newPlayer.toString());
+
+        if (newPlayer.getColour()!=0)
+            textView.setTextColor(newPlayer.getColour());
+
+        Button nextGame = findViewById(R.id.button3);
+        nextGame.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+    }
+
 //        get_time_used(sudokuGame);
 //        int score = endpoint;
 //        String s = "You have spent" + time + "seconds on this game."+"Your score is" + score;
@@ -35,5 +54,4 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
 
     }
 
-}
 

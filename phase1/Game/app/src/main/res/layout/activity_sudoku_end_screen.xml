@@ -19,8 +19,8 @@
 
     <TextView
         android:id="@+id/endState"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="291dp"
+        android:layout_height="288dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="232dp"
         android:layout_marginEnd="76dp"

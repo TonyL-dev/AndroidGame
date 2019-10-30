@@ -20,7 +20,7 @@ public class Player implements Serializable {
 
     private int multiplier=1;
 
-    private int numFruits;
+    private int backColour=0;
 
     public Player() {
         this.name = "Default";
@@ -28,7 +28,7 @@ public class Player implements Serializable {
     }
 
     public Player(String username, String password, String colour, String multiplier,
-                  String numFruits) {
+                  String backColour) {
         this.name = username;
         this.password = password;
 
@@ -39,12 +39,12 @@ public class Player implements Serializable {
         else
             this.multiplier = Integer.parseInt(multiplier);
 
-        if (numFruits.equals(""))
-            this.numFruits=0;
-        else if (Integer.parseInt(numFruits)<0)
-            this.numFruits=0;
+        if (backColour.equalsIgnoreCase("blue"))
+            this.backColour = 0xAA00BFFF;
+        else if (colour.equalsIgnoreCase("purple"))
+            this.backColour = 0xAA9900FF;
         else
-            this.numFruits = Integer.parseInt(numFruits);
+            this.backColour = 0;
 
         if (colour.equalsIgnoreCase("green"))
             this.colour = 0xFF00FF00;
@@ -74,8 +74,8 @@ public class Player implements Serializable {
         return this.multiplier;
     }
 
-    public int getNumFruits() {
-        return this.numFruits;
+    public int getbackColour() {
+        return this.backColour;
     }
 
     public double getTime(int gameNum) {
@@ -111,9 +111,8 @@ public class Player implements Serializable {
         double totalGameTime = 0;
         for(double gameTime: time)
             totalGameTime += gameTime;
-        return "\n\n You have " + getPoints() + " points now."+
-                "\n\n This game took you " + df.format(getTime(gameNum)) + " seconds." +
-                "\n In total you have taken " + df.format(totalGameTime) + " seconds! " +
-                " You got this!";
+        return "\nYou have " + getPoints() + " points now."+
+                "\n\nThis game took you " + df.format(getTime(gameNum)) + " seconds." +
+                "\nIn total you have taken " + df.format(totalGameTime) + " seconds! ";
     }
 }
