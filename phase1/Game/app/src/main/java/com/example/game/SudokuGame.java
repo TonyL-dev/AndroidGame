@@ -18,6 +18,8 @@ public class SudokuGame {
     int[] default1 = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     int[][] initBoard = {default1, default2, default3, default4, default5, default6, default7, default8, default9};
     static int[][] board;
+    int endpoint;
+    static int points;
 
 
     public SudokuGame(Player player) {
@@ -51,6 +53,22 @@ public class SudokuGame {
             }
         }return true;
     }
+
+    public static int endPoint(){
+        // Take a gameboard as an input,
+        int num = 0;
+        //calculate the number of zero in the board and add to the int endpoint.
+        if (num == 0){
+            points = 81;
+            //81 is just a placeholder, need an algorithm to convert it to a standarised score
+        }else{
+            points = 2;
+            //convert the number of zero to a standarized score.
+        }
+        return points;
+    }
+
+
 
 }
 

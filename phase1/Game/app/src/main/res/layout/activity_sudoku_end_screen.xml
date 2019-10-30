@@ -15,10 +15,10 @@
         android:text="Finish the Game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showTime" />
+        app:layout_constraintTop_toBottomOf="@+id/endState" />
 
     <TextView
-        android:id="@+id/showTime"
+        android:id="@+id/endState"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="76dp"
