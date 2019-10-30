@@ -35,14 +35,14 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
 //                intent.putExtras(bundle);
 //                startActivity(intent);
 //            }
-//        });
-    }
+       };
+ }
 
-    public void playSudoku(View view){
-        Intent intent = new Intent(this, SudokuActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("player", newPlayer);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
-}
+//    public void playSudoku(View view){
+//        Intent intent = new Intent(this, SudokuActivity.class);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("player", newPlayer);
+//        intent.putExtras(bundle);
+//        startActivity(intent);
+//    }
+//}

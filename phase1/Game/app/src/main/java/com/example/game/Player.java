@@ -31,10 +31,14 @@ public class Player implements Serializable {
                   String numFruits) {
         this.name = username;
         this.password = password;
+
         if (multiplier.equals(""))
             this.multiplier=1;
+        else if (Integer.parseInt(multiplier)<=0)
+            this.multiplier = 1;
         else
             this.multiplier = Integer.parseInt(multiplier);
+
         if (numFruits.equals(""))
             this.numFruits=0;
         else if (Integer.parseInt(numFruits)<0)

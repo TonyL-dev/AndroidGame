@@ -12,9 +12,15 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
     public Player newPlayer;
     long time;
 
+
     public long get_time_used(SudokuGame sudokuGame){
+
         time = this.endSudoku - sudokuGame.startSudoku;
         return time;
+    }
+
+    public void totol_time(){
+        newPlayer.addTime((double)time);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +29,9 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
-        textView = findViewById(R.id.showTime);
+        textView = findViewById(R.id.endState);
         get_time_used(sudokuGame);
-        textView.setText("You have spent" + time + "seconds on this game.");
+
     }
 
 }
