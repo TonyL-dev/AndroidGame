@@ -41,7 +41,7 @@ public class Player implements Serializable {
 
         if (backColour.equalsIgnoreCase("blue"))
             this.backColour = 0xAA00BFFF;
-        else if (colour.equalsIgnoreCase("purple"))
+        else if (backColour.equalsIgnoreCase("purple"))
             this.backColour = 0xAA9900FF;
         else
             this.backColour = 0;

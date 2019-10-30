@@ -35,6 +35,10 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
         if (newPlayer.getColour()!=0)
             textView.setTextColor(newPlayer.getColour());
 
+        if (newPlayer.getbackColour()!=0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        }
+
         Button nextGame = findViewById(R.id.button3);
         nextGame.setOnClickListener(
                 new View.OnClickListener() {

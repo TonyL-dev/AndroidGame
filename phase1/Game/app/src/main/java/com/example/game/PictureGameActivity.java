@@ -1,6 +1,7 @@
 package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.text.style.BackgroundColorSpan;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
 import android.content.Intent;
+import android.widget.RelativeLayout;
 
 import java.text.DecimalFormat;
 
@@ -35,6 +37,9 @@ public class PictureGameActivity extends AppCompatActivity {
         pictureGame = new PictureGame(newPlayer);
         textView2 = findViewById(R.id.textView2);
         textView = findViewById(R.id.listOfFruits);
+
+        ConstraintLayout relativeLayout = (ConstraintLayout) findViewById(R.id.linearLayout);
+
         textView.setText(pictureGame.fruitsToFind());
         if (newPlayer.getColour()!=0) {
             textView.setTextColor(newPlayer.getColour());
@@ -42,9 +47,7 @@ public class PictureGameActivity extends AppCompatActivity {
         }
 
         if (newPlayer.getbackColour()!=0) {
-            textView.setBackgroundColor(newPlayer.getbackColour());
-            textView2.setBackgroundColor(newPlayer.getbackColour());
-            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+            relativeLayout.setBackgroundColor(newPlayer.getbackColour());
         }
 
     }
@@ -83,11 +86,10 @@ public class PictureGameActivity extends AppCompatActivity {
                     textView.setText(newFruits);
                 }
                 // hide the fruit that was found
-                view.setVisibility(View.INVISIBLE);
+                view.setVisibility(View.GONE);
             } else
                 newPlayer.subtractPoints();
         }
-
 
     }
 }
