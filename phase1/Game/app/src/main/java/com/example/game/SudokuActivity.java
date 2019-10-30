@@ -38,6 +38,10 @@ public class SudokuActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
 
+        if (newPlayer.getbackColour()!=0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        }
+
         sudokuGame = new SudokuGame(newPlayer, SudokuGameBoard.toHM(SudokuGameBoard.sudo));
 
         b1 =findViewById(R.id.button);
@@ -96,10 +100,6 @@ public class SudokuActivity extends AppCompatActivity {
         t51 =findViewById(R.id.editText51);
         t52 =findViewById(R.id.editText52);
         t53 =findViewById(R.id.editText53);
-
-
-
-
 
         EditText[] inputs = {t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16,
                 t17,t18,t19,t20,t21,t22,t23,t24,t25,t26,t27,t28,t29,t30,
