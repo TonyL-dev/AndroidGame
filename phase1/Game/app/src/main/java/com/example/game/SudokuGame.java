@@ -32,6 +32,18 @@ public class SudokuGame {
         this.sudoku = sudoku;
     }
 
+    public int endPoint(){
+        int count = 0;
+        for (Integer i : sudoku.values() ){
+            if (i != 0){
+                count +=1;
+            }
+        }
+        return count;
+    }
+
+
+
     public ArrayList<ArrayList<Integer>> getThreeByThreeBundle1() {
         ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
         for (int i = 1; i < 4; i++){
