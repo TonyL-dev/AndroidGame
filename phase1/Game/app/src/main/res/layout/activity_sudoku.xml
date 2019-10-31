@@ -49,45 +49,44 @@
     <EditText
         android:id="@+id/editText1"
         android:layout_width="42dp"
-        android:layout_height="69dp"
+        android:layout_height="63dp"
         android:layout_marginTop="77dp"
+        android:background="@null"
         android:ems="10"
+        android:gravity="center"
         android:inputType="number"
         android:tag="11"
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@null"
-        android:gravity="center"/>
+        app:layout_constraintStart_toStartOf="@id/chessboard"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="42dp"
-        android:layout_height="69dp"
+        android:layout_height="63dp"
+        android:background="@null"
         android:ems="10"
+        android:gravity="center"
         android:inputType="number"
         android:tag="12"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@id/editText1"
-        app:layout_constraintTop_toTopOf="@+id/editText1"
-        android:background="@null"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="@+id/editText1" />
 
     <EditText
         android:id="@+id/editText3"
         android:layout_width="42dp"
-        android:layout_height="69dp"
+        android:layout_height="63dp"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
+        android:background="@null"
         android:ems="10"
+        android:gravity="center"
         android:inputType="number"
+        android:tag="13"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@id/editText2"
-        app:layout_constraintTop_toTopOf="@id/editText2"
-        android:tag="13"
-        android:background="@null"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="@id/editText2" />
 
     <EditText
         android:id="@+id/editText4"
@@ -107,22 +106,21 @@
     <EditText
         android:id="@+id/editText5"
         android:layout_width="42dp"
-        android:layout_height="69dp"
+        android:layout_height="63dp"
         android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
+        android:background="@null"
         android:ems="10"
+        android:gravity="center"
         android:inputType="number"
+        android:tag="15"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@id/editText4"
-        app:layout_constraintTop_toTopOf="@id/editText4"
-        android:tag="15"
-        android:background="@null"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="@id/editText4" />
 
     <EditText
         android:id="@+id/editText6"
         android:layout_width="42dp"
-        android:layout_height="69dp"
+        android:layout_height="63dp"
         android:layout_marginStart="1dp"
         android:background="@null"
         android:ems="10"
@@ -136,37 +134,35 @@
     <EditText
         android:id="@+id/editText7"
         android:layout_width="42dp"
-        android:layout_height="69dp"
+        android:layout_height="63dp"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
+        android:background="@null"
         android:ems="10"
+        android:gravity="center"
         android:inputType="number"
+        android:tag="17"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@id/editText6"
-        app:layout_constraintTop_toTopOf="@id/editText5"
-        android:tag="17"
-        android:background="@null"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="@id/editText5" />
 
     <EditText
         android:id="@+id/editText8"
         android:layout_width="42dp"
-        android:layout_height="69dp"
+        android:layout_height="63dp"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
+        android:background="@null"
         android:ems="10"
+        android:gravity="center"
         android:inputType="number"
+        android:tag="18"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@id/editText7"
-        app:layout_constraintTop_toTopOf="@id/editText5"
-        android:tag="18"
-        android:background="@null"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="@id/editText5" />
 
     <EditText
         android:id="@+id/editText9"
         android:layout_width="42dp"
-        android:layout_height="69dp"
+        android:layout_height="65dp"
         android:layout_marginStart="1dp"
         android:background="@null"
         android:ems="10"
@@ -314,17 +310,16 @@
     <EditText
         android:id="@+id/editText19"
         android:layout_width="42dp"
-        android:layout_height="65dp"
+        android:layout_height="63dp"
         android:layout_marginStart="44.5dp"
-        android:layout_marginLeft="44.5dp"
+        android:background="@null"
         android:ems="10"
+        android:gravity="center"
         android:inputType="number"
         android:tag="37"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/editText18"
-        app:layout_constraintTop_toTopOf="@+id/editText16"
-        android:background="@null"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="@+id/editText16" />
 
     <EditText
         android:id="@+id/editText20"
@@ -391,15 +386,13 @@
         android:layout_width="42dp"
         android:layout_height="65dp"
         android:layout_marginStart="44.5dp"
-        android:layout_marginLeft="1dp"
         android:ems="10"
+        android:gravity="center"
         android:inputType="number"
         android:tag="49"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/editText23"
-        app:layout_constraintTop_toTopOf="@+id/editText20"
-        android:background="@null"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="@+id/editText20" />
 
     <EditText
         android:id="@+id/editText25"
