@@ -106,6 +106,12 @@ public class SudokuActivity extends AppCompatActivity {
                 t31, t32, t33, t34, t35, t36, t37, t38, t39, t40, t41, t42, t43, t44,
                 t45, t46, t47, t48, t49, t50, t51, t52, t53};
 
+        for (EditText input :inputs){
+            if (newPlayer.getColour() != 0) {
+                input.setTextColor(newPlayer.getColour());
+            }
+        }
+
         for (final EditText input : inputs) {
             input.addTextChangedListener(new TextWatcher() {
                 @Override

@@ -15,6 +15,7 @@ public class SudokuGameBoard extends View {
     //the chessboard used to display the numbers.
     float w; // width of one tile
     float h; //height of one tile
+    Player newplayer;
 
 
     static int[] default9 = {0,0,4,1,9,0,2,0,0};
@@ -66,17 +67,17 @@ public class SudokuGameBoard extends View {
 
 
     public void drawDefaultNum1(Canvas canvas) {
+
         sPaint.setColor(Color.BLUE);
         sPaint.setTextAlign(Paint.Align.CENTER);
         sPaint.setTextSize(60);
         for (int i = 0; i < 9; i++) {
             String num = Integer.toString(default1[i]);
             if (!num.equals("0")) {
-                float x = 120*i +60;
-                canvas.drawText(num, x, 89, sPaint);
-
+            float x = 120 * i + 60;
+            canvas.drawText(num, x, 89, sPaint);
             }
-        }
+            }
     }
 
     public void drawDefaultNum2(Canvas canvas) {
