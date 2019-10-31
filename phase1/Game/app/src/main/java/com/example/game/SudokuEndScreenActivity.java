@@ -12,13 +12,6 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
   TextView textView;
   public Player newPlayer;
 
-  //    int endpoint = sudokuGame.endPoint();
-  //
-  //    public long get_time_used(SudokuGame sudokuGame){
-  //
-  //        time = this.endSudoku - sudokuGame.startSudoku;
-  //        return time;
-  //    }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +20,11 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
     Intent intent = getIntent();
     Bundle bundle = intent.getExtras();
     newPlayer = (Player) bundle.getSerializable("player");
+    String sudokupoint = bundle.getString("points");
     textView = findViewById(R.id.endState);
 
     textView.setTextSize(23);
-    textView.setText(newPlayer.toString());
+    textView.setText(sudokupoint + newPlayer.toString());
 
     if (newPlayer.getColour() != 0) textView.setTextColor(newPlayer.getColour());
 
