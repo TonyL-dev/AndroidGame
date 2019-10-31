@@ -19,7 +19,7 @@ public class SudokuActivity extends AppCompatActivity {
 
   Player newPlayer;
   public SudokuGame sudokuGame;
-  public static int pt = 0;
+
   EditText t1,
       t2,
       t3,
