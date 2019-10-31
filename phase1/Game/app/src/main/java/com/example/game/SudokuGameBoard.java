@@ -52,14 +52,14 @@ public class SudokuGameBoard extends View {
 
 
     public void drawVerticalLine(Canvas canvas) {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 9; i++) {
             canvas.drawLine(i*w, getHeight(),i*w , 0, sPaint);
         }
     }
 
     public void drawHorizontalLine(Canvas canvas) {
-        for (int j = 0; j < 10; j++) {
-            canvas.drawLine(0, j*h ,getWidth(),j*h, sPaint);
+        for (int j = 0; j < 9; j++) {
+            canvas.drawLine(0, j*178 ,getWidth(),j*178, sPaint);
         }
     }
 
