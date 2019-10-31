@@ -36,15 +36,6 @@ public class SudokuGame {
     this.sudoku = sudoku;
   }
 
-  public int endPoint() {
-    int count = 0;
-    for (Integer i : sudoku.values()) {
-      if (i != 0) {
-        count += 1;
-      }
-    }
-    return count;
-  }
 
   //bound 3x3 board together for checking availability.
   public ArrayList<ArrayList<Integer>> getThreeByThreeBundle1() {
