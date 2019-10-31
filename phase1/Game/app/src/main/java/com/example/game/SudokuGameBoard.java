@@ -15,9 +15,9 @@ public class SudokuGameBoard extends View {
     //the chessboard used to display the numbers.
     float w; // width of one tile
     float h; //height of one tile
-    Player newplayer;
 
 
+    //the determined the numbers on the board at the start of the game.
     static int[] default9 = {0,0,4,1,9,0,2,0,0};
     static int[] default8 = {8,0,1,4,5,6,0,0,3};
     static int[] default7 = {0,7,0,0,0,0,0,0,0};
@@ -44,6 +44,7 @@ public class SudokuGameBoard extends View {
         sPaint = new Paint();
     }
 
+    //measure the height and width of the board.
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -52,12 +53,15 @@ public class SudokuGameBoard extends View {
     }
 
 
+    //draw vertival lines.
     public void drawVerticalLine(Canvas canvas) {
         for (int i = 0; i < 9; i++) {
             canvas.drawLine(i*w, getHeight(),i*w , 0, sPaint);
         }
     }
 
+
+    //draw horizontal lines.
     public void drawHorizontalLine(Canvas canvas) {
         for (int j = 0; j < 9; j++) {
             canvas.drawLine(0, j*h ,getWidth(),j*h, sPaint);
@@ -66,6 +70,7 @@ public class SudokuGameBoard extends View {
 
 
 
+    //draw the default numbers.
     public void drawDefaultNum1(Canvas canvas) {
 
         sPaint.setColor(Color.BLUE);
@@ -201,6 +206,8 @@ public class SudokuGameBoard extends View {
         super.onDraw(canvas);
     }
 
+
+    // change the arraylists to hash map
     static HashMap<ArrayList<Integer>, Integer> toHM(int[][] s){
         HashMap<ArrayList<Integer>, Integer> sudokuDesign = new HashMap<>();
         int y = 0;

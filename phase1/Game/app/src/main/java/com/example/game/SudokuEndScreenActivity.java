@@ -1,17 +1,17 @@
 package com.example.game;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class SudokuEndScreenActivity extends AppCompatActivity {
 
-  TextView textView;
   public Player newPlayer;
-
+  TextView textView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +22,13 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
     newPlayer = (Player) bundle.getSerializable("player");
     String sudokupoint = bundle.getString("points");
     textView = findViewById(R.id.endState);
-
     textView.setTextSize(23);
+
+    //show the points and time used by user in Sudoku and that in the 3 games in total.
     textView.setText(sudokupoint + newPlayer.toString());
 
+    //get the color user want for numbers they write on the board and change it accordingly.
     if (newPlayer.getColour() != 0) textView.setTextColor(newPlayer.getColour());
-
     if (newPlayer.getbackColour() != 0) {
       getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
     }
@@ -42,6 +43,4 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
           }
         });
   }
-    }
-
-
+}

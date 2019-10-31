@@ -218,7 +218,7 @@ public class SudokuActivity extends AppCompatActivity {
   }
 
   public int getScore() {
-      int pt = -1;
+      int pt = 0;
       for (Integer value : sudokuGame.sudoku.values()){
           if (value <= 9 && value > 0){
               pt +=1;
