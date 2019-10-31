@@ -16,6 +16,7 @@ public class SudokuGame {
 
     HashMap<ArrayList<Integer>, Integer> sudoku;
 
+
     private ArrayList<ArrayList<Integer>> ThreeByThreeBundle1 = new ArrayList<ArrayList<Integer>>();
     private ArrayList<ArrayList<Integer>> ThreeByThreeBundle2 = new ArrayList<ArrayList<Integer>>();
     private ArrayList<ArrayList<Integer>> ThreeByThreeBundle3 = new ArrayList<ArrayList<Integer>>();
@@ -30,16 +31,6 @@ public class SudokuGame {
     public SudokuGame(Player player, HashMap<ArrayList<Integer>, Integer> sudoku){
         this.newPlayer = player;
         this.sudoku = sudoku;
-    }
-
-    public int endPoint(){
-        int count = 0;
-        for (Integer i : sudoku.values() ){
-            if (i != 0){
-                count +=1;
-            }
-        }
-        return count;
     }
 
 

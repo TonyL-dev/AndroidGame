@@ -212,7 +212,6 @@ public class SudokuGameBoard extends View {
                 ArrayList<Integer> a = new ArrayList<>();
                 a.add(y);
                 a.add(x);
-//                int[] position = {y,x};
                 sudokuDesign.put(a, j);
             }
         }

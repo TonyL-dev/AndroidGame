@@ -19,6 +19,7 @@ public class SudokuActivity extends AppCompatActivity {
 
   Player newPlayer;
   public SudokuGame sudokuGame;
+  public static int pt = 0;
   EditText t1,
       t2,
       t3,
@@ -217,9 +218,14 @@ public class SudokuActivity extends AppCompatActivity {
   }
 
   public int getScore() {
-    // place holder for Jake
-    // Hi Jake.
-    return 100;
+      int pt = 0;
+      for (Integer value : sudokuGame.sudoku.values()){
+          if (value <= 9 && value > 0){
+              pt +=1;
+          }
+      }
+
+    return pt;
   }
 
   @Override
