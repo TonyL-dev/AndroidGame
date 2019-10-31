@@ -4,15 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
-import android.text.style.BackgroundColorSpan;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
 import android.content.Intent;
-import android.widget.RelativeLayout;
 
 import java.text.DecimalFormat;
-
+//hello
 public class PictureGameActivity extends AppCompatActivity {
 
     private PictureGame pictureGame;
@@ -41,12 +38,13 @@ public class PictureGameActivity extends AppCompatActivity {
         ConstraintLayout relativeLayout = (ConstraintLayout) findViewById(R.id.linearLayout);
 
         textView.setText(pictureGame.fruitsToFind());
-        if (newPlayer.getColour()!=0) {
+
+        if (newPlayer.getColour() != 0) {
             textView.setTextColor(newPlayer.getColour());
             textView2.setTextColor(newPlayer.getColour());
         }
 
-        if (newPlayer.getbackColour()!=0) {
+        if (newPlayer.getbackColour() != 0) {
             relativeLayout.setBackgroundColor(newPlayer.getbackColour());
         }
 
@@ -54,18 +52,16 @@ public class PictureGameActivity extends AppCompatActivity {
 
     public void imageClick(View view) {
         // runs when image is clicked on
-
         if (view.getTag() != null) {
             String fruit = view.getTag().toString();
             boolean isHiddenImage = pictureGame.isHiddenImage(fruit);
 
             if (isHiddenImage) {
                 // if player finds an image
-
                 // find the updated set of fruits to look for
                 String newFruits = pictureGame.foundHiddenImage(fruit);
-                // set textview to those new fruits
 
+                // set textview to those new fruits
                 if (newFruits.equals("")) {
                     // if the player has won the game
                     long end = System.nanoTime();
