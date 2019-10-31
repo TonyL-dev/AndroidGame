@@ -6,19 +6,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.view.View;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.widget.EditText;
-
 public class SudokuActivity extends AppCompatActivity {
 
-  Player newPlayer;
   public SudokuGame sudokuGame;
+
+  //player.
+  Player newPlayer;
+
+  //text views of the places of the gameboard ready to be modified.
   EditText t1,
       t2,
       t3,
@@ -74,16 +77,28 @@ public class SudokuActivity extends AppCompatActivity {
       t53;
   Button b1;
 
+  //record the starting time.
   long startSudoku = System.nanoTime();
+
+  //To make the user interface prettier.
+  public static void hideKeyboard(View view) {
+    if (view != null) {
+      InputMethodManager inputManager =
+          (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+      if (inputManager != null) {
+        inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+      }
+    }
+  }
 
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_sudoku);
-
     Intent intent = getIntent();
     Bundle bundle = intent.getExtras();
     newPlayer = (Player) bundle.getSerializable("player");
 
+    //get the background color user want then modify it.
     if (newPlayer.getbackColour() != 0) {
       getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
     }
@@ -152,12 +167,14 @@ public class SudokuActivity extends AppCompatActivity {
       t40, t41, t42, t43, t44, t45, t46, t47, t48, t49, t50, t51, t52, t53
     };
 
+    //change the color of number in textviews according to user input.
     for (EditText input : inputs) {
       if (newPlayer.getColour() != 0) {
         input.setTextColor(newPlayer.getColour());
       }
     }
 
+    // get the user input and modify the gameboard accordingly.
     for (final EditText input : inputs) {
       input.addTextChangedListener(
           new TextWatcher() {
@@ -192,17 +209,7 @@ public class SudokuActivity extends AppCompatActivity {
           });
     }
   }
-
-  public static void hideKeyboard(View view) {
-    if (view != null) {
-      InputMethodManager inputManager =
-          (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-      if (inputManager != null) {
-        inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-      }
-    }
-  }
-
+  //called when the continue button is clicked,end the game and calculated time used.
   public void endSudoku(View view) {
     long endSudoku = System.nanoTime();
     long time = endSudoku - startSudoku;
@@ -222,15 +229,14 @@ public class SudokuActivity extends AppCompatActivity {
     return 100;
   }
 
+    // To tell the user how much point got in Sudoku.
+
   @Override
   public String toString() {
-    newPlayer.addPoints(getScore());//add points to the total points of player
-      String showPoints = "You have got " + getScore()*newPlayer.getMultiplier() + "points in Sudoku game.";
-      return showPoints;
+
+    newPlayer.addPoints(getScore()); // add points to the total points of player
+    String showPoints =
+        "You have got " + getScore() * newPlayer.getMultiplier() + "points in Sudoku game.";
+    return showPoints;
   }
 }
-
-
-
-
-
