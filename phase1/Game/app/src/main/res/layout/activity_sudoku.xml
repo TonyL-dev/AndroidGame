@@ -207,7 +207,6 @@
         android:layout_width="42dp"
         android:layout_height="65dp"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
         android:ems="10"
         android:inputType="number"
         android:tag="23"
