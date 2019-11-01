@@ -235,7 +235,7 @@ public class SudokuActivity extends AppCompatActivity {
           }
       }
 
-    return pt;
+    return pt-29;
   }
 
   @Override
