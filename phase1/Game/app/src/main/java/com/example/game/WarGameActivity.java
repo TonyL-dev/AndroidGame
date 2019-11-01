@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ *The WarGameActivity class where player plays WarGame
+ */
 public class WarGameActivity extends AppCompatActivity {
 
-    // player
     Player newPlayer;
     private WarGame game;
     TextView cardsA, cardsB, cardPlayedA, cardPlayedB;
@@ -77,6 +79,11 @@ public class WarGameActivity extends AppCompatActivity {
         //        });
     }
 
+    /**
+     * Go to score screen
+     *
+     * @param view whichever buttons triggers endgame
+     */
     public void openScoreScreen(View view) {
         long end = System.nanoTime();
         long time = end - start;
@@ -92,6 +99,11 @@ public class WarGameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * play a round of the game
+     *
+     * @param view the play button
+     */
     public void playRound(View view) {
         if (!game.checkEndGame()) game.play();
         else {
