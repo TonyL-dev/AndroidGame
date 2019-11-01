@@ -9,7 +9,6 @@ import android.view.View;
 import android.content.Intent;
 
 import java.text.DecimalFormat;
-//hello
 public class PictureGameActivity extends AppCompatActivity {
 
     private PictureGame pictureGame;
