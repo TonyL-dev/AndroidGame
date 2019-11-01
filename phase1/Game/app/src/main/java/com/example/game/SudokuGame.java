@@ -79,8 +79,8 @@ class SudokuGame {
 
   private ArrayList<ArrayList<Integer>> getThreeByThreeBundle4() {
     ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
-    for (int i = 4; i < 7; i++) {
-      for (int j = 1; j < 4; j++) {
+    for (int i = 1; i < 4; i++) {
+      for (int j = 4; j < 7; j++) {
         ArrayList<Integer> a = new ArrayList<Integer>();
         a.add(i);
         a.add(j);
@@ -105,8 +105,8 @@ class SudokuGame {
 
   private ArrayList<ArrayList<Integer>> getThreeByThreeBundle6() {
     ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
-    for (int i = 4; i < 7; i++) {
-      for (int j = 7; j < 10; j++) {
+    for (int i = 7; i < 10; i++) {
+      for (int j = 4; j < 7; j++) {
         ArrayList<Integer> a = new ArrayList<Integer>();
         a.add(i);
         a.add(j);
@@ -118,8 +118,8 @@ class SudokuGame {
 
   private ArrayList<ArrayList<Integer>> getThreeByThreeBundle7() {
     ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
-    for (int i = 7; i < 10; i++) {
-      for (int j = 1; j < 4; j++) {
+    for (int i = 1; i < 4; i++) {
+      for (int j = 7; j < 10; j++) {
         ArrayList<Integer> a = new ArrayList<Integer>();
         a.add(i);
         a.add(j);
@@ -131,8 +131,8 @@ class SudokuGame {
 
   private ArrayList<ArrayList<Integer>> getThreeByThreeBundle8() {
     ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
-    for (int i = 7; i < 10; i++) {
-      for (int j = 4; j < 7; j++) {
+    for (int i = 4; i < 7; i++) {
+      for (int j = 7; j < 10; j++) {
         ArrayList<Integer> a = new ArrayList<Integer>();
         a.add(i);
         a.add(j);
@@ -232,5 +232,5 @@ class SudokuGame {
     } else {
       return false;
     }
-  }
+    }
 }

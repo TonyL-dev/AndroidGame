@@ -407,7 +407,8 @@
         android:visibility="visible"
         android:background="@null"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText20"/>
+        app:layout_constraintTop_toBottomOf="@id/editText20"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/editText26"
@@ -831,10 +832,6 @@
         app:layout_constraintTop_toBottomOf="@id/editText46"
         android:background="@null"
         android:gravity="center"/>
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
