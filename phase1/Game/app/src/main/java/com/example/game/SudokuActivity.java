@@ -90,7 +90,6 @@ public class SudokuActivity extends AppCompatActivity {
 
     playerDataBase = new PlayerDataBase(this);
 
-    playerDataBase.clearPlayerData();
     playerDataBase.storePlayerData(newPlayer);
 
     if (newPlayer.getbackColour() != 0) {

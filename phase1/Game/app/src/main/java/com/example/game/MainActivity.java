@@ -75,15 +75,10 @@ public class MainActivity extends AppCompatActivity {
         ((EditText) findViewById(R.id.userNameInput2)).setText("");
         ((EditText) findViewById(R.id.passwordInput2)).setText("");
 
-        String [] playerInfo = playerDataBase.verify();
+        String [] playerInfo = playerDataBase.verify(prevUser, prevPassword);
 
         if (prevUser.equals(playerInfo[0])&&prevPassword.equals(playerInfo[1])){
-            newPlayer = playerDataBase.getPlayer();
-
-            System.out.println(newPlayer.getPoints());
-            System.out.println(newPlayer.getColour());
-            System.out.println(newPlayer.getbackColour());
-            System.out.println(newPlayer.getGameNum());
+            newPlayer = playerDataBase.getPlayer(prevUser);
 
             if (newPlayer.getGameNum()==1){
                 startPictureGame();

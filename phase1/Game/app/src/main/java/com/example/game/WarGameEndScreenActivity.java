@@ -43,7 +43,6 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
 
         newPlayer.subtractPoints(temp);
         newPlayer.subtractTime();
-        playerDataBase.clearPlayerData();
         playerDataBase.storePlayerData(newPlayer);
 
         Button nextGame = findViewById(R.id.nextGame);
@@ -53,7 +52,6 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         newPlayer.addTime(timeInSeconds - 3);
                         newPlayer.addPoints(temp);
-                        playerDataBase.clearPlayerData();
                         playerDataBase.storePlayerData(newPlayer);
                         Intent intent = new Intent(v.getContext(), SudokuActivity.class);
                         Bundle bundle = new Bundle();

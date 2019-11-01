@@ -78,7 +78,6 @@ public class PictureGameActivity extends AppCompatActivity {
 
                     newPlayer.addLevel();
 
-                    playerDataBase.clearPlayerData();
                     playerDataBase.storePlayerData(newPlayer);
                     Intent intent = new Intent(this, WarGameActivity.class);
                     Bundle bundle = new Bundle();
