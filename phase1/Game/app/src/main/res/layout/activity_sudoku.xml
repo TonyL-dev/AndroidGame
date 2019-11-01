@@ -391,6 +391,7 @@
         android:inputType="number"
         android:tag="49"
         android:visibility="visible"
+        android:background="@null"
         app:layout_constraintStart_toEndOf="@+id/editText23"
         app:layout_constraintTop_toTopOf="@+id/editText20" />
 
