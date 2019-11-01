@@ -18,6 +18,8 @@ public class PictureGameActivity extends AppCompatActivity {
     //player
     private Player newPlayer;
 
+    PlayerDataBase playerDataBase;
+
     long start = System.nanoTime();
 
     DecimalFormat df = new DecimalFormat("####0.00");
@@ -30,6 +32,7 @@ public class PictureGameActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
+        playerDataBase = new PlayerDataBase(this);
 
         pictureGame = new PictureGame(newPlayer);
         textView2 = findViewById(R.id.textView2);
@@ -72,6 +75,11 @@ public class PictureGameActivity extends AppCompatActivity {
                     textView2.setText("");
                     textView.setTextSize(18);
                     textView.setText(newPlayer.toString());
+
+                    newPlayer.addLevel();
+
+                    playerDataBase.clearUserData();
+                    playerDataBase.storePlayerData(newPlayer);
                     Intent intent = new Intent(this, WarGameActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("player", newPlayer);

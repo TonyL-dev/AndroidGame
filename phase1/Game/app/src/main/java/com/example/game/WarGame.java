@@ -45,6 +45,8 @@ public class WarGame {
         return lastCards;
     }
 
+    WarPlayer getPlayerA(){ return playerA; }
+
     //play out a single round of the game
     void play() {
 

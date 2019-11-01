@@ -20,6 +20,8 @@ public class SudokuActivity extends AppCompatActivity {
   Player newPlayer;
   public SudokuGame sudokuGame;
 
+  PlayerDataBase playerDataBase;
+
   EditText t1,
       t2,
       t3,
@@ -84,6 +86,12 @@ public class SudokuActivity extends AppCompatActivity {
     Intent intent = getIntent();
     Bundle bundle = intent.getExtras();
     newPlayer = (Player) bundle.getSerializable("player");
+    newPlayer.addLevel();
+
+    playerDataBase = new PlayerDataBase(this);
+
+    playerDataBase.clearUserData();
+    playerDataBase.storePlayerData(newPlayer);
 
     if (newPlayer.getbackColour() != 0) {
       getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
@@ -208,11 +216,13 @@ public class SudokuActivity extends AppCompatActivity {
     long endSudoku = System.nanoTime();
     long time = endSudoku - startSudoku;
     double timeInSeconds = (double) time / 1_000_000_000;
-    newPlayer.addTime(timeInSeconds);
+    int temp = getScore();
     Intent intent = new Intent(this, SudokuEndScreenActivity.class);
     Bundle bundle = new Bundle();
     bundle.putSerializable("points", toString());
     bundle.putSerializable("player", newPlayer);
+    bundle.putSerializable("temp", temp);
+    bundle.putSerializable("time", timeInSeconds);
     intent.putExtras(bundle);
     startActivity(intent);
   }
@@ -231,7 +241,8 @@ public class SudokuActivity extends AppCompatActivity {
   @Override
   public String toString() {
     newPlayer.addPoints(getScore());//add points to the total points of player
-      String showPoints = "You have got " + getScore()*newPlayer.getMultiplier() + "points in Sudoku game.";
+      String showPoints = "You have got " + getScore()*newPlayer.getMultiplier() + " points " +
+              "in Sudoku game.";
       return showPoints;
   }
 }
