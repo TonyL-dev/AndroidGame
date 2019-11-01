@@ -22,6 +22,8 @@ public class Player implements Serializable {
 
     private int backColour = 0;
 
+    private int gameNum = 0;
+
     public Player() {
         this.name = "Default";
         this.password = "1234";
@@ -29,6 +31,7 @@ public class Player implements Serializable {
 
     public Player(String username, String password, String colour, String multiplier,
                   String backColour) {
+
         this.name = username;
         this.password = password;
 
@@ -52,6 +55,19 @@ public class Player implements Serializable {
             this.colour = 0xAAFF0000;
         else
             this.colour = 0;
+    }
+
+    public Player(String username, String password, int colour, int multiplier,
+                  int backColour, int gameNum, int points, double time) {
+
+        this.name = username;
+        this.password = password;
+        this.multiplier = multiplier;
+        this.colour = colour;
+        this.backColour = backColour;
+        this.gameNum = gameNum;
+        this.points = points;
+        this.time.add(time);
     }
 
     public String getName() {
@@ -78,8 +94,23 @@ public class Player implements Serializable {
         return this.backColour;
     }
 
-    private double getTime(int gameNum) {
+    public int getGameNum() {
+        return this.gameNum;
+    }
+
+     double getTime(int gameNum) {
         return this.time.get(gameNum - 1);
+    }
+
+     void subtractTime() {
+        this.time.remove(this.time.size()-1);
+    }
+
+    float getTotalTime(){
+        float sum = 0;
+        for(int i = 0; i < this.time.size(); i++)
+            sum += this.time.get(i);
+        return sum;
     }
 
     public void setName(String newName) {
@@ -102,8 +133,22 @@ public class Player implements Serializable {
         this.points -= this.multiplier;
     }
 
+    void subtractPoints(int subPoints) {
+        this.points -= subPoints * this.multiplier;
+    }
+
     void addTime(double additionalTime) {
         this.time.add(additionalTime);
+    }
+
+    void reset() {
+        this.time.clear();
+        this.points = 0;
+        this.gameNum = 1;
+    }
+
+    void addLevel() {
+        this.gameNum++;
     }
 
     public String toString() {

@@ -31,7 +31,6 @@ public class WarGameActivity extends AppCompatActivity {
             Thread.currentThread().interrupt();
         }
 
-        System.out.println(newPlayer.getColour());
         game = new WarGame(newPlayer);
 
         cardsA = findViewById(R.id.cardRemainingA);
@@ -82,11 +81,13 @@ public class WarGameActivity extends AppCompatActivity {
         long end = System.nanoTime();
         long time = end - start;
         double timeInSeconds = (double) time / 1_000_000_000;
-        newPlayer.addTime(timeInSeconds - 3);
+        int temp = game.getPlayerA().getScore();
         Intent intent = new Intent(this, WarGameEndScreenActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("points", game.toString());
         bundle.putSerializable("player", newPlayer);
+        bundle.putSerializable("temp", temp);
+        bundle.putSerializable("time", timeInSeconds);
         intent.putExtras(bundle);
         startActivity(intent);
     }

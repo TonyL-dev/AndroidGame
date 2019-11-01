@@ -12,6 +12,12 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
 
     Player newPlayer;
 
+    PlayerDataBase playerDataBase;
+
+    int temp;
+
+    double timeInSeconds;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +26,11 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String stats = bundle.getString("points");
         newPlayer = (Player) bundle.getSerializable("player");
+        playerDataBase = new PlayerDataBase(this);
+        temp = (int) bundle.getSerializable("temp");
+        timeInSeconds = (double) bundle.getSerializable("time");
+
+        newPlayer.addTime(timeInSeconds - 3);
 
         TextView textView = findViewById(R.id.endGameStats);
         textView.setText(stats + newPlayer.toString());
@@ -30,11 +41,20 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
         }
 
+        newPlayer.subtractPoints(temp);
+        newPlayer.subtractTime();
+        playerDataBase.clearUserData();
+        playerDataBase.storePlayerData(newPlayer);
+
         Button nextGame = findViewById(R.id.nextGame);
         nextGame.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        newPlayer.addTime(timeInSeconds - 3);
+                        newPlayer.addPoints(temp);
+                        playerDataBase.clearUserData();
+                        playerDataBase.storePlayerData(newPlayer);
                         Intent intent = new Intent(v.getContext(), SudokuActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("player", newPlayer);
@@ -44,11 +64,4 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
                 });
     }
 
-    public void playSudoku(View view) {
-        Intent intent = new Intent(this, SudokuActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("player", newPlayer);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
 }
