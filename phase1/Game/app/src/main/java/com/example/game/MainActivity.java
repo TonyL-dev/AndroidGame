@@ -9,25 +9,26 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 
+/**
+ *The MainActivity class where player is created or logs in to play the games
+ */
+
 public class MainActivity extends AppCompatActivity {
 
-    String username, password, colour, multiplier, backColour, prevUser, prevPassword;
+    private String username, password, colour, multiplier, backColour, prevUser, prevPassword;
 
-    EditText userNameInput;
-    EditText passwordInput;
-    EditText previousUserNameInput;
-    EditText previousPasswordInput;
-    EditText colourInput;
-    EditText scoreMultiplier;
-    EditText backColourText;
+    private EditText userNameInput, passwordInput, previousUserNameInput, previousPasswordInput,
+            colourInput, scoreMultiplier, backColourText;
 
-    Button submitButton;
+    private Button submitButton;
 
-    Player newPlayer;
+    private Player newPlayer;
 
-    PlayerDataBase playerDataBase;
+    private PlayerDataBase playerDataBase;
 
-
+    /**
+     *Created on run. Looks for input to create player.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         playerDataBase = new PlayerDataBase(this);
     }
 
+    /**
+     *Creates a Player object that the user will play as throughout each game. Will play the
+     *PictureGame first and then continue with the other games.
+     */
     public void createPlayer(View view) {
         username = userNameInput.getText().toString();
         password = passwordInput.getText().toString();
@@ -68,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * When a user enters login information, the checkPlayer method will verify if that Player was
+     * previously created or not. If it is a previous Player, they will continue where they left off
+     * as the Player data is saved locally.
+     */
     public void checkPlayer(View view)
     {
         prevUser = previousUserNameInput.getText().toString();
@@ -91,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * If a Player's game number is 1, then the player will start at the PictureActivity.
+     */
     public void startPictureGame(){
         Intent intent = new Intent(this, PictureGameActivity.class);
         Bundle bundle = new Bundle();
@@ -99,6 +112,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * If a Player's game number is 2, then the player will start at the WarGameActivity.
+     */
     public void startWarGame(){
         Intent intent = new Intent(this, WarGameActivity.class);
         Bundle bundle = new Bundle();
@@ -107,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * If a Player's game number is 1, then the player will start at the SudokuActivity.
+     */
     public void startSudokuGame(){
         Intent intent = new Intent(this, SudokuActivity.class);
         Bundle bundle = new Bundle();

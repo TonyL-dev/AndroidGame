@@ -9,19 +9,23 @@ import android.view.View;
 import android.content.Intent;
 
 import java.text.DecimalFormat;
+
+/**
+ * The PictureGameActivity where the Picture Game is played
+ */
 public class PictureGameActivity extends AppCompatActivity {
 
     private PictureGame pictureGame;
-    TextView textView, textView2;
+    private TextView textView, textView2;
 
     //player
     private Player newPlayer;
 
-    PlayerDataBase playerDataBase;
+    private PlayerDataBase playerDataBase;
 
     long start = System.nanoTime();
 
-    DecimalFormat df = new DecimalFormat("####0.00");
+    private DecimalFormat df = new DecimalFormat("####0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +45,13 @@ public class PictureGameActivity extends AppCompatActivity {
 
         textView.setText(pictureGame.fruitsToFind());
 
+        //sets text colour
         if (newPlayer.getColour() != 0) {
             textView.setTextColor(newPlayer.getColour());
             textView2.setTextColor(newPlayer.getColour());
         }
 
+        //sets background colour
         if (newPlayer.getbackColour() != 0) {
             relativeLayout.setBackgroundColor(newPlayer.getbackColour());
         }
@@ -80,8 +86,10 @@ public class PictureGameActivity extends AppCompatActivity {
                     textView.setTextSize(18);
                     textView.setText(newPlayer.toString());
 
+                    //increments number of games
                     newPlayer.addLevel();
 
+                    //starts the next game
                     playerDataBase.storePlayerData(newPlayer);
                     Intent intent = new Intent(this, WarGameActivity.class);
                     Bundle bundle = new Bundle();
