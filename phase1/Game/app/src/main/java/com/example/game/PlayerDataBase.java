@@ -5,6 +5,11 @@ import android.content.SharedPreferences;
 
 /**
  * A database that saves player information for future usage and logins.
+ *
+ * Learned how to use SharedPreferences from
+ * https://developer.android.com/reference/android/content/SharedPreferences
+ * https://developer.android.com/reference/android/content/Context.html#getSharedPreferences
+ * https://developer.android.com/reference/android/content/SharedPreferences.Editor
  */
 public class PlayerDataBase {
 
@@ -54,30 +59,27 @@ public class PlayerDataBase {
         public void clearPlayerData() {
             SharedPreferences.Editor playerLocalDatabaseEditor = playerLocalDatabase.edit();
             playerLocalDatabaseEditor.clear();
-            playerLocalDatabaseEditor.commit();
         }
 
         /**
          * verifies if someone logging in is a previous Player or not
          *
          * @param prevUser username that the user enters
-         * @param prevPassword password that user enters
          *
          * @return playerInfo data found in the SharedPreferences based on the parameters
          */
-        String [] verify(String prevUser, String prevPassword) {
+        String [] verify(String prevUser) {
+            String [] playerInfo = new String[2];
 
-        String [] playerInfo = new String[2];
+            String key_username = prevUser;
+            String key_password = key_username + " password";
 
-        String key_username = prevUser;
-        String key_password = key_username + " password";
+            String username = playerLocalDatabase.getString(key_username, "");
+            String password = playerLocalDatabase.getString(key_password, "");
 
-        String username = playerLocalDatabase.getString(key_username, "");
-        String password = playerLocalDatabase.getString(key_password, "");
-
-        playerInfo[0]=username;
-        playerInfo[1]=password;
-        return playerInfo;
+            playerInfo[0]=username;
+            playerInfo[1]=password;
+            return playerInfo;
         }
 
         /**

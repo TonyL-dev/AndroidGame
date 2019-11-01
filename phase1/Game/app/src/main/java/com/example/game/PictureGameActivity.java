@@ -11,7 +11,10 @@ import android.content.Intent;
 import java.text.DecimalFormat;
 
 /**
- * The PictureGameActivity where the Picture Game is played
+ * The PictureGameActivity where the Picture Game is played.
+ *
+ * Learned how to time the start and end of each level from
+ * https://developer.android.com/reference/java/lang/System
  */
 public class PictureGameActivity extends AppCompatActivity {
 

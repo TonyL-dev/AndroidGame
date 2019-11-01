@@ -9,23 +9,32 @@ import java.util.ArrayList;
  */
 
 public class Player implements Serializable {
+
+    /** The Player's points*/
     private int points;
 
+    /** The Player's time for each game*/
     private ArrayList<Double> time = new ArrayList<Double>();
 
+    /** The Player's username*/
     private String name;
 
+    /** The Player's password*/
     private String password;
 
-    private static DecimalFormat df = new DecimalFormat("####0.00");
-
+    /** The Player's text colour*/
     private int colour = 0;
 
+    /** The Player's score multiplier*/
     private int multiplier = 1;
 
+    /** The Player's background colour*/
     private int backColour = 0;
 
+    /** The Player's game (that they are currently playing)*/
     private int gameNum = 0;
+
+    private static DecimalFormat df = new DecimalFormat("####0.00");
 
     /**
      * construct default Player

@@ -44,6 +44,7 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
       getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
     }
 
+    /** If a Player backs out before continuing to the next game, the data will not be saved */
     newPlayer.subtractPoints(temp);
     newPlayer.subtractTime();
     playerDataBase.storePlayerData(newPlayer);

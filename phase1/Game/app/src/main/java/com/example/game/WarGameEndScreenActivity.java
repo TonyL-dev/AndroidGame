@@ -44,6 +44,7 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
         }
 
+        /** If a Player backs out before continuing to the next game, the data will not be saved */
         newPlayer.subtractPoints(temp);
         newPlayer.subtractTime();
         playerDataBase.storePlayerData(newPlayer);
@@ -53,6 +54,7 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        /** If a Player continues to the next game, the data will be saved */
                         newPlayer.addTime(timeInSeconds - 3);
                         newPlayer.addPoints(temp);
                         playerDataBase.storePlayerData(newPlayer);

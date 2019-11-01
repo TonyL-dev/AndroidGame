@@ -3,11 +3,9 @@ package com.example.game;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Button;
 
 /**
  *The MainActivity class where player is created or logs in to play the games
@@ -19,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText userNameInput, passwordInput, previousUserNameInput, previousPasswordInput,
             colourInput, scoreMultiplier, backColourText;
-
-    private Button submitButton;
 
     private Player newPlayer;
 
@@ -42,14 +38,16 @@ public class MainActivity extends AppCompatActivity {
         previousUserNameInput = (EditText) findViewById(R.id.userNameInput2);
         previousPasswordInput = (EditText) findViewById(R.id.passwordInput2);
 
-        submitButton = (Button) findViewById(R.id.button);
-
         playerDataBase = new PlayerDataBase(this);
     }
 
     /**
      *Creates a Player object that the user will play as throughout each game. Will play the
      *PictureGame first and then continue with the other games.
+     *
+     * Learned how to pass information from one game level to the next from
+     * https://developer.android.com/reference/android/os/Bundle
+     *
      */
     public void createPlayer(View view) {
         username = userNameInput.getText().toString();
@@ -85,19 +83,21 @@ public class MainActivity extends AppCompatActivity {
         ((EditText) findViewById(R.id.userNameInput2)).setText("");
         ((EditText) findViewById(R.id.passwordInput2)).setText("");
 
-        String [] playerInfo = playerDataBase.verify(prevUser, prevPassword);
+        String [] playerInfo;
 
-        if (prevUser.equals(playerInfo[0])&&prevPassword.equals(playerInfo[1])){
-            newPlayer = playerDataBase.getPlayer(prevUser);
+        if(!(prevUser.equals("")&&prevPassword.equals(""))) {
+            playerInfo = playerDataBase.verify(prevUser);
 
-            if (newPlayer.getGameNum()==1){
-                startPictureGame();
+            if (prevUser.equals(playerInfo[0]) && prevPassword.equals(playerInfo[1])) {
+                newPlayer = playerDataBase.getPlayer(prevUser);
+
+                if (newPlayer.getGameNum() == 1) {
+                    startPictureGame();
+                } else if (newPlayer.getGameNum() == 2) {
+                    startWarGame();
+                } else
+                    startSudokuGame();
             }
-            else if (newPlayer.getGameNum()==2){
-                startWarGame();
-            }
-            else
-                startSudokuGame();
         }
     }
 
