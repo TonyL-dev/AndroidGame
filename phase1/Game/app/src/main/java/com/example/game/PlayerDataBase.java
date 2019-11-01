@@ -7,13 +7,13 @@ public class PlayerDataBase {
 
     public static final String name = "playerDetails";
 
-    public SharedPreferences playerLocalDatabase;
+    private SharedPreferences playerLocalDatabase;
 
-    public PlayerDataBase(Context context) {
+    PlayerDataBase(Context context) {
         playerLocalDatabase = context.getSharedPreferences(name, 0);
     }
 
-        public void storePlayerData(Player player) {
+        void storePlayerData(Player player) {
 
             String key_username = player.getName();
             String key_password = key_username + " password";
@@ -43,7 +43,7 @@ public class PlayerDataBase {
             playerLocalDatabaseEditor.commit();
         }
 
-        public String [] verify(String prevUser, String prevPassword) {
+        String [] verify(String prevUser, String prevPassword) {
 
         String [] playerInfo = new String[2];
 
@@ -58,7 +58,7 @@ public class PlayerDataBase {
         return playerInfo;
         }
 
-        public Player getPlayer(String prevUser) {
+        Player getPlayer(String prevUser) {
 
             String key_username = prevUser;
             String key_password = key_username + " password";
