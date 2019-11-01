@@ -46,7 +46,7 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
 
     newPlayer.subtractPoints(temp);
     newPlayer.subtractTime();
-    playerDataBase.clearUserData();
+    playerDataBase.clearPlayerData();
     playerDataBase.storePlayerData(newPlayer);
 
     Button nextGame = findViewById(R.id.button3);
@@ -55,7 +55,7 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
           @Override
           public void onClick(View v) {
             newPlayer.reset();
-            playerDataBase.clearUserData();
+            playerDataBase.clearPlayerData();
             playerDataBase.storePlayerData(newPlayer);
             Intent intent = new Intent(v.getContext(), MainActivity.class);
             startActivity(intent);

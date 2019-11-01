@@ -26,7 +26,7 @@ public class PlayerDataBase {
             userLocalDatabaseEditor.commit();
         }
 
-        public void clearUserData() {
+        public void clearPlayerData() {
             SharedPreferences.Editor userLocalDatabaseEditor = playerLocalDatabase.edit();
             userLocalDatabaseEditor.clear();
             userLocalDatabaseEditor.commit();
