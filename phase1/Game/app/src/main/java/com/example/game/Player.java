@@ -74,7 +74,7 @@ public class Player implements Serializable {
         return this.name;
     }
 
-    public String getPassword() {
+    String getPassword() {
         return this.password;
     }
 
@@ -94,15 +94,15 @@ public class Player implements Serializable {
         return this.backColour;
     }
 
-    public int getGameNum() {
+    int getGameNum() {
         return this.gameNum;
     }
 
-     double getTime(int gameNum) {
+    private double getTime(int gameNum) {
         return this.time.get(gameNum - 1);
     }
 
-     void subtractTime() {
+    void subtractTime() {
         this.time.remove(this.time.size()-1);
     }
 
