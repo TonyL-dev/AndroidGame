@@ -68,140 +68,28 @@ public class SudokuGameBoard extends View {
         }
     }
 
-
-
+    public void drawDefaultNum(Canvas canvas){
+        sPaint.setColor(Color.BLUE);
+        sPaint.setTextAlign(Paint.Align.CENTER);
+        sPaint.setTextSize(60);
+        for (int i = 0; i < 9; i++){
+            for (int j = 0; j < 9; j++) {
+                String num = Integer.toString(sudo[i][j]);
+                if (!num.equals("0")) {
+                    float x = w * j + 60;
+                    float y = 89 + h * i;
+                    canvas.drawText(num, x, y, sPaint);
+                }
+            }
+        }
+    }
     //draw the default numbers.
-    public void drawDefaultNum1(Canvas canvas) {
-
-        sPaint.setColor(Color.BLUE);
-        sPaint.setTextAlign(Paint.Align.CENTER);
-        sPaint.setTextSize(60);
-        for (int i = 0; i < 9; i++) {
-            String num = Integer.toString(default1[i]);
-            if (!num.equals("0")) {
-            float x = 120 * i + 60;
-            canvas.drawText(num, x, 89, sPaint);
-            }
-            }
-    }
-
-    public void drawDefaultNum2(Canvas canvas) {
-        sPaint.setColor(Color.BLUE);
-        sPaint.setTextAlign(Paint.Align.CENTER);
-        sPaint.setTextSize(60);
-        for (int i = 0; i < 9; i++) {
-            String num = Integer.toString(default2[i]);
-            if (!num.equals("0")) {
-                float x = 120*i +60;
-                canvas.drawText(num, x, 267, sPaint);
-            }
-        }
-    }
-
-    public void drawDefaultNum3(Canvas canvas) {
-        sPaint.setColor(Color.BLUE);
-        sPaint.setTextAlign(Paint.Align.CENTER);
-        sPaint.setTextSize(60);
-        for (int i = 0; i < 9; i++) {
-            String num = Integer.toString(default3[i]);
-            if (!num.equals("0")) {
-                float x = 120*i +60;
-                canvas.drawText(num, x, 445, sPaint);
-            }
-        }
-    }
-
-    public void drawDefaultNum4(Canvas canvas) {
-        sPaint.setColor(Color.BLUE);
-        sPaint.setTextAlign(Paint.Align.CENTER);
-        sPaint.setTextSize(60);
-        for (int i = 0; i < 9; i++) {
-            String num = Integer.toString(default4[i]);
-            if (!num.equals("0")) {
-                float x = 120*i +60;
-                canvas.drawText(num, x, 623, sPaint);
-            }
-        }
-    }
-
-    public void drawDefaultNum5(Canvas canvas) {
-        sPaint.setColor(Color.BLUE);
-        sPaint.setTextAlign(Paint.Align.CENTER);
-        sPaint.setTextSize(60);
-        for (int i = 0; i < 9; i++) {
-            String num = Integer.toString(default5[i]);
-            if (!num.equals("0")) {
-                float x = 120*i +60;
-                canvas.drawText(num, x, 801, sPaint);
-            }
-        }
-    }
-    public void drawDefaultNum6(Canvas canvas) {
-        sPaint.setColor(Color.BLUE);
-        sPaint.setTextAlign(Paint.Align.CENTER);
-        sPaint.setTextSize(60);
-        for (int i = 0; i < 9; i++) {
-            String num = Integer.toString(default6[i]);
-            if (!num.equals("0")) {
-                float x = 120*i +60;
-                canvas.drawText(num, x, 979, sPaint);
-            }
-        }
-    }
-
-    public void drawDefaultNum7(Canvas canvas) {
-        sPaint.setColor(Color.BLUE);
-        sPaint.setTextAlign(Paint.Align.CENTER);
-        sPaint.setTextSize(60);
-        for (int i = 0; i < 9; i++) {
-            String num = Integer.toString(default7[i]);
-            if (!num.equals("0")) {
-                float x = 120*i +60;
-                canvas.drawText(num, x, 1157, sPaint);
-            }
-        }
-    }
-
-    public void drawDefaultNum8(Canvas canvas) {
-        sPaint.setColor(Color.BLUE);
-        sPaint.setTextAlign(Paint.Align.CENTER);
-        sPaint.setTextSize(60);
-        for (int i = 0; i < 9; i++) {
-            String num = Integer.toString(default8[i]);
-            if (!num.equals("0")) {
-                float x = 120*i +60;
-                canvas.drawText(num, x, 1335, sPaint);
-            }
-        }
-    }
-
-    public void drawDefaultNum9(Canvas canvas) {
-        sPaint.setColor(Color.BLUE);
-        sPaint.setTextAlign(Paint.Align.CENTER);
-        sPaint.setTextSize(60);
-        for (int i = 0; i < 9; i++) {
-            int num = default9[i];
-            if (num !=(0)) {
-                float x = 120*i +60;
-                String n = Integer.toString(num);
-                canvas.drawText(n, x, 1513, sPaint);
-            }
-        }
-    }
 
     @Override
     public void onDraw(Canvas canvas) {
         drawHorizontalLine(canvas);
         drawVerticalLine(canvas);
-        drawDefaultNum1(canvas);
-        drawDefaultNum2(canvas);
-        drawDefaultNum3(canvas);
-        drawDefaultNum4(canvas);
-        drawDefaultNum5(canvas);
-        drawDefaultNum6(canvas);
-        drawDefaultNum7(canvas);
-        drawDefaultNum8(canvas);
-        drawDefaultNum9(canvas);
+        drawDefaultNum(canvas);
         canvas.save();
         super.onDraw(canvas);
     }
