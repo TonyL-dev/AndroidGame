@@ -217,8 +217,8 @@ public class SudokuGame {
     return true;
   }
 
-  // if there is no conflicts, add the number unputed into the game board.
-  public boolean insert(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
+  //if there is no conflicts, add the number unputed into the game board.
+  boolean insert(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
     ArrayList<Integer> key = new ArrayList<Integer>();
     key.add(x);
     key.add(y);

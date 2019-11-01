@@ -63,9 +63,11 @@ public class SudokuGameBoard extends View {
 
     //draw horizontal lines.
     public void drawHorizontalLine(Canvas canvas) {
+        sPaint.setAntiAlias(true);
         for (int j = 0; j < 9; j++) {
             canvas.drawLine(0, j*h ,getWidth(),j*h, sPaint);
         }
+        //canvas.drawLine(0, 178 ,getWidth(),178, sPaint);
     }
 
     public void drawDefaultNum(Canvas canvas){
