@@ -14,6 +14,11 @@ public class WarGame {
     private Card[] lastCards = new Card[2];
     private Player newPlayer;
 
+    /**
+     * construct Wargame with deck and player
+     *
+     * @param newPlayer who is playing Wargame
+     */
     WarGame(Player newPlayer) {
         Deck deckOfCards = new Deck();
         playerA = new WarPlayer(deckOfCards);
@@ -21,33 +26,63 @@ public class WarGame {
         this.newPlayer = newPlayer;
     }
 
-    //how many cards you have left
+    /**
+     * how many cards playerA have left
+     *
+     * @return playerA's hand size
+     */
     int getCardsRemainingA() {
         return playerA.getHand().size();
     }
 
-    //how many cards playerB has left
+    /**
+     * how many cards playerB have left
+     *
+     * @return playerB's hand size
+     */
     int getCardsRemainingB() {
         return playerB.getHand().size();
     }
 
-    //checks if the game is over
+    /**
+     * checks if the game is over
+     *
+     * @return True if either player's hand is 0
+     */
     Boolean checkEndGame() {
         return playerA.getHand().size() == 0 || playerB.getHand().size() == 0;
     }
 
+    /**
+     * Record the last card of playerA and playerB
+     *
+     * @param playerA playerA's last card
+     * @param playerB playerB's last card
+     */
     private void setLastCardsPlayed(Card playerA, Card playerB) {
         lastCards[0] = playerA;
         lastCards[1] = playerB;
     }
 
+    /**
+     * @return lastCards
+     */
     Card[] getLastCardsPlayed() {
         return lastCards;
     }
 
-    WarPlayer getPlayerA(){ return playerA; }
+    /**
+     * get playerA
+     *
+     * @return playerA
+     */
+    WarPlayer getPlayerA() {
+        return playerA;
+    }
 
-    //play out a single round of the game
+    /**
+     * play out a single round of the game
+     */
     void play() {
 
         ArrayList<Card> cardsInMiddle = new ArrayList<>();
@@ -96,6 +131,9 @@ public class WarGame {
         }
     }
 
+    /**
+     * @return String result of the game
+     */
     @Override
     public String toString() {
         newPlayer.addPoints(playerA.getScore());

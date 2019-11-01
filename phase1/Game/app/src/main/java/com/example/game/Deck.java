@@ -3,18 +3,25 @@ package com.example.game;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * The Deck class which consists 52 Cards
+ */
 class Deck {
-
-    private void shuffle() {
-        Collections.shuffle(deck);
-    }
 
     private ArrayList<Card> deck = new ArrayList<>();
 
+    /**
+     * Construct the Deck
+     */
     Deck() {
         deck = this.createCards();
     }
 
+    /**
+     * Add 52 cards to the Deck
+     *
+     * @return a list of Cards
+     */
     private ArrayList<Card> createCards() {
         for (int denomination = 2; denomination <= 14; denomination++) {
             for (Suit suit : Suit.values()) {
@@ -25,7 +32,19 @@ class Deck {
         return deck;
     }
 
-    //An abbreviation for the card
+    /**
+     * Shuffles the Deck
+     */
+    private void shuffle() {
+        Collections.shuffle(deck);
+    }
+
+    /**
+     * An abbreviation for the card
+     *
+     * @param denomination denomination of the card
+     * @return String format of the denomination
+     */
     private String abbreviationName(int denomination) {
         String value;
         if (denomination >= 2 && denomination <= 10)
@@ -44,6 +63,11 @@ class Deck {
         return value;
     }
 
+    /**
+     * Get the next card in the deck
+     *
+     * @return the top card in the deck
+     */
     Card getNextCard() {
         return deck.remove(0);
     }

@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * WargameEndScreenActivity where displays endgame result
+ */
 public class WarGameEndScreenActivity extends AppCompatActivity {
 
     Player newPlayer;
