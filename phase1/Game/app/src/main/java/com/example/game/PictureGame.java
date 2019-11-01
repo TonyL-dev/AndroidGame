@@ -121,7 +121,7 @@ class PictureGame {
     }
 
     /**
-     * Return the new string of Picture objects to find
+     * Return the new string of Picture objects to find and adds points to the Player
      *
      * @param imageId the ID of the imageView that has been found
      * */
@@ -136,7 +136,6 @@ class PictureGame {
         }
 
         newPlayer.addPoints();
-        System.out.println(newPlayer.getPoints());
         // return new fruits to find
         return fruitsToFind();
     }

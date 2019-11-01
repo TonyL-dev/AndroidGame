@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-//The player player
+/**
+ * The Player that plays through the games.
+ */
+
 public class Player implements Serializable {
     private int points;
 
@@ -24,11 +27,24 @@ public class Player implements Serializable {
 
     private int gameNum = 0;
 
+    /**
+     * construct default Player
+     */
+
     public Player() {
         this.name = "Default";
         this.password = "1234";
     }
 
+    /**
+     * construct a new Player
+     *
+     * @param username assign the Player a username
+     * @param password assign the Player a password
+     * @param colour assign the Player a text colour for the games
+     * @param multiplier assign the Player a score multiplier for the games
+     * @param backColour assign the Player a background colour for the games
+     */
     public Player(String username, String password, String colour, String multiplier,
                   String backColour) {
 
@@ -57,6 +73,18 @@ public class Player implements Serializable {
             this.colour = 0;
     }
 
+    /**
+     * construct a new Player that was created before (login)
+     *
+     * @param username assign the Player a username
+     * @param password assign the Player a password
+     * @param colour assign the Player a text colour for the games
+     * @param multiplier assign the Player a score multiplier for the games
+     * @param backColour assign the Player a background colour for the games
+     * @param gameNum assign the Player the game number they are playing through
+     * @param points assign the Player the number of points they have earned so far
+     * @param time assign the Player the total time they have taken for games they've played
+     */
     public Player(String username, String password, int colour, int multiplier,
                   int backColour, int gameNum, int points, double time) {
 
@@ -70,42 +98,92 @@ public class Player implements Serializable {
         this.time.add(time);
     }
 
-    public String getName() {
+    /**
+     * get the player's username
+     *
+     * @return name
+     */
+    String getName() {
         return this.name;
     }
 
+    /**
+     * get the player's password
+     *
+     * @return password
+     */
     String getPassword() {
         return this.password;
     }
 
+    /**
+     * get the player's points
+     *
+     * @return points
+     */
     int getPoints() {
         return this.points;
     }
 
+    /**
+     * get the player's text colour
+     *
+     * @return colour
+     */
     int getColour() {
         return this.colour;
     }
 
+    /**
+     * get the player's score multiplier
+     *
+     * @return multiplier
+     */
     int getMultiplier() {
         return this.multiplier;
     }
 
+    /**
+     * get the player's background colour
+     *
+     * @return backColour
+     */
     int getbackColour() {
         return this.backColour;
     }
 
+    /**
+     * get the player's game number (that they are on)
+     *
+     * @return gameNum
+     */
     int getGameNum() {
         return this.gameNum;
     }
 
-    private double getTime(int gameNum) {
+    /**
+     * get the player's time for a specific game
+     *
+     * @param gameNum
+     *
+     * @return time.get(gameNum-1)
+     */
+    double getTime(int gameNum) {
         return this.time.get(gameNum - 1);
     }
 
+    /**
+     * remove Player's most recent game time
+     */
     void subtractTime() {
         this.time.remove(this.time.size()-1);
     }
 
+    /**
+     * get the player's total time
+     *
+     * @return sum
+     */
     float getTotalTime(){
         float sum = 0;
         for(int i = 0; i < this.time.size(); i++)
@@ -113,44 +191,84 @@ public class Player implements Serializable {
         return sum;
     }
 
+    /**
+     * set the player's username
+     *
+     * @param newName
+     */
     public void setName(String newName) {
         this.name = newName;
     }
 
+    /**
+     * set the player's password
+     *
+     * @param newPassword
+     */
     public void setPassword(String newPassword) {
         this.password = newPassword;
     }
 
+    /**
+     * add points to the Player's points (increment)
+     */
     void addPoints() {
         this.points += this.multiplier;
     }
 
+    /**
+     * add points to the Player's points
+     *
+     * @param newPoints
+     */
     void addPoints(int newPoints) {
         this.points += newPoints * this.multiplier;
     }
 
+    /**
+     * subtract points from the Player's points  (decrement)
+     */
     void subtractPoints() {
         this.points -= this.multiplier;
     }
 
+    /**
+     * subtract points from the Player's points
+     *
+     * @param subPoints
+     */
     void subtractPoints(int subPoints) {
         this.points -= subPoints * this.multiplier;
     }
 
+    /**
+     * add time of a game to the Player's total time
+     *
+     * @param additionalTime
+     */
     void addTime(double additionalTime) {
         this.time.add(additionalTime);
     }
 
+    /**
+     * reset game statistics after a Player finishes all 3 games
+     */
     void reset() {
         this.time.clear();
         this.points = 0;
         this.gameNum = 1;
     }
 
+    /**
+     * increment gameNum after a player finishes a level
+     */
     void addLevel() {
         this.gameNum++;
     }
 
+    /**
+     * String representation of the Player
+     */
     public String toString() {
         int gameNum = this.time.size();
         double totalGameTime = 0;

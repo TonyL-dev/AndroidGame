@@ -3,16 +3,27 @@ package com.example.game;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * A database that saves player information for future usage and logins.
+ */
 public class PlayerDataBase {
 
-    public static final String name = "playerDetails";
+    private static final String name = "playerDetails";
 
     private SharedPreferences playerLocalDatabase;
 
+    /**
+     * construct default PlayerDataBase
+     */
     PlayerDataBase(Context context) {
         playerLocalDatabase = context.getSharedPreferences(name, 0);
     }
 
+        /**
+         * stores the Player data in SharedPreferences
+         *
+         * @param player player object whose data will be stored
+         */
         void storePlayerData(Player player) {
 
             String key_username = player.getName();
@@ -37,12 +48,23 @@ public class PlayerDataBase {
             playerLocalDatabaseEditor.commit();
         }
 
+        /**
+         * clears all player data
+         */
         public void clearPlayerData() {
             SharedPreferences.Editor playerLocalDatabaseEditor = playerLocalDatabase.edit();
             playerLocalDatabaseEditor.clear();
             playerLocalDatabaseEditor.commit();
         }
 
+        /**
+         * verifies if someone logging in is a previous Player or not
+         *
+         * @param prevUser username that the user enters
+         * @param prevPassword password that user enters
+         *
+         * @return playerInfo data found in the SharedPreferences based on the parameters
+         */
         String [] verify(String prevUser, String prevPassword) {
 
         String [] playerInfo = new String[2];
@@ -58,6 +80,14 @@ public class PlayerDataBase {
         return playerInfo;
         }
 
+        /**
+         * creates and returns a Player with all the previous details and statistics when the
+         * Player logged out initially
+         *
+         * @param prevUser username the user enters
+         *
+         * @return player returns new player that is creates from stored data
+         */
         Player getPlayer(String prevUser) {
 
             String key_username = prevUser;

@@ -132,6 +132,8 @@ public class WarGame {
     }
 
     /**
+     * Prints out who won the War Game and adds points to the Player
+     *
      * @return String result of the game
      */
     @Override

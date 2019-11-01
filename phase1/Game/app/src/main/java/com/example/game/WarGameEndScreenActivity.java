@@ -56,6 +56,7 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
                         newPlayer.addTime(timeInSeconds - 3);
                         newPlayer.addPoints(temp);
                         playerDataBase.storePlayerData(newPlayer);
+                        //starts sudoku game
                         Intent intent = new Intent(v.getContext(), SudokuActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("player", newPlayer);

@@ -53,7 +53,7 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            newPlayer.reset();
+            newPlayer.reset();//resets Player statistics
             playerDataBase.storePlayerData(newPlayer);
             Intent intent = new Intent(v.getContext(), MainActivity.class);
             startActivity(intent);

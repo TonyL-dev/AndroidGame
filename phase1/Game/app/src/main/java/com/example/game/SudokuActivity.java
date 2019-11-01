@@ -86,12 +86,14 @@ public class SudokuActivity extends AppCompatActivity {
     Intent intent = getIntent();
     Bundle bundle = intent.getExtras();
     newPlayer = (Player) bundle.getSerializable("player");
+    //increments game number
     newPlayer.addLevel();
 
     playerDataBase = new PlayerDataBase(this);
 
     playerDataBase.storePlayerData(newPlayer);
 
+    //set background colour
     if (newPlayer.getbackColour() != 0) {
       getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
     }
@@ -160,6 +162,7 @@ public class SudokuActivity extends AppCompatActivity {
       t40, t41, t42, t43, t44, t45, t46, t47, t48, t49, t50, t51, t52, t53
     };
 
+    //set text colour
     for (EditText input : inputs) {
       if (newPlayer.getColour() != 0) {
         input.setTextColor(newPlayer.getColour());
