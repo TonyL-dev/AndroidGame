@@ -52,6 +52,11 @@ public class PictureGameActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * runs when an imageView has been clicked
+     *
+     * @param view the imageView that has been clicked
+     */
     public void imageClick(View view) {
         // runs when image is clicked on
         if (view.getTag() != null) {

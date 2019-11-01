@@ -8,14 +8,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 class PictureGame {
-    // list of ALL the pictures in the game
+    /** array of Picture objects*/
     private Picture[] pictures = new Picture[12];
 
-    //player
+    /** player*/
     private Player newPlayer;
 
-    // to generate list of pictures
-    // initialize HashMap of string and bitmap
+    /** generates a HashMap of names and their respective Bitmap image*/
     private Map<String, Bitmap> pictureMap = new HashMap<String, Bitmap>() {{
         Bitmap bitmap;
 
@@ -56,6 +55,11 @@ class PictureGame {
         put("strawberry", bitmap);
     }};
 
+    /**
+     * Constructs a new PictureGame
+     *
+     * @param player   player object for this game
+     * */
     PictureGame(Player player) {
         // in here create the array of pictures
         Random rand = new Random();
@@ -88,9 +92,8 @@ class PictureGame {
             pictures[m].setIsHiddenImage(true);
         }
     }
-
+    /** return string of remaining Picture objects to be found*/
     String fruitsToFind() {
-        // returns string of fruits to be found
         StringBuilder listOfFruits = new StringBuilder();
 
         for (Picture pic : pictures) {
@@ -101,6 +104,10 @@ class PictureGame {
         return listOfFruits.toString();
     }
 
+    /**
+     * Return whether this is a hidden object or not
+     * @param imageId the ID of the imageView
+     */
     boolean isHiddenImage(String imageId) {
         // return whether this image is to be found or not
         for (Picture pic : pictures) {
@@ -113,6 +120,11 @@ class PictureGame {
         return false;
     }
 
+    /**
+     * Return the new string of Picture objects to find
+     *
+     * @param imageId the ID of the imageView that has been found
+     * */
     String foundHiddenImage(String imageId) {
         // runs when you found an image
 
