@@ -202,6 +202,7 @@ public class SudokuActivity extends AppCompatActivity {
             }
           });
     }
+
   }
 
   public static void hideKeyboard(View view) {
@@ -227,6 +228,7 @@ public class SudokuActivity extends AppCompatActivity {
     bundle.putSerializable("time", timeInSeconds);
     intent.putExtras(bundle);
     startActivity(intent);
+    System.out.println(SudokuGameBoard.toHM(SudokuGameBoard.sudo));
   }
 
   public int getScore() {

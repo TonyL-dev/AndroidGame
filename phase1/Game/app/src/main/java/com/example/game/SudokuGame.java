@@ -170,38 +170,36 @@ class SudokuGame {
   }
 
   //check whether there is a conflict in the 3x3 board with the user input.
-  private boolean checkThreeByThree(
-      int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
-    ArrayList<Integer> key = new ArrayList<Integer>();
-    key.add(x);
-    key.add(y);
-    ArrayList<ArrayList<ArrayList<Integer>>> dim = new ArrayList<ArrayList<ArrayList<Integer>>>();
-    dim = getSudokuDimension();
-
-    for (ArrayList<ArrayList<Integer>> bundle : dim) {
-      for (ArrayList<Integer> position : bundle) {
-        if (position == (key)) {
-          for (ArrayList<Integer> pos : bundle) {
-            if (Input == (s.get(pos))) {
-              return false;
-            }
-          }
-        }
-      }
-    }
-    return true;
-  }
+//  private boolean checkThreeByThree(
+//      int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
+//    ArrayList<Integer> key = new ArrayList<Integer>();
+//    key.add(x);
+//    key.add(y);
+//    ArrayList<ArrayList<ArrayList<Integer>>> dim = new ArrayList<ArrayList<ArrayList<Integer>>>();
+//    dim = getSudokuDimension();
+//
+//    for (ArrayList<ArrayList<Integer>> bundle : dim) {
+//      for (ArrayList<Integer> position : bundle) {
+//        if (position == (key)) {
+//          for (ArrayList<Integer> pos : bundle) {
+//            if (Input == (s.get(pos))) {
+//              return false;
+//            }
+//          }
+//        }
+//      }
+//    }
+//    return true;
+//  }
 
   //check whether there is a conflict in the column with the user input.
   private boolean checkCol(int Input, int x, HashMap<ArrayList<Integer>, Integer> s) {
 
     for (ArrayList<Integer> position : s.keySet()) {
-      if (position.get(0) == (x)) {
-        if (Input == (s.get(position))) {
+      if (position.get(0) == (x) && Input == s.get(position)) {
           return false;
         }
       }
-    }
     return true;
   }
 
@@ -222,12 +220,16 @@ class SudokuGame {
     ArrayList<Integer> key = new ArrayList<Integer>();
     key.add(x);
     key.add(y);
+    System.out.println(x + " " + y);
     boolean rowCorrect = checkRow(Input, y, s);
+//    System.out.println(rowCorrect);
     boolean colCorrect = checkCol(Input, x, s);
-    boolean tbtCorrect = checkThreeByThree(Input, x, y, s);
+//    System.out.println(colCorrect);
+//    boolean tbtCorrect = checkThreeByThree(Input, x, y, s);
 
-    if (rowCorrect && colCorrect && tbtCorrect) {
+    if (rowCorrect && colCorrect) {
       s.put(key, Input);
+//      System.out.println(s);
       return true;
     } else {
       return false;
