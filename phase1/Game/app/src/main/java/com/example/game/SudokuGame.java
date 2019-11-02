@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 class SudokuGame {
 
-  //Hashmap for locating and changing the numbers on gameboard.
+  // Hashmap for locating and changing the numbers on gameboard.
   HashMap<ArrayList<Integer>, Integer> sudoku;
   private Player newPlayer;
   private ArrayList<ArrayList<Integer>> ThreeByThreeBundle1 = new ArrayList<ArrayList<Integer>>();
@@ -36,11 +36,11 @@ class SudokuGame {
     this.sudoku = sudoku;
   }
 
-
-    /**
-     * the 9 methods below bounds the adjacent 3x3 tiles together for checking.
-     * @return bundles of tiles
-     */
+  /**
+   * the 9 methods below bounds the adjacent 3x3 tiles together for checking.
+   *
+   * @return bundles of tiles
+   */
   private ArrayList<ArrayList<Integer>> getThreeByThreeBundle1() {
     ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
     for (int i = 1; i < 4; i++) {
@@ -158,10 +158,7 @@ class SudokuGame {
     return ans;
   }
 
-    /**
-     *get the game board in a arraylist of arraylist of int type.
-     */
-
+  /** get the game board in a arraylist of arraylist of int type. */
   private ArrayList<ArrayList<ArrayList<Integer>>> getSudokuDimension() {
     ArrayList<ArrayList<ArrayList<Integer>>> ans = new ArrayList<ArrayList<ArrayList<Integer>>>();
     ans.add(getThreeByThreeBundle1());
@@ -176,7 +173,7 @@ class SudokuGame {
     return ans;
   }
 
-//  check whether there is a conflict in the 3x3 board with the user input.
+  //  check whether there is a conflict in the 3x3 board with the user input.
   private boolean checkThreeByThree(
       int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
     ArrayList<Integer> key = new ArrayList<>();
@@ -185,10 +182,10 @@ class SudokuGame {
     ArrayList<ArrayList<ArrayList<Integer>>> dim = new ArrayList<>();
     dim = getSudokuDimension();
 
-    for (ArrayList<ArrayList<Integer>> bundle : dim){
-      if (bundle.contains(key)){
-        for (ArrayList<Integer> k : bundle){
-          if ((s.get(k) == Input) && (k != key)){
+    for (ArrayList<ArrayList<Integer>> bundle : dim) {
+      if (bundle.contains(key)) {
+        for (ArrayList<Integer> k : bundle) {
+          if ((s.get(k) == Input) && (k != key)) {
             return false;
           }
         }
@@ -197,26 +194,21 @@ class SudokuGame {
     return true;
   }
 
-
-
-
-
-
-  //check whether there is a conflict in the column with the user input.
-  private boolean checkCol(int Input, int x, int y,HashMap<ArrayList<Integer>, Integer> s) {
+  // check whether there is a conflict in the column with the user input.
+  private boolean checkCol(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
     ArrayList<Integer> key = new ArrayList<>();
     key.add(x);
     key.add(y);
     for (ArrayList<Integer> position : s.keySet()) {
       if (position.get(0) == x && Input == s.get(position) && key != position) {
-          return false;
-        }
+        return false;
       }
+    }
     return true;
   }
 
-  //check whether there is a conflict in the row with the user input.
-  private boolean checkRow(int Input,int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
+  // check whether there is a conflict in the row with the user input.
+  private boolean checkRow(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
     ArrayList<Integer> key = new ArrayList<>();
     key.add(x);
     key.add(y);
@@ -230,17 +222,12 @@ class SudokuGame {
     return true;
   }
 
-    /**
-     * check whether the number entered is in range of 1 to 9.
-     */
-  boolean isInRange(int input){
+  /** check whether the number entered is in range of 1 to 9. */
+  boolean isInRange(int input) {
     return (1 <= input && input <= 9);
   }
 
-    /**
-     * if there is no conflicts, add the number entered by the user into the game board.
-     */
-
+  /** if there is no conflicts, add the number entered by the user into the game board. */
   boolean insert(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
     ArrayList<Integer> key = new ArrayList<Integer>();
     key.add(x);
@@ -258,5 +245,5 @@ class SudokuGame {
     } else {
       return false;
     }
-    }
+  }
 }

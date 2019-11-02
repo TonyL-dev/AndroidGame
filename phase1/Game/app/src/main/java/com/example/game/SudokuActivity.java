@@ -6,20 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.view.View;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.widget.EditText;
-
 public class SudokuActivity extends AppCompatActivity {
 
-  Player newPlayer;
   public SudokuGame sudokuGame;
-
+  Player newPlayer;
   PlayerDataBase playerDataBase;
 
   EditText t1,
@@ -79,6 +77,16 @@ public class SudokuActivity extends AppCompatActivity {
 
   long startSudoku = System.nanoTime();
 
+  public static void hideKeyboard(View view) {
+    if (view != null) {
+      InputMethodManager inputManager =
+          (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+      if (inputManager != null) {
+        inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+      }
+    }
+  }
+
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_sudoku);
@@ -86,14 +94,14 @@ public class SudokuActivity extends AppCompatActivity {
     Intent intent = getIntent();
     Bundle bundle = intent.getExtras();
     newPlayer = (Player) bundle.getSerializable("player");
-    //increments game number
+    // increments game number
     newPlayer.addLevel();
 
     playerDataBase = new PlayerDataBase(this);
 
     playerDataBase.storePlayerData(newPlayer);
 
-    //set background colour
+    // set background colour
     if (newPlayer.getbackColour() != 0) {
       getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
     }
@@ -162,7 +170,7 @@ public class SudokuActivity extends AppCompatActivity {
       t40, t41, t42, t43, t44, t45, t46, t47, t48, t49, t50, t51, t52, t53
     };
 
-    //set text colour
+    // set text colour
     for (EditText input : inputs) {
       if (newPlayer.getColour() != 0) {
         input.setTextColor(newPlayer.getColour());
@@ -184,7 +192,8 @@ public class SudokuActivity extends AppCompatActivity {
               int x = (int) (((String) input.getTag()).charAt(0)) - 48;
               int y = (int) (((String) input.getTag()).charAt(1)) - 48;
               if (!input.getText().toString().equals("")
-                  && !sudokuGame.insert(Integer.valueOf(input.getText().toString()), x, y, sudokuGame.sudoku)) {
+                  && !sudokuGame.insert(
+                      Integer.valueOf(input.getText().toString()), x, y, sudokuGame.sudoku)) {
                 DialogInterface.OnClickListener r =
                     new DialogInterface.OnClickListener() {
                       @Override
@@ -200,22 +209,9 @@ public class SudokuActivity extends AppCompatActivity {
             }
           });
     }
-
   }
 
-  public static void hideKeyboard(View view) {
-    if (view != null) {
-      InputMethodManager inputManager =
-          (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-      if (inputManager != null) {
-        inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-      }
-    }
-  }
-
-  /**
-   * method called when click the continue button.
-   */
+  /** method called when click the continue button. */
   public void endSudoku(View view) {
     long endSudoku = System.nanoTime();
     long time = endSudoku - startSudoku;
@@ -234,29 +230,25 @@ public class SudokuActivity extends AppCompatActivity {
 
   /**
    * return the score user gained in sudoku game.
+   *
    * @return score
    */
   public int getScore() {
-      int pt = 0;
-      for (Integer value : sudokuGame.sudoku.values()){
-          if (value <= 9 && value > 0){
-              pt +=1;
-          }
+    int pt = 0;
+    for (Integer value : sudokuGame.sudoku.values()) {
+      if (value <= 9 && value > 0) {
+        pt += 1;
       }
+    }
 
-    return pt-29;
+    return pt - 29;
   }
 
   @Override
   public String toString() {
-    newPlayer.addPoints(getScore());//add points to the total points of player
-      String showPoints = "You have got " + getScore()*newPlayer.getMultiplier() + " points " +
-              "in Sudoku game.";
-      return showPoints;
+    newPlayer.addPoints(getScore()); // add points to the total points of player
+    String showPoints =
+        "You have got " + getScore() * newPlayer.getMultiplier() + " points " + "in Sudoku game.";
+    return showPoints;
   }
 }
-
-
-
-
-

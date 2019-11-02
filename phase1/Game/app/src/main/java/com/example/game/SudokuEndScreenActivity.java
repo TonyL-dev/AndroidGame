@@ -35,10 +35,10 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
     textView = findViewById(R.id.endState);
     textView.setTextSize(23);
 
-    //show the points and time used by user in Sudoku and that in the 3 games in total.
+    // show the points and time used by user in Sudoku and that in the 3 games in total.
     textView.setText(sudokupoint + newPlayer.toString());
 
-    //get the color user want for numbers they write on the board and change it accordingly.
+    // get the color user want for numbers they write on the board and change it accordingly.
     if (newPlayer.getColour() != 0) textView.setTextColor(newPlayer.getColour());
     if (newPlayer.getbackColour() != 0) {
       getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
@@ -54,7 +54,7 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            newPlayer.reset();//resets Player statistics
+            newPlayer.reset(); // resets Player statistics
             playerDataBase.storePlayerData(newPlayer);
             Intent intent = new Intent(v.getContext(), MainActivity.class);
             startActivity(intent);
