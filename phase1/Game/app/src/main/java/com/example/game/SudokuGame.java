@@ -222,7 +222,7 @@ class SudokuGame {
     key.add(y);
     System.out.println(x + " " + y);
     boolean rowCorrect = checkRow(Input, y, s);
-//    System.out.println(rowCorrect);
+      System.out.println(rowCorrect);
     boolean colCorrect = checkCol(Input, x, s);
 //    System.out.println(colCorrect);
 //    boolean tbtCorrect = checkThreeByThree(Input, x, y, s);

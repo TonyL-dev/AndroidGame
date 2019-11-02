@@ -112,6 +112,7 @@ public class SudokuGameBoard extends View {
                 sudokuDesign.put(a, j);
             }
         }
+
         return sudokuDesign;
     }
 

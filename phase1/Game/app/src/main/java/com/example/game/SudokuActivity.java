@@ -181,12 +181,10 @@ public class SudokuActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
               hideKeyboard(input);
+              int x = (int) (((String) input.getTag()).charAt(0)) - 48;
+              int y = (int) (((String) input.getTag()).charAt(1)) - 48;
               if (!input.getText().toString().equals("")
-                  && !sudokuGame.insert(
-                      Integer.valueOf(input.getText().toString()),
-                      (int) (((String) input.getTag()).charAt(0)),
-                      (int) (((String) input.getTag()).charAt(1)),
-                      sudokuGame.sudoku)) {
+                  && !sudokuGame.insert(Integer.valueOf(input.getText().toString()), x, y, sudokuGame.sudoku)) {
                 DialogInterface.OnClickListener r =
                     new DialogInterface.OnClickListener() {
                       @Override
