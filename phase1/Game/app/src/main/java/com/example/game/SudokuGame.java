@@ -169,28 +169,31 @@ class SudokuGame {
     return ans;
   }
 
-  //check whether there is a conflict in the 3x3 board with the user input.
-//  private boolean checkThreeByThree(
-//      int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
-//    ArrayList<Integer> key = new ArrayList<Integer>();
-//    key.add(x);
-//    key.add(y);
-//    ArrayList<ArrayList<ArrayList<Integer>>> dim = new ArrayList<ArrayList<ArrayList<Integer>>>();
-//    dim = getSudokuDimension();
-//
-//    for (ArrayList<ArrayList<Integer>> bundle : dim) {
-//      for (ArrayList<Integer> position : bundle) {
-//        if (position == (key)) {
-//          for (ArrayList<Integer> pos : bundle) {
-//            if (Input == (s.get(pos))) {
-//              return false;
-//            }
-//          }
-//        }
-//      }
-//    }
-//    return true;
-//  }
+//  check whether there is a conflict in the 3x3 board with the user input.
+  private boolean checkThreeByThree(
+      int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
+    ArrayList<Integer> key = new ArrayList<>();
+    key.add(x);
+    key.add(y);
+    ArrayList<ArrayList<ArrayList<Integer>>> dim = new ArrayList<>();
+    dim = getSudokuDimension();
+
+    for (ArrayList<ArrayList<Integer>> bundle : dim){
+      if (bundle.contains(key)){
+        for (ArrayList<Integer> k : bundle){
+          if ((s.get(k) == Input) && (k != key)){
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
+
+
+
+
+
 
   //check whether there is a conflict in the column with the user input.
   private boolean checkCol(int Input, int x, HashMap<ArrayList<Integer>, Integer> s) {
@@ -225,9 +228,9 @@ class SudokuGame {
       System.out.println(rowCorrect);
     boolean colCorrect = checkCol(Input, x, s);
 //    System.out.println(colCorrect);
-//    boolean tbtCorrect = checkThreeByThree(Input, x, y, s);
+    boolean tbtCorrect = checkThreeByThree(Input, x, y, s);
 
-    if (rowCorrect && colCorrect) {
+    if (rowCorrect && colCorrect && tbtCorrect) {
       s.put(key, Input);
 //      System.out.println(s);
       return true;
