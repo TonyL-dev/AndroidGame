@@ -213,6 +213,9 @@ public class SudokuActivity extends AppCompatActivity {
     }
   }
 
+  /**
+   * method called when click the continue button.
+   */
   public void endSudoku(View view) {
     long endSudoku = System.nanoTime();
     long time = endSudoku - startSudoku;
@@ -229,6 +232,10 @@ public class SudokuActivity extends AppCompatActivity {
     System.out.println(SudokuGameBoard.toHM(SudokuGameBoard.sudo));
   }
 
+  /**
+   * return the score user gained in sudoku game.
+   * @return score
+   */
   public int getScore() {
       int pt = 0;
       for (Integer value : sudokuGame.sudoku.values()){

@@ -37,7 +37,10 @@ class SudokuGame {
   }
 
 
-  //bound 3x3 board together for checking availability.
+    /**
+     * the 9 methods below bounds the adjacent 3x3 tiles together for checking.
+     * @return bundles of tiles
+     */
   private ArrayList<ArrayList<Integer>> getThreeByThreeBundle1() {
     ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
     for (int i = 1; i < 4; i++) {
@@ -155,6 +158,10 @@ class SudokuGame {
     return ans;
   }
 
+    /**
+     *get the game board in a arraylist of arraylist of int type.
+     */
+
   private ArrayList<ArrayList<ArrayList<Integer>>> getSudokuDimension() {
     ArrayList<ArrayList<ArrayList<Integer>>> ans = new ArrayList<ArrayList<ArrayList<Integer>>>();
     ans.add(getThreeByThreeBundle1());
@@ -223,11 +230,17 @@ class SudokuGame {
     return true;
   }
 
+    /**
+     * check whether the number entered is in range of 1 to 9.
+     */
   boolean isInRange(int input){
-    return (1 < input && input <9);
+    return (1 <= input && input <= 9);
   }
 
-  //if there is no conflicts, add the number unputed into the game board.
+    /**
+     * if there is no conflicts, add the number entered by the user into the game board.
+     */
+
   boolean insert(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
     ArrayList<Integer> key = new ArrayList<Integer>();
     key.add(x);
