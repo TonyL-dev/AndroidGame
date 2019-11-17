@@ -13,11 +13,11 @@ import android.widget.TextView;
  */
 public class WarGameActivity extends AppCompatActivity {
 
-    Player newPlayer;
+    private Player newPlayer;
     private WarGame game;
-    TextView cardsA, cardsB, cardPlayedA, cardPlayedB;
+    private TextView cardsA, cardsB, cardPlayedA, cardPlayedB;
 
-    long start = System.nanoTime();
+    private long start = System.nanoTime();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +36,10 @@ public class WarGameActivity extends AppCompatActivity {
         game = new WarGame(newPlayer);
 
         cardsA = findViewById(R.id.cardRemainingA);
-        cardsA.setText("Cards remaining:" + game.getCardsRemainingA());
+        cardsA.setText("Cards remaining:" + game.getCardsRemaining(0));
 
         cardsB = findViewById(R.id.cardRemainingB);
-        cardsB.setText("Cards remaining:" + game.getCardsRemainingB());
+        cardsB.setText("Cards remaining:" + game.getCardsRemaining(1));
 
         cardPlayedA = findViewById(R.id.currentCardA);
         cardPlayedB = findViewById(R.id.currentCardB);
@@ -88,8 +88,8 @@ public class WarGameActivity extends AppCompatActivity {
         else {
             openScoreScreen(view);
         }
-        cardsA.setText("Cards remaining:" + String.valueOf(game.getCardsRemainingA()));
-        cardsB.setText("Cards remaining:" + String.valueOf(game.getCardsRemainingB()));
+        cardsA.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(0)));
+        cardsB.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(1)));
         cardPlayedA.setText(game.getLastCardsPlayed()[0].toString());
         cardPlayedB.setText(game.getLastCardsPlayed()[1].toString());
     }

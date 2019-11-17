@@ -1,18 +1,17 @@
 package com.example.game;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * WarGame class
  */
 public class WarGame {
 
-    private WarPlayer playerA;
-    private WarPlayer playerB;
-    private Card[] lastCards = new Card[2];
+    private Card[] lastCards;
     private Player newPlayer;
+    private WarPlayer[] players;
+
+    private int numOfPlayers = 2;
 
     /**
      * construct Wargame with deck and player
@@ -21,9 +20,22 @@ public class WarGame {
      */
     WarGame(Player newPlayer) {
         Deck deckOfCards = new Deck();
-        playerA = new WarPlayer(deckOfCards);
-        playerB = new WarPlayer(deckOfCards);
+
+        players = new WarPlayer[numOfPlayers];
+        lastCards = new Card[numOfPlayers];
         this.newPlayer = newPlayer;
+
+        for (int i = 0; i < players.length; i++) {
+            players[i] = new WarPlayer();
+        }
+
+        int cardsPerPlayer = deckOfCards.numOfCards() / numOfPlayers;
+        for (int i = 0; i < players.length; i++) {
+            for (int j = 0; j < cardsPerPlayer; j++) {
+                Card nextCard = deckOfCards.getNextCard();
+                players[i].receiveCard(nextCard);
+            }
+        }
     }
 
     /**
@@ -31,17 +43,8 @@ public class WarGame {
      *
      * @return playerA's hand size
      */
-    int getCardsRemainingA() {
-        return playerA.getHand().size();
-    }
-
-    /**
-     * how many cards playerB have left
-     *
-     * @return playerB's hand size
-     */
-    int getCardsRemainingB() {
-        return playerB.getHand().size();
+    int getCardsRemaining(int player) {
+        return players[player].getHand().size();
     }
 
     /**
@@ -50,18 +53,21 @@ public class WarGame {
      * @return True if either player's hand is 0
      */
     Boolean checkEndGame() {
-        return playerA.getHand().size() == 0 || playerB.getHand().size() == 0;
+        for (WarPlayer player : players) {
+            if (player.getHand().size() == 0)
+                return true;
+        }
+        return false;
     }
 
     /**
      * Record the last card of playerA and playerB
      *
-     * @param playerA playerA's last card
-     * @param playerB playerB's last card
      */
-    private void setLastCardsPlayed(Card playerA, Card playerB) {
-        lastCards[0] = playerA;
-        lastCards[1] = playerB;
+    private void setLastCardsPlayed(Card[] lastCardsPlayed) {
+        for (int i = 0; i < lastCardsPlayed.length; i++){
+            lastCards[i] = lastCardsPlayed[i];
+        }
     }
 
     /**
@@ -77,7 +83,7 @@ public class WarGame {
      * @return playerA
      */
     WarPlayer getPlayerA() {
-        return playerA;
+        return players[0];
     }
 
     /**
@@ -86,50 +92,98 @@ public class WarGame {
     void play() {
 
         ArrayList<Card> cardsInMiddle = new ArrayList<>();
-        Card cardA = playerA.getNextCard();
-        Card cardB = playerB.getNextCard();
 
-        cardsInMiddle.add(cardA);
-        cardsInMiddle.add(cardB);
+        Card[] lastCardsPlayed = new Card[numOfPlayers];
+
+        for (int i = 0; i < players.length; i++){
+            lastCardsPlayed[i] = players[i].getNextCard();
+            cardsInMiddle.add(lastCardsPlayed[i]);
+
+        }
 
         //if there's a tie
-        while (cardA.getDenomination() == cardB.getDenomination()) {
+        while (tieForCards(lastCardsPlayed)) {
             //check to see if players have enough cards to continue
             //if not, give all of their cards to the other player
-            if (playerA.getHand().size() < 3) {
-                cardsInMiddle.addAll(playerA.getHand());
-                playerA.getHand().clear();
-                playerB.addCards(cardsInMiddle);
-                return;
-            } else if (playerB.getHand().size() < 3) {
-                cardsInMiddle.addAll(playerB.getHand());
-                playerB.getHand().clear();
-                playerA.addCards(cardsInMiddle);
+            WarPlayer lessThan3Cards = tryGetPlayerWithLessThanThreeCards();
+            if (lessThan3Cards != null) {
+                lessThan3Cards.getHand().clear();
                 return;
             }
 
-            //add 2 cards directly to the pile
-            cardsInMiddle.add(playerA.getNextCard());
-            cardsInMiddle.add(playerA.getNextCard());
-            cardsInMiddle.add(playerB.getNextCard());
-            cardsInMiddle.add(playerB.getNextCard());
+            for (int i = 0; i < players.length; i++){
+                cardsInMiddle.add(players[i].getNextCard());
+                cardsInMiddle.add(players[i].getNextCard());
 
-            cardA = playerA.getNextCard();
-            cardB = playerB.getNextCard();
-
-            cardsInMiddle.add(cardA);
-            cardsInMiddle.add(cardB);
+                Card lastCard = players[i].getNextCard();
+                cardsInMiddle.add(lastCard);
+                lastCardsPlayed[i] = lastCard;
+            }
         }
-        setLastCardsPlayed(cardA, cardB);
+        setLastCardsPlayed(lastCardsPlayed);
 
-        if (cardA.getDenomination() > cardB.getDenomination()) {
-            playerA.addCards(cardsInMiddle);
-            playerA.addScore(cardsInMiddle.size() / 2);
-        } else {
-            playerB.addCards(cardsInMiddle);
-            playerB.addScore(cardsInMiddle.size() / 2);
-        }
+        int highestCardIndex = largestCard(lastCardsPlayed);
+        players[highestCardIndex].addCards(cardsInMiddle);
+        players[highestCardIndex].addScore(cardsInMiddle.size() / numOfPlayers);
     }
+
+    private WarPlayer tryGetPlayerWithLessThanThreeCards(){
+        for (int i = 0; i < players.length; i++){
+            if (players[i].getHand().size() < 3)
+                return players[i];
+        }
+        return null;
+
+    }
+
+    private boolean tieForCards(Card[] cards){
+        int largest = largestCard(cards);
+
+        int count = 0;
+
+        for (int i = 0; i < cards.length; i++){
+            if (cards[i].getDenomination() == cards[largest].getDenomination())
+                count++;
+        }
+
+        return count > 1;
+    }
+
+    // Method to find maximum in Card[]
+    private int largestCard(Card[] cards)
+    {
+        int i;
+
+        // Initialize maximum element
+        int max = 0;
+
+        // Traverse array elements from second and
+        // compare every element with current max
+        for (i = 1; i < cards.length; i++)
+            if (cards[i].getDenomination() > cards[max].getDenomination())
+                max = i;
+
+        return max;
+    }
+
+    // Method to find maximum in arr[]
+    private int mostNumOfCards(WarPlayer[] players)
+    {
+        int i;
+
+        // Initialize maximum element
+        int max = 0;
+
+        // Traverse array elements from second and
+        // compare every element with current max
+        for (i = 1; i < players.length; i++)
+            if (players[i].getScore() > players[max].getScore())
+                max = i;
+
+        return max;
+    }
+
+
 
     /**
      * Prints out who won the War Game and adds points to the Player
@@ -138,16 +192,19 @@ public class WarGame {
      */
     @Override
     public String toString() {
-        newPlayer.addPoints(playerA.getScore());
-        if (playerA.getScore() < playerB.getScore()) {
-            return ("Player B won!!! With a score of " + playerB.getScore() *
-                    newPlayer.getMultiplier() + "\nYou have a score of " + playerA.getScore()
-                    * newPlayer.getMultiplier());
-        } else if (playerA.getScore() > playerB.getScore()) {
-            return ("You won!!! With a score of " + playerA.getScore() * newPlayer.getMultiplier()
-                    + "\nPlayer B has a score of " + playerB.getScore() * newPlayer.getMultiplier());
-        } else {
-            return ("TIED---");
-        }
+        newPlayer.addPoints(players[0].getScore());
+//        if (playerA.getScore() < playerB.getScore()) {
+//            return ("Player B won!!! With a score of " + playerB.getScore() *
+//                    newPlayer.getMultiplier() + "\nYou have a score of " + playerA.getScore()
+//                    * newPlayer.getMultiplier());
+//        } else if (playerA.getScore() > playerB.getScore()) {
+//            return ("You won!!! With a score of " + playerA.getScore() * newPlayer.getMultiplier()
+//                    + "\nPlayer B has a score of " + playerB.getScore() * newPlayer.getMultiplier());
+//        } else {
+//            return ("TIED---");
+//        }
+
+        WarPlayer winner = players[mostNumOfCards(players)];
+        return "Player" + mostNumOfCards(players) + " won!!! With a score of " + winner.getScore();
     }
 }
