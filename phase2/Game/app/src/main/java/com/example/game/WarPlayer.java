@@ -13,16 +13,18 @@ class WarPlayer extends Player {
     /**
      * construct WarPlayer
      *
-     * @param cards give the player its game deck
      */
-    WarPlayer(Deck cards) {
+    WarPlayer() {
         super();
 
         hand = new ArrayList<>();
-        addCards(cards);
+        //addCards(cards);
         //System.out.println(this.getName() + "---" + hand);
     }
 
+    public void receiveCard(Card card){
+        hand.add(card);
+    }
     /**
      * Give the player half of the game deck
      *

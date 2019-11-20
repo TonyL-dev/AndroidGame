@@ -2,18 +2,20 @@ package com.example.game;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * The Deck class which consists 52 Cards
  */
 class Deck {
 
-    private ArrayList<Card> deck = new ArrayList<>();
+    private List<Card> deck;
 
     /**
      * Construct the Deck
      */
     Deck() {
+        deck = new ArrayList<>();
         deck = this.createCards();
     }
 
@@ -22,7 +24,7 @@ class Deck {
      *
      * @return a list of Cards
      */
-    private ArrayList<Card> createCards() {
+    private List<Card> createCards() {
         for (int denomination = 2; denomination <= 14; denomination++) {
             for (Suit suit : Suit.values()) {
                 deck.add(new Card(suit, denomination, abbreviationName(denomination)));
@@ -61,6 +63,10 @@ class Deck {
             value = "NONE";
         //the value and the first letter of the suit
         return value;
+    }
+
+    public int numOfCards(){
+        return deck.size();
     }
 
     /**
