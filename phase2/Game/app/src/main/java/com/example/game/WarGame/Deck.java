@@ -65,7 +65,7 @@ class Deck {
         return value;
     }
 
-    public int numOfCards(){
+    int numOfCards(){
         return deck.size();
     }
 

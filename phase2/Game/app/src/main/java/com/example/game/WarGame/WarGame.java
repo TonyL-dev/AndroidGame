@@ -34,10 +34,10 @@ public class WarGame {
         }
 
         int cardsPerPlayer = deckOfCards.numOfCards() / numOfPlayers;
-        for (int i = 0; i < players.length; i++) {
+        for (WarPlayer player : players) {
             for (int j = 0; j < cardsPerPlayer; j++) {
                 Card nextCard = deckOfCards.getNextCard();
-                players[i].receiveCard(nextCard);
+                player.receiveCard(nextCard);
             }
         }
     }
@@ -69,9 +69,7 @@ public class WarGame {
      *
      */
     private void setLastCardsPlayed(Card[] lastCardsPlayed) {
-        for (int i = 0; i < lastCardsPlayed.length; i++){
-            lastCards[i] = lastCardsPlayed[i];
-        }
+        System.arraycopy(lastCardsPlayed, 0, lastCards, 0, lastCardsPlayed.length);
     }
 
     /**
@@ -132,9 +130,9 @@ public class WarGame {
     }
 
     private WarPlayer tryGetPlayerWithLessThanThreeCards(){
-        for (int i = 0; i < players.length; i++){
-            if (players[i].getHand().size() < 3)
-                return players[i];
+        for (WarPlayer player : players) {
+            if (player.getHand().size() < 3)
+                return player;
         }
         return null;
 
@@ -145,8 +143,8 @@ public class WarGame {
 
         int count = 0;
 
-        for (int i = 0; i < cards.length; i++){
-            if (cards[i].getDenomination() == cards[largest].getDenomination())
+        for (Card card : cards) {
+            if (card.getDenomination() == cards[largest].getDenomination())
                 count++;
         }
 

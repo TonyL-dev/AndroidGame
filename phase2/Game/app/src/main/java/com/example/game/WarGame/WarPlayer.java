@@ -24,7 +24,7 @@ class WarPlayer extends Player {
         //System.out.println(this.getName() + "---" + hand);
     }
 
-    public void receiveCard(Card card){
+    void receiveCard(Card card){
         hand.add(card);
     }
     /**
