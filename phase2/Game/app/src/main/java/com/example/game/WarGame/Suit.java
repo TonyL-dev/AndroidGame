@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.WarGame;
 
 /**
  * Set the suit of a card to Clubs, Diamonds, Spades or Hearts

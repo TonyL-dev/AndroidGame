@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.game.PictureGame.PictureGameActivity;
+import com.example.game.SudokuGame.SudokuActivity;
+import com.example.game.WarGame.WarGameActivity;
+
 /**
  *The MainActivity class where player is created or logs in to play the games
  */

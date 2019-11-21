@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.SudokuGame;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.game.MainActivity;
+import com.example.game.Player;
+import com.example.game.PlayerDataBase;
+import com.example.game.R;
 
 public class SudokuEndScreenActivity extends AppCompatActivity {
 

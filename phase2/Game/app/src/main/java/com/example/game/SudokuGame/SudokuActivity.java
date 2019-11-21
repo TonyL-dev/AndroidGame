@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.SudokuGame;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,6 +13,10 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.game.Player;
+import com.example.game.PlayerDataBase;
+import com.example.game.R;
 
 public class SudokuActivity extends AppCompatActivity {
 

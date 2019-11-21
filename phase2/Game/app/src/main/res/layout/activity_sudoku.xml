@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SudokuActivity">
+    tools:context=".SudokuGame.SudokuActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.game.SudokuGameBoard
+    <com.example.game.SudokuGame.SudokuGameBoard
         android:id="@+id/chessboard"
         android:layout_width="0dp"
         android:layout_height="0dp"

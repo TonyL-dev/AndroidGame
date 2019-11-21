@@ -141,7 +141,7 @@ public class Player implements Serializable {
      *
      * @return colour
      */
-    int getColour() {
+    public int getColour() {
         return this.colour;
     }
 
@@ -150,7 +150,7 @@ public class Player implements Serializable {
      *
      * @return multiplier
      */
-    int getMultiplier() {
+    public int getMultiplier() {
         return this.multiplier;
     }
 
@@ -159,7 +159,7 @@ public class Player implements Serializable {
      *
      * @return backColour
      */
-    int getbackColour() {
+    public int getbackColour() {
         return this.backColour;
     }
 
@@ -186,7 +186,7 @@ public class Player implements Serializable {
     /**
      * remove Player's most recent game time
      */
-    void subtractTime() {
+    public void subtractTime() {
         this.time.remove(this.time.size()-1);
     }
 
@@ -223,7 +223,7 @@ public class Player implements Serializable {
     /**
      * add points to the Player's points (increment)
      */
-    void addPoints() {
+    public void addPoints() {
         this.points += this.multiplier;
     }
 
@@ -232,14 +232,14 @@ public class Player implements Serializable {
      *
      * @param newPoints
      */
-    void addPoints(int newPoints) {
+    public void addPoints(int newPoints) {
         this.points += newPoints * this.multiplier;
     }
 
     /**
      * subtract points from the Player's points  (decrement)
      */
-    void subtractPoints() {
+    public void subtractPoints() {
         this.points -= this.multiplier;
     }
 
@@ -248,7 +248,7 @@ public class Player implements Serializable {
      *
      * @param subPoints
      */
-    void subtractPoints(int subPoints) {
+    public void subtractPoints(int subPoints) {
         this.points -= subPoints * this.multiplier;
     }
 
@@ -257,14 +257,14 @@ public class Player implements Serializable {
      *
      * @param additionalTime
      */
-    void addTime(double additionalTime) {
+    public void addTime(double additionalTime) {
         this.time.add(additionalTime);
     }
 
     /**
      * reset game statistics after a Player finishes all 3 games
      */
-    void reset() {
+    public void reset() {
         this.time.clear();
         this.points = 0;
         this.gameNum = 1;
@@ -273,7 +273,7 @@ public class Player implements Serializable {
     /**
      * increment gameNum after a player finishes a level
      */
-    void addLevel() {
+    public void addLevel() {
         this.gameNum++;
     }
 

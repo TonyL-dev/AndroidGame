@@ -20,7 +20,7 @@ public class PlayerDataBase {
     /**
      * construct default PlayerDataBase
      */
-    PlayerDataBase(Context context) {
+    public PlayerDataBase(Context context) {
         playerLocalDatabase = context.getSharedPreferences(name, 0);
     }
 
@@ -29,7 +29,7 @@ public class PlayerDataBase {
          *
          * @param player player object whose data will be stored
          */
-        void storePlayerData(Player player) {
+        public void storePlayerData(Player player) {
 
             String key_username = player.getName();
             String key_password = key_username + " password";

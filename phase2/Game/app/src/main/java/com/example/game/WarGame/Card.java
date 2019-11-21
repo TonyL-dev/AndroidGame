@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.WarGame;
 
 /**
  * The Card class with methods accessing its value

@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.PictureGame;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.view.View;
 import android.content.Intent;
+
+import com.example.game.Player;
+import com.example.game.PlayerDataBase;
+import com.example.game.R;
+import com.example.game.WarGame.WarGameActivity;
 
 import java.text.DecimalFormat;
 

@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.PictureGame;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +6,8 @@ import java.util.Random;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import com.example.game.Player;
 
 class PictureGame {
     /** array of Picture objects*/

@@ -1,4 +1,6 @@
-package com.example.game;
+package com.example.game.SudokuGame;
+
+import com.example.game.Player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
