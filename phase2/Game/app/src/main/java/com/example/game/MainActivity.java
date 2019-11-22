@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         ((EditText) findViewById(R.id.scoreMultiply)).setText("");
         ((EditText) findViewById(R.id.backColour)).setText("");
 
-        Intent intent = new Intent(this, PictureGameActivity.class);
+        Intent intent = new Intent(this, ChooseGame.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("player", newPlayer);
         intent.putExtras(bundle);
