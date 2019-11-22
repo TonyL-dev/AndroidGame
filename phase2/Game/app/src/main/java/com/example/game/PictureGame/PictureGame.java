@@ -95,7 +95,7 @@ class PictureGame {
         }
     }
     /** return string of remaining Picture objects to be found*/
-    String fruitsToFind() {
+    StringBuilder fruitsToFind() {
         StringBuilder listOfFruits = new StringBuilder();
 
         for (Picture pic : pictures) {
@@ -103,7 +103,7 @@ class PictureGame {
                 listOfFruits.append(pic.getName() + "\n");
             }
         }
-        return listOfFruits.toString();
+        return listOfFruits;
     }
 
     /**
@@ -127,7 +127,7 @@ class PictureGame {
      *
      * @param imageId the ID of the imageView that has been found
      * */
-    String foundHiddenImage(String imageId) {
+    StringBuilder foundHiddenImage(String imageId) {
         // runs when you found an image
 
         // sets the found picture .isHiddenImage to false since we don't need to find it anymore

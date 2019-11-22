@@ -29,6 +29,8 @@ public class PictureGameActivity extends AppCompatActivity {
     //player
     private Player newPlayer;
 
+    private int points;
+
     private PlayerDataBase playerDataBase;
 
     long start = System.nanoTime();
@@ -51,7 +53,7 @@ public class PictureGameActivity extends AppCompatActivity {
 
         ConstraintLayout relativeLayout = (ConstraintLayout) findViewById(R.id.linearLayout);
 
-        textView.setText(pictureGame.fruitsToFind());
+        textView.setText(pictureGame.fruitsToFind().toString());
 
         //sets text colour
         if (newPlayer.getColour() != 0) {
@@ -63,6 +65,11 @@ public class PictureGameActivity extends AppCompatActivity {
         if (newPlayer.getbackColour() != 0) {
             relativeLayout.setBackgroundColor(newPlayer.getbackColour());
         }
+
+        //increments number of games
+        newPlayer.addLevel(1);
+
+        playerDataBase.storePlayerData(newPlayer);
 
     }
 
@@ -80,7 +87,8 @@ public class PictureGameActivity extends AppCompatActivity {
             if (isHiddenImage) {
                 // if player finds an image
                 // find the updated set of fruits to look for
-                String newFruits = pictureGame.foundHiddenImage(fruit);
+                String newFruits = pictureGame.foundHiddenImage(fruit).toString();
+                points++;
 
                 // set textview to those new fruits
                 if (newFruits.equals("")) {
@@ -88,20 +96,14 @@ public class PictureGameActivity extends AppCompatActivity {
                     long end = System.nanoTime();
                     long time = end - start;
                     double timeInSeconds = (double) time / 1_000_000_000;
-                    newPlayer.addTime(timeInSeconds);
-                    textView.setText("");
-                    textView2.setText("");
-                    textView.setTextSize(18);
-                    textView.setText(newPlayer.toString());
-
-                    //increments number of games
-                    newPlayer.addLevel();
 
                     //starts the next game
                     playerDataBase.storePlayerData(newPlayer);
-                    Intent intent = new Intent(this, WarGameActivity.class);
+                    Intent intent = new Intent(this, PictureEndScreenActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("player", newPlayer);
+                    bundle.putSerializable("points", points);
+                    bundle.putSerializable("time", timeInSeconds);
                     intent.putExtras(bundle);
                     startActivity(intent);
                 } else {
@@ -110,8 +112,10 @@ public class PictureGameActivity extends AppCompatActivity {
                 }
                 // hide the fruit that was found
                 view.setVisibility(View.GONE);
-            } else
+            } else{
                 newPlayer.subtractPoints();
+                points--;
+            }
         }
 
     }

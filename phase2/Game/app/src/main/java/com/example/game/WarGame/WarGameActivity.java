@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.Player;
+import com.example.game.PlayerDataBase;
 import com.example.game.R;
 
 /**
@@ -18,6 +19,7 @@ public class WarGameActivity extends AppCompatActivity {
     private Player newPlayer;
     private WarGame game;
     private TextView cardsA, cardsB, cardPlayedA, cardPlayedB;
+    PlayerDataBase playerDataBase;
 
     private long start = System.nanoTime();
 
@@ -28,12 +30,12 @@ public class WarGameActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
+        playerDataBase = new PlayerDataBase(this);
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
+        //increments number of games
+        newPlayer.addLevel(2);
+
+        playerDataBase.storePlayerData(newPlayer);
 
         game = new WarGame(newPlayer);
 

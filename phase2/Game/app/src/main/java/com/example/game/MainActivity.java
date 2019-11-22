@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         multiplier = scoreMultiplier.getText().toString();
         backColour = backColourText.getText().toString();
         newPlayer = new Player(username, password, colour, multiplier, backColour);
-        newPlayer.addLevel();
         playerDataBase.storePlayerData(newPlayer);
         ((EditText) findViewById(R.id.userNameInput)).setText("");
         ((EditText) findViewById(R.id.passwordInput)).setText("");
@@ -95,7 +94,9 @@ public class MainActivity extends AppCompatActivity {
             if (prevUser.equals(playerInfo[0]) && prevPassword.equals(playerInfo[1])) {
                 newPlayer = playerDataBase.getPlayer(prevUser);
 
-                if (newPlayer.getGameNum() == 1) {
+                if (newPlayer.getGameNum() == 0){
+                    startChooseGame();
+                } else if (newPlayer.getGameNum() == 1) {
                     startPictureGame();
                 } else if (newPlayer.getGameNum() == 2) {
                     startWarGame();
@@ -103,6 +104,17 @@ public class MainActivity extends AppCompatActivity {
                     startSudokuGame();
             }
         }
+    }
+
+    /**
+     * If a Player's game number is 0, then the player will start at the ChooseGame activity.
+     */
+    public void startChooseGame(){
+        Intent intent = new Intent(this, ChooseGame.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("player", newPlayer);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     /**

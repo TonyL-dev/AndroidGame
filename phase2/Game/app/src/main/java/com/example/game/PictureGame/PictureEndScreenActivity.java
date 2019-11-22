@@ -1,4 +1,4 @@
-package com.example.game.WarGame;
+package com.example.game.PictureGame;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,53 +9,60 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.ChooseGame;
+import com.example.game.MainActivity;
 import com.example.game.Player;
 import com.example.game.PlayerDataBase;
 import com.example.game.R;
 import com.example.game.SudokuGame.SudokuActivity;
 
-/**
- * WargameEndScreenActivity where displays endgame result
- */
-public class WarGameEndScreenActivity extends AppCompatActivity {
+public class PictureEndScreenActivity extends AppCompatActivity {
 
     Player newPlayer;
 
+    TextView textView;
+
     PlayerDataBase playerDataBase;
 
-    int temp;
+    int points;
 
     double timeInSeconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_war_game_end_screen);
+        setContentView(R.layout.activity_picture_end_screen);
 
-        Bundle bundle = getIntent().getExtras();
-        String stats = bundle.getString("points");
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
         playerDataBase = new PlayerDataBase(this);
-        temp = (int) bundle.getSerializable("temp");
+        points = (int) bundle.getSerializable("points");
         timeInSeconds = (double) bundle.getSerializable("time");
 
         newPlayer.addTime(timeInSeconds);
 
-        TextView textView = findViewById(R.id.endGameStats);
-        textView.setText(stats.concat(newPlayer.toString()));
-        if (newPlayer.getColour() != 0)
+        textView = findViewById(R.id.endGameStatsPic);
+        textView.setTextSize(23);
+        textView.setText(newPlayer.toString());
+
+        // get the color user want for numbers they write on the board and change it accordingly.
+        if (newPlayer.getColour() != 0) {
             textView.setTextColor(newPlayer.getColour());
+        }
 
         if (newPlayer.getbackColour() != 0) {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
         }
 
         //If a Player backs out before continuing to the next game, the data will not be saved
-        newPlayer.subtractPoints(temp);
+        newPlayer.subtractPoints(points);
         newPlayer.subtractTime();
         playerDataBase.storePlayerData(newPlayer);
 
-        Button nextGame = findViewById(R.id.nextGame);
+        /** If a Player backs out before continuing to the next game, the data will not be saved */
+        playerDataBase.storePlayerData(newPlayer);
+
+        Button nextGame = findViewById(R.id.button4);
         nextGame.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

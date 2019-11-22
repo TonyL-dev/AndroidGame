@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.game.ChooseGame;
 import com.example.game.MainActivity;
 import com.example.game.Player;
 import com.example.game.PlayerDataBase;
@@ -61,7 +62,10 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
           public void onClick(View v) {
             newPlayer.reset(); // resets Player statistics
             playerDataBase.storePlayerData(newPlayer);
-            Intent intent = new Intent(v.getContext(), MainActivity.class);
+            Intent intent = new Intent(v.getContext(), ChooseGame.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("player", newPlayer);
+            intent.putExtras(bundle);
             startActivity(intent);
           }
         });

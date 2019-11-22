@@ -99,7 +99,7 @@ public class SudokuActivity extends AppCompatActivity {
     Bundle bundle = intent.getExtras();
     newPlayer = (Player) bundle.getSerializable("player");
     // increments game number
-    newPlayer.addLevel();
+    newPlayer.addLevel(3);
 
     playerDataBase = new PlayerDataBase(this);
 

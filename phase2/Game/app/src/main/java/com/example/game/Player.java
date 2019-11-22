@@ -267,14 +267,14 @@ public class Player implements Serializable {
     public void reset() {
         this.time.clear();
         this.points = 0;
-        this.gameNum = 1;
+        this.gameNum = 0;
     }
 
     /**
      * increment gameNum after a player finishes a level
      */
-    public void addLevel() {
-        this.gameNum++;
+    public void addLevel(int level) {
+        this.gameNum=level;
     }
 
     /**
