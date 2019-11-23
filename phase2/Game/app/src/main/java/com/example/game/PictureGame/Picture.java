@@ -1,14 +1,12 @@
 package com.example.game.PictureGame;
 
-import android.graphics.Bitmap;
-
-public class Picture {
+class Picture {
     /** true if it is to be found, false if you do not need to find it */
     private boolean isHiddenImage;
     /** name of Picture*/
     private String name;
     /** Bitmap image of Picture*/
-    private Bitmap image;
+    private int image;
 
     /**
      * Constructs a new Picture object
@@ -18,7 +16,7 @@ public class Picture {
      * @param z  the Bitmap image of this Picture
      */
 
-    Picture(boolean x, String y, Bitmap z) {
+    Picture(boolean x, String y, int z) {
         isHiddenImage = x;
         name = y;
         image = z;
@@ -36,8 +34,8 @@ public class Picture {
         return name;
     }
 
-    /** return the Bitmap image*/
-    public Bitmap getImage() {
+    /** return the drawable int*/
+    int getImage() {
         // return Bitmap of this image
         return image;
     }
