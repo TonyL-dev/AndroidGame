@@ -12,7 +12,6 @@ import com.example.game.ChooseGame;
 import com.example.game.Player;
 import com.example.game.PlayerDataBase;
 import com.example.game.R;
-import com.example.game.SudokuGame.SudokuActivity;
 
 /**
  * WargameEndScreenActivity where displays endgame result

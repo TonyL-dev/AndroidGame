@@ -9,65 +9,66 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.ChooseGame;
-import com.example.game.MainActivity;
 import com.example.game.Player;
 import com.example.game.PlayerDataBase;
 import com.example.game.R;
 
 public class SudokuEndScreenActivity extends AppCompatActivity {
 
-  public Player newPlayer;
-  TextView textView;
-  PlayerDataBase playerDataBase;
+    public Player newPlayer;
 
-  int temp;
+    TextView textView;
 
-  double timeInSeconds;
+    PlayerDataBase playerDataBase;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_sudoku_end_screen);
-    Intent intent = getIntent();
-    Bundle bundle = intent.getExtras();
-    newPlayer = (Player) bundle.getSerializable("player");
-    String sudokupoint = bundle.getString("points");
-    temp = (int) bundle.getSerializable("temp");
-    timeInSeconds = (double) bundle.getSerializable("time");
-    playerDataBase = new PlayerDataBase(this);
+    int temp;
 
-    newPlayer.addTime(timeInSeconds);
+    double timeInSeconds;
 
-    textView = findViewById(R.id.endState);
-    textView.setTextSize(23);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sudoku_end_screen);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        newPlayer = (Player) bundle.getSerializable("player");
+        String sudokupoint = bundle.getString("points");
+        temp = (int) bundle.getSerializable("temp");
+        timeInSeconds = (double) bundle.getSerializable("time");
+        playerDataBase = new PlayerDataBase(this);
 
-    // show the points and time used by user in Sudoku and that in the 3 games in total.
-    textView.setText(sudokupoint + newPlayer.toString());
+        newPlayer.addTime(timeInSeconds);
 
-    // get the color user want for numbers they write on the board and change it accordingly.
-    if (newPlayer.getColour() != 0) textView.setTextColor(newPlayer.getColour());
-    if (newPlayer.getbackColour() != 0) {
-      getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        textView = findViewById(R.id.endState);
+        textView.setTextSize(23);
+
+        // show the points and time used by user in Sudoku and that in the 3 games in total.
+        textView.setText(sudokupoint + newPlayer.toString());
+
+        // get the color user want for numbers they write on the board and change it accordingly.
+        if (newPlayer.getColour() != 0) textView.setTextColor(newPlayer.getColour());
+        if (newPlayer.getbackColour() != 0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        }
+
+        /** If a Player backs out before continuing to the next game, the data will not be saved */
+        newPlayer.subtractPoints(temp);
+        newPlayer.subtractTime();
+        playerDataBase.storePlayerData(newPlayer);
+
+        Button nextGame = findViewById(R.id.button3);
+        nextGame.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        newPlayer.reset(); // resets Player statistics
+                        playerDataBase.storePlayerData(newPlayer);
+                        Intent intent = new Intent(v.getContext(), ChooseGame.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("player", newPlayer);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
     }
-
-    /** If a Player backs out before continuing to the next game, the data will not be saved */
-    newPlayer.subtractPoints(temp);
-    newPlayer.subtractTime();
-    playerDataBase.storePlayerData(newPlayer);
-
-    Button nextGame = findViewById(R.id.button3);
-    nextGame.setOnClickListener(
-        new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            newPlayer.reset(); // resets Player statistics
-            playerDataBase.storePlayerData(newPlayer);
-            Intent intent = new Intent(v.getContext(), ChooseGame.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("player", newPlayer);
-            intent.putExtras(bundle);
-            startActivity(intent);
-          }
-        });
-  }
 }

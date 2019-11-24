@@ -126,6 +126,9 @@ public class PictureGameActivity extends AppCompatActivity {
         if (level == 2) {
             findViewById(R.id.redBackground).setVisibility(View.VISIBLE);
         }
+        else{
+            findViewById(R.id.redBackground).setVisibility(View.INVISIBLE);
+        }
         ((ImageView) findViewById(R.id.one)).
                 setImageResource(pictureGame.getPictures()[0].getImage());
         findViewById(R.id.one).setTag(pictureGame.getPictures()[0].getName());
