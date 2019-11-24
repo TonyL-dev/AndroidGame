@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-//temp
-
 /**
  * The Player that plays through the games.
  */
@@ -70,7 +68,7 @@ public class Player implements Serializable {
             this.multiplier = Integer.parseInt(multiplier);
 
         if (backColour.equalsIgnoreCase("blue"))
-            this.backColour = 0xAA00BFFF;
+            this.backColour = 0xFF0C3688;
         else if (backColour.equalsIgnoreCase("purple"))
             this.backColour = 0xAA9900FF;
         else
@@ -78,8 +76,8 @@ public class Player implements Serializable {
 
         if (colour.equalsIgnoreCase("green"))
             this.colour = 0xFF00FF00;
-        else if (colour.equalsIgnoreCase("red"))
-            this.colour = 0xAAFF0000;
+        else if (colour.equalsIgnoreCase("orange"))
+            this.colour = 0xAAFF8000;
         else
             this.colour = 0;
     }
@@ -132,7 +130,7 @@ public class Player implements Serializable {
      *
      * @return points
      */
-    int getPoints() {
+    public int getPoints() {
         return this.points;
     }
 
@@ -179,8 +177,17 @@ public class Player implements Serializable {
      *
      * @return time.get(gameNum-1)
      */
-    double getTime(int gameNum) {
+    public double getTime(int gameNum) {
         return this.time.get(gameNum - 1);
+    }
+
+    /**
+     * get the time list size
+     *
+     * @return time.size()
+     */
+    public double getTime() {
+        return this.time.size();
     }
 
     /**
@@ -264,6 +271,13 @@ public class Player implements Serializable {
     /**
      * reset game statistics after a Player finishes all 3 games
      */
+    public void resetTime() {
+        this.time.clear();
+    }
+
+    /**
+     * reset game statistics after a Player finishes all 3 games
+     */
     public void reset() {
         this.time.clear();
         this.points = 0;
@@ -281,12 +295,10 @@ public class Player implements Serializable {
      * String representation of the Player
      */
     public String toString() {
-        int gameNum = this.time.size();
         double totalGameTime = 0;
         for (double gameTime : time)
             totalGameTime += gameTime;
-        return "\nYou have " + getPoints() + " points now." +
-                "\n\nThis game took you " + df.format(getTime(gameNum)) + " seconds." +
-                "\nIn total you have taken " + df.format(totalGameTime) + " seconds! ";
+        return "\nYou have " + getPoints() + " total points now." +
+                "\nIn total you have taken " + df.format((totalGameTime)) + " seconds! ";
     }
 }

@@ -13,11 +13,10 @@ import com.example.game.WarGame.WarGameActivity;
 
 public class ChooseGame extends AppCompatActivity {
 
-    //player
+    /** Player object*/
     private Player newPlayer;
 
-    private PlayerDataBase playerDataBase;
-
+    /** TextView to display which games are available to play*/
     private TextView newTextView, newTextView2, newTextView3, newTextView4;
 
     /**
@@ -31,7 +30,6 @@ public class ChooseGame extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
-        playerDataBase = new PlayerDataBase(this);
 
         newTextView = findViewById(R.id.textView5);
         newTextView2 = findViewById(R.id.textView6);
@@ -53,7 +51,7 @@ public class ChooseGame extends AppCompatActivity {
     }
 
     /**
-     * If a Player's game number is 1, then the player will start at the PictureActivity.
+     * If a user chooses to play PictureGame, then the player will start at the PictureActivity.
      */
     public void startPictureGame(View view){
         Intent intent = new Intent(this, PictureGameActivity.class);
@@ -64,18 +62,19 @@ public class ChooseGame extends AppCompatActivity {
     }
 
     /**
-     * If a Player's game number is 2, then the player will start at the WarGameActivity.
+     * If a user chooses to play WarGame, then the player will start at the PictureActivity.
      */
     public void startWarGame(View view){
         Intent intent = new Intent(this, WarGameActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("player", newPlayer);
+        bundle.putSerializable("numPlayers", 2);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
     /**
-     * If a Player's game number is 1, then the player will start at the SudokuActivity.
+     * If a user chooses to play SudukoGame, then the player will start at the PictureActivity.
      */
     public void startSudokuGame(View view){
         Intent intent = new Intent(this, SudokuActivity.class);

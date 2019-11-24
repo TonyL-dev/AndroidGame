@@ -9,7 +9,14 @@ import java.util.ArrayList;
  */
 class WarPlayer extends Player {
 
+    /**
+     * the hard of the player
+     */
     private ArrayList<Card> hand;
+
+    /**
+     * the player's score
+     */
     private int score = 0;
 
     /**
@@ -20,13 +27,16 @@ class WarPlayer extends Player {
         super();
 
         hand = new ArrayList<>();
-        //addCards(cards);
-        //System.out.println(this.getName() + "---" + hand);
     }
 
+    /**
+     * Receive a card to put in their deck
+     * @param card the card being received
+     */
     void receiveCard(Card card){
         hand.add(card);
     }
+
     /**
      * Give the player half of the game deck
      *

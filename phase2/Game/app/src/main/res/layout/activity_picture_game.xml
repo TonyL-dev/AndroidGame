@@ -10,7 +10,19 @@
     >
 
     <ImageView
-        android:id="@+id/blueberry"
+        android:id="@+id/redBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorAccent"
+        tools:srcCompat="@color/colorAccent" />
+
+    <ImageView
+        android:id="@+id/one"
         android:layout_width="118dp"
         android:layout_height="103dp"
         android:layout_marginTop="160dp"
@@ -27,7 +39,7 @@
         tools:srcCompat="@drawable/blueberry" />
 
     <ImageView
-        android:id="@+id/apple"
+        android:id="@+id/two"
         android:layout_width="143dp"
         android:layout_height="75dp"
         android:layout_marginTop="260dp"
@@ -42,7 +54,7 @@
         tools:srcCompat="@drawable/apple" />
 
     <ImageView
-        android:id="@+id/banana"
+        android:id="@+id/three"
         android:layout_width="142dp"
         android:layout_height="128dp"
         android:layout_marginStart="64dp"
@@ -62,7 +74,7 @@
         tools:srcCompat="@drawable/banana" />
 
     <ImageView
-        android:id="@+id/coconut"
+        android:id="@+id/four"
         android:layout_width="151dp"
         android:layout_height="140dp"
         android:layout_marginTop="212dp"
@@ -71,46 +83,46 @@
         android:onClick="imageClick"
         android:tag="coconut"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.965"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/coconut"
         tools:srcCompat="@drawable/coconut" />
 
     <ImageView
-        android:id="@+id/grapefruit"
+        android:id="@+id/five"
         android:layout_width="133dp"
         android:layout_height="112dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:clickable="true"
         android:contentDescription="@null"
         android:onClick="imageClick"
         android:tag="grapefruit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintHorizontal_bias="0.838"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/grapefruit"
         tools:srcCompat="@drawable/grapefruit" />
 
     <ImageView
-        android:id="@+id/peach"
+        android:id="@+id/six"
         android:layout_width="154dp"
         android:layout_height="141dp"
-        android:layout_marginTop="324dp"
+        android:layout_marginTop="308dp"
         android:clickable="true"
         android:contentDescription="@null"
         android:onClick="imageClick"
         android:tag="peach"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/peach"
         tools:srcCompat="@drawable/peach" />
 
     <ImageView
-        android:id="@+id/tomato"
+        android:id="@+id/seven"
         android:layout_width="153dp"
         android:layout_height="133dp"
         android:layout_marginTop="352dp"
@@ -126,7 +138,7 @@
         tools:srcCompat="@drawable/tomato" />
 
     <ImageView
-        android:id="@+id/cherry"
+        android:id="@+id/eight"
         android:layout_width="160dp"
         android:layout_height="169dp"
         android:layout_marginTop="164dp"
@@ -145,83 +157,87 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fruits to Find"
+        android:text="@string/picturegamelabel"
+        android:fontFamily="@font/press_start_2p"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.779" />
+        app:layout_constraintVertical_bias="0.757"
+        tools:text="@string/picturegamelabel" />
 
     <TextView
         android:id="@+id/listOfFruits"
         android:layout_width="336dp"
-        android:layout_height="107dp"
+        android:layout_height="127dp"
         android:layout_marginBottom="28dp"
+        android:textAppearance="@android:style/TextAppearance.Material"
+        android:fontFamily="@font/press_start_2p"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/cantaloupe"
+        android:id="@+id/nine"
         android:layout_width="153dp"
         android:layout_height="103dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="128dp"
         android:clickable="true"
         android:contentDescription="@null"
         android:onClick="imageClick"
         android:tag="cantaloupe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintHorizontal_bias="0.852"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cantaloupe"
         tools:srcCompat="@drawable/cantaloupe" />
 
     <ImageView
-        android:id="@+id/pear"
+        android:id="@+id/ten"
         android:layout_width="105dp"
         android:layout_height="132dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="48dp"
         android:clickable="true"
         android:contentDescription="@null"
         android:onClick="imageClick"
         android:tag="pear"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pear"
         tools:srcCompat="@drawable/pear" />
 
     <ImageView
-        android:id="@+id/lemon"
+        android:id="@+id/eleven"
         android:layout_width="134dp"
         android:layout_height="132dp"
-        android:layout_marginTop="296dp"
+        android:layout_marginTop="308dp"
         android:clickable="true"
         android:contentDescription="@null"
         android:onClick="imageClick"
         android:tag="lemon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/lemon"
         tools:srcCompat="@drawable/lemon" />
 
     <ImageView
-        android:id="@+id/strawberry"
+        android:id="@+id/twelve"
         android:layout_width="128dp"
         android:layout_height="127dp"
-        android:layout_marginTop="428dp"
+        android:layout_marginTop="388dp"
         android:clickable="true"
         android:contentDescription="@null"
         android:onClick="imageClick"
         android:tag="strawberry"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
+        app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/strawberry"

@@ -7,22 +7,51 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.game.EndScreenActivity;
 import com.example.game.Player;
 import com.example.game.PlayerDataBase;
 import com.example.game.R;
 
 /**
- *The WarGameActivity class where player plays WarGame
+ * The WarGameActivity class where player plays WarGame
  */
 public class WarGameActivity extends AppCompatActivity {
 
+    /**
+     * Player object
+     */
     private Player newPlayer;
+
+    /**
+     * Wargame object
+     */
     private WarGame game;
-    private TextView cardsA, cardsB, cardPlayedA, cardPlayedB;
+
+    /**
+     * Textview for the different cards and the counts of remaining cards
+     */
+    private TextView cardsA, cardsB, cardsC, cardPlayedA, cardPlayedB, cardPlayedC;
+
+    /**
+     * PlayerDataBase where the player is stored
+     */
     PlayerDataBase playerDataBase;
 
+    /**
+     * Current number of players playing
+     */
+    private int numOfPlayers;
+
+    /**
+     * How the game's time for each level is determined. The timer starts at initialization.
+     */
     private long start = System.nanoTime();
 
+    /**
+     * Created on run. Sets up the game to have the appropriate cards displayed
+     *
+     * @param savedInstanceState a Bundle object
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +60,14 @@ public class WarGameActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
         playerDataBase = new PlayerDataBase(this);
+        numOfPlayers = (int) bundle.getSerializable("numPlayers");
 
         //increments number of games
         newPlayer.addLevel(2);
 
         playerDataBase.storePlayerData(newPlayer);
 
-        game = new WarGame(newPlayer);
+        game = new WarGame(newPlayer, numOfPlayers);
 
         cardsA = findViewById(R.id.cardRemainingA);
         cardsA.setText("Cards remaining:" + game.getCardsRemaining(0));
@@ -71,13 +101,18 @@ public class WarGameActivity extends AppCompatActivity {
         long end = System.nanoTime();
         long time = end - start;
         double timeInSeconds = (double) time / 1_000_000_000;
-        int temp = game.getPlayerA().getScore();
-        Intent intent = new Intent(this, WarGameEndScreenActivity.class);
+        Intent intent;
         Bundle bundle = new Bundle();
+        //Choosing whether the game needs to go to the next level screen or end game screen
+        if (numOfPlayers == 2)
+            intent = new Intent(this, WarGameEndScreenActivity.class);
+        else {
+            intent = new Intent(this, EndScreenActivity.class);
+        }
         bundle.putSerializable("points", game.toString());
         bundle.putSerializable("player", newPlayer);
-        bundle.putSerializable("temp", temp);
         bundle.putSerializable("time", timeInSeconds);
+        bundle.putSerializable("numPlayers", game.getNumOfPlayers());
         intent.putExtras(bundle);
         startActivity(intent);
     }

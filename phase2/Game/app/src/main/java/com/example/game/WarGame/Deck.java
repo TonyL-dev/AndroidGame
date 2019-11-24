@@ -9,6 +9,9 @@ import java.util.List;
  */
 class Deck {
 
+    /**
+     * the deck of cards
+     */
     private List<Card> deck;
 
     /**
@@ -20,9 +23,9 @@ class Deck {
     }
 
     /**
-     * Add 52 cards to the Deck
+     * Add 52 cards to the Deck and then shuffle them
      *
-     * @return a list of Cards
+     * @return a list of shuffled Cards
      */
     private List<Card> createCards() {
         for (int denomination = 2; denomination <= 14; denomination++) {
@@ -65,6 +68,10 @@ class Deck {
         return value;
     }
 
+    /**
+     * Return the number of cards in the deck
+     * @return number of cards in the deck
+     */
     int numOfCards(){
         return deck.size();
     }

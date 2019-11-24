@@ -1,23 +1,15 @@
-package com.example.game.WarGame;
+package com.example.game;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.ChooseGame;
-import com.example.game.Player;
-import com.example.game.PlayerDataBase;
-import com.example.game.R;
+import com.example.game.WarGame.WarGameActivity;
 
-/**
- * WargameEndScreenActivity where displays endgame result
- */
-public class WarGameEndScreenActivity extends AppCompatActivity {
-
+public class EndScreenActivity extends AppCompatActivity {
     /**
      * Player object
      */
@@ -34,16 +26,20 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
     double timeInSeconds;
 
     /**
-     * Sets up the end screen
+     * sets up the screen that displays the end of game stats
      * @param savedInstanceState a Bundle object
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_war_game_end_screen);
+        setContentView(R.layout.activity_end_screen);
 
-        Bundle bundle = getIntent().getExtras();
-        String stats = bundle.getString("points");
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        newPlayer = (Player) bundle.getSerializable("player");
+
+        String stats = bundle.getString("points"); //result of the previous game played including points
+
         newPlayer = (Player) bundle.getSerializable("player");
         playerDataBase = new PlayerDataBase(this);
         timeInSeconds = (double) bundle.getSerializable("time");
@@ -59,24 +55,12 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
         }
 
+        newPlayer.subtractTime();
         playerDataBase.storePlayerData(newPlayer);
     }
 
     /**
-     * starts the next level of war game - 3 players
-     * @param view a View object
-     */
-    public void startNewWarGame(View view){
-        Intent intent = new Intent(this, WarGameActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("player", newPlayer);
-        bundle.putSerializable("numPlayers", 3);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
-
-    /**
-     * Goes to the Choose Game menu
+     * Sets up the view to go to the Choose Game menu
      * @param view a View object
      */
     public void goToMainMenu(View view){
@@ -88,5 +72,4 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-
 }

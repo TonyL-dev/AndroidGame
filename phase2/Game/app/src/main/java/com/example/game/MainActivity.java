@@ -12,22 +12,34 @@ import com.example.game.SudokuGame.SudokuActivity;
 import com.example.game.WarGame.WarGameActivity;
 
 /**
- *The MainActivity class where player is created or logs in to play the games
+ * The MainActivity class where player is created or logs in to play the games
  */
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Customizable features for the Player object
+     */
     private String username, password, colour, multiplier, backColour, prevUser, prevPassword;
 
+    /**
+     * Input for the customizable features for the Player object by the user
+     */
     private EditText userNameInput, passwordInput, previousUserNameInput, previousPasswordInput,
             colourInput, scoreMultiplier, backColourText;
 
+    /**
+     * Player object
+     */
     private Player newPlayer;
 
+    /**
+     * Player database where the player object will be stored and accessed after logging out
+     */
     private PlayerDataBase playerDataBase;
 
     /**
-     *Created on run. Looks for input to create player.
+     * Created on run. Looks for input to create player.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *Creates a Player object that the user will play as throughout each game. Will play the
-     *PictureGame first and then continue with the other games.
-     *
+     * Creates a Player object that the user will play as throughout each game. Will play the
+     * PictureGame first and then continue with the other games.
+     * <p>
      * Learned how to pass information from one game level to the next from
      * https://developer.android.com/reference/android/os/Bundle
-     *
      */
     public void createPlayer(View view) {
+
         username = userNameInput.getText().toString();
         password = passwordInput.getText().toString();
         colour = colourInput.getText().toString();
@@ -61,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         backColour = backColourText.getText().toString();
         newPlayer = new Player(username, password, colour, multiplier, backColour);
         playerDataBase.storePlayerData(newPlayer);
+
         ((EditText) findViewById(R.id.userNameInput)).setText("");
         ((EditText) findViewById(R.id.passwordInput)).setText("");
         ((EditText) findViewById(R.id.colourInput)).setText("");
@@ -79,75 +92,95 @@ public class MainActivity extends AppCompatActivity {
      * previously created or not. If it is a previous Player, they will continue where they left off
      * as the Player data is saved locally.
      */
-    public void checkPlayer(View view)
-    {
+
+    public void checkPlayer(View view) {
         prevUser = previousUserNameInput.getText().toString();
         prevPassword = previousPasswordInput.getText().toString();
         ((EditText) findViewById(R.id.userNameInput2)).setText("");
         ((EditText) findViewById(R.id.passwordInput2)).setText("");
 
-        String [] playerInfo;
+        String[] playerInfo;
 
-        if(!(prevUser.equals("")&&prevPassword.equals(""))) {
+        if (!(prevUser.equals("") && prevPassword.equals(""))) {
             playerInfo = playerDataBase.verify(prevUser);
 
             if (prevUser.equals(playerInfo[0]) && prevPassword.equals(playerInfo[1])) {
                 newPlayer = playerDataBase.getPlayer(prevUser);
-
-                if (newPlayer.getGameNum() == 0){
-                    startChooseGame();
-                } else if (newPlayer.getGameNum() == 1) {
-                    startPictureGame();
-                } else if (newPlayer.getGameNum() == 2) {
-                    startWarGame();
-                } else
-                    startSudokuGame();
+                startingPosition();
             }
         }
     }
 
     /**
-     * If a Player's game number is 0, then the player will start at the ChooseGame activity.
+     * Determines where a player should start based on which game they logged off on.
      */
-    public void startChooseGame(){
-        Intent intent = new Intent(this, ChooseGame.class);
+    public void startingPosition(){
+        Intent intent;
+        if (newPlayer.getGameNum() == 0) {
+            intent = new Intent(this, ChooseGame.class);
+        } else if (newPlayer.getGameNum() == 1) {
+            intent = new Intent(this, PictureGameActivity.class);
+        } else if (newPlayer.getGameNum() == 2) {
+            intent = new Intent(this, WarGameActivity.class);
+        } else {
+            intent = new Intent(this, SudokuActivity.class);
+        }
+
         Bundle bundle = new Bundle();
         bundle.putSerializable("player", newPlayer);
         intent.putExtras(bundle);
         startActivity(intent);
+
     }
 
     /**
-     * If a Player's game number is 1, then the player will start at the PictureActivity.
+     * Brings up the pop-up menu where a new Player object can be created.
      */
-    public void startPictureGame(){
-        Intent intent = new Intent(this, PictureGameActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("player", newPlayer);
-        intent.putExtras(bundle);
-        startActivity(intent);
+    public void createAccount(View view) {
+        findViewById(R.id.shadowView).bringToFront();
+        findViewById(R.id.accountView).bringToFront();
+
+        findViewById(R.id.colourInput).bringToFront();
+        findViewById(R.id.backColour).bringToFront();
+        findViewById(R.id.userNameInput).bringToFront();
+        findViewById(R.id.passwordInput).bringToFront();
+        findViewById(R.id.scoreMultiply).bringToFront();
+        findViewById(R.id.button).bringToFront();
+        findViewById(R.id.closeButton).bringToFront();
+
+        findViewById(R.id.colourInput).setVisibility(View.VISIBLE);
+        findViewById(R.id.backColour).setVisibility(View.VISIBLE);
+        findViewById(R.id.userNameInput).setVisibility(View.VISIBLE);
+        findViewById(R.id.passwordInput).setVisibility(View.VISIBLE);
+        findViewById(R.id.scoreMultiply).setVisibility(View.VISIBLE);
+        findViewById(R.id.button).setVisibility(View.VISIBLE);
+
+        findViewById(R.id.button2).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.shadowView).setVisibility(View.VISIBLE);
+        findViewById(R.id.accountView).setVisibility(View.VISIBLE);
+
+        findViewById(R.id.closeButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.createButton).setVisibility(View.INVISIBLE);
     }
 
     /**
-     * If a Player's game number is 2, then the player will start at the WarGameActivity.
+     * Closes pop-up menu.
      */
-    public void startWarGame(){
-        Intent intent = new Intent(this, WarGameActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("player", newPlayer);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
+    public void close(View view){
 
-    /**
-     * If a Player's game number is 1, then the player will start at the SudokuActivity.
-     */
-    public void startSudokuGame(){
-        Intent intent = new Intent(this, SudokuActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("player", newPlayer);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
+        findViewById(R.id.colourInput).setVisibility(View.INVISIBLE);
+        findViewById(R.id.backColour).setVisibility(View.INVISIBLE);
+        findViewById(R.id.userNameInput).setVisibility(View.INVISIBLE);
+        findViewById(R.id.passwordInput).setVisibility(View.INVISIBLE);
+        findViewById(R.id.scoreMultiply).setVisibility(View.INVISIBLE);
+        findViewById(R.id.button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.closeButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.button2).setVisibility(View.VISIBLE);
 
+        findViewById(R.id.shadowView).setVisibility(View.INVISIBLE);
+        findViewById(R.id.accountView).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.createButton).setVisibility(View.VISIBLE);
+    }
 }
