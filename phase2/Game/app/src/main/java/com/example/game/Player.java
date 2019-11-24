@@ -291,7 +291,7 @@ public class Player implements Serializable {
         double totalGameTime = 0;
         for (double gameTime : time)
             totalGameTime += gameTime;
-        return "\nYou have " + getPoints() + " points now." +
+        return "\nYou have " + getPoints() + " total points now." +
                 "\nIn total you have taken " + df.format((totalGameTime)) + " seconds! ";
     }
 }

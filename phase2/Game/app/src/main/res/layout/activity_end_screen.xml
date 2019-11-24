@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WarGame.WarGameEndScreenActivity">
+    tools:context=".EndScreenActivity">
 
     <TextView
         android:id="@+id/endGameStats"
@@ -25,11 +25,11 @@
         tools:text="@tools:sample/date/ddmmyy" />
 
     <Button
-        android:id="@+id/playNextLevel"
+        android:id="@+id/chooseNewGame"
         android:layout_width="193dp"
         android:layout_height="61dp"
-        android:onClick="startNewWarGame"
-        android:text="Play Next Level"
+        android:onClick="goToMainMenu"
+        android:text="Choose Next Game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.912"
@@ -37,16 +37,4 @@
         app:layout_constraintTop_toBottomOf="@+id/endGameStats"
         app:layout_constraintVertical_bias="0.265" />
 
-    <Button
-        android:id="@+id/chooseNewGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="goToMainMenu"
-        android:text="Choose New Game "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.932"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/endGameStats"
-        app:layout_constraintVertical_bias="0.59" />
 </androidx.constraintlayout.widget.ConstraintLayout>
