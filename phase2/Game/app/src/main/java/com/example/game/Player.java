@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-//temp
-
 /**
  * The Player that plays through the games.
  */
@@ -181,6 +179,15 @@ public class Player implements Serializable {
      */
     public double getTime(int gameNum) {
         return this.time.get(gameNum - 1);
+    }
+
+    /**
+     * get the time list size
+     *
+     * @return time.size()
+     */
+    public double getTime() {
+        return this.time.size();
     }
 
     /**

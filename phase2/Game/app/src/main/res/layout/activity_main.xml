@@ -222,7 +222,7 @@
         android:layout_height="52dp"
         android:background="#FF9ABDFF"
         android:fontFamily="@font/press_start_2p"
-        android:onClick="closePopUp"
+        android:onClick="close"
         android:text="X"
         android:textSize="10sp"
         android:visibility="invisible"

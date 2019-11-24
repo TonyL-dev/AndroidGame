@@ -94,7 +94,7 @@
         android:id="@+id/PlayPicture"
         android:layout_width="192dp"
         android:layout_height="60dp"
-        android:layout_marginStart="115dp"
+        android:layout_marginStart="105dp"
         android:background="#9ABDFF"
         android:fontFamily="@font/press_start_2p"
         android:onClick="startPictureGame"

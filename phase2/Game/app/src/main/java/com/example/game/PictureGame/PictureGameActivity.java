@@ -25,17 +25,30 @@ import java.text.DecimalFormat;
  */
 public class PictureGameActivity extends AppCompatActivity {
 
+    /** PictureGame object*/
     private PictureGame pictureGame;
+
+    /** TextView for where the title and list of objects will be displayed*/
     private TextView textView, textView2;
+
+    /** Initially the player starts on the first level*/
     private int level = 1;
 
-    //player
+    /** Player object*/
     private Player newPlayer;
-    private int points;
+
+    /** PlayerDataBase where the player is stored*/
     private PlayerDataBase playerDataBase;
-    long start = System.nanoTime();
+
+    /** How the game's time for each level is determined. The timer starts at initialization.*/
+    private long start = System.nanoTime();
+
+    /** Decimal Format for the number of seconds rounded to two decimal places.*/
     private DecimalFormat df = new DecimalFormat("####0.00");
 
+    /**
+     * Created on run. Sets up the game board to have the appropriate pictures for the level.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,61 +101,23 @@ public class PictureGameActivity extends AppCompatActivity {
                 // if player finds an image
                 // find the updated set of fruits to look for
                 String newFruits = pictureGame.foundHiddenImage(fruit).toString();
-                points++;
 
                 // set textview to those new fruits
                 if (newFruits.equals("")) {
                     // if the player has won the game
                     if (level == 3) { // end the pictureGame
-                        long end = System.nanoTime();
-                        long time = end - start;
-                        double timeInSeconds = (double) time / 1_000_000_000;
+                        determineTime(view);
 
-                        System.out.println(timeInSeconds);
-                        System.out.println(newPlayer.getTime(level-2));
-                        System.out.println(newPlayer.getTime(level-1));
-
-                        double temp = timeInSeconds - newPlayer.getTime(level-2)-
-                                (newPlayer.getTime(level-1))-((level-1)*3);
-
-                        newPlayer.addTime(temp);
-
-                        view.setVisibility(View.INVISIBLE);
-                        findViewById(R.id.textView2).setVisibility(View.INVISIBLE);
-
-                        textView.setText("You have " + newPlayer.getPoints() + " points now.\n\n"
-                                + "This round took you " + (df.format(newPlayer.getTime(level))) + " seconds.");
-
-                        System.out.println(newPlayer.getTime(level));
                         //starts the next game
-                        Intent intent = new Intent(this, PictureEndScreenActivity.class);
+                        Intent intent = new Intent(this,
+                                PictureEndScreenActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("player", newPlayer);
                         intent.putExtras(bundle);
                         startActivity(intent);
 
                     } else { // if the PictureGame has more levels
-                        view.setVisibility(View.INVISIBLE);
-                        long end = System.nanoTime();
-                        long time = end - start;
-                        double timeInSeconds = (double) time / 1_000_000_000;
-
-                        if(level!=1)
-                        {
-                            newPlayer.addTime((timeInSeconds-(newPlayer.
-                                    getTime(level-1))-(level-1)*3));
-                            textView.setText("You have " + newPlayer.getPoints() + " points now.\n\n"
-                                    + "This round took you " + df.format((newPlayer.getTime(level))) + " seconds.");
-                        }
-                        else
-                        {
-                            newPlayer.addTime(timeInSeconds);
-                            textView.setText("You have " + newPlayer.getPoints() + " points now.\n\n"
-                                    + "This round took you " + df.format(timeInSeconds) + " seconds.");
-                        }
-
-                        System.out.println(newPlayer.getTime(level));
-                        findViewById(R.id.textView2).setVisibility(View.INVISIBLE);
+                        determineTime(view);
                         level++;
                         nextLevel();
                     }
@@ -154,11 +129,35 @@ public class PictureGameActivity extends AppCompatActivity {
                 }
             } else {
                 newPlayer.subtractPoints();
-                points--;
             }
         }
     }
 
+    /**
+     * Determines the time taken for the level that was just completed.
+     */
+    private void determineTime(View view){
+        view.setVisibility(View.INVISIBLE);
+        findViewById(R.id.textView2).setVisibility(View.INVISIBLE);
+        long end = System.nanoTime();
+        long time = end - start;
+        double timeInSeconds = (double) time / 1_000_000_000;
+        double temp=timeInSeconds;
+
+        for(int i=0;i<newPlayer.getTime();i++)
+        {
+            temp-= newPlayer.getTime(level-(i+1));
+        }
+
+        temp-=(level-1)*3;
+        newPlayer.addTime(temp);
+
+        textView.setText("You have " + newPlayer.getPoints() + " points now.\n\n"
+                + "This round took you " + (df.format(newPlayer.getTime(level))) + " seconds.");
+    }
+    /**
+     * Sets the game board based on which level the player is on.
+     */
     private void setGameBoard() {
 
         if (level == 2) {
@@ -230,6 +229,9 @@ public class PictureGameActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * iterates the game to the next level. The transition also takes 3 seconds.
+     */
     private void nextLevel() {
         new Handler().postDelayed(new Runnable() {
             public void run() {

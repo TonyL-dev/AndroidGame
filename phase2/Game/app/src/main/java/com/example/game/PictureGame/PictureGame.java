@@ -155,6 +155,9 @@ class PictureGame {
         return picsToFind();
     }
 
+    /**
+     * Returns the pictures in the Picture list
+     */
     Picture[] getPictures() {
         return pictures;
     }
