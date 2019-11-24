@@ -51,7 +51,7 @@ public class ChooseGame extends AppCompatActivity {
     }
 
     /**
-     * If a user chooses to play PictureGame, then the player will start at the PictureActivity.
+     * If a user chooses to play PictureGame, then the player will start at the PictureGameActivity.
      */
     public void startPictureGame(View view){
         Intent intent = new Intent(this, PictureGameActivity.class);
@@ -62,7 +62,7 @@ public class ChooseGame extends AppCompatActivity {
     }
 
     /**
-     * If a user chooses to play WarGame, then the player will start at the PictureActivity.
+     * If a user chooses to play WarGame, then the player will start at the WarGameActivity.
      */
     public void startWarGame(View view){
         Intent intent = new Intent(this, WarGameActivity.class);
@@ -74,7 +74,7 @@ public class ChooseGame extends AppCompatActivity {
     }
 
     /**
-     * If a user chooses to play SudukoGame, then the player will start at the PictureActivity.
+     * If a user chooses to play SudukoGame, then the player will start at the Choose_Sudoku_Game.
      */
     public void startSudokuGame(View view){
         Intent intent = new Intent(this, SudokuActivity.class);
