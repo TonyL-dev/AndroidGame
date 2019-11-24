@@ -101,7 +101,6 @@ public class WarGameActivity extends AppCompatActivity {
         long end = System.nanoTime();
         long time = end - start;
         double timeInSeconds = (double) time / 1_000_000_000;
-        int temp = game.getPlayerA().getScore();
         Intent intent;
         Bundle bundle = new Bundle();
         //Choosing whether the game needs to go to the next level screen or end game screen
@@ -112,7 +111,6 @@ public class WarGameActivity extends AppCompatActivity {
         }
         bundle.putSerializable("points", game.toString());
         bundle.putSerializable("player", newPlayer);
-        bundle.putSerializable("temp", temp);
         bundle.putSerializable("time", timeInSeconds);
         bundle.putSerializable("numPlayers", game.getNumOfPlayers());
         intent.putExtras(bundle);
