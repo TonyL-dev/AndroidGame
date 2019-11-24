@@ -70,7 +70,7 @@ public class Player implements Serializable {
             this.multiplier = Integer.parseInt(multiplier);
 
         if (backColour.equalsIgnoreCase("blue"))
-            this.backColour = 0xAA00BFFF;
+            this.backColour = 0xFF0C3688;
         else if (backColour.equalsIgnoreCase("purple"))
             this.backColour = 0xAA9900FF;
         else
