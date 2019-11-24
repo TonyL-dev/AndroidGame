@@ -103,6 +103,7 @@ class PictureGame {
         }
     }
 
+
     /**
      * return string of remaining Picture objects to be found
      */

@@ -13,6 +13,8 @@ import com.example.game.Player;
 import com.example.game.PlayerDataBase;
 import com.example.game.R;
 
+import android.os.Handler;
+
 import java.text.DecimalFormat;
 
 /**
@@ -66,6 +68,7 @@ public class PictureGameActivity extends AppCompatActivity {
 
         //increments number of games
         newPlayer.addLevel(1);
+        newPlayer.resetTime();
         playerDataBase.storePlayerData(newPlayer);
 
     }
@@ -95,16 +98,51 @@ public class PictureGameActivity extends AppCompatActivity {
                         long time = end - start;
                         double timeInSeconds = (double) time / 1_000_000_000;
 
+                        System.out.println(timeInSeconds);
+                        System.out.println(newPlayer.getTime(level-2));
+                        System.out.println(newPlayer.getTime(level-1));
+
+                        double temp = timeInSeconds - newPlayer.getTime(level-2)-
+                                (newPlayer.getTime(level-1))-((level-1)*3);
+
+                        newPlayer.addTime(temp);
+
+                        view.setVisibility(View.INVISIBLE);
+                        findViewById(R.id.textView2).setVisibility(View.INVISIBLE);
+
+                        textView.setText("You have " + newPlayer.getPoints() + " points now.\n\n"
+                                + "This round took you " + (df.format(newPlayer.getTime(level))) + " seconds.");
+
+                        System.out.println(newPlayer.getTime(level));
                         //starts the next game
-                        playerDataBase.storePlayerData(newPlayer);
                         Intent intent = new Intent(this, PictureEndScreenActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("player", newPlayer);
-                        bundle.putSerializable("points", points);
-                        bundle.putSerializable("time", timeInSeconds);
                         intent.putExtras(bundle);
                         startActivity(intent);
+
                     } else { // if the PictureGame has more levels
+                        view.setVisibility(View.INVISIBLE);
+                        long end = System.nanoTime();
+                        long time = end - start;
+                        double timeInSeconds = (double) time / 1_000_000_000;
+
+                        if(level!=1)
+                        {
+                            newPlayer.addTime((timeInSeconds-(newPlayer.
+                                    getTime(level-1))-(level-1)*3));
+                            textView.setText("You have " + newPlayer.getPoints() + " points now.\n\n"
+                                    + "This round took you " + df.format((newPlayer.getTime(level))) + " seconds.");
+                        }
+                        else
+                        {
+                            newPlayer.addTime(timeInSeconds);
+                            textView.setText("You have " + newPlayer.getPoints() + " points now.\n\n"
+                                    + "This round took you " + df.format(timeInSeconds) + " seconds.");
+                        }
+
+                        System.out.println(newPlayer.getTime(level));
+                        findViewById(R.id.textView2).setVisibility(View.INVISIBLE);
                         level++;
                         nextLevel();
                     }
@@ -193,9 +231,14 @@ public class PictureGameActivity extends AppCompatActivity {
     }
 
     private void nextLevel() {
-        pictureGame = new PictureGame(newPlayer, level);
-        setGameBoard();
-        textView.setText(pictureGame.picsToFind().toString());
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                pictureGame = new PictureGame(newPlayer, level);
+                setGameBoard();
+                textView.setText(pictureGame.picsToFind().toString());
+                findViewById(R.id.textView2).setVisibility(View.VISIBLE);
+            }
+        }, 3000);
 
     }
 }

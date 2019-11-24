@@ -132,7 +132,7 @@ public class Player implements Serializable {
      *
      * @return points
      */
-    int getPoints() {
+    public int getPoints() {
         return this.points;
     }
 
@@ -179,7 +179,7 @@ public class Player implements Serializable {
      *
      * @return time.get(gameNum-1)
      */
-    double getTime(int gameNum) {
+    public double getTime(int gameNum) {
         return this.time.get(gameNum - 1);
     }
 
@@ -264,6 +264,13 @@ public class Player implements Serializable {
     /**
      * reset game statistics after a Player finishes all 3 games
      */
+    public void resetTime() {
+        this.time.clear();
+    }
+
+    /**
+     * reset game statistics after a Player finishes all 3 games
+     */
     public void reset() {
         this.time.clear();
         this.points = 0;
@@ -281,12 +288,10 @@ public class Player implements Serializable {
      * String representation of the Player
      */
     public String toString() {
-        int gameNum = this.time.size();
         double totalGameTime = 0;
         for (double gameTime : time)
             totalGameTime += gameTime;
         return "\nYou have " + getPoints() + " points now." +
-                "\n\nThis game took you " + df.format(getTime(gameNum)) + " seconds." +
-                "\nIn total you have taken " + df.format(totalGameTime) + " seconds! ";
+                "\nIn total you have taken " + df.format((totalGameTime)) + " seconds! ";
     }
 }

@@ -29,6 +29,16 @@ public class PictureEndScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        try
+        {
+            Thread.sleep(3000);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_end_screen);
 
@@ -36,10 +46,6 @@ public class PictureEndScreenActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
         playerDataBase = new PlayerDataBase(this);
-        points = (int) bundle.getSerializable("points");
-        timeInSeconds = (double) bundle.getSerializable("time");
-
-        newPlayer.addTime(timeInSeconds);
 
         textView = findViewById(R.id.endGameStatsPic);
         textView.setTextSize(23);
@@ -55,9 +61,11 @@ public class PictureEndScreenActivity extends AppCompatActivity {
         }
 
         //If a Player backs out before continuing to the next game, the data will not be saved
-        newPlayer.subtractPoints(points);
-        newPlayer.subtractTime();
-        playerDataBase.storePlayerData(newPlayer);
+//        newPlayer.subtractPoints(points);
+//        newPlayer.subtractTime();
+//        playerDataBase.storePlayerData(newPlayer);
+
+        newPlayer.reset();
 
         /** If a Player backs out before continuing to the next game, the data will not be saved */
         playerDataBase.storePlayerData(newPlayer);
@@ -67,8 +75,8 @@ public class PictureEndScreenActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        newPlayer.reset(); // resets Player statistics
-                        playerDataBase.storePlayerData(newPlayer);
+//                        newPlayer.reset(); // resets Player statistics
+//                        playerDataBase.storePlayerData(newPlayer);
                         Intent intent = new Intent(v.getContext(), ChooseGame.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("player", newPlayer);
