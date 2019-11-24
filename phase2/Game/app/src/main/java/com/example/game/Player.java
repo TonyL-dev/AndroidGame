@@ -78,8 +78,8 @@ public class Player implements Serializable {
 
         if (colour.equalsIgnoreCase("green"))
             this.colour = 0xFF00FF00;
-        else if (colour.equalsIgnoreCase("red"))
-            this.colour = 0xAAFF0000;
+        else if (colour.equalsIgnoreCase("orange"))
+            this.colour = 0xAAFF8000;
         else
             this.colour = 0;
     }
