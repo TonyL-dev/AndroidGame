@@ -68,12 +68,14 @@ public class MainActivity extends AppCompatActivity {
         ((EditText) findViewById(R.id.scoreMultiply)).setText("");
         ((EditText) findViewById(R.id.backColour)).setText("");
 
-        close();
+        close(); // then close the popup window
+
 //        Intent intent = new Intent(this, ChooseGame.class);
 //        Bundle bundle = new Bundle();
 //        bundle.putSerializable("player", newPlayer);
 //        intent.putExtras(bundle);
 //        startActivity(intent);
+
     }
 
     /**
@@ -153,6 +155,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createAccount(View view) {
+        // runs when user wants to create a new account
+        // creates the popup window
         findViewById(R.id.shadowView).bringToFront();
         findViewById(R.id.accountView).bringToFront();
 
@@ -181,10 +185,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void closePopUp(View view){
+        // runs when user presses close on the popup
         close();
     }
 
     private void close(){
+        // closes the popupwindow
 
         findViewById(R.id.colourInput).setVisibility(View.INVISIBLE);
         findViewById(R.id.backColour).setVisibility(View.INVISIBLE);
