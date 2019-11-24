@@ -9,10 +9,24 @@ import java.util.ArrayList;
  */
 public class WarGame {
 
+    /**
+     * The last n cards played where n is the number of players
+     */
     private Card[] lastCards;
+
+    /**
+     * the user
+     */
     private Player newPlayer;
+
+    /**
+     * the n number of people playing
+     */
     private WarPlayer[] players;
 
+    /**
+     * the number of players
+     */
     private int numOfPlayers;
 
     /**
@@ -32,6 +46,7 @@ public class WarGame {
             players[i] = new WarPlayer();
         }
 
+        //the distribution of cards (in the 3 players case it will be uneven so some cards won't be used
         int cardsPerPlayer = deckOfCards.numOfCards() / numOfPlayers;
         for (WarPlayer player : players) {
             for (int j = 0; j < cardsPerPlayer; j++) {
@@ -63,29 +78,37 @@ public class WarGame {
         return false;
     }
 
-    int getNumOfPlayers(){
+    /**
+     * Return the number of players
+     *
+     * @return returns the number of players
+     */
+    int getNumOfPlayers() {
         return this.numOfPlayers;
     }
 
     /**
-     * Record the last card of playerA and playerB
+     * Record the last n cards played where n is the number of players
      *
+     * @param lastCardsPlayed list of n cards
      */
     private void setLastCardsPlayed(Card[] lastCardsPlayed) {
         System.arraycopy(lastCardsPlayed, 0, lastCards, 0, lastCardsPlayed.length);
     }
 
     /**
-     * @return lastCards
+     * Return the last cards that were played
+     *
+     * @return the last cards that were played
      */
     Card[] getLastCardsPlayed() {
         return lastCards;
     }
 
     /**
-     * get playerA
+     * Return the first player (the user)
      *
-     * @return playerA
+     * @return Return the first player (a.k.a the user)
      */
     WarPlayer getPlayerA() {
         return players[0];
@@ -100,7 +123,8 @@ public class WarGame {
 
         Card[] lastCardsPlayed = new Card[numOfPlayers];
 
-        for (int i = 0; i < players.length; i++){
+        //simulation of each player flipping their next card
+        for (int i = 0; i < players.length; i++) {
             lastCardsPlayed[i] = players[i].getNextCard();
             cardsInMiddle.add(lastCardsPlayed[i]);
 
@@ -109,14 +133,15 @@ public class WarGame {
         //if there's a tie
         while (tieForCards(lastCardsPlayed)) {
             //check to see if players have enough cards to continue
-            //if not, give all of their cards to the other player
+            //if not, then clear that players hand and game will end
             WarPlayer lessThan3Cards = tryGetPlayerWithLessThanThreeCards();
             if (lessThan3Cards != null) {
                 lessThan3Cards.getHand().clear();
                 return;
             }
 
-            for (int i = 0; i < players.length; i++){
+            //simulation of flipping 2 extra cards
+            for (int i = 0; i < players.length; i++) {
                 cardsInMiddle.add(players[i].getNextCard());
                 cardsInMiddle.add(players[i].getNextCard());
 
@@ -127,12 +152,18 @@ public class WarGame {
         }
         setLastCardsPlayed(lastCardsPlayed);
 
+        //determining who gets all the cards played for the round
         int highestCardIndex = largestCard(lastCardsPlayed);
         players[highestCardIndex].addCards(cardsInMiddle);
         players[highestCardIndex].addScore(cardsInMiddle.size() / numOfPlayers);
     }
 
-    private WarPlayer tryGetPlayerWithLessThanThreeCards(){
+    /**
+     * Check to see if there's any player that has < 3 cards in their hand
+     *
+     * @return null if nobody otherwise return the player that has < 3
+     */
+    private WarPlayer tryGetPlayerWithLessThanThreeCards() {
         for (WarPlayer player : players) {
             if (player.getHand().size() < 3)
                 return player;
@@ -141,7 +172,13 @@ public class WarGame {
 
     }
 
-    private boolean tieForCards(Card[] cards){
+    /**
+     * Check to see if there is a tie among the last cards played
+     *
+     * @param cards the cards played
+     * @return whether or not there is a tie
+     */
+    private boolean tieForCards(Card[] cards) {
         int largest = largestCard(cards);
 
         int count = 0;
@@ -154,9 +191,14 @@ public class WarGame {
         return count > 1;
     }
 
-    // Method to find maximum in Card[]
-    private int largestCard(Card[] cards)
-    {
+    /**
+     * Find the position of the highest card
+     * Code is from: https://www.geeksforgeeks.org/c-program-find-largest-element-array/
+     *
+     * @param cards the last cards played
+     * @return the index of the highest card played
+     */
+    private int largestCard(Card[] cards) {
         int i;
 
         // Initialize maximum element
@@ -171,9 +213,16 @@ public class WarGame {
         return max;
     }
 
-    // Method to find maximum in arr[]
-    private int mostNumOfCards(WarPlayer[] players)
-    {
+    /**
+     * Finding who won the game based on who has the most number of cards left: if there is a tie
+     * for the highest it will select one of them to be the winner (equivalent of doing rock-paper-
+     * scissors)
+     * Code is from: https://www.geeksforgeeks.org/c-program-find-largest-element-array/
+     *
+     * @param players the current players playing
+     * @return the index of the player with the highest number of cards
+     */
+    private int mostNumOfCards(WarPlayer[] players) {
         int i;
 
         // Initialize maximum element
@@ -189,26 +238,14 @@ public class WarGame {
     }
 
 
-
     /**
-     * Prints out who won the War Game and adds points to the Player
+     * Prints out who won the War Game and adds points to the user
      *
      * @return String result of the game
      */
     @Override
     public String toString() {
         newPlayer.addPoints(players[0].getScore());
-//        if (playerA.getScore() < playerB.getScore()) {
-//            return ("Player B won!!! With a score of " + playerB.getScore() *
-//                    newPlayer.getMultiplier() + "\nYou have a score of " + playerA.getScore()
-//                    * newPlayer.getMultiplier());
-//        } else if (playerA.getScore() > playerB.getScore()) {
-//            return ("You won!!! With a score of " + playerA.getScore() * newPlayer.getMultiplier()
-//                    + "\nPlayer B has a score of " + playerB.getScore() * newPlayer.getMultiplier());
-//        } else {
-//            return ("TIED---");
-//        }
-
         WarPlayer winner = players[mostNumOfCards(players)];
 
         if (winner.getScore() == players[0].getScore())

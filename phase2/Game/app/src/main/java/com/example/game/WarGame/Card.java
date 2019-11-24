@@ -5,16 +5,27 @@ package com.example.game.WarGame;
  */
 public class Card {
 
+    /**
+     * the denomination of the card
+     */
     private int denomination;
+
+    /**
+     * the suit of the card
+     */
     private Suit suit;
+
+    /**
+     * the shorthand version of the card name
+     */
     private String cardText;
 
     /**
      * construct Card with suit, denomination and cardText
      *
-     * @param suit
-     * @param denomination
-     * @param cardText
+     * @param suit card suit
+     * @param denomination card denomination
+     * @param cardText the shortened text version of the card
      */
     Card(Suit suit, int denomination, String cardText) {
         this.suit = suit;

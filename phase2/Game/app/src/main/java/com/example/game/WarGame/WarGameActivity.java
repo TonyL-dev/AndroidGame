@@ -13,18 +13,45 @@ import com.example.game.PlayerDataBase;
 import com.example.game.R;
 
 /**
- *The WarGameActivity class where player plays WarGame
+ * The WarGameActivity class where player plays WarGame
  */
 public class WarGameActivity extends AppCompatActivity {
 
+    /**
+     * Player object
+     */
     private Player newPlayer;
+
+    /**
+     * Wargame object
+     */
     private WarGame game;
-    private TextView cardsA, cardsB, cardsC, cardPlayedA, cardPlayedB,cardPlayedC;
+
+    /**
+     * Textview for the different cards and the counts of remaining cards
+     */
+    private TextView cardsA, cardsB, cardsC, cardPlayedA, cardPlayedB, cardPlayedC;
+
+    /**
+     * PlayerDataBase where the player is stored
+     */
     PlayerDataBase playerDataBase;
+
+    /**
+     * Current number of players playing
+     */
     private int numOfPlayers;
 
+    /**
+     * How the game's time for each level is determined. The timer starts at initialization.
+     */
     private long start = System.nanoTime();
 
+    /**
+     * Created on run. Sets up the game to have the appropriate cards displayed
+     *
+     * @param savedInstanceState a Bundle object
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +67,7 @@ public class WarGameActivity extends AppCompatActivity {
 
         playerDataBase.storePlayerData(newPlayer);
 
-        game = new WarGame(newPlayer,numOfPlayers);
+        game = new WarGame(newPlayer, numOfPlayers);
 
         cardsA = findViewById(R.id.cardRemainingA);
         cardsA.setText("Cards remaining:" + game.getCardsRemaining(0));

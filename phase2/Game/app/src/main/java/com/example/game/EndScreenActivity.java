@@ -10,14 +10,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.WarGame.WarGameActivity;
 
 public class EndScreenActivity extends AppCompatActivity {
+    /**
+     * Player object
+     */
     Player newPlayer;
 
+    /**
+     * PlayerDataBase where the player is stored
+     */
     PlayerDataBase playerDataBase;
 
     int temp;
 
+    /**
+     * The time in seconds
+     */
     double timeInSeconds;
 
+    /**
+     * sets up the screen that displays the end of game stats
+     * @param savedInstanceState a Bundle object
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +64,10 @@ public class EndScreenActivity extends AppCompatActivity {
         playerDataBase.storePlayerData(newPlayer);
     }
 
+    /**
+     * Sets up the view to go to the Choose Game menu
+     * @param view a View object 
+     */
     public void goToMainMenu(View view){
         newPlayer.reset(); // resets Player statistics
         playerDataBase.storePlayerData(newPlayer);

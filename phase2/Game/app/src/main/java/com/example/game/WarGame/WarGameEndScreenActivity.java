@@ -18,14 +18,28 @@ import com.example.game.R;
  */
 public class WarGameEndScreenActivity extends AppCompatActivity {
 
+    /**
+     * Player object
+     */
     Player newPlayer;
 
+    /**
+     * PlayerDataBase where the player is stored
+     */
     PlayerDataBase playerDataBase;
+
 
     int temp;
 
+    /**
+     * The time in seconds
+     */
     double timeInSeconds;
 
+    /**
+     * Sets up the end screen
+     * @param savedInstanceState a Bundle object
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +69,10 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
         playerDataBase.storePlayerData(newPlayer);
     }
 
+    /**
+     * starts the next level of war game - 3 players
+     * @param view a View object
+     */
     public void startNewWarGame(View view){
         Intent intent = new Intent(this, WarGameActivity.class);
         Bundle bundle = new Bundle();
@@ -64,6 +82,10 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Goes to the Choose Game menu
+     * @param view a View object
+     */
     public void goToMainMenu(View view){
         newPlayer.reset(); // resets Player statistics
         playerDataBase.storePlayerData(newPlayer);
