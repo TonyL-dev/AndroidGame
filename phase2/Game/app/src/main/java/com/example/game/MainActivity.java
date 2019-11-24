@@ -68,12 +68,11 @@ public class MainActivity extends AppCompatActivity {
         ((EditText) findViewById(R.id.scoreMultiply)).setText("");
         ((EditText) findViewById(R.id.backColour)).setText("");
 
-        close();
-//        Intent intent = new Intent(this, ChooseGame.class);
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("player", newPlayer);
-//        intent.putExtras(bundle);
-//        startActivity(intent);
+        Intent intent = new Intent(this, ChooseGame.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("player", newPlayer);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     /**
