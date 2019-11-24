@@ -184,12 +184,12 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.createButton).setVisibility(View.INVISIBLE);
     }
 
-    public void closePopUp(View view){
+    public void closePopUp(View view) {
         // runs when user presses close on the popup
         close();
     }
 
-    private void close(){
+    private void close() {
         // closes the popupwindow
 
         findViewById(R.id.colourInput).setVisibility(View.INVISIBLE);

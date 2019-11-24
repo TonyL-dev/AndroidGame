@@ -42,18 +42,18 @@ class PictureGame {
             {"shoe", R.drawable.shoe},
             {"spoon", R.drawable.spoon}};
 
-    private Object[][] levelThree = {{"apple", R.drawable.apple},
-            {"balloon", R.drawable.balloon},
-            {"car", R.drawable.car},
-            {"cherry", R.drawable.cherry},
-            {"chair", R.drawable.chair},
-            {"fire extinguisher", R.drawable.fireextinguisher},
-            {"lady bug", R.drawable.ladybug},
-            {"tomato", R.drawable.tomato},
-            {"plate", R.drawable.plate},
-            {"rose", R.drawable.rose},
-            {"shoe", R.drawable.shoe},
-            {"spoon", R.drawable.spoon}};
+    private Object[][] levelThree = {{"38 - 33", R.drawable.five},
+            {"square root of 121", R.drawable.eleven},
+            {"21 x 2", R.drawable.fortytwo},
+            {"15 + 4", R.drawable.nineteen},
+            {"3 x 32", R.drawable.ninetysix},
+            {"63 / 9", R.drawable.seven},
+            {"2 x 37", R.drawable.seventyfour},
+            {"24 x 3", R.drawable.seventytwo},
+            {"8 x 8", R.drawable.sixtyfour},
+            {"65 / 5", R.drawable.thirteen},
+            {"square root of 144", R.drawable.twelve},
+            {"7 x 3", R.drawable.twentyone}};
 
     /**
      * Constructs a new PictureGame
