@@ -12,7 +12,6 @@ import android.content.Intent;
 import com.example.game.Player;
 import com.example.game.PlayerDataBase;
 import com.example.game.R;
-import com.example.game.WarGame.WarGameActivity;
 
 import java.text.DecimalFormat;
 
@@ -109,7 +108,6 @@ public class PictureGameActivity extends AppCompatActivity {
                         level++;
                         nextLevel();
                     }
-
                 } else {
                     // else keep playing
                     textView.setText(newFruits);
@@ -121,7 +119,6 @@ public class PictureGameActivity extends AppCompatActivity {
                 points--;
             }
         }
-
     }
 
     private void setGameBoard() {

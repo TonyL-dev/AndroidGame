@@ -3,8 +3,12 @@
     <string name="war_game">WarGame</string>
     <string name="PictureGame">PictureGame</string>
 
-    <string name="play_picture_game">Play</string>
+    <string name="play_picture_game">Login</string>
+    <string name="createaccount">create account</string>
+    <string name="create">create</string>
+
     <string name="next_game">next game</string>
+    <string name="picturegamelabel">Objects to Find</string>
     <string name="playerBcard">playerBcard</string>
     <string name="playerAcard">playerAcard</string>
     <string name="play_war_game">play round</string>
@@ -12,5 +16,9 @@
     <string name="empty_card">No card</string>
     <string name="playerAcurrentcard">Empty</string>
     <string name="playerBcurrentcard">Empty</string>
+
+    <string name="main_description">Welcome!\n\nLog in to continue where you left off.\n\nIf
+    you don\'t have an account, press the button below below to create one!</string>
+
 
 </resources>
