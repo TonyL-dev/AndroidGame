@@ -13,17 +13,16 @@ public class WarGame {
     private Player newPlayer;
     private WarPlayer[] players;
 
-    private int numOfPlayers = 2;
+    private int numOfPlayers;
 
     /**
      * construct Wargame with deck and player
      *
      * @param newPlayer who is playing Wargame
      */
-
-    //hahsdhashdhisahidashhdas
-    WarGame(Player newPlayer) {
+    WarGame(Player newPlayer, int numOfPlayers) {
         Deck deckOfCards = new Deck();
+        this.numOfPlayers = numOfPlayers;
 
         players = new WarPlayer[numOfPlayers];
         lastCards = new Card[numOfPlayers];
@@ -43,7 +42,7 @@ public class WarGame {
     }
 
     /**
-     * how many cards playerA have left
+     * how many cards this player has left
      *
      * @return playerA's hand size
      */
@@ -62,6 +61,10 @@ public class WarGame {
                 return true;
         }
         return false;
+    }
+
+    int getNumOfPlayers(){
+        return this.numOfPlayers;
     }
 
     /**
@@ -207,6 +210,9 @@ public class WarGame {
 //        }
 
         WarPlayer winner = players[mostNumOfCards(players)];
+
+        if (winner.getScore() == players[0].getScore())
+            return "YOU WON!!! With a score of " + players[0].getScore();
         return "Player" + mostNumOfCards(players) + " won!!! With a score of " + winner.getScore();
     }
 }

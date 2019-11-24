@@ -68,6 +68,7 @@ public class ChooseGame extends AppCompatActivity {
         Intent intent = new Intent(this, WarGameActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("player", newPlayer);
+        bundle.putSerializable("numPlayers", 2);
         intent.putExtras(bundle);
         startActivity(intent);
     }
