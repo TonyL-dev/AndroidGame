@@ -70,58 +70,58 @@ public class SudokuGameBoard extends View {
    * @param widthMeasureSpec
    * @param heightMeasureSpec
    */
-  @Override
-  protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-    w = MeasureSpec.getSize(widthMeasureSpec) / 9;
-    h = MeasureSpec.getSize(heightMeasureSpec) / 9;
-  }
+//  @Override
+//  protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//    w = MeasureSpec.getSize(widthMeasureSpec) / 9;
+//    h = MeasureSpec.getSize(heightMeasureSpec) / 9;
+//  }
 
   /**
    * draw 9 vertical lines.
    *
    * @param canvas
    */
-  public void drawVerticalLine(Canvas canvas) {
-    for (int i = 0; i < 9; i++) {
-      canvas.drawLine(i * w, getHeight(), i * w, 0, sPaint);
-    }
-  }
+//  public void drawVerticalLine(Canvas canvas) {
+//    for (int i = 0; i < 9; i++) {
+//      canvas.drawLine(i * w, getHeight(), i * w, 0, sPaint);
+//    }
+//  }
 
   /*
   draw horizontal lines.
    */
-  public void drawHorizontalLine(Canvas canvas) {
-    sPaint.setAntiAlias(true);
-    for (int j = 0; j < 9; j++) {
-      canvas.drawLine(0, j * h, getWidth(), j * h, sPaint);
-    }
-  }
+//  public void drawHorizontalLine(Canvas canvas) {
+//    sPaint.setAntiAlias(true);
+//    for (int j = 0; j < 9; j++) {
+//      canvas.drawLine(0, j * h, getWidth(), j * h, sPaint);
+//    }
+//  }
 
   /** draw the default number on the game board. These are the numbers that cannot be modified. */
-  public void drawDefaultNum(Canvas canvas) {
-    sPaint.setColor(Color.BLUE);
-    sPaint.setTextAlign(Paint.Align.CENTER);
-    sPaint.setTextSize(60);
-    for (int i = 0; i < 9; i++) {
-      for (int j = 0; j < 9; j++) {
-        String num = Integer.toString(sudo[i][j]);
-        if (!num.equals("0")) {
-          float x = w * j + 60;
-          float y = 89 + h * i;
-          canvas.drawText(num, x, y, sPaint);
-        }
-      }
-    }
-  }
+//  public void drawDefaultNum(Canvas canvas) {
+//    sPaint.setColor(Color.BLUE);
+//    sPaint.setTextAlign(Paint.Align.CENTER);
+//    sPaint.setTextSize(60);
+//    for (int i = 0; i < 9; i++) {
+//      for (int j = 0; j < 9; j++) {
+//        String num = Integer.toString(sudo[i][j]);
+//        if (!num.equals("0")) {
+//          float x = w * j + 60;
+//          float y = 89 + h * i;
+//          canvas.drawText(num, x, y, sPaint);
+//        }
+//      }
+//    }
+//  }
 
-  /** draw the game board. */
-  @Override
-  public void onDraw(Canvas canvas) {
-    drawHorizontalLine(canvas);
-    drawVerticalLine(canvas);
-    drawDefaultNum(canvas);
-    canvas.save();
-    super.onDraw(canvas);
-  }
+//  /** draw the game board. */
+//  @Override
+//  public void onDraw(Canvas canvas) {
+////    drawHorizontalLine(canvas);
+////    drawVerticalLine(canvas);
+//    drawDefaultNum(canvas);
+//    canvas.save();
+//    super.onDraw(canvas);
+//  }
 }

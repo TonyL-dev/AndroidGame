@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Game</string>
     <string name="war_game">WarGame</string>
-    <string name="PictureGame">PictureGame</string>
+    <string name="PictureGame" translatable="false">PictureGame</string>
 
     <string name="play_picture_game">Login</string>
     <string name="createaccount">create account</string>
@@ -19,6 +19,23 @@
 
     <string name="main_description">Welcome!\n\nLog in to continue where you left off.\n\nIf
     you don\'t have an account, press the button below below to create one!</string>
+
+
+    <string name="sudoku_welcome">Welcome to Sudoku level1</string>
+    <string name="sudoku_num_1">1</string>
+    <string name="sudoku_num_2">2</string>
+    <string name="sudoku_num_3">3</string>
+    <string name="sudoku_num_4">4</string>
+    <string name="sudoku_num_5" translatable="false">5</string>
+    <string name="sudoku_num_6">6</string>
+    <string name="sudoku_num_7">7</string>
+    <string name="sudoku_num_8">8</string>
+    <string name="sudoku_num_9">9</string>
+    <string name="sudokuchooseGame">Please Choose the level of difficulty</string>
+    <string name="sudoku_level1">Level 1</string>
+    <string name="sudoku_level2">Level 2</string>
+    <string name="sudoku_level3">Level 3</string>
+    <string name="sudoku_level4">Level 4</string>
 
 
 </resources>

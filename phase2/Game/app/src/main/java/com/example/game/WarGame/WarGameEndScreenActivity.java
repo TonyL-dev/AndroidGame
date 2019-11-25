@@ -28,9 +28,6 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
      */
     PlayerDataBase playerDataBase;
 
-
-    int temp;
-
     /**
      * The time in seconds
      */
@@ -49,7 +46,6 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
         String stats = bundle.getString("points");
         newPlayer = (Player) bundle.getSerializable("player");
         playerDataBase = new PlayerDataBase(this);
-        temp = (int) bundle.getSerializable("temp");
         timeInSeconds = (double) bundle.getSerializable("time");
 
         newPlayer.addTime(timeInSeconds);
@@ -63,9 +59,6 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
         }
 
-        //If a Player backs out before continuing to the next game, the data will not be saved
-        //newPlayer.subtractPoints(temp);
-        newPlayer.subtractTime();
         playerDataBase.storePlayerData(newPlayer);
     }
 

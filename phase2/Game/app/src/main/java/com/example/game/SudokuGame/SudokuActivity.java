@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,59 +26,8 @@ public class SudokuActivity extends AppCompatActivity {
   Player newPlayer;
   PlayerDataBase playerDataBase;
 
-  EditText t1,
-      t2,
-      t3,
-      t4,
-      t5,
-      t6,
-      t7,
-      t8,
-      t9,
-      t10,
-      t11,
-      t12,
-      t13,
-      t14,
-      t15,
-      t16,
-      t17,
-      t18,
-      t19,
-      t20,
-      t21,
-      t22,
-      t23,
-      t24,
-      t25,
-      t26,
-      t27,
-      t28,
-      t29,
-      t30,
-      t31,
-      t32,
-      t33,
-      t34,
-      t35,
-      t36,
-      t37,
-      t38,
-      t39,
-      t40,
-      t41,
-      t42,
-      t43,
-      t44,
-      t45,
-      t46,
-      t47,
-      t48,
-      t49,
-      t50,
-      t51,
-      t52,
-      t53;
+  TableLayout sud;
+
   Button b1;
 
   long startSudoku = System.nanoTime();
@@ -93,7 +44,7 @@ public class SudokuActivity extends AppCompatActivity {
 
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_sudoku);
+    setContentView(R.layout.activity_sudoku_4);
 
     Intent intent = getIntent();
     Bundle bundle = intent.getExtras();
@@ -110,109 +61,62 @@ public class SudokuActivity extends AppCompatActivity {
       getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
     }
 
-    sudokuGame = new SudokuGame(newPlayer, SudokuGameBoard.toHM(SudokuGameBoard.sudo));
+    sudokuGame = new SudokuGame(newPlayer, new SudokuGameLibrary(4).gameplaying);
+
+    sud = findViewById(R.id.sudokugame);
 
     b1 = findViewById(R.id.button);
 
-    t1 = findViewById(R.id.editText1);
-    t2 = findViewById(R.id.editText2);
-    t3 = findViewById(R.id.editText3);
-    t4 = findViewById(R.id.editText4);
-    t5 = findViewById(R.id.editText5);
-    t6 = findViewById(R.id.editText6);
-    t7 = findViewById(R.id.editText7);
-    t8 = findViewById(R.id.editText8);
-    t9 = findViewById(R.id.editText9);
-    t10 = findViewById(R.id.editText10);
-    t11 = findViewById(R.id.editText11);
-    t12 = findViewById(R.id.editText12);
-    t13 = findViewById(R.id.editText13);
-    t14 = findViewById(R.id.editText14);
-    t15 = findViewById(R.id.editText15);
-    t16 = findViewById(R.id.editText16);
-    t17 = findViewById(R.id.editText17);
-    t18 = findViewById(R.id.editText18);
-    t19 = findViewById(R.id.editText19);
-    t20 = findViewById(R.id.editText20);
-    t21 = findViewById(R.id.editText21);
-    t22 = findViewById(R.id.editText22);
-    t23 = findViewById(R.id.editText23);
-    t24 = findViewById(R.id.editText24);
-    t25 = findViewById(R.id.editText25);
-    t26 = findViewById(R.id.editText26);
-    t27 = findViewById(R.id.editText27);
-    t28 = findViewById(R.id.editText28);
-    t29 = findViewById(R.id.editText29);
-    t30 = findViewById(R.id.editText30);
-    t31 = findViewById(R.id.editText31);
-    t32 = findViewById(R.id.editText32);
-    t33 = findViewById(R.id.editText33);
-    t34 = findViewById(R.id.editText34);
-    t35 = findViewById(R.id.editText35);
-    t36 = findViewById(R.id.editText36);
-    t37 = findViewById(R.id.editText37);
-    t38 = findViewById(R.id.editText38);
-    t39 = findViewById(R.id.editText39);
-    t40 = findViewById(R.id.editText40);
-    t41 = findViewById(R.id.editText41);
-    t42 = findViewById(R.id.editText42);
-    t43 = findViewById(R.id.editText43);
-    t44 = findViewById(R.id.editText44);
-    t45 = findViewById(R.id.editText45);
-    t46 = findViewById(R.id.editText46);
-    t47 = findViewById(R.id.editText47);
-    t48 = findViewById(R.id.editText48);
-    t49 = findViewById(R.id.editText49);
-    t50 = findViewById(R.id.editText50);
-    t51 = findViewById(R.id.editText51);
-    t52 = findViewById(R.id.editText52);
-    t53 = findViewById(R.id.editText53);
+    for (int a = 0, b = sud.getChildCount(); a < b; a++){
+      final TableRow row = (TableRow) sud.getChildAt(a);
+      for (int i = 0, j = row.getChildCount(); i < j; i++) {
+        final View input = row.getChildAt(i);
+        if (input instanceof EditText) {
+          if (newPlayer.getColour() != 0) {
+            ((EditText)input).setTextColor(newPlayer.getColour());
+          }
 
-    EditText[] inputs = {
-      t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, t18, t19, t20,
-      t21, t22, t23, t24, t25, t26, t27, t28, t29, t30, t31, t32, t33, t34, t35, t36, t37, t38, t39,
-      t40, t41, t42, t43, t44, t45, t46, t47, t48, t49, t50, t51, t52, t53
-    };
+          ((EditText) input)
+                  .addTextChangedListener(
+                          new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(
+                                    CharSequence charSequence, int i, int i1, int i2) {}
 
-    // set text colour
-    for (EditText input : inputs) {
-      if (newPlayer.getColour() != 0) {
-        input.setTextColor(newPlayer.getColour());
+                            @Override
+                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+                            @Override
+                            public void afterTextChanged(Editable editable) {
+                              hideKeyboard(input);
+                              int x = (int) (((String) input.getTag()).charAt(0)) - 48;
+                              int y = (int) (((String) input.getTag()).charAt(1)) - 48;
+                              if (!((EditText) input).getText().toString().equals("")
+                                      && !sudokuGame.insert(
+                                      Integer.valueOf(((EditText) input).getText().toString()),
+                                      x,
+                                      y,
+                                      sudokuGame.sudoku)) {
+                                DialogInterface.OnClickListener r =
+                                        new DialogInterface.OnClickListener() {
+                                          @Override
+                                          public void onClick(DialogInterface dialogInterface, int i) {
+                                            ((EditText) input).getText().clear();
+                                          }
+                                        };
+                                AlertDialog.Builder builder = new AlertDialog.Builder(SudokuActivity.this);
+                                builder.setMessage("Invalid Number").setPositiveButton("ok", r);
+                                AlertDialog alert = builder.create();
+                                alert.show();
+                              }
+                            }
+                          });
+        }
       }
+
     }
 
-    for (final EditText input : inputs) {
-      input.addTextChangedListener(
-          new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-              hideKeyboard(input);
-              int x = (int) (((String) input.getTag()).charAt(0)) - 48;
-              int y = (int) (((String) input.getTag()).charAt(1)) - 48;
-              if (!input.getText().toString().equals("")
-                  && !sudokuGame.insert(
-                      Integer.valueOf(input.getText().toString()), x, y, sudokuGame.sudoku)) {
-                DialogInterface.OnClickListener r =
-                    new DialogInterface.OnClickListener() {
-                      @Override
-                      public void onClick(DialogInterface dialogInterface, int i) {
-                        input.getText().clear();
-                      }
-                    };
-                AlertDialog.Builder builder = new AlertDialog.Builder(SudokuActivity.this);
-                builder.setMessage("Invalid Number").setPositiveButton("ok", r);
-                AlertDialog alert = builder.create();
-                alert.show();
-              }
-            }
-          });
-    }
   }
 
   /** method called when click the continue button. */
@@ -229,7 +133,6 @@ public class SudokuActivity extends AppCompatActivity {
     bundle.putSerializable("time", timeInSeconds);
     intent.putExtras(bundle);
     startActivity(intent);
-    System.out.println(SudokuGameBoard.toHM(SudokuGameBoard.sudo));
   }
 
   /**

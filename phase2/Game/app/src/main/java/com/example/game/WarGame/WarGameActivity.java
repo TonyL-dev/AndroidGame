@@ -55,12 +55,17 @@ public class WarGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_war_game);
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
         playerDataBase = new PlayerDataBase(this);
         numOfPlayers = (int) bundle.getSerializable("numPlayers");
+
+        if (numOfPlayers == 2)
+            setContentView(R.layout.activity_war_game);
+        else
+            setContentView(R.layout.activity_war_game_two);
 
         //increments number of games
         newPlayer.addLevel(2);
@@ -75,6 +80,12 @@ public class WarGameActivity extends AppCompatActivity {
         cardsB = findViewById(R.id.cardRemainingB);
         cardsB.setText("Cards remaining:" + game.getCardsRemaining(1));
 
+        if (numOfPlayers == 3){
+            cardsC = findViewById(R.id.cardRemainingC);
+            cardsC.setText("Cards remaining:" + game.getCardsRemaining(2));
+            cardPlayedC = findViewById(R.id.currentCardC);
+        }
+
         cardPlayedA = findViewById(R.id.currentCardA);
         cardPlayedB = findViewById(R.id.currentCardB);
 
@@ -84,6 +95,11 @@ public class WarGameActivity extends AppCompatActivity {
             cardsB.setTextColor(newPlayer.getColour());
             cardPlayedA.setTextColor(newPlayer.getColour());
             cardPlayedB.setTextColor(newPlayer.getColour());
+
+            if (numOfPlayers == 3){
+                cardsC.setTextColor(newPlayer.getColour());
+                cardPlayedC.setTextColor(newPlayer.getColour());
+            }
         }
 
         //set background colour
@@ -101,7 +117,6 @@ public class WarGameActivity extends AppCompatActivity {
         long end = System.nanoTime();
         long time = end - start;
         double timeInSeconds = (double) time / 1_000_000_000;
-        int temp = game.getPlayerA().getScore();
         Intent intent;
         Bundle bundle = new Bundle();
         //Choosing whether the game needs to go to the next level screen or end game screen
@@ -112,7 +127,6 @@ public class WarGameActivity extends AppCompatActivity {
         }
         bundle.putSerializable("points", game.toString());
         bundle.putSerializable("player", newPlayer);
-        bundle.putSerializable("temp", temp);
         bundle.putSerializable("time", timeInSeconds);
         bundle.putSerializable("numPlayers", game.getNumOfPlayers());
         intent.putExtras(bundle);
@@ -133,5 +147,10 @@ public class WarGameActivity extends AppCompatActivity {
         cardsB.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(1)));
         cardPlayedA.setText(game.getLastCardsPlayed()[0].toString());
         cardPlayedB.setText(game.getLastCardsPlayed()[1].toString());
+
+        if (numOfPlayers == 3){
+            cardsC.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(2)));
+            cardPlayedC.setText(game.getLastCardsPlayed()[2].toString());
+        }
     }
 }
