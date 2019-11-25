@@ -36,6 +36,7 @@
     <string name="sudoku_level2">Level 2</string>
     <string name="sudoku_level3">Level 3</string>
     <string name="sudoku_level4">Level 4</string>
+    <string name="sudoku_end_this_game">End this game</string>
 
 
 </resources>

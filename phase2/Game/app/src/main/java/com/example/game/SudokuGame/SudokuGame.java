@@ -163,6 +163,9 @@ class SudokuGame {
     return ans;
   }
 
+
+
+
   /** get the game board in a arraylist of arraylist of int type. */
   private ArrayList<ArrayList<ArrayList<Integer>>> getSudokuDimension() {
     ArrayList<ArrayList<ArrayList<Integer>>> ans = new ArrayList<ArrayList<ArrayList<Integer>>>();

@@ -78,7 +78,7 @@
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:inputType="number"
-                android:tag="3"
+                android:tag="13"
                 android:visibility="visible" />
 
             <EditText
