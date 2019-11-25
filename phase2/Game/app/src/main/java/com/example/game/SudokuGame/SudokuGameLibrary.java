@@ -37,8 +37,11 @@ public class SudokuGameLibrary {
 
 
     public SudokuGameLibrary(int level){
-        level = this.level;
-        gameplaying = toHM(lv4);
+        if (level == 4){
+            gameplaying = toHM(lv4);
+        }else if(level == 3){
+            gameplaying = toHM(lv3);
+        }
     }
 
 

@@ -14,7 +14,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="30dp"
         android:background="#1B4CAF50"
-        android:text="@string/sudoku_welcome_4"
+        android:text="@string/sudoku_welcome_2"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +47,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+            <TextView
+                android:layout_width="43dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:text="@string/sudoku_num_3"
+                android:textSize="18sp">
+
+            </TextView>
+
             <EditText
                 android:id="@+id/t1"
                 android:layout_width="43dp"
@@ -56,17 +69,6 @@
                 android:inputType="number"
                 android:outlineProvider="bounds"
                 android:singleLine="false"
-                android:tag="11"
-                android:visibility="visible" />
-
-            <EditText
-                android:id="@+id/t2"
-                android:layout_width="43dp"
-                android:layout_height="64dp"
-                android:width="50dp"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:gravity="center"
-                android:inputType="number"
                 android:tag="12"
                 android:visibility="visible" />
 
@@ -81,15 +83,17 @@
                 android:tag="13"
                 android:visibility="visible" />
 
-            <EditText
-                android:id="@+id/t4"
+            <TextView
                 android:layout_width="43dp"
-                android:layout_height="64dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/sudoku_textview_boarder"
+                android:foregroundGravity="center"
                 android:gravity="center"
-                android:inputType="number"
-                android:tag="14"
-                android:visibility="visible" />
+                android:orientation="horizontal"
+                android:text="@string/sudoku_num_9"
+                android:textSize="18sp">
+
+            </TextView>
 
             <EditText
                 android:id="@+id/t5"
@@ -102,7 +106,7 @@
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/t6"
+                android:id="@+id/w5t5"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
@@ -112,7 +116,7 @@
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/t7"
+                android:id="@+id/wt5"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
@@ -122,7 +126,7 @@
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/t8"
+                android:id="@+id/t6"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
@@ -130,6 +134,8 @@
                 android:inputType="number"
                 android:tag="18"
                 android:visibility="visible" />
+
+
 
             <EditText
                 android:id="@+id/t9"
@@ -147,8 +153,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <EditText
-                android:id="@+id/t10"
+                android:id="@+id/t11"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
@@ -158,23 +165,13 @@
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/t11"
-                android:layout_width="43dp"
-                android:layout_height="64dp"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:gravity="center"
-                android:inputType="number"
-                android:tag="22"
-                android:visibility="visible" />
-
-            <EditText
                 android:id="@+id/t12"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:inputType="number"
-                android:tag="23"
+                android:tag="22"
                 android:visibility="visible" />
 
             <TextView
@@ -184,7 +181,7 @@
                 android:foregroundGravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_9"
+                android:text="@string/sudoku_num_4"
                 android:textSize="18sp">
 
             </TextView>
@@ -193,12 +190,24 @@
                 android:layout_width="43dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/sudoku_textview_boarder"
+                android:foregroundGravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_4"
+                android:text="@string/sudoku_num_7"
                 android:textSize="18sp">
 
             </TextView>
+
+            <EditText
+                android:id="@+id/t132"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="25"
+                android:visibility="visible" />
+
 
             <EditText
                 android:id="@+id/t13"
@@ -210,15 +219,18 @@
                 android:tag="26"
                 android:visibility="visible" />
 
-            <EditText
-                android:id="@+id/t14"
+            <TextView
                 android:layout_width="43dp"
-                android:layout_height="64dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/sudoku_textview_boarder"
+                android:foregroundGravity="center"
                 android:gravity="center"
-                android:inputType="number"
-                android:tag="7"
-                android:visibility="visible" />
+                android:orientation="horizontal"
+                android:text="@string/sudoku_num_8"
+                android:textSize="18sp">
+
+            </TextView>
+
 
             <EditText
                 android:id="@+id/t15"
@@ -230,16 +242,15 @@
                 android:tag="28"
                 android:visibility="visible" />
 
-            <TextView
+            <EditText
+                android:id="@+id/t215"
                 android:layout_width="43dp"
-                android:layout_height="match_parent"
+                android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:text="@string/sudoku_num_7"
-                android:textSize="18sp">
-
-            </TextView>
+                android:inputType="number"
+                android:tag="29"
+                android:visibility="visible" />
 
         </TableRow>
 
@@ -260,41 +271,39 @@
                 android:tag="31"
                 android:visibility="visible" />
 
-            <TextView
-                android:layout_width="43dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:text="@string/sudoku_num_1"
-                android:textSize="18sp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="43dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:text="@string/sudoku_num_6"
-                android:textSize="18sp">
-
-            </TextView>
-
             <EditText
-                android:id="@+id/t17"
+                android:id="@+id/tw16"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="number"
-                android:tag="34"
+                android:tag="32"
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/t18"
+                android:id="@+id/t172"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="33"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="43dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:text="@string/sudoku_num_8"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/t1292"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
@@ -310,13 +319,13 @@
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_8"
+                android:text="@string/sudoku_num_5"
                 android:textSize="18sp">
 
             </TextView>
 
             <EditText
-                android:id="@+id/t19"
+                android:id="@+id/t129"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
@@ -326,24 +335,26 @@
                 android:tag="37"
                 android:visibility="visible" />
 
+
+
+            <EditText
+                android:id="@+id/t1229"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="38"
+                android:visibility="visible" />
+
             <TextView
                 android:layout_width="43dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_4"
-                android:textSize="18sp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="43dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:text="@string/sudoku_num_9"
+                android:text="@string/sudoku_num_2"
                 android:textSize="18sp">
 
             </TextView>
@@ -367,27 +378,27 @@
                 android:tag="41"
                 android:visibility="visible" />
 
-            <EditText
-                android:id="@+id/t21"
-                android:layout_width="43dp"
-                android:layout_height="64dp"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="number"
-                android:tag="42"
-                android:visibility="visible" />
-
             <TextView
                 android:layout_width="43dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_9"
+                android:text="@string/sudoku_num_8"
                 android:textSize="18sp">
 
             </TextView>
+
+            <EditText
+                android:id="@+id/t221"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="43"
+                android:visibility="visible" />
 
             <TextView
                 android:layout_width="43dp"
@@ -401,7 +412,7 @@
             </TextView>
 
             <EditText
-                android:id="@+id/t22"
+                android:id="@+id/t231"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
@@ -409,6 +420,39 @@
                 android:gravity="center"
                 android:inputType="number"
                 android:tag="45"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/t23w1"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="46"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/t233"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="47"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/t23"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="48"
                 android:visibility="visible" />
 
             <TextView
@@ -422,15 +466,26 @@
 
             </TextView>
 
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/row5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
             <EditText
-                android:id="@+id/t23"
+                android:id="@+id/t227"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="number"
-                android:tag="47"
+                android:tag="51"
                 android:visibility="visible" />
 
             <TextView
@@ -445,47 +500,6 @@
             </TextView>
 
             <EditText
-                android:id="@+id/t24"
-                android:layout_width="43dp"
-                android:layout_height="64dp"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="number"
-                android:tag="49"
-                android:visibility="visible" />
-
-        </TableRow>
-
-
-        <TableRow
-            android:id="@+id/row5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <EditText
-                android:id="@+id/t25"
-                android:layout_width="43dp"
-                android:layout_height="64dp"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="number"
-                android:tag="51"
-                android:visibility="visible" />
-
-            <EditText
-                android:id="@+id/t26"
-                android:layout_width="43dp"
-                android:layout_height="64dp"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="number"
-                android:tag="52"
-                android:visibility="visible" />
-
-            <EditText
                 android:id="@+id/t27"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
@@ -493,10 +507,11 @@
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="number"
+                android:tag="53"
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/t28"
+                android:id="@+id/et27"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
@@ -507,17 +522,6 @@
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/t29"
-                android:layout_width="43dp"
-                android:layout_height="64dp"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="number"
-                android:tag="55"
-                android:visibility="visible" />
-
-            <EditText
                 android:id="@+id/t30"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
@@ -525,28 +529,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="number"
-                android:visibility="visible" />
-
-            <EditText
-                android:id="@+id/t31"
-                android:layout_width="43dp"
-                android:layout_height="64dp"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="number"
-                android:tag="57"
-                android:visibility="visible" />
-
-            <EditText
-                android:id="@+id/t32"
-                android:layout_width="43dp"
-                android:layout_height="64dp"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="number"
-                android:tag="58"
+                android:tag="55"
                 android:visibility="visible" />
 
             <TextView
@@ -559,6 +542,40 @@
                 android:textSize="18sp">
 
             </TextView>
+
+            <EditText
+                android:id="@+id/t31"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="57"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="43dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:text="@string/sudoku_num_3"
+                android:textSize="18sp">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/t32"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="59"
+                android:visibility="visible" />
+
 
 
         </TableRow>
@@ -574,21 +591,21 @@
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_2"
+                android:text="@string/sudoku_num_1"
                 android:textSize="18sp">
 
             </TextView>
 
-            <TextView
+            <EditText
+                android:id="@+id/rwt33"
                 android:layout_width="43dp"
-                android:layout_height="match_parent"
+                android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:text="@string/sudoku_num_4"
-                android:textSize="18sp">
-
-            </TextView>
+                android:inputType="number"
+                android:tag="62"
+                android:visibility="visible" />
 
             <EditText
                 android:id="@+id/t33"
@@ -607,7 +624,7 @@
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_8"
+                android:text="@string/sudoku_num_2"
                 android:textSize="18sp">
 
             </TextView>
@@ -623,15 +640,27 @@
                 android:tag="65"
                 android:visibility="visible" />
 
+
+            <TextView
+                android:layout_width="43dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:text="@string/sudoku_num_3"
+                android:textSize="18sp">
+
+            </TextView>
+
             <EditText
-                android:id="@+id/t35"
+                android:id="@+id/t354"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="number"
-                android:tag="66"
+                android:tag="67"
                 android:visibility="visible" />
 
             <TextView
@@ -640,10 +669,11 @@
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_6"
+                android:text="@string/sudoku_num_7"
                 android:textSize="18sp">
 
             </TextView>
+
 
             <TextView
                 android:layout_width="43dp"
@@ -655,17 +685,6 @@
                 android:textSize="18sp">
 
             </TextView>
-
-
-            <EditText
-                android:id="@+id/t36"
-                android:layout_width="43dp"
-                android:layout_height="64dp"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="number"
-                android:tag="69" />
 
         </TableRow>
 
@@ -691,7 +710,7 @@
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_7"
+                android:text="@string/sudoku_num_6"
                 android:textSize="18sp">
 
             </TextView>
@@ -707,6 +726,8 @@
                 android:tag="73"
                 android:visibility="visible" />
 
+
+
             <EditText
                 android:id="@+id/t39"
                 android:layout_width="43dp"
@@ -719,7 +740,7 @@
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/t40"
+                android:id="@+id/rt39"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
@@ -729,16 +750,16 @@
                 android:tag="75"
                 android:visibility="visible" />
 
-            <EditText
-                android:id="@+id/t41"
+            <TextView
                 android:layout_width="43dp"
-                android:layout_height="64dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/sudoku_textview_boarder"
-                android:ems="10"
                 android:gravity="center"
-                android:inputType="number"
-                android:tag="76"
-                android:visibility="visible" />
+                android:orientation="horizontal"
+                android:text="@string/sudoku_num_7"
+                android:textSize="18sp">
+
+            </TextView>
 
             <EditText
                 android:id="@+id/t42"
@@ -752,7 +773,7 @@
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/t43"
+                android:id="@+id/wt39"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
@@ -786,7 +807,7 @@
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_8"
+                android:text="@string/sudoku_num_2"
                 android:textSize="18sp">
 
             </TextView>
@@ -808,64 +829,44 @@
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_1"
-                android:textSize="18sp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="43dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:text="@string/sudoku_num_4"
-                android:textSize="18sp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="43dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:text="@string/sudoku_num_5"
-                android:textSize="18sp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="43dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:text="@string/sudoku_num_6"
+                android:text="@string/sudoku_num_7"
                 android:textSize="18sp">
 
             </TextView>
 
             <EditText
-                android:id="@+id/t46"
+                android:id="@+id/t454"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="number"
-                android:tag="87"
+                android:tag="84"
+                android:visibility="visible" />
+
+
+
+            <EditText
+                android:id="@+id/t435"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="85"
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/t47"
+                android:id="@+id/t456"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="number"
-                android:tag="88"
+                android:tag="86"
                 android:visibility="visible" />
 
             <TextView
@@ -879,6 +880,30 @@
 
             </TextView>
 
+            <EditText
+                android:id="@+id/t46"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="88"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/t47"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="89"
+                android:visibility="visible" />
+
+
+
         </TableRow>
 
         <TableRow
@@ -886,19 +911,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/t48"
+            <TextView
                 android:layout_width="43dp"
-                android:layout_height="64dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/sudoku_textview_boarder"
-                android:ems="10"
                 android:gravity="center"
-                android:inputType="number"
-                android:tag="91"
-                android:visibility="visible" />
+                android:orientation="horizontal"
+                android:text="@string/sudoku_num_4"
+                android:textSize="18sp">
+
+            </TextView>
 
             <EditText
-                android:id="@+id/t49"
+                android:id="@+id/t48"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
@@ -914,42 +939,20 @@
                 android:background="@drawable/sudoku_textview_boarder"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:text="@string/sudoku_num_4"
-                android:textSize="18sp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="43dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:text="@string/sudoku_num_1"
-                android:textSize="18sp">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="43dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/sudoku_textview_boarder"
-                android:gravity="center"
-                android:orientation="horizontal"
                 android:text="@string/sudoku_num_9"
                 android:textSize="18sp">
 
             </TextView>
 
             <EditText
-                android:id="@+id/t50"
+                android:id="@+id/t49"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
                 android:background="@drawable/sudoku_textview_boarder"
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="number"
-                android:tag="96"
+                android:tag="94"
                 android:visibility="visible" />
 
             <TextView
@@ -964,6 +967,29 @@
             </TextView>
 
             <EditText
+                android:id="@+id/t245"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="96"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/t50"
+                android:layout_width="43dp"
+                android:layout_height="64dp"
+                android:background="@drawable/sudoku_textview_boarder"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="97"
+                android:visibility="visible" />
+
+
+            <EditText
                 android:id="@+id/t51"
                 android:layout_width="43dp"
                 android:layout_height="64dp"
@@ -973,6 +999,7 @@
                 android:inputType="number"
                 android:tag="98"
                 android:visibility="visible" />
+
 
             <EditText
                 android:id="@+id/t52"

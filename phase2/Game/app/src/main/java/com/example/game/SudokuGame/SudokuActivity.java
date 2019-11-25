@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.game.Player;
 import com.example.game.PlayerDataBase;
 import com.example.game.R;
+
+import java.util.Objects;
 
 public class SudokuActivity extends AppCompatActivity {
 
@@ -43,16 +46,34 @@ public class SudokuActivity extends AppCompatActivity {
   }
 
   protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_sudoku_4);
 
+
+    super.onCreate(savedInstanceState);
     Intent intent = getIntent();
     Bundle bundle = intent.getExtras();
+
+    int lv = (int) (bundle.getSerializable("lv"));
+
+    if (lv == 4){
+      setContentView(R.layout.activity_sudoku_4);
+    }
+    else if (lv == 3){
+      setContentView(R.layout.activity_sudoku_3);
+    }
+
+
+
+
+    playerDataBase = new PlayerDataBase(this);
+
+
+
     newPlayer = (Player) bundle.getSerializable("player");
+
     // increments game number
     newPlayer.addLevel(3);
 
-    playerDataBase = new PlayerDataBase(this);
+
 
     playerDataBase.storePlayerData(newPlayer);
 
@@ -61,7 +82,7 @@ public class SudokuActivity extends AppCompatActivity {
       getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
     }
 
-    sudokuGame = new SudokuGame(newPlayer, new SudokuGameLibrary(4).gameplaying);
+    sudokuGame = new SudokuGame(newPlayer, new SudokuGameLibrary(lv).gameplaying);
 
     sud = findViewById(R.id.sudokugame);
 
@@ -71,6 +92,11 @@ public class SudokuActivity extends AppCompatActivity {
       final TableRow row = (TableRow) sud.getChildAt(a);
       for (int i = 0, j = row.getChildCount(); i < j; i++) {
         final View input = row.getChildAt(i);
+        if (input instanceof TextView){
+          if(newPlayer.getColour() != 0){
+            ((TextView) input).setTextColor(newPlayer.getColour());
+          }
+        }
         if (input instanceof EditText) {
           if (newPlayer.getColour() != 0) {
             ((EditText)input).setTextColor(newPlayer.getColour());
@@ -147,7 +173,6 @@ public class SudokuActivity extends AppCompatActivity {
         pt += 1;
       }
     }
-
     return pt - 29;
   }
 

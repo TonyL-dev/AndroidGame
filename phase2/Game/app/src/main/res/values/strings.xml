@@ -24,7 +24,7 @@
     <string name="sudoku_welcome_4">Welcome to Sudoku level4</string>
     <string name="sudoku_num_1">1</string>
     <string name="sudoku_num_2">2</string>
-    <string name="sudoku_num_3">3</string>
+    <string name="sudoku_num_3" translatable="false">3</string>
     <string name="sudoku_num_4">4</string>
     <string name="sudoku_num_5" translatable="false">5</string>
     <string name="sudoku_num_6">6</string>
@@ -37,6 +37,8 @@
     <string name="sudoku_level3">Level 3</string>
     <string name="sudoku_level4">Level 4</string>
     <string name="sudoku_end_this_game">End this game</string>
+    <string name="sudoku_welcome_3">Welcome to Sudoku level3</string>
+    <string name="sudoku_welcome_2">Welcome to sudoku level 2</string>
 
 
 </resources>

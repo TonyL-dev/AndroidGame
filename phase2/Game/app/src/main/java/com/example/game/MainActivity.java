@@ -130,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
         bundle.putSerializable("player", newPlayer);
         intent.putExtras(bundle);
         startActivity(intent);
-
     }
 
     /**

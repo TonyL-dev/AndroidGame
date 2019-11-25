@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.game.PictureGame.PictureGameActivity;
 import com.example.game.SudokuGame.SudokuActivity;
 import com.example.game.SudokuGame.SudokuEndScreenActivity;
-import com.example.game.SudokuGame.enterGameActivity;
+import com.example.game.SudokuGame.Sudoku_enterGameActivity;
 import com.example.game.WarGame.WarGameActivity;
 import com.example.game.WarGame.WarGameEndScreenActivity;
 
@@ -80,7 +80,7 @@ public class ChooseGame extends AppCompatActivity {
      * If a user chooses to play SudukoGame, then the player will start at the Choose_Sudoku_Game.
      */
     public void startSudokuGame(View view){
-        Intent intent = new Intent(this, enterGameActivity.class);
+        Intent intent = new Intent(this, Sudoku_enterGameActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("player", newPlayer);
         intent.putExtras(bundle);
