@@ -1,4 +1,4 @@
-package com.example.game.SudokuGame; // 复制过去的时候这个改成自己的pkg name。
+package com.example.game.SudokuGame;
 
 import android.content.Context;
 import android.graphics.Canvas;
