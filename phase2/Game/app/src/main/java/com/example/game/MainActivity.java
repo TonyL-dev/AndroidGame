@@ -116,18 +116,20 @@ public class MainActivity extends AppCompatActivity {
      */
     public void startingPosition(){
         Intent intent;
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("player", newPlayer);
+
         if (newPlayer.getGameNum() == 0) {
             intent = new Intent(this, ChooseGame.class);
         } else if (newPlayer.getGameNum() == 1) {
             intent = new Intent(this, PictureGameActivity.class);
         } else if (newPlayer.getGameNum() == 2) {
             intent = new Intent(this, WarGameActivity.class);
+            bundle.putSerializable("numPlayers", 2);
         } else {
             intent = new Intent(this, SudokuActivity.class);
         }
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("player", newPlayer);
         intent.putExtras(bundle);
         startActivity(intent);
     }
