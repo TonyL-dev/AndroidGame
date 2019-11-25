@@ -27,4 +27,13 @@ public class enterGameActivity extends AppCompatActivity {
       newPlayer = (Player) bundle.getSerializable("player");
   }
 
+
+    public void chooselv4(View view){
+        Intent intent = new Intent(this, SudokuActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("player", newPlayer);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
 }

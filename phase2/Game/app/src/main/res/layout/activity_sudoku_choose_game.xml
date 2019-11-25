@@ -54,6 +54,7 @@
         android:layout_above="@+id/lv1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
+        android:onClick="chooselv4"
         android:text="@string/sudoku_level4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

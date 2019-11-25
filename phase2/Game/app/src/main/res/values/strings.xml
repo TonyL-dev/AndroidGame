@@ -21,7 +21,7 @@
     you don\'t have an account, press the button below below to create one!</string>
 
 
-    <string name="sudoku_welcome">Welcome to Sudoku level1</string>
+    <string name="sudoku_welcome_4">Welcome to Sudoku level4</string>
     <string name="sudoku_num_1">1</string>
     <string name="sudoku_num_2">2</string>
     <string name="sudoku_num_3">3</string>
