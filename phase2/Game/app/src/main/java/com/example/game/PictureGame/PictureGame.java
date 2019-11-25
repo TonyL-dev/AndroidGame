@@ -1,11 +1,16 @@
 package com.example.game.PictureGame;
 
+import android.view.View;
+
+import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 
 import com.example.game.Player;
 import com.example.game.R;
 
-class PictureGame {
+class PictureGame implements Serializable {
     /**
      * array of Picture objects
      */
@@ -55,6 +60,8 @@ class PictureGame {
             {"square root of 144", R.drawable.twelve},
             {"7 x 3", R.drawable.twentyone}};
 
+    private ArrayList<Picture> instantReplayOrder = new ArrayList<>();
+
     /**
      * Constructs a new PictureGame
      *
@@ -103,6 +110,11 @@ class PictureGame {
         }
     }
 
+    PictureGame(Player player, int level, Picture[] clonedObjects){
+        newPlayer = player;
+        pictures = clonedObjects;
+    }
+
 
     /**
      * return string of remaining Picture objects to be found
@@ -112,7 +124,7 @@ class PictureGame {
 
         for (Picture pic : pictures) {
             if (pic.getIsHiddenImage()) {
-                listOfFruits.append(pic.getName() + "\n");
+                listOfFruits.append("- " + pic.getName() + "\n");
             }
         }
         return listOfFruits;
@@ -155,11 +167,28 @@ class PictureGame {
         return picsToFind();
     }
 
+    Picture pictureFromString(String imageId){
+        for (Picture pic : pictures) {
+            if (pic.getName().equals(imageId)) {
+                return pic;
+            }
+        }
+        return null;
+    }
+
     /**
      * Returns the pictures in the Picture list
      */
     Picture[] getPictures() {
         return pictures;
+    }
+
+    ArrayList<Picture> getInstantReplayOrder(){
+        return instantReplayOrder;
+    }
+
+    String tester(){
+        return "size is " + instantReplayOrder.size();
     }
 
 }

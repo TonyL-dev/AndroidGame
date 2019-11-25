@@ -25,25 +25,44 @@ import java.text.DecimalFormat;
  */
 public class PictureGameActivity extends AppCompatActivity {
 
-    /** PictureGame object*/
+    /**
+     * PictureGame object
+     */
     private PictureGame pictureGame;
 
-    /** TextView for where the title and list of objects will be displayed*/
+    /**
+     * 3 PictureGame objects to store the game for instant replay
+     */
+    private PictureGame p1, p2, p3;
+
+    /**
+     * TextView for where the title and list of objects will be displayed
+     */
     private TextView textView, textView2;
 
-    /** Initially the player starts on the first level*/
+    /**
+     * Initially the player starts on the first level
+     */
     private int level = 1;
 
-    /** Player object*/
+    /**
+     * Player object
+     */
     private Player newPlayer;
 
-    /** PlayerDataBase where the player is stored*/
+    /**
+     * PlayerDataBase where the player is stored
+     */
     private PlayerDataBase playerDataBase;
 
-    /** How the game's time for each level is determined. The timer starts at initialization.*/
+    /**
+     * How the game's time for each level is determined. The timer starts at initialization.
+     */
     private long start = System.nanoTime();
 
-    /** Decimal Format for the number of seconds rounded to two decimal places.*/
+    /**
+     * Decimal Format for the number of seconds rounded to two decimal places.
+     */
     private DecimalFormat df = new DecimalFormat("####0.00");
 
     /**
@@ -60,11 +79,21 @@ public class PictureGameActivity extends AppCompatActivity {
         playerDataBase = new PlayerDataBase(this);
 
         pictureGame = new PictureGame(newPlayer, level);
+
+        Picture[] clonedPics = new Picture[12];
+        int i = 0;
+        for (Picture x : pictureGame.getPictures()) {
+            clonedPics[i] = x.getDuplicate();
+            i++;
+        }
+
+        p1 = new PictureGame(newPlayer, level, clonedPics);
+
         textView2 = findViewById(R.id.textView2);
         textView = findViewById(R.id.listOfFruits);
         setGameBoard();
 
-        ConstraintLayout relativeLayout = (ConstraintLayout) findViewById(R.id.linearLayout);
+        ConstraintLayout relativeLayout = (ConstraintLayout) findViewById(R.id.pictureGameLayout);
 
         textView.setText(pictureGame.picsToFind().toString());
 
@@ -102,6 +131,13 @@ public class PictureGameActivity extends AppCompatActivity {
                 // find the updated set of fruits to look for
                 String newFruits = pictureGame.foundHiddenImage(fruit).toString();
 
+                if (level == 1) {
+                    p1.getInstantReplayOrder().add(p1.pictureFromString(fruit));
+                } else if (level == 2) {
+                    p2.getInstantReplayOrder().add(p2.pictureFromString(fruit));
+                } else {
+                    p3.getInstantReplayOrder().add(p3.pictureFromString(fruit));
+                }
                 // set textview to those new fruits
                 if (newFruits.equals("")) {
                     // if the player has won the game
@@ -113,6 +149,9 @@ public class PictureGameActivity extends AppCompatActivity {
                                 PictureEndScreenActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("player", newPlayer);
+                        bundle.putSerializable("p1", p1);
+                        bundle.putSerializable("p2", p2);
+                        bundle.putSerializable("p3", p3);
                         intent.putExtras(bundle);
                         startActivity(intent);
 
@@ -136,25 +175,25 @@ public class PictureGameActivity extends AppCompatActivity {
     /**
      * Determines the time taken for the level that was just completed.
      */
-    private void determineTime(View view){
+    private void determineTime(View view) {
         view.setVisibility(View.INVISIBLE);
         findViewById(R.id.textView2).setVisibility(View.INVISIBLE);
         long end = System.nanoTime();
         long time = end - start;
         double timeInSeconds = (double) time / 1_000_000_000;
-        double temp=timeInSeconds;
+        double temp = timeInSeconds;
 
-        for(int i=0;i<newPlayer.getTime();i++)
-        {
-            temp-= newPlayer.getTime(level-(i+1));
+        for (int i = 0; i < newPlayer.getTime(); i++) {
+            temp -= newPlayer.getTime(level - (i + 1));
         }
 
-        temp-=(level-1)*3;
+        temp -= (level - 1) * 3;
         newPlayer.addTime(temp);
 
         textView.setText("You have " + newPlayer.getPoints() + " points now.\n\n"
                 + "This round took you " + (df.format(newPlayer.getTime(level))) + " seconds.");
     }
+
     /**
      * Sets the game board based on which level the player is on.
      */
@@ -162,8 +201,7 @@ public class PictureGameActivity extends AppCompatActivity {
 
         if (level == 2) {
             findViewById(R.id.redBackground).setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             findViewById(R.id.redBackground).setVisibility(View.INVISIBLE);
         }
         ((ImageView) findViewById(R.id.one)).
@@ -226,7 +264,6 @@ public class PictureGameActivity extends AppCompatActivity {
         findViewById(R.id.ten).setVisibility(View.VISIBLE);
         findViewById(R.id.eleven).setVisibility(View.VISIBLE);
         findViewById(R.id.twelve).setVisibility(View.VISIBLE);
-
     }
 
     /**
@@ -236,6 +273,23 @@ public class PictureGameActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 pictureGame = new PictureGame(newPlayer, level);
+                if (level == 2) {
+                    Picture[] cloned = new Picture[12];
+                    int i = 0;
+                    for (Picture x : pictureGame.getPictures()) {
+                        cloned[i] = x.getDuplicate();
+                        i++;
+                    }
+                    p2 = new PictureGame(newPlayer, level, cloned);
+                } else {
+                    Picture[] cloned1 = new Picture[12];
+                    int i = 0;
+                    for (Picture x : pictureGame.getPictures()) {
+                        cloned1[i] = x.getDuplicate();
+                        i++;
+                    }
+                    p3 = new PictureGame(newPlayer, level, cloned1);
+                }
                 setGameBoard();
                 textView.setText(pictureGame.picsToFind().toString());
                 findViewById(R.id.textView2).setVisibility(View.VISIBLE);
