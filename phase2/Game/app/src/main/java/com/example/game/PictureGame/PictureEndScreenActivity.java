@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.game.ChooseGame;
 import com.example.game.Player;
@@ -62,12 +61,14 @@ public class PictureEndScreenActivity extends AppCompatActivity {
 
         int time = (p1.getInstantReplayOrder().size() + p2.getInstantReplayOrder().size()
                 + p3.getInstantReplayOrder().size()) * 2000;
+
         // create timer for when instant replay
         timer = new CountDownTimer(time + 4000, 2000) {
             PictureGame replayPG;
 
             @Override
             public void onTick(long l) {
+                // set the current PictureGame based on what level it is
                 if (level == 1) {
                     replayPG = p1;
                 } else if (level == 2) {
@@ -76,12 +77,14 @@ public class PictureEndScreenActivity extends AppCompatActivity {
                     replayPG = p3;
                 }
 
+                // if instant replay is done for this level, move onto the next level
                 if (replayPG.getInstantReplayOrder().size() == 0) {
                     level++;
                     nextLevel(level);
                 } else {
-
-                    findViewById(R.id.pictureGameLayout).findViewWithTag(replayPG.getInstantReplayOrder().get(0).
+                    // set ImageView to be invisible
+                    findViewById(R.id.pictureGameLayout).findViewWithTag
+                            (replayPG.getInstantReplayOrder().get(0).
                             getName()).setVisibility(View.INVISIBLE);
                     replayPG.getInstantReplayOrder().get(0).setIsHiddenImage(false);
                     replayPG.getInstantReplayOrder().remove(0);
@@ -92,6 +95,7 @@ public class PictureEndScreenActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                // when timer is finished
                 setContentView(R.layout.activity_picture_end_screen);
             }
         };
