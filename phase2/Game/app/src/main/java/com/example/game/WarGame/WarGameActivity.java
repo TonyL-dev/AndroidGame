@@ -53,7 +53,14 @@ public class WarGameActivity extends AppCompatActivity {
      */
     private long start = System.nanoTime();
 
+    /**
+     * The entire list of all last cards played for the whole game
+     */
     private List<String> replayCardsPlayed;
+
+    /**
+     * The entire list of how many cards players had remaining after every round for the whole game
+     */
     private List<Integer> replayCardsRemaining;
 
     /**
@@ -71,6 +78,15 @@ public class WarGameActivity extends AppCompatActivity {
         playerDataBase = new PlayerDataBase(this);
         numOfPlayers = (int) bundle.getSerializable("numPlayers");
 
+        setUpWarGameScreen();
+    }
+
+    /**
+     * Sets up the war screen by choosing the right activity, setting up all the TextViews to be used,
+     * and updating the background if necessary
+     */
+    private void setUpWarGameScreen(){
+        //choosing which layout to display
         if (numOfPlayers == 2)
             setContentView(R.layout.activity_war_game);
         else
@@ -87,6 +103,7 @@ public class WarGameActivity extends AppCompatActivity {
 
         game = new WarGame(newPlayer, numOfPlayers);
 
+        //set up the user's hand
         cardsA = findViewById(R.id.cardRemainingA);
         cardsA.setText("Cards remaining:" + game.getCardsRemaining(0));
         cardPlayedA = findViewById(R.id.currentCardA);
@@ -94,18 +111,17 @@ public class WarGameActivity extends AppCompatActivity {
         replayCardsPlayed.add("No card");
 
 
+        //setup for the second player's hand
         cardsB = findViewById(R.id.cardRemainingB);
         cardsB.setText("Cards remaining:" + game.getCardsRemaining(1));
         cardPlayedB = findViewById(R.id.currentCardB);
         replayCardsRemaining.add(game.getCardsRemaining(1));
         replayCardsPlayed.add("No card");
 
+        //setup for the third player's hand
         if (numOfPlayers == 3){
             cardsC = findViewById(R.id.cardRemainingC);
             cardsC.setText("Cards remaining:" + game.getCardsRemaining(2));
-
-            //replayCardsRemaining.add(null);
-            //replayCardsPlayed.add(null);
 
             replayCardsRemaining.add(game.getCardsRemaining(2));
             replayCardsPlayed.add("No card");
@@ -130,7 +146,6 @@ public class WarGameActivity extends AppCompatActivity {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
         }
     }
-
     /**
      * Go to score screen
      *
@@ -142,12 +157,7 @@ public class WarGameActivity extends AppCompatActivity {
         double timeInSeconds = (double) time / 1_000_000_000;
         Intent intent;
         Bundle bundle = new Bundle();
-        //Choosing whether the game needs to go to the next level screen or end game screen
-//        if (numOfPlayers == 2)
-//            intent = new Intent(this, WarGameEndScreenActivity.class);
-//        else {
-//            intent = new Intent(this, EndScreenActivity.class);
-//        }
+
         intent = new Intent(this, WarGameEndScreenActivity.class);
         bundle.putSerializable("points", game.toString());
         bundle.putSerializable("player", newPlayer);
@@ -169,6 +179,14 @@ public class WarGameActivity extends AppCompatActivity {
         else {
             openScoreScreen(view);
         }
+        updateText();
+
+    }
+
+    /**
+     * Update the texts on screen and automatically add the information to the replay vars as well
+     */
+    private void updateText(){
         cardsA.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(0)));
         replayCardsRemaining.add(game.getCardsRemaining(0));
         cardsB.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(1)));
@@ -189,3 +207,4 @@ public class WarGameActivity extends AppCompatActivity {
         }
     }
 }
+
