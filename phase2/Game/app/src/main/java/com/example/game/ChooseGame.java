@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import com.example.game.PictureGame.PictureGameActivity;
 import com.example.game.SudokuGame.SudokuActivity;
+import com.example.game.SudokuGame.SudokuEndScreenActivity;
 import com.example.game.SudokuGame.enterGameActivity;
 import com.example.game.WarGame.WarGameActivity;
+import com.example.game.WarGame.WarGameEndScreenActivity;
 
 public class ChooseGame extends AppCompatActivity {
 

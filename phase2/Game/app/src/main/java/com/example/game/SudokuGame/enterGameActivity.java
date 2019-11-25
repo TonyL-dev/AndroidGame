@@ -17,15 +17,14 @@ import com.example.game.R;
 
 public class enterGameActivity extends AppCompatActivity {
     Player newPlayer;
-    PlayerDataBase playerDataBase;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_sudoku); // placeholder.
-    Intent intent = getIntent();
-    Bundle bundle = intent.getExtras();
-    newPlayer = (Player) bundle.getSerializable("player");
-        }
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_sudoku_choose_game);
+      Intent intent = getIntent();
+      Bundle bundle = intent.getExtras();
+      newPlayer = (Player) bundle.getSerializable("player");
+  }
 
 }

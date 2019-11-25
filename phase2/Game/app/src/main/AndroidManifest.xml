@@ -28,7 +28,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".SudokuGame.SudokuActivity"
+            android:name=".SudokuGame.enterGameActivity"
             android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
