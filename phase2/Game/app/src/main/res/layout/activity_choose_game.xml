@@ -193,7 +193,7 @@
         android:layout_height="39dp"
         android:layout_marginTop="212dp"
         android:fontFamily="@font/press_start_2p"
-        android:text="Picture Game"
+        android:text="@string/picture_game"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="14sp"

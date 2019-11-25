@@ -11,15 +11,15 @@ class SudokuGame {
   // Hashmap for locating and changing the numbers on gameboard.
   HashMap<ArrayList<Integer>, Integer> sudoku;
   private Player newPlayer;
-  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle1 = new ArrayList<ArrayList<Integer>>();
-  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle2 = new ArrayList<ArrayList<Integer>>();
-  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle3 = new ArrayList<ArrayList<Integer>>();
-  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle4 = new ArrayList<ArrayList<Integer>>();
-  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle5 = new ArrayList<ArrayList<Integer>>();
-  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle6 = new ArrayList<ArrayList<Integer>>();
-  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle7 = new ArrayList<ArrayList<Integer>>();
-  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle8 = new ArrayList<ArrayList<Integer>>();
-  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle9 = new ArrayList<ArrayList<Integer>>();
+//  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle1 = new ArrayList<ArrayList<Integer>>();
+//  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle2 = new ArrayList<ArrayList<Integer>>();
+//  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle3 = new ArrayList<ArrayList<Integer>>();
+//  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle4 = new ArrayList<ArrayList<Integer>>();
+//  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle5 = new ArrayList<ArrayList<Integer>>();
+//  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle6 = new ArrayList<ArrayList<Integer>>();
+//  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle7 = new ArrayList<ArrayList<Integer>>();
+//  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle8 = new ArrayList<ArrayList<Integer>>();
+//  private ArrayList<ArrayList<Integer>> ThreeByThreeBundle9 = new ArrayList<ArrayList<Integer>>();
 
   SudokuGame(Player player, HashMap<ArrayList<Integer>, Integer> sudoku) {
     this.newPlayer = player;
@@ -33,41 +33,45 @@ class SudokuGame {
    */
 
 
-  private void getThreeByThreeBundle() {
-    for (int i = 1; i < 4; i++) {
-      for (int j = 1; j < 4; j++) {
-        ThreeByThreeBundle1.add(addToArray(i,j));
-      }
-      for (int j = 4; j < 7; j++) {
-        ThreeByThreeBundle4.add(addToArray(i,j));
-      }
-      for (int j = 7; j < 10; j++) {
-        ThreeByThreeBundle7.add(addToArray(i,j));
-      }
-    }
-    for (int i = 4; i < 7; i++) {
-      for (int j = 1; j < 4; j++) {
-        ThreeByThreeBundle2.add(addToArray(i,j));
-      }
-      for (int j = 4; j < 7; j++) {
-        ThreeByThreeBundle5.add(addToArray(i,j));
-      }
-      for (int j = 7; j < 10; j++) {
-        ThreeByThreeBundle8.add(addToArray(i,j));
-      }
-    }
-    for (int i = 7; i < 10; i++) {
-      for (int j = 1; j < 4; j++) {
-        ThreeByThreeBundle3.add(addToArray(i,j));
-      }
-      for (int j = 4; j < 7; j++) {
-        ThreeByThreeBundle6.add(addToArray(i,j));
-      }
-      for (int j = 7; j < 10; j++) {
-        ThreeByThreeBundle9.add(addToArray(i,j));
-      }
-    }
-  }
+
+
+
+
+//  private void getThreeByThreeBundle() {
+//    for (int i = 1; i < 4; i++) {
+//      for (int j = 1; j < 4; j++) {
+//        ThreeByThreeBundle1.add(addToArray(i,j));
+//      }
+//      for (int j = 4; j < 7; j++) {
+//        ThreeByThreeBundle4.add(addToArray(i,j));
+//      }
+//      for (int j = 7; j < 10; j++) {
+//        ThreeByThreeBundle7.add(addToArray(i,j));
+//      }
+//    }
+//    for (int i = 4; i < 7; i++) {
+//      for (int j = 1; j < 4; j++) {
+//        ThreeByThreeBundle2.add(addToArray(i,j));
+//      }
+//      for (int j = 4; j < 7; j++) {
+//        ThreeByThreeBundle5.add(addToArray(i,j));
+//      }
+//      for (int j = 7; j < 10; j++) {
+//        ThreeByThreeBundle8.add(addToArray(i,j));
+//      }
+//    }
+//    for (int i = 7; i < 10; i++) {
+//      for (int j = 1; j < 4; j++) {
+//        ThreeByThreeBundle3.add(addToArray(i,j));
+//      }
+//      for (int j = 4; j < 7; j++) {
+//        ThreeByThreeBundle6.add(addToArray(i,j));
+//      }
+//      for (int j = 7; j < 10; j++) {
+//        ThreeByThreeBundle9.add(addToArray(i,j));
+//      }
+//    }
+//  }
 
   private ArrayList<Integer> addToArray(int i, int j) {
     ArrayList<Integer> a = new ArrayList<Integer>();
@@ -78,16 +82,29 @@ class SudokuGame {
   /** get the game board in a arraylist of arraylist of int type. */
   private ArrayList<ArrayList<ArrayList<Integer>>> getSudokuDimension() {
     ArrayList<ArrayList<ArrayList<Integer>>> ans = new ArrayList<ArrayList<ArrayList<Integer>>>();
-    getThreeByThreeBundle();
-    ans.add(ThreeByThreeBundle1);
-    ans.add(ThreeByThreeBundle2);
-    ans.add(ThreeByThreeBundle3);
-    ans.add(ThreeByThreeBundle4);
-    ans.add(ThreeByThreeBundle5);
-    ans.add(ThreeByThreeBundle6);
-    ans.add(ThreeByThreeBundle7);
-    ans.add(ThreeByThreeBundle8);
-    ans.add(ThreeByThreeBundle9);
+    for (int a = 1; a <= 9; a = a + 2){
+      for (int b = 1;  b <= 9; b = b + 2 ){
+        for(int i = a; i < a + 2; i++){
+          for(int j = b; j < b + 2; j++){
+            ArrayList<ArrayList<Integer>> bundle = new ArrayList<>();
+            bundle.add(addToArray(i,j));
+            ans.add(bundle);
+          }
+        }
+      }
+    }
+
+
+//    getThreeByThreeBundle();
+//    ans.add(ThreeByThreeBundle1);
+//    ans.add(ThreeByThreeBundle2);
+//    ans.add(ThreeByThreeBundle3);
+//    ans.add(ThreeByThreeBundle4);
+//    ans.add(ThreeByThreeBundle5);
+//    ans.add(ThreeByThreeBundle6);
+//    ans.add(ThreeByThreeBundle7);
+//    ans.add(ThreeByThreeBundle8);
+//    ans.add(ThreeByThreeBundle9);
     return ans;
   }
 

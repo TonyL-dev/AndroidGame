@@ -96,49 +96,46 @@ public class SudokuActivity extends AppCompatActivity {
         final View input = row.getChildAt(i);
         if (input instanceof TextView){
           if(newPlayer.getColour() != 0){
-            ((TextView) input).setTextColor(newPlayer.getColour());
+            setTextcolor(((TextView) input));
+//            ((TextView) input).setTextColor(newPlayer.getColour());
           }
         }
         if (input instanceof EditText) {
           if (newPlayer.getColour() != 0) {
-            ((EditText)input).setTextColor(newPlayer.getColour());
+            setTextcolor(((EditText)input));
+//            ((EditText)input).setTextColor(newPlayer.getColour());
           }
+          ((EditText) input).addTextChangedListener(
+                  new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(
+                            CharSequence charSequence, int i, int i1, int i2) {}
 
-          ((EditText) input)
-                  .addTextChangedListener(
-                          new TextWatcher() {
-                            @Override
-                            public void beforeTextChanged(
-                                    CharSequence charSequence, int i, int i1, int i2) {}
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
-                            @Override
-                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-                            @Override
-                            public void afterTextChanged(Editable editable) {
-                              hideKeyboard(input);
-                              int x = (int) (((String) input.getTag()).charAt(0)) - 48;
-                              int y = (int) (((String) input.getTag()).charAt(1)) - 48;
-                              if (!((EditText) input).getText().toString().equals("")
-                                      && !sudokuGame.insert(
-                                      Integer.valueOf(((EditText) input).getText().toString()),
-                                      x,
-                                      y,
-                                      sudokuGame.sudoku)) {
-                                DialogInterface.OnClickListener r =
-                                        new DialogInterface.OnClickListener() {
-                                          @Override
-                                          public void onClick(DialogInterface dialogInterface, int i) {
-                                            ((EditText) input).getText().clear();
-                                          }
-                                        };
-                                AlertDialog.Builder builder = new AlertDialog.Builder(SudokuActivity.this);
-                                builder.setMessage("Invalid Number").setPositiveButton("ok", r);
-                                AlertDialog alert = builder.create();
-                                alert.show();
-                              }
-                            }
-                          });
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                      hideKeyboard(input);
+                      int x = (int) (((String) input.getTag()).charAt(0)) - 48;
+                      int y = (int) (((String) input.getTag()).charAt(1)) - 48;
+                      if (!((EditText) input).getText().toString().equals("")
+                              && !sudokuGame.insert(Integer.valueOf(((EditText) input).getText().toString()), x, y,
+                              sudokuGame.sudoku)) {
+                        DialogInterface.OnClickListener r =
+                                new DialogInterface.OnClickListener() {
+                          @Override
+                          public void onClick(DialogInterface dialogInterface, int i) {
+                            ((EditText) input).getText().clear();
+                          }
+                        };
+                        AlertDialog.Builder builder = new AlertDialog.Builder(SudokuActivity.this);
+                        builder.setMessage("Invalid Number").setPositiveButton("ok", r);
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                      }
+                    }
+                  });
         }
       }
 
@@ -176,6 +173,10 @@ public class SudokuActivity extends AppCompatActivity {
       }
     }
     return pt - 29;
+  }
+
+  public void setTextcolor (TextView tv){
+    tv.setTextColor(newPlayer.getColour());
   }
 
   @Override
