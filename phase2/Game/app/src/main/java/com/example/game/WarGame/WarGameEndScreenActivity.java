@@ -67,7 +67,7 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
      * @param view a View object
      */
     public void startNewWarGame(View view){
-        Intent intent = new Intent(this, WarGameTwoActivity.class);
+        Intent intent = new Intent(this, WarGameActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("player", newPlayer);
         bundle.putSerializable("numPlayers", 3);
