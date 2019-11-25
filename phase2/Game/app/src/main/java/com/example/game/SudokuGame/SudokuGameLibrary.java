@@ -34,6 +34,19 @@ public class SudokuGameLibrary {
             lv3default1,lv3default2,lv3default3,lv3default4,lv3default5,lv3default6,lv3default7,
             lv3default8,lv3default9};
 
+    private static int[] lv2default9 = {4,0,9,0,2,0,0,0,0};
+    private static int[] lv2default8 = {2,0,7,0,0,0,3,0,0};
+    private static int[] lv2default7 = {0,6,0,0,0,7,0,0,0};
+    private static int[] lv2default6 = {1,0,0,2,0,3,0,7,9};
+    private static int[] lv2default5 = {0,5,0,0,0,4,0,3,0};
+    private static int[] lv2default4 = {0,8,0,6,0,0,0,0,4};
+    private static int[] lv2default3 = {0,0,0,8,0,5,0,0,2};
+    private static int[] lv2default2 = {0,0,4,7,0,0,8,0,0};
+    private static int[] lv2default1 = {3,0,0,9,0,0,0,0,0};
+    private static int[][] lv2 = {
+            lv2default1,lv2default2,lv2default3,lv2default4,lv2default5,lv2default6,lv2default7,
+            lv2default8,lv2default9};
+
 
 
     public SudokuGameLibrary(int level){
@@ -41,6 +54,8 @@ public class SudokuGameLibrary {
             gameplaying = toHM(lv4);
         }else if(level == 3){
             gameplaying = toHM(lv3);
+        }else if(level == 2){
+            gameplaying = toHM(lv2);
         }
     }
 

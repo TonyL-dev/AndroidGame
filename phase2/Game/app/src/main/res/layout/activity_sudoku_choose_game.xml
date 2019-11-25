@@ -29,6 +29,7 @@
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
+        android:onClick="chooselv2"
         android:text="@string/sudoku_level2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

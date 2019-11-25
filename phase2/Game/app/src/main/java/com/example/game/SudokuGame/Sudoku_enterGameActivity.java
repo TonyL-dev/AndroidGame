@@ -34,6 +34,15 @@ public class Sudoku_enterGameActivity extends AppCompatActivity {
       }
   }
 
+    public void chooselv2(View view){
+        Intent intent = new Intent(this, SudokuActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("player", newPlayer);
+        bundle.putSerializable("lv", 2);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
 
 
 
