@@ -31,68 +31,49 @@ class SudokuGame {
    *
    * @return bundles of tiles
    */
+
+
   private void getThreeByThreeBundle() {
     for (int i = 1; i < 4; i++) {
       for (int j = 1; j < 4; j++) {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        a.add(i);
-        a.add(j);
-        ThreeByThreeBundle1.add(a);
+        ThreeByThreeBundle1.add(addToArray(i,j));
       }
       for (int j = 4; j < 7; j++) {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        a.add(i);
-        a.add(j);
-        ThreeByThreeBundle4.add(a);
+        ThreeByThreeBundle4.add(addToArray(i,j));
       }
       for (int j = 7; j < 10; j++) {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        a.add(i);
-        a.add(j);
-        ThreeByThreeBundle7.add(a);
+        ThreeByThreeBundle7.add(addToArray(i,j));
       }
     }
     for (int i = 4; i < 7; i++) {
       for (int j = 1; j < 4; j++) {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        a.add(i);
-        a.add(j);
-        ThreeByThreeBundle2.add(a);
+        ThreeByThreeBundle2.add(addToArray(i,j));
       }
       for (int j = 4; j < 7; j++) {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        a.add(i);
-        a.add(j);
-        ThreeByThreeBundle5.add(a);
+        ThreeByThreeBundle5.add(addToArray(i,j));
       }
       for (int j = 7; j < 10; j++) {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        a.add(i);
-        a.add(j);
-        ThreeByThreeBundle8.add(a);
+        ThreeByThreeBundle8.add(addToArray(i,j));
       }
     }
     for (int i = 7; i < 10; i++) {
       for (int j = 1; j < 4; j++) {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        a.add(i);
-        a.add(j);
-        ThreeByThreeBundle3.add(a);
+        ThreeByThreeBundle3.add(addToArray(i,j));
       }
       for (int j = 4; j < 7; j++) {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        a.add(i);
-        a.add(j);
-        ThreeByThreeBundle6.add(a);
+        ThreeByThreeBundle6.add(addToArray(i,j));
       }
       for (int j = 7; j < 10; j++) {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        a.add(i);
-        a.add(j);
-        ThreeByThreeBundle9.add(a);
+        ThreeByThreeBundle9.add(addToArray(i,j));
       }
     }
+  }
 
+  private ArrayList<Integer> addToArray(int i, int j) {
+    ArrayList<Integer> a = new ArrayList<Integer>();
+    a.add(i);
+    a.add(j);
+    return a;
   }
   /** get the game board in a arraylist of arraylist of int type. */
   private ArrayList<ArrayList<ArrayList<Integer>>> getSudokuDimension() {
