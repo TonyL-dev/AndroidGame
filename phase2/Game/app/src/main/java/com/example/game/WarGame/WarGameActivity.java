@@ -12,6 +12,12 @@ import com.example.game.Player;
 import com.example.game.PlayerDataBase;
 import com.example.game.R;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /**
  * The WarGameActivity class where player plays WarGame
  */
@@ -47,6 +53,9 @@ public class WarGameActivity extends AppCompatActivity {
      */
     private long start = System.nanoTime();
 
+    private List<String> replayCardsPlayed;
+    private List<Integer> replayCardsRemaining;
+
     /**
      * Created on run. Sets up the game to have the appropriate cards displayed
      *
@@ -67,6 +76,10 @@ public class WarGameActivity extends AppCompatActivity {
         else
             setContentView(R.layout.activity_war_game_two);
 
+        replayCardsPlayed = new LinkedList<>();
+        replayCardsRemaining = new LinkedList<>();
+
+
         //increments number of games
         newPlayer.addLevel(2);
 
@@ -76,18 +89,28 @@ public class WarGameActivity extends AppCompatActivity {
 
         cardsA = findViewById(R.id.cardRemainingA);
         cardsA.setText("Cards remaining:" + game.getCardsRemaining(0));
+        cardPlayedA = findViewById(R.id.currentCardA);
+        replayCardsRemaining.add(game.getCardsRemaining(0));
+        replayCardsPlayed.add("No card");
+
 
         cardsB = findViewById(R.id.cardRemainingB);
         cardsB.setText("Cards remaining:" + game.getCardsRemaining(1));
+        cardPlayedB = findViewById(R.id.currentCardB);
+        replayCardsRemaining.add(game.getCardsRemaining(1));
+        replayCardsPlayed.add("No card");
 
         if (numOfPlayers == 3){
             cardsC = findViewById(R.id.cardRemainingC);
             cardsC.setText("Cards remaining:" + game.getCardsRemaining(2));
+
+            //replayCardsRemaining.add(null);
+            //replayCardsPlayed.add(null);
+
+            replayCardsRemaining.add(game.getCardsRemaining(2));
+            replayCardsPlayed.add("No card");
             cardPlayedC = findViewById(R.id.currentCardC);
         }
-
-        cardPlayedA = findViewById(R.id.currentCardA);
-        cardPlayedB = findViewById(R.id.currentCardB);
 
         //set text colour
         if (newPlayer.getColour() != 0) {
@@ -120,15 +143,18 @@ public class WarGameActivity extends AppCompatActivity {
         Intent intent;
         Bundle bundle = new Bundle();
         //Choosing whether the game needs to go to the next level screen or end game screen
-        if (numOfPlayers == 2)
-            intent = new Intent(this, WarGameEndScreenActivity.class);
-        else {
-            intent = new Intent(this, EndScreenActivity.class);
-        }
+//        if (numOfPlayers == 2)
+//            intent = new Intent(this, WarGameEndScreenActivity.class);
+//        else {
+//            intent = new Intent(this, EndScreenActivity.class);
+//        }
+        intent = new Intent(this, WarGameEndScreenActivity.class);
         bundle.putSerializable("points", game.toString());
         bundle.putSerializable("player", newPlayer);
         bundle.putSerializable("time", timeInSeconds);
         bundle.putSerializable("numPlayers", game.getNumOfPlayers());
+        bundle.putSerializable("replayCardsPlayed", (Serializable) replayCardsPlayed);
+        bundle.putSerializable("replayCardsRemaining", (Serializable) replayCardsRemaining);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -144,13 +170,22 @@ public class WarGameActivity extends AppCompatActivity {
             openScoreScreen(view);
         }
         cardsA.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(0)));
+        replayCardsRemaining.add(game.getCardsRemaining(0));
         cardsB.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(1)));
+        replayCardsRemaining.add(game.getCardsRemaining(1));
+
         cardPlayedA.setText(game.getLastCardsPlayed()[0].toString());
+        replayCardsPlayed.add(game.getLastCardsPlayed()[0].toString());
+
         cardPlayedB.setText(game.getLastCardsPlayed()[1].toString());
+        replayCardsPlayed.add(game.getLastCardsPlayed()[1].toString());
 
         if (numOfPlayers == 3){
             cardsC.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(2)));
+            replayCardsRemaining.add(game.getCardsRemaining(2));
+
             cardPlayedC.setText(game.getLastCardsPlayed()[2].toString());
+            replayCardsPlayed.add(game.getLastCardsPlayed()[2].toString());
         }
     }
 }

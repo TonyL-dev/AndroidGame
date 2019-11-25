@@ -141,7 +141,7 @@
         app:layout_constraintVertical_bias="0.459" />
 
     <Button
-        android:id="@+id/playButton2"
+        android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -153,14 +153,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/skipButton2"
+        android:id="@+id/skipButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:onClick="openScoreScreen"
         android:text="@string/play_war_game_skip"
-        app:layout_constraintEnd_toEndOf="@+id/playButton2"
-        app:layout_constraintStart_toStartOf="@+id/playButton2"
-        app:layout_constraintTop_toBottomOf="@+id/playButton2" />
+        app:layout_constraintEnd_toEndOf="@+id/playButton"
+        app:layout_constraintStart_toStartOf="@+id/playButton"
+        app:layout_constraintTop_toBottomOf="@+id/playButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
