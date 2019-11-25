@@ -299,6 +299,6 @@ public class Player implements Serializable {
         for (double gameTime : time)
             totalGameTime += gameTime;
         return "\nYou have " + getPoints() + " total points now." +
-                "\nIn total you have taken " + df.format((totalGameTime)) + " seconds! ";
+                "\n\nIn total you have taken " + df.format((totalGameTime)) + " seconds! ";
     }
 }
