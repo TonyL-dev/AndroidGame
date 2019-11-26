@@ -34,6 +34,16 @@ public class Sudoku_enterGameActivity extends AppCompatActivity {
       }
   }
 
+
+    public void chooselv1(View view){
+        Intent intent = new Intent(this, SudokuActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("player", newPlayer);
+        bundle.putSerializable("lv", 1);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
     public void chooselv2(View view){
         Intent intent = new Intent(this, SudokuActivity.class);
         Bundle bundle = new Bundle();
@@ -42,8 +52,6 @@ public class Sudoku_enterGameActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-
-
 
 
     public void chooselv3(View view){

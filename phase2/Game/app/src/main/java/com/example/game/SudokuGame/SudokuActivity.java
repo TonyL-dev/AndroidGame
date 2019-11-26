@@ -61,6 +61,8 @@ public class SudokuActivity extends AppCompatActivity {
       setContentView(R.layout.activity_sudoku_3);
     }else if (lv == 2){
       setContentView(R.layout.activity_sudoku_2);
+    }else{
+      setContentView(R.layout.activity_sudoku_1);
     }
 
 
