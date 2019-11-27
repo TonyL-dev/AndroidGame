@@ -85,7 +85,7 @@ public class PictureEndScreenActivity extends AppCompatActivity {
                     // set ImageView to be invisible
                     findViewById(R.id.pictureGameLayout).findViewWithTag
                             (replayPG.getInstantReplayOrder().get(0).
-                            getName()).setVisibility(View.INVISIBLE);
+                                    getName()).setVisibility(View.INVISIBLE);
                     replayPG.getInstantReplayOrder().get(0).setIsHiddenImage(false);
                     replayPG.getInstantReplayOrder().remove(0);
 

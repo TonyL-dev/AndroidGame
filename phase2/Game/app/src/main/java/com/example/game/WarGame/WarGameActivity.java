@@ -85,7 +85,7 @@ public class WarGameActivity extends AppCompatActivity {
      * Sets up the war screen by choosing the right activity, setting up all the TextViews to be used,
      * and updating the background if necessary
      */
-    private void setUpWarGameScreen(){
+    private void setUpWarGameScreen() {
         //choosing which layout to display
         if (numOfPlayers == 2)
             setContentView(R.layout.activity_war_game);
@@ -119,7 +119,7 @@ public class WarGameActivity extends AppCompatActivity {
         replayCardsPlayed.add("No card");
 
         //setup for the third player's hand
-        if (numOfPlayers == 3){
+        if (numOfPlayers == 3) {
             cardsC = findViewById(R.id.cardRemainingC);
             cardsC.setText("Cards remaining:" + game.getCardsRemaining(2));
 
@@ -135,7 +135,7 @@ public class WarGameActivity extends AppCompatActivity {
             cardPlayedA.setTextColor(newPlayer.getColour());
             cardPlayedB.setTextColor(newPlayer.getColour());
 
-            if (numOfPlayers == 3){
+            if (numOfPlayers == 3) {
                 cardsC.setTextColor(newPlayer.getColour());
                 cardPlayedC.setTextColor(newPlayer.getColour());
             }
@@ -146,6 +146,7 @@ public class WarGameActivity extends AppCompatActivity {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
         }
     }
+
     /**
      * Go to score screen
      *
@@ -186,7 +187,7 @@ public class WarGameActivity extends AppCompatActivity {
     /**
      * Update the texts on screen and automatically add the information to the replay vars as well
      */
-    private void updateText(){
+    private void updateText() {
         cardsA.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(0)));
         replayCardsRemaining.add(game.getCardsRemaining(0));
         cardsB.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(1)));
@@ -198,7 +199,7 @@ public class WarGameActivity extends AppCompatActivity {
         cardPlayedB.setText(game.getLastCardsPlayed()[1].toString());
         replayCardsPlayed.add(game.getLastCardsPlayed()[1].toString());
 
-        if (numOfPlayers == 3){
+        if (numOfPlayers == 3) {
             cardsC.setText("Cards remaining:" + String.valueOf(game.getCardsRemaining(2)));
             replayCardsRemaining.add(game.getCardsRemaining(2));
 

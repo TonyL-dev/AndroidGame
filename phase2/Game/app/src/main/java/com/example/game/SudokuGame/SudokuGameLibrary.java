@@ -22,61 +22,59 @@ public class SudokuGameLibrary {
             lv4row7, lv4row8, lv4row9};
 
 
-    private static int[] lv3row9 = {0,0,5,8,0,0,0,4,0};
-    private static int[] lv3row8 = {8,0,0,5,0,0,0,0,2};
-    private static int[] lv3row7 = {0,0,1,0,9,4,0,8,0};
-    private static int[] lv3row6 = {6,7,0,0,8,0,0,0,0};
-    private static int[] lv3row5 = {5,0,0,3,0,7,0,0,6};
-    private static int[] lv3row4 = {0,0,0,0,6,0,0,1,5};
-    private static int[] lv3row3 = {0,9,0,4,5,0,1,0,0};
-    private static int[] lv3row2 = {2,0,0,0,0,3,0,0,8};
-    private static int[] lv3row1 = {0,4,0,0,0,8,3,0,0};
+    private static int[] lv3row9 = {0, 0, 5, 8, 0, 0, 0, 4, 0};
+    private static int[] lv3row8 = {8, 0, 0, 5, 0, 0, 0, 0, 2};
+    private static int[] lv3row7 = {0, 0, 1, 0, 9, 4, 0, 8, 0};
+    private static int[] lv3row6 = {6, 7, 0, 0, 8, 0, 0, 0, 0};
+    private static int[] lv3row5 = {5, 0, 0, 3, 0, 7, 0, 0, 6};
+    private static int[] lv3row4 = {0, 0, 0, 0, 6, 0, 0, 1, 5};
+    private static int[] lv3row3 = {0, 9, 0, 4, 5, 0, 1, 0, 0};
+    private static int[] lv3row2 = {2, 0, 0, 0, 0, 3, 0, 0, 8};
+    private static int[] lv3row1 = {0, 4, 0, 0, 0, 8, 3, 0, 0};
     private static int[][] lv3 = {
-            lv3row1,lv3row2,lv3row3,lv3row4,lv3row5,lv3row6,lv3row7,
-            lv3row8,lv3row9};
+            lv3row1, lv3row2, lv3row3, lv3row4, lv3row5, lv3row6, lv3row7,
+            lv3row8, lv3row9};
 
-    private static int[] lv2row9 = {4,0,9,0,2,0,0,0,0};
-    private static int[] lv2row8 = {2,0,7,0,0,0,3,0,0};
-    private static int[] lv2row7 = {0,6,0,0,0,7,0,0,0};
-    private static int[] lv2row6 = {1,0,0,2,0,3,0,7,9};
-    private static int[] lv2row5 = {0,5,0,0,0,4,0,3,0};
-    private static int[] lv2row4 = {0,8,0,6,0,0,0,0,4};
-    private static int[] lv2row3 = {0,0,0,8,0,5,0,0,2};
-    private static int[] lv2row2 = {0,0,4,7,0,0,8,0,0};
-    private static int[] lv2row1 = {3,0,0,9,0,0,0,0,0};
+    private static int[] lv2row9 = {4, 0, 9, 0, 2, 0, 0, 0, 0};
+    private static int[] lv2row8 = {2, 0, 7, 0, 0, 0, 3, 0, 0};
+    private static int[] lv2row7 = {0, 6, 0, 0, 0, 7, 0, 0, 0};
+    private static int[] lv2row6 = {1, 0, 0, 2, 0, 3, 0, 7, 9};
+    private static int[] lv2row5 = {0, 5, 0, 0, 0, 4, 0, 3, 0};
+    private static int[] lv2row4 = {0, 8, 0, 6, 0, 0, 0, 0, 4};
+    private static int[] lv2row3 = {0, 0, 0, 8, 0, 5, 0, 0, 2};
+    private static int[] lv2row2 = {0, 0, 4, 7, 0, 0, 8, 0, 0};
+    private static int[] lv2row1 = {3, 0, 0, 9, 0, 0, 0, 0, 0};
     private static int[][] lv2 = {
-            lv2row1,lv2row2,lv2row3,lv2row4,lv2row5,lv2row6,lv2row7,
-            lv2row8,lv2row9};
+            lv2row1, lv2row2, lv2row3, lv2row4, lv2row5, lv2row6, lv2row7,
+            lv2row8, lv2row9};
 
 
-    private static int[] lv1row9 = {9,0,0,6,0,0,0,7,5};
-    private static int[] lv1row8 = {0,0,3,0,7,0,0,0,4};
-    private static int[] lv1row7 = {7,8,0,0,2,0,0,0,0};
-    private static int[] lv1row6 = {0,4,9,0,0,0,0,0,0};
-    private static int[] lv1row5 = {0,6,0,0,0,2,0,0,3};
-    private static int[] lv1row4 = {0,0,0,0,1,8,9,5,0};
-    private static int[] lv1row3 = {0,0,0,0,0,3,0,0,0};
-    private static int[] lv1row2 = {0,0,0,0,4,0,2,0,0};
-    private static int[] lv1row1 = {1,2,6,0,8,0,0,0,0};
+    private static int[] lv1row9 = {9, 0, 0, 6, 0, 0, 0, 7, 5};
+    private static int[] lv1row8 = {0, 0, 3, 0, 7, 0, 0, 0, 4};
+    private static int[] lv1row7 = {7, 8, 0, 0, 2, 0, 0, 0, 0};
+    private static int[] lv1row6 = {0, 4, 9, 0, 0, 0, 0, 0, 0};
+    private static int[] lv1row5 = {0, 6, 0, 0, 0, 2, 0, 0, 3};
+    private static int[] lv1row4 = {0, 0, 0, 0, 1, 8, 9, 5, 0};
+    private static int[] lv1row3 = {0, 0, 0, 0, 0, 3, 0, 0, 0};
+    private static int[] lv1row2 = {0, 0, 0, 0, 4, 0, 2, 0, 0};
+    private static int[] lv1row1 = {1, 2, 6, 0, 8, 0, 0, 0, 0};
 
     private static int[][] lv1 = {
-            lv1row1,lv1row2,lv1row3,lv1row4,lv1row5,lv1row6,lv1row7,
-            lv1row8,lv1row9};
+            lv1row1, lv1row2, lv1row3, lv1row4, lv1row5, lv1row6, lv1row7,
+            lv1row8, lv1row9};
 
 
-    public SudokuGameLibrary(int level){
-        if (level == 4){
+    public SudokuGameLibrary(int level) {
+        if (level == 4) {
             gameplaying = toHM(lv4);
-        }else if(level == 3){
+        } else if (level == 3) {
             gameplaying = toHM(lv3);
-        }else if(level == 2){
+        } else if (level == 2) {
             gameplaying = toHM(lv2);
-        }else{
+        } else {
             gameplaying = toHM(lv1);
         }
     }
-
-
 
 
     static HashMap<ArrayList<Integer>, Integer> toHM(int[][] s) {

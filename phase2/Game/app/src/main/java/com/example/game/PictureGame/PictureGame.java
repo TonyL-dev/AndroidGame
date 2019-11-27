@@ -110,7 +110,7 @@ class PictureGame implements Serializable {
         }
     }
 
-    PictureGame(Player player, int level, Picture[] clonedObjects){
+    PictureGame(Player player, int level, Picture[] clonedObjects) {
         newPlayer = player;
         pictures = clonedObjects;
     }
@@ -167,7 +167,7 @@ class PictureGame implements Serializable {
         return picsToFind();
     }
 
-    Picture pictureFromString(String imageId){
+    Picture pictureFromString(String imageId) {
         for (Picture pic : pictures) {
             if (pic.getName().equals(imageId)) {
                 return pic;
@@ -183,12 +183,8 @@ class PictureGame implements Serializable {
         return pictures;
     }
 
-    ArrayList<Picture> getInstantReplayOrder(){
+    ArrayList<Picture> getInstantReplayOrder() {
         return instantReplayOrder;
-    }
-
-    String tester(){
-        return "size is " + instantReplayOrder.size();
     }
 
 }

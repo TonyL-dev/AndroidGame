@@ -23,9 +23,9 @@ public class Card {
     /**
      * construct Card with suit, denomination and cardText
      *
-     * @param suit card suit
+     * @param suit         card suit
      * @param denomination card denomination
-     * @param cardText the shortened text version of the card
+     * @param cardText     the shortened text version of the card
      */
     Card(Suit suit, int denomination, String cardText) {
         this.suit = suit;

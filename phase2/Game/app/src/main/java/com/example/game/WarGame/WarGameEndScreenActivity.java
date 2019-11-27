@@ -64,7 +64,7 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
     private int numPlayers;
 
     /**
-     * The text that is displayed after the game is finished to inform user how they did 
+     * The text that is displayed after the game is finished to inform user how they did
      */
     private String textOutput;
 
@@ -151,6 +151,7 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
     /**
      * Returns how many cards this player has: organized so for 2 players the first num is always
      * the user and the second num is always the AI (same logic for 3 players)
+     *
      * @return the number of cards this player has
      */
     private int getNextNumCardsRemaining() {
@@ -161,6 +162,7 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
     /**
      * Returns the text version of the next card played: organized so for 2 players the first card
      * is always the user and the second card is always the AI (same logic for 3 players)
+     *
      * @return the text version of the next card to be played
      */
     private String getNextCardPlayed() {
@@ -184,6 +186,7 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
 
     /**
      * Replays the last level played. Pauses for 3 seconds for each round
+     *
      * @param view a View object
      */
     public void replayGame(View view) {

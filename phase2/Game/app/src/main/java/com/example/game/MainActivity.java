@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Determines where a player should start based on which game they logged off on.
      */
-    public void startingPosition(){
+    public void startingPosition() {
         Intent intent;
         Bundle bundle = new Bundle();
         bundle.putSerializable("player", newPlayer);
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Closes pop-up menu.
      */
-    public void close(View view){
+    public void close(View view) {
 
         findViewById(R.id.colourInput).setVisibility(View.INVISIBLE);
         findViewById(R.id.backColour).setVisibility(View.INVISIBLE);

@@ -21,7 +21,6 @@ class WarPlayer extends Player {
 
     /**
      * construct WarPlayer
-     *
      */
     WarPlayer() {
         super();
@@ -31,9 +30,10 @@ class WarPlayer extends Player {
 
     /**
      * Receive a card to put in their deck
+     *
      * @param card the card being received
      */
-    void receiveCard(Card card){
+    void receiveCard(Card card) {
         hand.add(card);
     }
 

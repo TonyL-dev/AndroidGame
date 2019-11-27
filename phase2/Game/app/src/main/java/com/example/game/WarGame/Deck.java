@@ -70,9 +70,10 @@ class Deck {
 
     /**
      * Return the number of cards in the deck
+     *
      * @return number of cards in the deck
      */
-    int numOfCards(){
+    int numOfCards() {
         return deck.size();
     }
 
