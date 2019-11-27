@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.game.PictureGame.PictureGameActivity;
-import com.example.game.SudokuGame.SudokuActivity;
 import com.example.game.SudokuGame.Sudoku_enterGameActivity;
 import com.example.game.WarGame.WarGameActivity;
 

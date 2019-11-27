@@ -13,8 +13,6 @@ import com.example.game.Player;
 import com.example.game.PlayerDataBase;
 import com.example.game.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
