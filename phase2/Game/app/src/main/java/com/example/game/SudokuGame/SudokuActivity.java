@@ -133,7 +133,11 @@ public class SudokuActivity extends AppCompatActivity {
                                         AlertDialog alert = builder.create();
                                         alert.show();
                                     }
-                                }
+                                    if (((EditText) input).getText().toString().equals("")) {
+                                        sudokuGame.clearHM(x,y,sudokuGame.sudoku);
+                                    }
+
+                                    }
                             });
                 }
             }
