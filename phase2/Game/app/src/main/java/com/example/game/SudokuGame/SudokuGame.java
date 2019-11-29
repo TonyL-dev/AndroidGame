@@ -17,13 +17,6 @@ class SudokuGame {
     }
 
 
-    private ArrayList<Integer> addToArray(int i, int j) {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        a.add(i);
-        a.add(j);
-        return a;
-    }
-
     /**
      * get the game board in a arraylist of arraylist of int type.
      */

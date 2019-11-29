@@ -35,6 +35,9 @@ public class SudokuActivity extends AppCompatActivity {
 
     long startSudoku = System.nanoTime();
 
+    int initNum;
+
+
     public static void hideKeyboard(View view) {
         if (view != null) {
             InputMethodManager inputManager =
@@ -76,12 +79,16 @@ public class SudokuActivity extends AppCompatActivity {
 
         playerDataBase.storePlayerData(newPlayer);
 
+
+
         // set background colour
         if (newPlayer.getbackColour() != 0) {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
         }
 
         sudokuGame = new SudokuGame(newPlayer, new SudokuGameLibrary(lv).gameplaying);
+
+        initNum = getInitScore();
 
         sud = findViewById(R.id.sudokugame);
 
@@ -174,7 +181,17 @@ public class SudokuActivity extends AppCompatActivity {
                 pt += 1;
             }
         }
-        return pt - 29;
+        return pt - initNum;
+    }
+
+    public int getInitScore() {
+        int pt = 0;
+        for (Integer value : sudokuGame.sudoku.values()) {
+            if (value <= 9 && value > 0) {
+                pt += 1;
+            }
+        }
+        return pt;
     }
 
     public void setTextcolor(TextView tv) {
