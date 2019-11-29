@@ -78,7 +78,7 @@ public class ChooseGame extends AppCompatActivity {
     }
 
     /**
-     * If a user chooses to play SudukoGame, then the player will start at the Choose_Sudoku_Game.
+     * If a user chooses to play SudukoGame, then the player will start at the SudokuEnterActivity.
      */
     public void startSudokuGame(View view) {
         Intent intent = new Intent(this, SudokuEnterGameActivity.class);
