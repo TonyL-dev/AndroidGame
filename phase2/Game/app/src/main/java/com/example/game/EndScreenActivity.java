@@ -27,6 +27,7 @@ public class EndScreenActivity extends AppCompatActivity {
 
     /**
      * sets up the screen that displays the end of game stats
+     *
      * @param savedInstanceState a Bundle object
      */
     @Override
@@ -61,9 +62,10 @@ public class EndScreenActivity extends AppCompatActivity {
 
     /**
      * Sets up the view to go to the Choose Game menu
+     *
      * @param view a View object
      */
-    public void goToMainMenu(View view){
+    public void goToMainMenu(View view) {
         newPlayer.reset(); // resets Player statistics
         playerDataBase.storePlayerData(newPlayer);
         Intent intent = new Intent(this, ChooseGame.class);

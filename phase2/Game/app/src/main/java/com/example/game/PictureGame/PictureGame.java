@@ -1,9 +1,6 @@
 package com.example.game.PictureGame;
 
-import android.view.View;
-
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -21,45 +18,6 @@ class PictureGame implements Serializable {
      */
     private Player newPlayer;
 
-    private Object[][] levelOne = {{"apple", R.drawable.apple},
-            {"banana", R.drawable.banana},
-            {"blueberry", R.drawable.blueberry},
-            {"cherry", R.drawable.cherry},
-            {"coconut", R.drawable.coconut},
-            {"grapefruit", R.drawable.grapefruit},
-            {"peach", R.drawable.peach},
-            {"tomato", R.drawable.tomato},
-            {"lemon", R.drawable.lemon},
-            {"cantaloupe", R.drawable.cantaloupe},
-            {"pear", R.drawable.pear},
-            {"strawberry", R.drawable.strawberry}};
-
-    private Object[][] levelTwo = {{"apple", R.drawable.apple},
-            {"balloon", R.drawable.balloon},
-            {"car", R.drawable.car},
-            {"cherry", R.drawable.cherry},
-            {"chair", R.drawable.chair},
-            {"fire extinguisher", R.drawable.fireextinguisher},
-            {"lady bug", R.drawable.ladybug},
-            {"tomato", R.drawable.tomato},
-            {"plate", R.drawable.plate},
-            {"rose", R.drawable.rose},
-            {"shoe", R.drawable.shoe},
-            {"spoon", R.drawable.spoon}};
-
-    private Object[][] levelThree = {{"38 - 33", R.drawable.five},
-            {"square root of 121", R.drawable.eleven},
-            {"21 x 2", R.drawable.fortytwo},
-            {"15 + 4", R.drawable.nineteen},
-            {"3 x 32", R.drawable.ninetysix},
-            {"63 / 9", R.drawable.seven},
-            {"2 x 37", R.drawable.seventyfour},
-            {"24 x 3", R.drawable.seventytwo},
-            {"8 x 8", R.drawable.sixtyfour},
-            {"65 / 5", R.drawable.thirteen},
-            {"square root of 144", R.drawable.twelve},
-            {"7 x 3", R.drawable.twentyone}};
-
     private ArrayList<Picture> instantReplayOrder = new ArrayList<>();
 
     /**
@@ -69,6 +27,46 @@ class PictureGame implements Serializable {
      */
     PictureGame(Player player, int level) {
         // in here create the array of pictures
+
+        Object[][] levelOne = {{"apple", R.drawable.apple},
+                {"banana", R.drawable.banana},
+                {"blueberry", R.drawable.blueberry},
+                {"cherry", R.drawable.cherry},
+                {"coconut", R.drawable.coconut},
+                {"grapefruit", R.drawable.grapefruit},
+                {"peach", R.drawable.peach},
+                {"tomato", R.drawable.tomato},
+                {"lemon", R.drawable.lemon},
+                {"cantaloupe", R.drawable.cantaloupe},
+                {"pear", R.drawable.pear},
+                {"strawberry", R.drawable.strawberry}};
+
+        Object[][] levelTwo = {{"apple", R.drawable.apple},
+                {"balloon", R.drawable.balloon},
+                {"car", R.drawable.car},
+                {"cherry", R.drawable.cherry},
+                {"chair", R.drawable.chair},
+                {"fire extinguisher", R.drawable.fireextinguisher},
+                {"lady bug", R.drawable.ladybug},
+                {"tomato", R.drawable.tomato},
+                {"plate", R.drawable.plate},
+                {"rose", R.drawable.rose},
+                {"shoe", R.drawable.shoe},
+                {"spoon", R.drawable.spoon}};
+
+        Object[][] levelThree = {{"38 - 33", R.drawable.five},
+                {"square root of 121", R.drawable.eleven},
+                {"21 x 2", R.drawable.fortytwo},
+                {"15 + 4", R.drawable.nineteen},
+                {"3 x 32", R.drawable.ninetysix},
+                {"63 / 9", R.drawable.seven},
+                {"2 x 37", R.drawable.seventyfour},
+                {"24 x 3", R.drawable.seventytwo},
+                {"8 x 8", R.drawable.sixtyfour},
+                {"65 / 5", R.drawable.thirteen},
+                {"square root of 144", R.drawable.twelve},
+                {"7 x 3", R.drawable.twentyone}};
+
         Random rand = new Random();
         newPlayer = player;
         Object[][] levelPictures;
@@ -110,7 +108,7 @@ class PictureGame implements Serializable {
         }
     }
 
-    PictureGame(Player player, int level, Picture[] clonedObjects){
+    PictureGame(Player player, int level, Picture[] clonedObjects) {
         newPlayer = player;
         pictures = clonedObjects;
     }
@@ -167,7 +165,7 @@ class PictureGame implements Serializable {
         return picsToFind();
     }
 
-    Picture pictureFromString(String imageId){
+    Picture pictureFromString(String imageId) {
         for (Picture pic : pictures) {
             if (pic.getName().equals(imageId)) {
                 return pic;
@@ -183,12 +181,8 @@ class PictureGame implements Serializable {
         return pictures;
     }
 
-    ArrayList<Picture> getInstantReplayOrder(){
+    ArrayList<Picture> getInstantReplayOrder() {
         return instantReplayOrder;
-    }
-
-    String tester(){
-        return "size is " + instantReplayOrder.size();
     }
 
 }

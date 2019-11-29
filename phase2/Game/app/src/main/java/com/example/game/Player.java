@@ -10,28 +10,44 @@ import java.util.ArrayList;
 
 public class Player implements Serializable {
 
-    /** The Player's points*/
+    /**
+     * The Player's points
+     */
     private int points;
 
-    /** The Player's time for each game*/
+    /**
+     * The Player's time for each game
+     */
     private ArrayList<Double> time = new ArrayList<Double>();
 
-    /** The Player's username*/
+    /**
+     * The Player's username
+     */
     private String name;
 
-    /** The Player's password*/
+    /**
+     * The Player's password
+     */
     private String password;
 
-    /** The Player's text colour*/
+    /**
+     * The Player's text colour
+     */
     private int colour = 0;
 
-    /** The Player's score multiplier*/
+    /**
+     * The Player's score multiplier
+     */
     private int multiplier = 1;
 
-    /** The Player's background colour*/
+    /**
+     * The Player's background colour
+     */
     private int backColour = 0;
 
-    /** The Player's game (that they are currently playing)*/
+    /**
+     * The Player's game (that they are currently playing)
+     */
     private int gameNum = 0;
 
     private static DecimalFormat df = new DecimalFormat("####0.00");
@@ -48,9 +64,9 @@ public class Player implements Serializable {
     /**
      * construct a new Player
      *
-     * @param username assign the Player a username
-     * @param password assign the Player a password
-     * @param colour assign the Player a text colour for the games
+     * @param username   assign the Player a username
+     * @param password   assign the Player a password
+     * @param colour     assign the Player a text colour for the games
      * @param multiplier assign the Player a score multiplier for the games
      * @param backColour assign the Player a background colour for the games
      */
@@ -85,14 +101,14 @@ public class Player implements Serializable {
     /**
      * construct a new Player that was created before (login)
      *
-     * @param username assign the Player a username
-     * @param password assign the Player a password
-     * @param colour assign the Player a text colour for the games
+     * @param username   assign the Player a username
+     * @param password   assign the Player a password
+     * @param colour     assign the Player a text colour for the games
      * @param multiplier assign the Player a score multiplier for the games
      * @param backColour assign the Player a background colour for the games
-     * @param gameNum assign the Player the game number they are playing through
-     * @param points assign the Player the number of points they have earned so far
-     * @param time assign the Player the total time they have taken for games they've played
+     * @param gameNum    assign the Player the game number they are playing through
+     * @param points     assign the Player the number of points they have earned so far
+     * @param time       assign the Player the total time they have taken for games they've played
      */
     public Player(String username, String password, int colour, int multiplier,
                   int backColour, int gameNum, int points, double time) {
@@ -174,8 +190,7 @@ public class Player implements Serializable {
      * get the player's time for a specific game
      *
      * @param gameNum
-     *
-     * @return time.get(gameNum-1)
+     * @return time.get(gameNum - 1)
      */
     public double getTime(int gameNum) {
         return this.time.get(gameNum - 1);
@@ -194,7 +209,7 @@ public class Player implements Serializable {
      * remove Player's most recent game time
      */
     public void subtractTime() {
-        this.time.remove(this.time.size()-1);
+        this.time.remove(this.time.size() - 1);
     }
 
     /**
@@ -202,9 +217,9 @@ public class Player implements Serializable {
      *
      * @return sum
      */
-    float getTotalTime(){
+    float getTotalTime() {
         float sum = 0;
-        for(int i = 0; i < this.time.size(); i++)
+        for (int i = 0; i < this.time.size(); i++)
             sum += this.time.get(i);
         return sum;
     }
@@ -288,7 +303,7 @@ public class Player implements Serializable {
      * increment gameNum after a player finishes a level
      */
     public void addLevel(int level) {
-        this.gameNum=level;
+        this.gameNum = level;
     }
 
     /**

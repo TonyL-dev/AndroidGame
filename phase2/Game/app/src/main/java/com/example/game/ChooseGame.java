@@ -16,14 +16,18 @@ import com.example.game.WarGame.WarGameEndScreenActivity;
 
 public class ChooseGame extends AppCompatActivity {
 
-    /** Player object*/
+    /**
+     * Player object
+     */
     private Player newPlayer;
 
-    /** TextView to display which games are available to play*/
+    /**
+     * TextView to display which games are available to play
+     */
     private TextView newTextView, newTextView2, newTextView3, newTextView4;
 
     /**
-     *Created on run. Looks for input to create player.
+     * Created on run. Looks for input to create player.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +60,7 @@ public class ChooseGame extends AppCompatActivity {
     /**
      * If a user chooses to play PictureGame, then the player will start at the PictureGameActivity.
      */
-    public void startPictureGame(View view){
+    public void startPictureGame(View view) {
         Intent intent = new Intent(this, PictureGameActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("player", newPlayer);
@@ -67,7 +71,7 @@ public class ChooseGame extends AppCompatActivity {
     /**
      * If a user chooses to play WarGame, then the player will start at the WarGameActivity.
      */
-    public void startWarGame(View view){
+    public void startWarGame(View view) {
         Intent intent = new Intent(this, WarGameActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("player", newPlayer);
@@ -79,7 +83,7 @@ public class ChooseGame extends AppCompatActivity {
     /**
      * If a user chooses to play SudukoGame, then the player will start at the Choose_Sudoku_Game.
      */
-    public void startSudokuGame(View view){
+    public void startSudokuGame(View view) {
         Intent intent = new Intent(this, Sudoku_enterGameActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("player", newPlayer);
