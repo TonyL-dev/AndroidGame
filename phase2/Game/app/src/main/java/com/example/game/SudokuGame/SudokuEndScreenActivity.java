@@ -70,5 +70,19 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+        Button nextLevel = findViewById(R.id.button10);
+        nextLevel.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        newPlayer.addPoints(temp);
+                        newPlayer.addTime(timeInSeconds);
+                        Intent intent = new Intent(v.getContext(), Sudoku_enterGameActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("player", newPlayer);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
     }
 }

@@ -1020,13 +1020,4 @@
 
     </TableLayout>
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="200dp"
-        android:layout_height="35dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="startSudokuGame"
-        android:text="play another Sudoku" />
 </RelativeLayout>

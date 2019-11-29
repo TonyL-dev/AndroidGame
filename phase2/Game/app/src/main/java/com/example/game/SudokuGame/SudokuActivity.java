@@ -158,7 +158,7 @@ public class SudokuActivity extends AppCompatActivity {
         long endSudoku = System.nanoTime();
         long time = endSudoku - startSudoku;
         double timeInSeconds = (double) time / 1_000_000_000;
-        int temp = getScore();
+        int temp = getInitScore() - initNum;
         Intent intent = new Intent(this, SudokuEndScreenActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("points", toString());
@@ -174,15 +174,7 @@ public class SudokuActivity extends AppCompatActivity {
      *
      * @return score
      */
-    public int getScore() {
-        int pt = 0;
-        for (Integer value : sudokuGame.sudoku.values()) {
-            if (value <= 9 && value > 0) {
-                pt += 1;
-            }
-        }
-        return pt - initNum;
-    }
+
 
     public int getInitScore() {
         int pt = 0;
@@ -200,9 +192,10 @@ public class SudokuActivity extends AppCompatActivity {
 
     @Override
     public String toString() {
-        newPlayer.addPoints(getScore()); // add points to the total points of player
+        int point = getInitScore() - initNum;
+        newPlayer.addPoints(point); // add points to the total points of player
         String showPoints =
-                "You have got " + getScore() * newPlayer.getMultiplier() + " points " + "in Sudoku game.";
+                "You have got " + point * newPlayer.getMultiplier() + " points " + "in Sudoku game.";
         return showPoints;
     }
 }
