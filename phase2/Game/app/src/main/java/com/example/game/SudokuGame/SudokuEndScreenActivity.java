@@ -43,7 +43,8 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
         textView.setTextSize(23);
 
         // show the points and time used by user in Sudoku and that in the 3 games in total.
-        textView.setText(sudokupoint + newPlayer.toString());
+        String s = sudokupoint + newPlayer.toString();
+        textView.setText(s);
 
         // get the color user want for numbers they write on the board and change it accordingly.
         if (newPlayer.getColour() != 0) textView.setTextColor(newPlayer.getColour());
@@ -70,6 +71,7 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+
         Button nextLevel = findViewById(R.id.button10);
         nextLevel.setOnClickListener(
                 new View.OnClickListener() {
@@ -77,7 +79,7 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         newPlayer.addPoints(temp);
                         newPlayer.addTime(timeInSeconds);
-                        Intent intent = new Intent(v.getContext(), Sudoku_enterGameActivity.class);
+                        Intent intent = new Intent(v.getContext(), SudokuEnterGameActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("player", newPlayer);
                         intent.putExtras(bundle);

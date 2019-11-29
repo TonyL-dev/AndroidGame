@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 class SudokuGame {
 
-    // Hashmap for locating and changing the numbers on gameboard.
     HashMap<ArrayList<Integer>, Integer> sudoku;
+    // Hashmap for locating and changing the numbers on gameboard.
     private Player newPlayer;
 
     SudokuGame(Player player, HashMap<ArrayList<Integer>, Integer> sudoku) {
@@ -18,7 +18,8 @@ class SudokuGame {
 
 
     /**
-     * get the game board in a arraylist of arraylist of int type.
+     * get the game board in a arraylist of arraylist of int type. This is for the
+     * convenience of checking.
      */
     private ArrayList<ArrayList<ArrayList<Integer>>> getSudokuDimension() {
         ArrayList<ArrayList<ArrayList<Integer>>> ans = new ArrayList<ArrayList<ArrayList<Integer>>>();
@@ -28,23 +29,21 @@ class SudokuGame {
                 ans.add(bundle);
             }
         }
-        System.out.println(ans);
-
         return ans;
     }
 
 
-    private ArrayList<ArrayList<Integer>> getThreeByThree(int a, int b){
-        ArrayList<ArrayList<Integer>> tbyt = new ArrayList<>();
+    private ArrayList<ArrayList<Integer>> getThreeByThree(int a, int b) {
+        ArrayList<ArrayList<Integer>> threebyhree = new ArrayList<>();
         for (int i = a; i <= a + 2; i++) {
             for (int j = b; j <= b + 2; j++) {
                 ArrayList<Integer> bundle = new ArrayList<>();
                 bundle.add(i);
                 bundle.add(j);
-                tbyt.add(bundle);
+                threebyhree.add(bundle);
             }
         }
-        return tbyt;
+        return threebyhree;
     }
 
 
@@ -121,8 +120,7 @@ class SudokuGame {
             s.put(key, Input);
 
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

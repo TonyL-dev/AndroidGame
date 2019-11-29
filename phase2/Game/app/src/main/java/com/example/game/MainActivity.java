@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.game.PictureGame.PictureGameActivity;
-import com.example.game.SudokuGame.Sudoku_enterGameActivity;
+import com.example.game.SudokuGame.SudokuEnterGameActivity;
 import com.example.game.WarGame.WarGameActivity;
 
 /**
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             intent = new Intent(this, WarGameActivity.class);
             bundle.putSerializable("numPlayers", 2);
         } else {
-            intent = new Intent(this, Sudoku_enterGameActivity.class);
+            intent = new Intent(this, SudokuEnterGameActivity.class);
         }
 
         intent.putExtras(bundle);

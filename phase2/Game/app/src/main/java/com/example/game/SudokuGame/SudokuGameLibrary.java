@@ -3,10 +3,11 @@ package com.example.game.SudokuGame;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SudokuGameLibrary {
+/**
+ * This class stored the initial game board values for the 4 available levels of the game.
+ */
 
-    public HashMap<ArrayList<Integer>, Integer> gameplaying;
-    public int level;
+public class SudokuGameLibrary {
 
     private static int[] lv4row9 = {0, 0, 4, 1, 9, 0, 2, 0, 0};
     private static int[] lv4row8 = {8, 0, 1, 4, 5, 6, 0, 0, 3};
@@ -20,8 +21,6 @@ public class SudokuGameLibrary {
     private static int[][] lv4 = {
             lv4row1, lv4row2, lv4row3, lv4row4, lv4row5, lv4row6,
             lv4row7, lv4row8, lv4row9};
-
-
     private static int[] lv3row9 = {0, 0, 5, 8, 0, 0, 0, 4, 0};
     private static int[] lv3row8 = {8, 0, 0, 5, 0, 0, 0, 0, 2};
     private static int[] lv3row7 = {0, 0, 1, 0, 9, 4, 0, 8, 0};
@@ -34,7 +33,6 @@ public class SudokuGameLibrary {
     private static int[][] lv3 = {
             lv3row1, lv3row2, lv3row3, lv3row4, lv3row5, lv3row6, lv3row7,
             lv3row8, lv3row9};
-
     private static int[] lv2row9 = {4, 0, 9, 0, 2, 0, 0, 0, 0};
     private static int[] lv2row8 = {2, 0, 7, 0, 0, 0, 3, 0, 0};
     private static int[] lv2row7 = {0, 6, 0, 0, 0, 7, 0, 0, 0};
@@ -47,8 +45,6 @@ public class SudokuGameLibrary {
     private static int[][] lv2 = {
             lv2row1, lv2row2, lv2row3, lv2row4, lv2row5, lv2row6, lv2row7,
             lv2row8, lv2row9};
-
-
     private static int[] lv1row9 = {9, 0, 0, 6, 0, 0, 0, 7, 5};
     private static int[] lv1row8 = {0, 0, 3, 0, 7, 0, 0, 0, 4};
     private static int[] lv1row7 = {7, 8, 0, 0, 2, 0, 0, 0, 0};
@@ -58,12 +54,16 @@ public class SudokuGameLibrary {
     private static int[] lv1row3 = {0, 0, 0, 0, 0, 3, 0, 0, 0};
     private static int[] lv1row2 = {0, 0, 0, 0, 4, 0, 2, 0, 0};
     private static int[] lv1row1 = {1, 2, 6, 0, 8, 0, 0, 0, 0};
-
     private static int[][] lv1 = {
             lv1row1, lv1row2, lv1row3, lv1row4, lv1row5, lv1row6, lv1row7,
             lv1row8, lv1row9};
+    public HashMap<ArrayList<Integer>, Integer> gameplaying;
+    public int level;
 
 
+    /*
+    To give the hashmap gameplaying keys and values according to which level the user chose.
+     */
     public SudokuGameLibrary(int level) {
         if (level == 4) {
             gameplaying = toHM(lv4);
@@ -77,6 +77,12 @@ public class SudokuGameLibrary {
     }
 
 
+    /**
+     * Change the array list to Hash Map, this is for checking the invalidity of user input in the
+     * game board.
+     *
+     * @return a hashmap containing the [row,column] as a key, the number on that tile as a value.
+     */
     static HashMap<ArrayList<Integer>, Integer> toHM(int[][] s) {
         HashMap<ArrayList<Integer>, Integer> sudokuDesign = new HashMap<>();
         int y = 0;

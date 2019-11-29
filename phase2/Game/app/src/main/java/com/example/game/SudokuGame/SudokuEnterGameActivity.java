@@ -3,12 +3,17 @@ package com.example.game.SudokuGame;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.Player;
 import com.example.game.R;
 
-public class Sudoku_enterGameActivity extends AppCompatActivity {
+/**
+ * This class is called when the user choose Sudoku game in the main menu.
+ */
+
+public class SudokuEnterGameActivity extends AppCompatActivity {
     Player newPlayer;
 
     @Override
@@ -25,7 +30,9 @@ public class Sudoku_enterGameActivity extends AppCompatActivity {
         }
     }
 
-
+    /*
+    when user choose level 1 on the sudoku menu.
+     */
     public void chooselv1(View view) {
         Intent intent = new Intent(this, SudokuActivity.class);
         Bundle bundle = new Bundle();

@@ -13,15 +13,11 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.game.Player;
 import com.example.game.PlayerDataBase;
 import com.example.game.R;
-
-import java.util.Objects;
 
 public class SudokuActivity extends AppCompatActivity {
 
@@ -33,9 +29,9 @@ public class SudokuActivity extends AppCompatActivity {
 
     Button b1;
 
-    long startSudoku = System.nanoTime();
+    long startSudoku = System.nanoTime(); //recored the time when the game is started.
 
-    int initNum;
+    int initNum; // the initial number on th board.
 
 
     public static void hideKeyboard(View view) {
@@ -56,6 +52,9 @@ public class SudokuActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         int lv = (int) (bundle.getSerializable("lv"));
+
+
+        // Start different levels of sudoku games according to user's choice.
 
         if (lv == 4) {
             setContentView(R.layout.activity_sudoku_4);
@@ -80,7 +79,6 @@ public class SudokuActivity extends AppCompatActivity {
         playerDataBase.storePlayerData(newPlayer);
 
 
-
         // set background colour
         if (newPlayer.getbackColour() != 0) {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
@@ -88,7 +86,7 @@ public class SudokuActivity extends AppCompatActivity {
 
         sudokuGame = new SudokuGame(newPlayer, new SudokuGameLibrary(lv).gameplaying);
 
-        initNum = getInitScore();
+        initNum = getScore(); // get the initial number on the board.
 
         sud = findViewById(R.id.sudokugame);
 
@@ -100,14 +98,12 @@ public class SudokuActivity extends AppCompatActivity {
                 final View input = row.getChildAt(i);
                 if (input instanceof TextView) {
                     if (newPlayer.getColour() != 0) {
-                        setTextcolor(((TextView) input));
-//            ((TextView) input).setTextColor(newPlayer.getColour());
+                        setTextcolor(((TextView) input)); //set color according to user's choice.
                     }
                 }
                 if (input instanceof EditText) {
                     if (newPlayer.getColour() != 0) {
                         setTextcolor(((EditText) input));
-//            ((EditText)input).setTextColor(newPlayer.getColour());
                     }
                     ((EditText) input).addTextChangedListener(
                             new TextWatcher() {
@@ -135,13 +131,14 @@ public class SudokuActivity extends AppCompatActivity {
                                                         ((EditText) input).getText().clear();
                                                     }
                                                 };
+                                        //if the user input a invalid number, the show an alert and clear.
                                         AlertDialog.Builder builder = new AlertDialog.Builder(SudokuActivity.this);
                                         builder.setMessage("Invalid Number").setPositiveButton("ok", r);
                                         AlertDialog alert = builder.create();
                                         alert.show();
                                     }
 
-                                    }
+                                }
                             });
                 }
             }
@@ -152,13 +149,13 @@ public class SudokuActivity extends AppCompatActivity {
     }
 
     /**
-     * method called when click the continue button.
+     * method called when "End this Game" button is clicked.
      */
     public void endSudoku(View view) {
-        long endSudoku = System.nanoTime();
-        long time = endSudoku - startSudoku;
+        long endSudoku = System.nanoTime(); //get time when the button is clicked.
+        long time = endSudoku - startSudoku; // get time used.
         double timeInSeconds = (double) time / 1_000_000_000;
-        int temp = getInitScore() - initNum;
+        int temp = getScore() - initNum;
         Intent intent = new Intent(this, SudokuEndScreenActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("points", toString());
@@ -174,9 +171,7 @@ public class SudokuActivity extends AppCompatActivity {
      *
      * @return score
      */
-
-
-    public int getInitScore() {
+    public int getScore() {
         int pt = 0;
         for (Integer value : sudokuGame.sudoku.values()) {
             if (value <= 9 && value > 0) {
@@ -192,10 +187,8 @@ public class SudokuActivity extends AppCompatActivity {
 
     @Override
     public String toString() {
-        int point = getInitScore() - initNum;
+        int point = getScore() - initNum; //get the points gained in this game (the corrected number filled in.)
         newPlayer.addPoints(point); // add points to the total points of player
-        String showPoints =
-                "You have got " + point * newPlayer.getMultiplier() + " points " + "in Sudoku game.";
-        return showPoints;
+        return "You have got " + point * newPlayer.getMultiplier() + " points " + "in Sudoku game.";
     }
 }
