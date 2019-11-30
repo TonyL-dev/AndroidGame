@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.example.game.Player;
+import com.example.game.PlayerPackage.Player;
 import com.example.game.R;
 
 class PictureGame implements Serializable {

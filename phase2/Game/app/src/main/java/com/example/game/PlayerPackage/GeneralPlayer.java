@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.PlayerPackage;
 
 public interface GeneralPlayer {
 

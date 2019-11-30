@@ -5,7 +5,7 @@
     android:id="@+id/chooseLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChooseGame">
+    tools:context=".PlayerPackage.ChooseGame">
 
     <ImageView
         android:id="@+id/lemon2"

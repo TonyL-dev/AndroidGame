@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.ChooseGame;
-import com.example.game.Player;
-import com.example.game.PlayerDataBase;
+import com.example.game.PlayerPackage.ChooseGame;
+import com.example.game.PlayerPackage.Player;
+import com.example.game.PlayerPackage.PlayerDataBase;
 import com.example.game.R;
 
 public class SudokuEndScreenActivity extends AppCompatActivity {

@@ -6,7 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.Player;
+import com.example.game.PlayerPackage.Player;
 import com.example.game.R;
 
 /**

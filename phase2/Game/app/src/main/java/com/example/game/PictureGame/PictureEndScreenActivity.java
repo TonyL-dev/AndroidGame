@@ -6,13 +6,12 @@ import android.view.View;
 import android.os.CountDownTimer;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.game.ChooseGame;
-import com.example.game.Player;
-import com.example.game.PlayerDataBase;
+import com.example.game.PlayerPackage.ChooseGame;
+import com.example.game.PlayerPackage.Player;
+import com.example.game.PlayerPackage.PlayerDataBase;
 import com.example.game.R;
 
 public class PictureEndScreenActivity extends AppCompatActivity {

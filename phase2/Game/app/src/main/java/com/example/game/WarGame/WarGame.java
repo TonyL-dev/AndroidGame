@@ -1,6 +1,6 @@
 package com.example.game.WarGame;
 
-import com.example.game.Player;
+import com.example.game.PlayerPackage.Player;
 
 import java.util.ArrayList;
 

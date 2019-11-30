@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.game.Player;
-import com.example.game.PlayerDataBase;
+import com.example.game.PlayerPackage.Player;
+import com.example.game.PlayerPackage.PlayerDataBase;
 import com.example.game.R;
 
 import java.io.Serializable;

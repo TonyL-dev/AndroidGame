@@ -11,88 +11,88 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SudokuGame.SudokuEndScreenActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".PlayerPackage.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".PlayerPackage.MainActivity" />
         </activity>
         <activity
-            android:name=".ChooseGame"
-            android:parentActivityName=".MainActivity">
+            android:name=".PlayerPackage.ChooseGame"
+            android:parentActivityName=".PlayerPackage.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".PlayerPackage.MainActivity" />
         </activity>
         <activity
             android:name=".SudokuGame.SudokuEnterGameActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".PlayerPackage.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".PlayerPackage.MainActivity" />
         </activity>
         <activity
             android:name=".WarGame.WarGameActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".PlayerPackage.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".PlayerPackage.MainActivity" />
         </activity>
         <activity
             android:name=".WarGame.WarGameEndScreenActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".PlayerPackage.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".PlayerPackage.MainActivity" />
         </activity>
         <activity
-            android:name=".EndScreenActivity"
-            android:parentActivityName=".MainActivity">
+            android:name=".PlayerPackage.EndScreenActivity"
+            android:parentActivityName=".PlayerPackage.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".PlayerPackage.MainActivity" />
         </activity>
         <activity
             android:name=".PictureGame.PictureGameActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".PlayerPackage.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".PlayerPackage.MainActivity" />
         </activity>
         <activity
             android:name=".PictureGame.PictureEndScreenActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".PlayerPackage.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".PlayerPackage.MainActivity" />
         </activity>
 
         <activity
             android:name=".SudokuGame.SudokuActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".PlayerPackage.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".PlayerPackage.MainActivity" />
         </activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".PlayerPackage.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

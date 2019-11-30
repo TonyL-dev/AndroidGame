@@ -1,4 +1,4 @@
-package com.example.game;
+package com.example.game.PlayerPackage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.game.PictureGame.PictureGameActivity;
+import com.example.game.R;
 import com.example.game.SudokuGame.SudokuEnterGameActivity;
 import com.example.game.WarGame.WarGameActivity;
 

@@ -1,6 +1,6 @@
 package com.example.game.SudokuGame;
 
-import com.example.game.Player;
+import com.example.game.PlayerPackage.GeneralPlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,9 +9,9 @@ class SudokuGame {
 
     HashMap<ArrayList<Integer>, Integer> sudoku;
     // Hashmap for locating and changing the numbers on gameboard.
-    private Player newPlayer;
+    private GeneralPlayer newPlayer;
 
-    SudokuGame(Player player, HashMap<ArrayList<Integer>, Integer> sudoku) {
+    SudokuGame(GeneralPlayer player, HashMap<ArrayList<Integer>, Integer> sudoku) {
         this.newPlayer = player;
         this.sudoku = sudoku;
     }

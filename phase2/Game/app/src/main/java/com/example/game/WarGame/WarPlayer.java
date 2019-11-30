@@ -1,9 +1,7 @@
 package com.example.game.WarGame;
 
-import com.example.game.GeneralPlayer;
-import com.example.game.Player;
+import com.example.game.PlayerPackage.GeneralPlayer;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
