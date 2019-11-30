@@ -87,6 +87,7 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
         replayCardsRemaining = (ArrayList) bundle.getSerializable("replayCardsRemaining");
         replaysCardPlayed = (ArrayList) bundle.getSerializable("replayCardsPlayed");
 
+        newPlayer.addTime(timeInSeconds);
         textOutput = stats.concat(newPlayer.toString());
 
         endScreenStartUp();
@@ -101,8 +102,6 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
         if (numPlayers == 3)
             findViewById(R.id.playNextLevel).setVisibility(View.GONE);
 
-        newPlayer.addTime(timeInSeconds);
-
         TextView textView = findViewById(R.id.endGameStats);
         textView.setText(textOutput);
 
@@ -114,7 +113,7 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
         }
 
-        playerDataBase.storePlayerData(newPlayer);
+        newPlayer.addTime(timeInSeconds);
     }
 
     /**

@@ -125,8 +125,10 @@ public class MainActivity extends AppCompatActivity {
             intent = new Intent(this, PictureGameActivity.class);
         } else if (newPlayer.getGameNum() == 2) {
             intent = new Intent(this, WarGameActivity.class);
+            newPlayer.resetTime();
             bundle.putSerializable("numPlayers", 2);
         } else {
+            newPlayer.resetTime();
             intent = new Intent(this, SudokuEnterGameActivity.class);
         }
 

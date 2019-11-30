@@ -1,13 +1,15 @@
 package com.example.game.WarGame;
 
+import com.example.game.GeneralPlayer;
 import com.example.game.Player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * A War game player
  */
-class WarPlayer extends Player {
+public class WarPlayer implements GeneralPlayer {
 
     /**
      * the hard of the player
@@ -20,10 +22,21 @@ class WarPlayer extends Player {
     private int score = 0;
 
     /**
+     * The Player's username
+     */
+    private String name;
+
+    /**
+     * The Player's password
+     */
+    private String password;
+
+    /**
      * construct WarPlayer
      */
     WarPlayer() {
-        super();
+        this.name = "Default";
+        this.password = "1234";
 
         hand = new ArrayList<>();
     }
@@ -83,7 +96,8 @@ class WarPlayer extends Player {
      *
      * @param size number
      */
-    void addScore(int size) {
+    @Override
+    public void addPoints(int size) {
         score += size;
     }
 
@@ -92,7 +106,8 @@ class WarPlayer extends Player {
      *
      * @return score
      */
-    int getScore() {
+    @Override
+    public int getPoints() {
         return score;
     }
 

@@ -155,7 +155,7 @@ public class WarGame {
         //determining who gets all the cards played for the round
         int highestCardIndex = largestCard(lastCardsPlayed);
         players[highestCardIndex].addCards(cardsInMiddle);
-        players[highestCardIndex].addScore(cardsInMiddle.size() / numOfPlayers);
+        players[highestCardIndex].addPoints(cardsInMiddle.size() / numOfPlayers);
     }
 
     /**
@@ -231,7 +231,7 @@ public class WarGame {
         // Traverse array elements from second and
         // compare every element with current max
         for (i = 1; i < players.length; i++)
-            if (players[i].getScore() > players[max].getScore())
+            if (players[i].getPoints() > players[max].getPoints())
                 max = i;
 
         return max;
@@ -245,11 +245,11 @@ public class WarGame {
      */
     @Override
     public String toString() {
-        newPlayer.addPoints(players[0].getScore());
+        newPlayer.addPoints(players[0].getPoints());
         WarPlayer winner = players[mostNumOfCards(players)];
 
-        if (winner.getScore() == players[0].getScore())
-            return "YOU WON!!! With a score of " + players[0].getScore();
-        return "Player" + mostNumOfCards(players) + " won!!! With a score of " + winner.getScore();
+        if (winner.getPoints() == players[0].getPoints())
+            return "YOU WON!!! With a score of " + players[0].getPoints();
+        return "Player" + mostNumOfCards(players) + " won!!! With a score of " + winner.getPoints();
     }
 }

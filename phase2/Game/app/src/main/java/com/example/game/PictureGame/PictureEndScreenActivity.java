@@ -6,6 +6,7 @@ import android.view.View;
 import android.os.CountDownTimer;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +23,8 @@ public class PictureEndScreenActivity extends AppCompatActivity {
     Player newPlayer;
 
     TextView textView;
+    TextView tempTextView;
+    TextView tempTextView2;
     CountDownTimer timer; // timer for movie
 
     /**
@@ -97,6 +100,8 @@ public class PictureEndScreenActivity extends AppCompatActivity {
             public void onFinish() {
                 // when timer is finished
                 setContentView(R.layout.activity_picture_end_screen);
+                View replayButton = findViewById(R.id.replayButton);
+                replayButton.setVisibility(View.GONE);
             }
         };
 
@@ -134,17 +139,28 @@ public class PictureEndScreenActivity extends AppCompatActivity {
 
     private void nextLevel(int level) {
         setContentView(R.layout.activity_picture_game);
+
+        tempTextView2 = findViewById(R.id.textView2);
+
         if (level == 1) {
             setGameBoard(p1);
-            ((TextView) findViewById(R.id.listOfFruits)).setText(p1.picsToFind());
+            tempTextView = findViewById(R.id.listOfFruits);
+            tempTextView.setText(p1.picsToFind());
         }
         if (level == 2) {
             setGameBoard(p2);
-            ((TextView) findViewById(R.id.listOfFruits)).setText(p2.picsToFind());
+            tempTextView = findViewById(R.id.listOfFruits);
+            tempTextView.setText(p2.picsToFind());
         }
         if (level == 3) {
             setGameBoard(p3);
-            ((TextView) findViewById(R.id.listOfFruits)).setText(p3.picsToFind());
+            tempTextView = findViewById(R.id.listOfFruits);
+            tempTextView.setText(p3.picsToFind());
+        }
+
+        if (newPlayer.getColour() != 0) {
+            tempTextView.setTextColor(newPlayer.getColour());
+            tempTextView2.setTextColor(newPlayer.getColour());
         }
     }
 

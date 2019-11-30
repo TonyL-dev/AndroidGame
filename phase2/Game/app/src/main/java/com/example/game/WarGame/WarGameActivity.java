@@ -7,16 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.game.EndScreenActivity;
 import com.example.game.Player;
 import com.example.game.PlayerDataBase;
 import com.example.game.R;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 /**
  * The WarGameActivity class where player plays WarGame
@@ -156,6 +153,8 @@ public class WarGameActivity extends AppCompatActivity {
         long end = System.nanoTime();
         long time = end - start;
         double timeInSeconds = (double) time / 1_000_000_000;
+
+        System.out.println(timeInSeconds);
         Intent intent;
         Bundle bundle = new Bundle();
 

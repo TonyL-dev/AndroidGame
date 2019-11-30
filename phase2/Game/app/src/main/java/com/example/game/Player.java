@@ -1,64 +1,23 @@
 package com.example.game;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 /**
  * The Player that plays through the games.
  */
 
-public class Player implements Serializable {
+public class Player implements Serializable, GeneralPlayer {
 
-    /**
-     * The Player's points
-     */
-    private int points;
+    private PlayerCustomizations custom;
 
-    /**
-     * The Player's time for each game
-     */
-    private ArrayList<Double> time = new ArrayList<Double>();
-
-    /**
-     * The Player's username
-     */
-    private String name;
-
-    /**
-     * The Player's password
-     */
-    private String password;
-
-    /**
-     * The Player's text colour
-     */
-    private int colour = 0;
-
-    /**
-     * The Player's score multiplier
-     */
-    private int multiplier = 1;
-
-    /**
-     * The Player's background colour
-     */
-    private int backColour = 0;
-
-    /**
-     * The Player's game (that they are currently playing)
-     */
-    private int gameNum = 0;
-
-    private static DecimalFormat df = new DecimalFormat("####0.00");
+    private PlayerStatistics stats = new PlayerStatistics();
 
     /**
      * construct default Player
      */
 
     public Player() {
-        this.name = "Default";
-        this.password = "1234";
+
     }
 
     /**
@@ -72,30 +31,7 @@ public class Player implements Serializable {
      */
     public Player(String username, String password, String colour, String multiplier,
                   String backColour) {
-
-        this.name = username;
-        this.password = password;
-
-        if (multiplier.equals(""))
-            this.multiplier = 1;
-        else if (Integer.parseInt(multiplier) <= 0)
-            this.multiplier = 1;
-        else
-            this.multiplier = Integer.parseInt(multiplier);
-
-        if (backColour.equalsIgnoreCase("blue"))
-            this.backColour = 0xFF0C3688;
-        else if (backColour.equalsIgnoreCase("purple"))
-            this.backColour = 0xAA9900FF;
-        else
-            this.backColour = 0;
-
-        if (colour.equalsIgnoreCase("green"))
-            this.colour = 0xFF00FF00;
-        else if (colour.equalsIgnoreCase("orange"))
-            this.colour = 0xAAFF8000;
-        else
-            this.colour = 0;
+        custom = new PlayerCustomizations(username, password, colour, multiplier, backColour);
     }
 
     /**
@@ -112,15 +48,8 @@ public class Player implements Serializable {
      */
     public Player(String username, String password, int colour, int multiplier,
                   int backColour, int gameNum, int points, double time) {
-
-        this.name = username;
-        this.password = password;
-        this.multiplier = multiplier;
-        this.colour = colour;
-        this.backColour = backColour;
-        this.gameNum = gameNum;
-        this.points = points;
-        this.time.add(time);
+        custom = new PlayerCustomizations(username, password, colour, multiplier, backColour);
+        stats = new PlayerStatistics(gameNum, points, time);
     }
 
     /**
@@ -129,7 +58,7 @@ public class Player implements Serializable {
      * @return name
      */
     String getName() {
-        return this.name;
+        return custom.getName();
     }
 
     /**
@@ -138,7 +67,7 @@ public class Player implements Serializable {
      * @return password
      */
     String getPassword() {
-        return this.password;
+        return custom.getPassword();
     }
 
     /**
@@ -147,7 +76,7 @@ public class Player implements Serializable {
      * @return points
      */
     public int getPoints() {
-        return this.points;
+        return stats.getPoints();
     }
 
     /**
@@ -156,7 +85,7 @@ public class Player implements Serializable {
      * @return colour
      */
     public int getColour() {
-        return this.colour;
+        return custom.getColour();
     }
 
     /**
@@ -165,7 +94,7 @@ public class Player implements Serializable {
      * @return multiplier
      */
     public int getMultiplier() {
-        return this.multiplier;
+        return custom.getMultiplier();
     }
 
     /**
@@ -174,7 +103,7 @@ public class Player implements Serializable {
      * @return backColour
      */
     public int getbackColour() {
-        return this.backColour;
+        return custom.getbackColour();
     }
 
     /**
@@ -183,7 +112,7 @@ public class Player implements Serializable {
      * @return gameNum
      */
     int getGameNum() {
-        return this.gameNum;
+        return stats.getGameNum();
     }
 
     /**
@@ -193,7 +122,7 @@ public class Player implements Serializable {
      * @return time.get(gameNum - 1)
      */
     public double getTime(int gameNum) {
-        return this.time.get(gameNum - 1);
+        return stats.getTime(gameNum);
     }
 
     /**
@@ -202,14 +131,14 @@ public class Player implements Serializable {
      * @return time.size()
      */
     public double getTime() {
-        return this.time.size();
+        return stats.getTime();
     }
 
     /**
      * remove Player's most recent game time
      */
     public void subtractTime() {
-        this.time.remove(this.time.size() - 1);
+        stats.subtractTime();
     }
 
     /**
@@ -218,10 +147,7 @@ public class Player implements Serializable {
      * @return sum
      */
     float getTotalTime() {
-        float sum = 0;
-        for (int i = 0; i < this.time.size(); i++)
-            sum += this.time.get(i);
-        return sum;
+        return stats.getTotalTime();
     }
 
     /**
@@ -230,7 +156,7 @@ public class Player implements Serializable {
      * @param newName
      */
     public void setName(String newName) {
-        this.name = newName;
+        custom.setName(newName);
     }
 
     /**
@@ -239,14 +165,14 @@ public class Player implements Serializable {
      * @param newPassword
      */
     public void setPassword(String newPassword) {
-        this.password = newPassword;
+        custom.setPassword(newPassword);
     }
 
     /**
      * add points to the Player's points (increment)
      */
     public void addPoints() {
-        this.points += this.multiplier;
+        stats.addPoints(custom.getMultiplier());
     }
 
     /**
@@ -255,14 +181,14 @@ public class Player implements Serializable {
      * @param newPoints
      */
     public void addPoints(int newPoints) {
-        this.points += newPoints * this.multiplier;
+        stats.addPoints(newPoints, custom.getMultiplier());
     }
 
     /**
      * subtract points from the Player's points  (decrement)
      */
     public void subtractPoints() {
-        this.points -= this.multiplier;
+        stats.subtractPoints(custom.getMultiplier());
     }
 
     /**
@@ -271,7 +197,7 @@ public class Player implements Serializable {
      * @param subPoints
      */
     public void subtractPoints(int subPoints) {
-        this.points -= subPoints * this.multiplier;
+        stats.subtractPoints(subPoints, custom.getMultiplier());
     }
 
     /**
@@ -280,40 +206,34 @@ public class Player implements Serializable {
      * @param additionalTime
      */
     public void addTime(double additionalTime) {
-        this.time.add(additionalTime);
+        stats.addTime(additionalTime);
     }
 
     /**
      * reset game statistics after a Player finishes all 3 games
      */
     public void resetTime() {
-        this.time.clear();
+        stats.resetTime();
     }
 
     /**
      * reset game statistics after a Player finishes all 3 games
      */
     public void reset() {
-        this.time.clear();
-        this.points = 0;
-        this.gameNum = 0;
+        stats.reset();
     }
 
     /**
      * increment gameNum after a player finishes a level
      */
     public void addLevel(int level) {
-        this.gameNum = level;
+        stats.addLevel(level);
     }
 
     /**
      * String representation of the Player
      */
     public String toString() {
-        double totalGameTime = 0;
-        for (double gameTime : time)
-            totalGameTime += gameTime;
-        return "\nYou have " + getPoints() + " total points now." +
-                "\n\nIn total you have taken " + df.format((totalGameTime)) + " seconds! ";
+        return stats.toString();
     }
 }
