@@ -54,14 +54,6 @@ public class PlayerDataBase {
     }
 
     /**
-     * clears all player data
-     */
-    public void clearPlayerData() {
-        SharedPreferences.Editor playerLocalDatabaseEditor = playerLocalDatabase.edit();
-        playerLocalDatabaseEditor.clear();
-    }
-
-    /**
      * verifies if someone logging in is a previous Player or not
      *
      * @param prevUser username that the user enters
