@@ -106,15 +106,6 @@ public class WarGame {
     }
 
     /**
-     * Return the first player (the user)
-     *
-     * @return Return the first player (a.k.a the user)
-     */
-    WarPlayer getPlayerA() {
-        return players[0];
-    }
-
-    /**
      * play out a single round of the game
      */
     void play() {

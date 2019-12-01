@@ -232,9 +232,7 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 setContentView(R.layout.activity_war_game_end_screen);
-                ((TextView) findViewById(R.id.endGameStats)).setText(textOutput);
-                ((TextView) findViewById(R.id.endGameStats)).setTextColor(newPlayer.getColour());
-
+                endScreenStartUp();
                 //disable the option to play the next level (which doesn't exist)
                 if (numPlayers == 3)
                     findViewById(R.id.playNextLevel).setVisibility(View.GONE);
