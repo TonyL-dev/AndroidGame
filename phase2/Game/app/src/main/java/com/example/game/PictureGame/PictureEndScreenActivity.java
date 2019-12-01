@@ -14,6 +14,9 @@ import com.example.game.PlayerPackage.Player;
 import com.example.game.PlayerPackage.PlayerDataBase;
 import com.example.game.R;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class PictureEndScreenActivity extends AppCompatActivity {
 
     /**
@@ -133,7 +136,12 @@ public class PictureEndScreenActivity extends AppCompatActivity {
 
     public void instantReplay(View view) {
         nextLevel(level);
-        timer.start();
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                timer.start();
+            }
+        }, 2000);
     }
 
     private void nextLevel(int level) {
