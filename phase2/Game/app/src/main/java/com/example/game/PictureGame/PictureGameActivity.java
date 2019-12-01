@@ -28,46 +28,55 @@ public class PictureGameActivity extends AppCompatActivity {
     /**
      * PictureGame object
      */
+
     private PictureGame pictureGame;
 
     /**
      * 3 PictureGame objects to store the game for instant replay
      */
+
     private PictureGame p1, p2, p3;
 
     /**
      * TextView for where the title and list of objects will be displayed
      */
+
     private TextView textView, textView2;
 
     /**
      * Initially the player starts on the first level
      */
+
     private int level = 1;
 
     /**
      * Player object
      */
+
     private Player newPlayer;
 
     /**
      * PlayerDataBase where the player is stored
      */
+
     private PlayerDataBase playerDataBase;
 
     /**
      * How the game's time for each level is determined. The timer starts at initialization.
      */
+
     private long start = System.nanoTime();
 
     /**
      * Decimal Format for the number of seconds rounded to two decimal places.
      */
+
     private DecimalFormat df = new DecimalFormat("####0.00");
 
     /**
      * Created on run. Sets up the game board to have the appropriate pictures for the level.
      */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,6 +129,7 @@ public class PictureGameActivity extends AppCompatActivity {
      *
      * @param view the imageView that has been clicked
      */
+
     public void imageClick(View view) {
         // runs when image is clicked on
         if (view.getTag() != null) {
@@ -174,7 +184,9 @@ public class PictureGameActivity extends AppCompatActivity {
 
     /**
      * Determines the time taken for the level that was just completed.
+     * @param view the view that has been pressed
      */
+
     private void determineTime(View view) {
         view.setVisibility(View.INVISIBLE);
         findViewById(R.id.textView2).setVisibility(View.INVISIBLE);
@@ -197,6 +209,7 @@ public class PictureGameActivity extends AppCompatActivity {
     /**
      * Sets the game board based on which level the player is on.
      */
+
     private void setGameBoard() {
 
         if (level == 2) {
@@ -269,6 +282,7 @@ public class PictureGameActivity extends AppCompatActivity {
     /**
      * iterates the game to the next level. The transition also takes 3 seconds.
      */
+
     private void nextLevel() {
         new Handler().postDelayed(new Runnable() {
             public void run() {

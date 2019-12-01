@@ -22,21 +22,38 @@ public class PictureEndScreenActivity extends AppCompatActivity {
     /**
      * Player object
      */
+
     private Player newPlayer;
 
-    private TextView textView;
-    private TextView tempTextView;
-    private TextView tempTextView2;
+    /**
+     * the 3 TextView objects that will be modified during instant replay
+     */
+
+    private TextView textView, tempTextView, tempTextView2;
+
+    /**
+     * the CountDownTimer used for the instant replay
+     */
+
     private CountDownTimer timer; // timer for movie
 
     /**
-     * Player database
+     * the 3 PictureGame objects that will be played for the instant replay
      */
-    private PlayerDataBase playerDataBase;
 
     private PictureGame p1, p2, p3;
 
+    /**
+     * level that user is currently on for the instant replay
+     */
+
     private int level = 1;
+
+    /**
+     * the playerDataBase for the game
+     */
+
+    PlayerDataBase playerDataBase;
 
     /**
      * Created on run and creates a display for the user to return to the ChooseGame activity.
@@ -126,6 +143,12 @@ public class PictureEndScreenActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * takes player back to choose a new game
+     *
+     * @param view the button that has been pressed
+     */
+
     public void chooseNewGame(View view) {
         Intent intent = new Intent(this, ChooseGame.class);
         Bundle bundle = new Bundle();
@@ -133,6 +156,12 @@ public class PictureEndScreenActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    /**
+     * start the instant replay for the recently played PictureGame
+     *
+     * @param view the button that has been pressed
+     */
 
     public void instantReplay(View view) {
         nextLevel(level);
@@ -143,6 +172,12 @@ public class PictureEndScreenActivity extends AppCompatActivity {
             }
         }, 2000);
     }
+
+    /**
+     * Set the layout to be for this specific level of the PictureGame
+     *
+     * @param level the current level of the instant replay
+     */
 
     private void nextLevel(int level) {
         setContentView(R.layout.activity_picture_game);
@@ -170,6 +205,12 @@ public class PictureEndScreenActivity extends AppCompatActivity {
             tempTextView2.setTextColor(newPlayer.getColour());
         }
     }
+
+    /**
+     * Set the layout to be with this specific pictureGame to be instant replayed
+     *
+     * @param pictureGame the current PictureGame that is being replayed
+     */
 
     private void setGameBoard(PictureGame pictureGame) {
 
