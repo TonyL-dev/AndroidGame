@@ -1,9 +1,5 @@
 package com.example.game.PlayerPackage;
 
-import com.example.game.PlayerPackage.GeneralPlayer;
-import com.example.game.PlayerPackage.PlayerCustomizations;
-import com.example.game.PlayerPackage.PlayerStatistics;
-
 import java.io.Serializable;
 
 /**

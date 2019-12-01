@@ -199,10 +199,6 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
             setContentView(R.layout.activity_war_game);
         else {
             setContentView(R.layout.activity_war_game_two);
-            cardsC = findViewById(R.id.cardRemainingC);
-            cardsC.setTextColor(newPlayer.getColour());
-            cardPlayedC = findViewById(R.id.currentCardC);
-            cardPlayedC.setTextColor(newPlayer.getColour());
         }
 
         if (newPlayer.getColour() != 0) {
@@ -214,6 +210,13 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
             cardPlayedA.setTextColor(newPlayer.getColour());
             cardPlayedB = findViewById(R.id.currentCardB);
             cardPlayedB.setTextColor(newPlayer.getColour());
+            if (numPlayers!=2)
+            {
+                cardsC = findViewById(R.id.cardRemainingC);
+                cardsC.setTextColor(newPlayer.getColour());
+                cardPlayedC = findViewById(R.id.currentCardC);
+                cardPlayedC.setTextColor(newPlayer.getColour());
+            }
         }
 
         //disable the play and skip button so they can't be clicked
