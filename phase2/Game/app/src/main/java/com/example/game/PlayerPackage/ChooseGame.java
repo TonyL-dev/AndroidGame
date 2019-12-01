@@ -50,8 +50,8 @@ public class ChooseGame extends AppCompatActivity {
         }
 
         //set background colour
-        if (newPlayer.getbackColour() != 0) {
-            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        if (newPlayer.getBackColour() != 0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getBackColour());
         }
     }
 

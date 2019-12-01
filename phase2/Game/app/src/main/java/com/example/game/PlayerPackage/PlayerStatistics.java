@@ -3,6 +3,7 @@ package com.example.game.PlayerPackage;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerStatistics implements Serializable {
 
@@ -14,7 +15,7 @@ public class PlayerStatistics implements Serializable {
     /**
      * The Player's time for each game
      */
-    private ArrayList<Double> time = new ArrayList<Double>();
+    private List<Double> time = new ArrayList<>();
 
     /**
      * The Player's game (that they are currently playing)
@@ -23,9 +24,15 @@ public class PlayerStatistics implements Serializable {
 
     private static DecimalFormat df = new DecimalFormat("####0.00");
 
+    /**
+     * default constructor for PlayerStatistics
+     */
     public PlayerStatistics(){
     }
 
+    /**
+     * constructor for PlayerStatistics to be used in Player class
+     */
     public PlayerStatistics(int gameNum, int points, double time){
         this.gameNum = gameNum;
         this.points = points;

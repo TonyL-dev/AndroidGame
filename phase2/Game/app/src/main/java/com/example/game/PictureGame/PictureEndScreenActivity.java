@@ -132,8 +132,8 @@ public class PictureEndScreenActivity extends AppCompatActivity {
             textView.setTextColor(newPlayer.getColour());
         }
 
-        if (newPlayer.getbackColour() != 0) {
-            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        if (newPlayer.getBackColour() != 0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getBackColour());
         }
 
         newPlayer.reset();

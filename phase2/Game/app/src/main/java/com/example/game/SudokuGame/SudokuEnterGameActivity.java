@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.game.PlayerPackage.Player;
@@ -14,7 +16,8 @@ import com.example.game.R;
  */
 
 public class SudokuEnterGameActivity extends AppCompatActivity {
-    Player newPlayer;
+
+    private Player newPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +28,14 @@ public class SudokuEnterGameActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         newPlayer = (Player) bundle.getSerializable("player");
 
-        if (newPlayer.getbackColour() != 0) {
-            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        TextView textView = findViewById(R.id.textView3);
+
+        if (newPlayer.getBackColour() != 0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getBackColour());
+        }
+
+        if (newPlayer.getColour() != 0) {
+            textView.setTextColor(newPlayer.getColour());
         }
     }
 

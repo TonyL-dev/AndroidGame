@@ -76,13 +76,17 @@ public class SudokuActivity extends AppCompatActivity {
         // increments game number
         newPlayer.addLevel(3);
 
+        TextView textView = findViewById(R.id.textView);
 
         playerDataBase.storePlayerData(newPlayer);
 
-
         // set background colour
-        if (newPlayer.getbackColour() != 0) {
-            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        if (newPlayer.getBackColour() != 0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getBackColour());
+        }
+
+        if (newPlayer.getColour() != 0) {
+            textView.setTextColor(newPlayer.getColour());
         }
 
         sudokuGame = new SudokuGame(newPlayer, new SudokuGameLibrary(lv).gameplaying);
