@@ -22,17 +22,13 @@ import com.example.game.R;
 
 public class SudokuActivity extends AppCompatActivity {
 
-    public SudokuGame sudokuGame;
+    SudokuGame sudokuGame;
     Player newPlayer;
     PlayerDataBase playerDataBase;
 
-    TableLayout sud;
+    long startSudoku = System.nanoTime(); //record the time when the game is started.
 
-    Button b1;
-
-    long startSudoku = System.nanoTime(); //recored the time when the game is started.
-
-    int initNum; // the initial number on th board.
+    int initNum; // the initial number on the board.
 
 
     public static void hideKeyboard(View view) {
@@ -93,9 +89,8 @@ public class SudokuActivity extends AppCompatActivity {
 
         initNum = getScore(); // get the initial number on the board.
 
-        sud = findViewById(R.id.sudokugame);
+        TableLayout sud = findViewById(R.id.sudokugame);
 
-        b1 = findViewById(R.id.button);
 
         for (int a = 0, b = sud.getChildCount(); a < b; a++) {
             final TableRow row = (TableRow) sud.getChildAt(a);

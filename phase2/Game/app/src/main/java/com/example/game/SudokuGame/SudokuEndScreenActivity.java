@@ -15,7 +15,7 @@ import com.example.game.R;
 
 public class SudokuEndScreenActivity extends AppCompatActivity {
 
-    public Player newPlayer;
+    Player newPlayer;
 
     TextView textView;
 

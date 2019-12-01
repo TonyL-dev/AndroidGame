@@ -57,14 +57,13 @@ public class SudokuGameLibrary {
     private static int[][] lv1 = {
             lv1row1, lv1row2, lv1row3, lv1row4, lv1row5, lv1row6, lv1row7,
             lv1row8, lv1row9};
-    public HashMap<ArrayList<Integer>, Integer> gameplaying;
+    HashMap<ArrayList<Integer>, Integer> gameplaying;
     public int level;
 
-
     /*
-    To give the hashmap gameplaying keys and values according to which level the user chose.
+    To give the hashmap named gameplaying keys and values according to which level the user chose.
      */
-    public SudokuGameLibrary(int level) {
+    SudokuGameLibrary(int level) {
         if (level == 4) {
             gameplaying = toHM(lv4);
         } else if (level == 3) {
@@ -76,14 +75,13 @@ public class SudokuGameLibrary {
         }
     }
 
-
     /**
      * Change the array list to Hash Map, this is for checking the invalidity of user input in the
      * game board.
      *
      * @return a hashmap containing the [row,column] as a key, the number on that tile as a value.
      */
-    static HashMap<ArrayList<Integer>, Integer> toHM(int[][] s) {
+    private static HashMap<ArrayList<Integer>, Integer> toHM(int[][] s) {
         HashMap<ArrayList<Integer>, Integer> sudokuDesign = new HashMap<>();
         int y = 0;
         for (int[] i : s) {

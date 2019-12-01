@@ -17,7 +17,7 @@ import com.example.game.R;
 
 public class SudokuEnterGameActivity extends AppCompatActivity {
 
-    private Player newPlayer;
+    Player newPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

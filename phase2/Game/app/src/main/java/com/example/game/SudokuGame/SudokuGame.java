@@ -106,18 +106,18 @@ class SudokuGame {
     /**
      * if there is no conflicts, add the number entered by the user into the game board.
      */
-    boolean insert(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
+    boolean insert(int input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
         ArrayList<Integer> key = new ArrayList<Integer>();
         key.add(x);
         key.add(y);
 
-        boolean rowCorrect = checkRow(Input, x, y, s);
-        boolean colCorrect = checkCol(Input, x, y, s);
-        boolean tbtCorrect = checkThreeByThree(Input, x, y, s);
-        boolean inrange = isInRange(Input);
+        boolean rowCorrect = checkRow(input, x, y, s);
+        boolean colCorrect = checkCol(input, x, y, s);
+        boolean tbtCorrect = checkThreeByThree(input, x, y, s);
+        boolean inrange = isInRange(input);
 
         if (rowCorrect && colCorrect && tbtCorrect && inrange) {
-            s.put(key, Input);
+            s.put(key, input);
 
             return true;
         } else {
