@@ -13,17 +13,17 @@ public class EndScreenActivity extends AppCompatActivity {
     /**
      * Player object
      */
-    Player newPlayer;
+    private Player newPlayer;
 
     /**
      * PlayerDataBase where the player is stored
      */
-    PlayerDataBase playerDataBase;
+    private PlayerDataBase playerDataBase;
 
     /**
      * The time in seconds
      */
-    double timeInSeconds;
+    private double timeInSeconds;
 
     /**
      * sets up the screen that displays the end of game stats
@@ -52,8 +52,8 @@ public class EndScreenActivity extends AppCompatActivity {
         if (newPlayer.getColour() != 0)
             textView.setTextColor(newPlayer.getColour());
 
-        if (newPlayer.getbackColour() != 0) {
-            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        if (newPlayer.getBackColour() != 0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getBackColour());
         }
 
         newPlayer.subtractTime();

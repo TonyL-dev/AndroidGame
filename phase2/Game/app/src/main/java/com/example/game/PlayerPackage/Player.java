@@ -12,8 +12,14 @@ import java.io.Serializable;
 
 public class Player implements Serializable, GeneralPlayer {
 
+    /**
+     * PlayerCustomizations object
+     */
     private PlayerCustomizations custom;
 
+    /**
+     * PlayerStatistics object
+     */
     private PlayerStatistics stats = new PlayerStatistics();
 
     /**
@@ -21,7 +27,6 @@ public class Player implements Serializable, GeneralPlayer {
      */
 
     public Player() {
-
     }
 
     /**
@@ -106,8 +111,8 @@ public class Player implements Serializable, GeneralPlayer {
      *
      * @return backColour
      */
-    public int getbackColour() {
-        return custom.getbackColour();
+    public int getBackColour() {
+        return custom.getBackColour();
     }
 
     /**

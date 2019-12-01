@@ -48,8 +48,8 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
 
         // get the color user want for numbers they write on the board and change it accordingly.
         if (newPlayer.getColour() != 0) textView.setTextColor(newPlayer.getColour());
-        if (newPlayer.getbackColour() != 0) {
-            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        if (newPlayer.getBackColour() != 0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getBackColour());
         }
 
         /** If a Player backs out before continuing to the next game, the data will not be saved */

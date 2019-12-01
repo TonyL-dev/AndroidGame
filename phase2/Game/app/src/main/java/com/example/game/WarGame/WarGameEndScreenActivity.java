@@ -24,12 +24,12 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
     /**
      * Player object
      */
-    Player newPlayer;
+    private Player newPlayer;
 
     /**
      * PlayerDataBase where the player is stored
      */
-    PlayerDataBase playerDataBase;
+    private PlayerDataBase playerDataBase;
 
     /**
      * The time in seconds
@@ -65,6 +65,11 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
      * The text that is displayed after the game is finished to inform user how they did
      */
     private String textOutput;
+
+    /**
+     * Textview for the different cards and the counts of remaining cards
+     */
+    private TextView cardsA, cardsB, cardsC, cardPlayedA, cardPlayedB, cardPlayedC;
 
     /**
      * Sets up the end screen
@@ -105,12 +110,11 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.endGameStats);
         textView.setText(textOutput);
 
-        //background
         if (newPlayer.getColour() != 0)
             textView.setTextColor(newPlayer.getColour());
 
-        if (newPlayer.getbackColour() != 0) {
-            getWindow().getDecorView().setBackgroundColor(newPlayer.getbackColour());
+        if (newPlayer.getBackColour() != 0) {
+            getWindow().getDecorView().setBackgroundColor(newPlayer.getBackColour());
         }
 
         newPlayer.addTime(timeInSeconds);
@@ -193,8 +197,24 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
 
         if (numPlayers == 2)
             setContentView(R.layout.activity_war_game);
-        else
+        else {
             setContentView(R.layout.activity_war_game_two);
+            cardsC = findViewById(R.id.cardRemainingC);
+            cardsC.setTextColor(newPlayer.getColour());
+            cardPlayedC = findViewById(R.id.currentCardC);
+            cardPlayedC.setTextColor(newPlayer.getColour());
+        }
+
+        if (newPlayer.getColour() != 0) {
+            cardsA = findViewById(R.id.cardRemainingA);
+            cardsA.setTextColor(newPlayer.getColour());
+            cardsB = findViewById(R.id.cardRemainingB);
+            cardsB.setTextColor(newPlayer.getColour());
+            cardPlayedA = findViewById(R.id.currentCardA);
+            cardPlayedA.setTextColor(newPlayer.getColour());
+            cardPlayedB = findViewById(R.id.currentCardB);
+            cardPlayedB.setTextColor(newPlayer.getColour());
+        }
 
         //disable the play and skip button so they can't be clicked
         findViewById(R.id.playButton).setEnabled(false);
@@ -210,6 +230,8 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
             public void onFinish() {
                 setContentView(R.layout.activity_war_game_end_screen);
                 ((TextView) findViewById(R.id.endGameStats)).setText(textOutput);
+                ((TextView) findViewById(R.id.endGameStats)).setTextColor(newPlayer.getColour());
+
                 //disable the option to play the next level (which doesn't exist)
                 if (numPlayers == 3)
                     findViewById(R.id.playNextLevel).setVisibility(View.GONE);

@@ -29,6 +29,9 @@ public class PlayerCustomizations implements Serializable {
      */
     private int backColour = 0;
 
+    /**
+     * constructor for PlayerCustomizations to be used in Player class
+     */
     public PlayerCustomizations(String username, String password, String colour, String multiplier,
                                 String backColour){
 
@@ -58,7 +61,7 @@ public class PlayerCustomizations implements Serializable {
     }
 
     /**
-     * construct a new Player that was created before (login)
+     * construct a PlayerCustomizations object that was created before (login)
      *
      * @param username   assign the Player a username
      * @param password   assign the Player a password
@@ -117,7 +120,7 @@ public class PlayerCustomizations implements Serializable {
      *
      * @return backColour
      */
-    public int getbackColour() {
+    public int getBackColour() {
         return this.backColour;
     }
 

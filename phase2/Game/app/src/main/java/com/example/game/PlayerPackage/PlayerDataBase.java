@@ -47,7 +47,7 @@ public class PlayerDataBase {
         playerLocalDatabaseEditor.putString(key_password, player.getPassword());
         playerLocalDatabaseEditor.putInt(key_multiplier, player.getMultiplier());
         playerLocalDatabaseEditor.putInt(key_colour, player.getColour());
-        playerLocalDatabaseEditor.putInt(key_backColour, player.getbackColour());
+        playerLocalDatabaseEditor.putInt(key_backColour, player.getBackColour());
         playerLocalDatabaseEditor.putInt(key_gameNum, player.getGameNum());
         playerLocalDatabaseEditor.putFloat(key_time, player.getTotalTime());
         playerLocalDatabaseEditor.commit();

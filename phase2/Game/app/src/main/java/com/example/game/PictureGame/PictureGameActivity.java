@@ -104,8 +104,8 @@ public class PictureGameActivity extends AppCompatActivity {
         }
 
         //sets background colour
-        if (newPlayer.getbackColour() != 0) {
-            relativeLayout.setBackgroundColor(newPlayer.getbackColour());
+        if (newPlayer.getBackColour() != 0) {
+            relativeLayout.setBackgroundColor(newPlayer.getBackColour());
         }
 
         //increments number of games
