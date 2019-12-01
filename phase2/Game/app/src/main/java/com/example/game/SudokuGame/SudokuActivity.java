@@ -25,27 +25,27 @@ public class SudokuActivity extends AppCompatActivity {
     /**
      * Sudoku game object.
      */
-    SudokuGame sudokuGame;
+    private SudokuGame sudokuGame;
 
     /**
      * Player object
      */
-    Player newPlayer;
+    private Player newPlayer;
 
     /**
      * Database where the user information is stored.
      */
-    PlayerDataBase playerDataBase;
+    private PlayerDataBase playerDataBase;
 
     /**
      * record the time when the game is started.
      */
-    long startSudoku = System.nanoTime();
+    private long startSudoku = System.nanoTime();
 
     /**
      * the initial number on the board.
      */
-    int initNum;
+    private int initNum;
 
 
     /**
@@ -148,7 +148,7 @@ public class SudokuActivity extends AppCompatActivity {
                                     int y = (int) (((String) input.getTag()).charAt(1)) - 48;
                                     if (!((EditText) input).getText().toString().equals("")
                                             && !sudokuGame.insert(Integer.valueOf(((EditText) input).getText().toString()), x, y,
-                                            sudokuGame.sudoku)) {
+                                            sudokuGame.getSudoku())) {
                                         DialogInterface.OnClickListener r =
                                                 new DialogInterface.OnClickListener() {
                                                     @Override
@@ -198,7 +198,7 @@ public class SudokuActivity extends AppCompatActivity {
      */
     public int getScore() {
         int pt = 0;
-        for (Integer value : sudokuGame.sudoku.values()) {
+        for (Integer value : sudokuGame.getSudoku().values()) {
             if (value <= 9 && value > 0) {
                 pt += 1;
             }

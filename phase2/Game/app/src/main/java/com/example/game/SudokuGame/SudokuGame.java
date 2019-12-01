@@ -10,7 +10,7 @@ class SudokuGame {
     /**
      * Hashmap for locating and changing the numbers on gameboard.
      */
-    HashMap<ArrayList<Integer>, Integer> sudoku;
+    private HashMap<ArrayList<Integer>, Integer> sudoku;
 
     private GeneralPlayer newPlayer;
 
@@ -19,6 +19,13 @@ class SudokuGame {
         this.sudoku = sudoku;
     }
 
+    /**
+     * Gets the Sudoku HashMap
+     */
+
+    public HashMap<ArrayList<Integer>, Integer> getSudoku(){
+        return sudoku;
+    }
 
     /**
      * get the game board in a arraylist of arraylist of int type. This is for the

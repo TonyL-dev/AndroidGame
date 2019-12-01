@@ -17,7 +17,7 @@ import com.example.game.R;
 
 public class SudokuEnterGameActivity extends AppCompatActivity {
 
-    Player newPlayer;
+    private Player newPlayer;
 
     /**
      * create the choose level interface.

@@ -18,18 +18,18 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
     /**
      * player object.
      */
-    Player newPlayer;
+    private Player newPlayer;
 
-    TextView textView;
+    private TextView textView;
 
-    PlayerDataBase playerDataBase;
+    private PlayerDataBase playerDataBase;
 
-    int temp;
+    private int temp;
 
     /**
      * the time the user used in the game.
      */
-    double timeInSeconds;
+    private double timeInSeconds;
 
     /**
      * Create the interface when user finished the game.
