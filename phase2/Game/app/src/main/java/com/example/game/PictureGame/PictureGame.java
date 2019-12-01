@@ -9,15 +9,22 @@ import com.example.game.PlayerPackage.Player;
 import com.example.game.R;
 
 class PictureGame implements Serializable {
+
     /**
      * array of Picture objects
      */
+
     private Picture[] pictures = new Picture[12];
 
     /**
      * player
      */
+
     private Player newPlayer;
+
+    /**
+     *  list of pictures in the order the user clicked on them
+     */
 
     private List<Picture> instantReplayOrder = new ArrayList<>();
 
@@ -25,7 +32,9 @@ class PictureGame implements Serializable {
      * Constructs a new PictureGame
      *
      * @param player player object for this game
+     * @param level the current level the player is on
      */
+
     PictureGame(Player player, int level) {
         // in here create the array of pictures
 
@@ -109,6 +118,12 @@ class PictureGame implements Serializable {
         }
     }
 
+    /**
+     * @param player player for this PictureGame
+     * @param level current level user is on
+     * @param clonedObjects array of Picture objects to be found
+     */
+
     PictureGame(Player player, int level, Picture[] clonedObjects) {
         newPlayer = player;
         pictures = clonedObjects;
@@ -116,8 +131,11 @@ class PictureGame implements Serializable {
 
 
     /**
-     * return string of remaining Picture objects to be found
+     * Return string of remaining Picture objects to be found
+     *
+     * @return StringBuilder of list of Picture objects to find
      */
+
     StringBuilder picsToFind() {
         StringBuilder listOfFruits = new StringBuilder();
 
@@ -134,6 +152,7 @@ class PictureGame implements Serializable {
      *
      * @param imageId the ID of the imageView
      */
+
     boolean isHiddenImage(String imageId) {
         // return whether this image is to be found or not
         for (Picture pic : pictures) {
@@ -151,6 +170,7 @@ class PictureGame implements Serializable {
      *
      * @param imageId the ID of the imageView that has been found
      */
+
     StringBuilder foundHiddenImage(String imageId) {
         // runs when you found an image
 
@@ -166,6 +186,13 @@ class PictureGame implements Serializable {
         return picsToFind();
     }
 
+    /**
+     * Return the corresponding Picture with the same name as imageId
+     *
+     * @param imageId imageId of Picture
+     * @return pic with the name imageId or null
+     */
+
     Picture pictureFromString(String imageId) {
         for (Picture pic : pictures) {
             if (pic.getName().equals(imageId)) {
@@ -176,11 +203,20 @@ class PictureGame implements Serializable {
     }
 
     /**
-     * Returns the pictures in the Picture list
+     * Return the pictures in the Picture list
+     *
+     * @return pictures
      */
+
     Picture[] getPictures() {
         return pictures;
     }
+
+    /**
+     * Return a list of in order of how the user found the pictures
+     *
+     * @return instantReplayOrder
+     */
 
     List<Picture> getInstantReplayOrder() {
         return instantReplayOrder;
