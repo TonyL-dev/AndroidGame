@@ -19,6 +19,10 @@ public class SudokuEnterGameActivity extends AppCompatActivity {
 
     Player newPlayer;
 
+    /**
+     * create the choose level interface.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +43,8 @@ public class SudokuEnterGameActivity extends AppCompatActivity {
         }
     }
 
-    /*
-    when user choose level 1 on the sudoku menu.
+    /**
+    *when user choose level 1 on the sudoku menu.
      */
     public void chooselv1(View view) {
         Intent intent = new Intent(this, SudokuActivity.class);
@@ -50,7 +54,9 @@ public class SudokuEnterGameActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-
+    /**
+     *when user choose level 2 on the sudoku menu.
+     */
     public void chooselv2(View view) {
         Intent intent = new Intent(this, SudokuActivity.class);
         Bundle bundle = new Bundle();
@@ -60,7 +66,9 @@ public class SudokuEnterGameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    /**
+     *when user choose level 3 on the sudoku menu.
+     */
     public void chooselv3(View view) {
         Intent intent = new Intent(this, SudokuActivity.class);
         Bundle bundle = new Bundle();
@@ -69,7 +77,9 @@ public class SudokuEnterGameActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-
+    /**
+     *when user choose level 4 on the sudoku menu.
+     */
 
     public void chooselv4(View view) {
         Intent intent = new Intent(this, SudokuActivity.class);

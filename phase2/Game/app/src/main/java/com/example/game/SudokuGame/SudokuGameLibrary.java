@@ -8,6 +8,9 @@ import java.util.HashMap;
  */
 
 public class SudokuGameLibrary {
+    /**
+     * The default rows (which cannot be modified by users) for the respective 4 games.
+     */
 
     private static int[] lv4row9 = {0, 0, 4, 1, 9, 0, 2, 0, 0};
     private static int[] lv4row8 = {8, 0, 1, 4, 5, 6, 0, 0, 3};

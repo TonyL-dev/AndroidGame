@@ -7,8 +7,11 @@ import java.util.HashMap;
 
 class SudokuGame {
 
+    /**
+     * Hashmap for locating and changing the numbers on gameboard.
+     */
     HashMap<ArrayList<Integer>, Integer> sudoku;
-    // Hashmap for locating and changing the numbers on gameboard.
+
     private GeneralPlayer newPlayer;
 
     SudokuGame(GeneralPlayer player, HashMap<ArrayList<Integer>, Integer> sudoku) {
@@ -33,6 +36,12 @@ class SudokuGame {
     }
 
 
+    /**
+     * bound each adjacent 9 numbers into a bundle for checking.
+     * @param a
+     * @param b
+     * @return
+     */
     private ArrayList<ArrayList<Integer>> getThreeByThree(int a, int b) {
         ArrayList<ArrayList<Integer>> threebyhree = new ArrayList<>();
         for (int i = a; i <= a + 2; i++) {
@@ -47,7 +56,14 @@ class SudokuGame {
     }
 
 
-    //  check whether there is a conflict in the 3x3 board with the user input.
+    /**
+     * check whether there is a conflict in the 3x3 board with the user input.
+     * @param Input
+     * @param x
+     * @param y
+     * @param s
+     * @return
+     */
     private boolean checkThreeByThree(
             int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
         ArrayList<Integer> key = new ArrayList<>();
@@ -68,7 +84,10 @@ class SudokuGame {
         return true;
     }
 
-    // check whether there is a conflict in the column with the user input.
+    /**
+     *   check whether there is a conflict in the column with the user input.
+     */
+
     private boolean checkCol(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
         ArrayList<Integer> key = new ArrayList<>();
         key.add(x);
@@ -81,7 +100,14 @@ class SudokuGame {
         return true;
     }
 
-    // check whether there is a conflict in the row with the user input.
+    /**
+     * check whether there is a conflict in the row with the user input.
+     * @param Input
+     * @param x
+     * @param y
+     * @param s
+     * @return
+     */
     private boolean checkRow(int Input, int x, int y, HashMap<ArrayList<Integer>, Integer> s) {
         ArrayList<Integer> key = new ArrayList<>();
         key.add(x);
@@ -98,6 +124,8 @@ class SudokuGame {
 
     /**
      * check whether the number entered is in range of 1 to 9.
+     * @param input
+     * @return
      */
     boolean isInRange(int input) {
         return (1 <= input && input <= 9);

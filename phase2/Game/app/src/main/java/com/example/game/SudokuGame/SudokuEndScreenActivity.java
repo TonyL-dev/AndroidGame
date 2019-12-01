@@ -15,6 +15,9 @@ import com.example.game.R;
 
 public class SudokuEndScreenActivity extends AppCompatActivity {
 
+    /**
+     * player object.
+     */
     Player newPlayer;
 
     TextView textView;
@@ -23,8 +26,15 @@ public class SudokuEndScreenActivity extends AppCompatActivity {
 
     int temp;
 
+    /**
+     * the time the user used in the game.
+     */
     double timeInSeconds;
 
+    /**
+     * Create the interface when user finished the game.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

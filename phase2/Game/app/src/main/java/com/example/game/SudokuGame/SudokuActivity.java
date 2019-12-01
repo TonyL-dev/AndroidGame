@@ -22,15 +22,36 @@ import com.example.game.R;
 
 public class SudokuActivity extends AppCompatActivity {
 
+    /**
+     * Sudoku game object.
+     */
     SudokuGame sudokuGame;
+
+    /**
+     * Player object
+     */
     Player newPlayer;
+
+    /**
+     * Database where the user information is stored.
+     */
     PlayerDataBase playerDataBase;
 
-    long startSudoku = System.nanoTime(); //record the time when the game is started.
+    /**
+     * record the time when the game is started.
+     */
+    long startSudoku = System.nanoTime();
 
-    int initNum; // the initial number on the board.
+    /**
+     * the initial number on the board.
+     */
+    int initNum;
 
 
+    /**
+     * hide keyboard and make the GUI prettier.
+     * @param view
+     */
     public static void hideKeyboard(View view) {
         if (view != null) {
             InputMethodManager inputManager =
@@ -41,6 +62,10 @@ public class SudokuActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Set up the gameboard.
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
 
 
@@ -185,6 +210,10 @@ public class SudokuActivity extends AppCompatActivity {
         tv.setTextColor(newPlayer.getColour());
     }
 
+    /**
+     * used to show statistics when user finish the game.
+     * @return
+     */
     @Override
     public String toString() {
         int point = getScore() - initNum; //get the points gained in this game (the corrected number filled in.)
