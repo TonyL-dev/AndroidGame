@@ -2,6 +2,7 @@ package com.example.game.PictureGame;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import com.example.game.PlayerPackage.Player;
@@ -18,7 +19,7 @@ class PictureGame implements Serializable {
      */
     private Player newPlayer;
 
-    private ArrayList<Picture> instantReplayOrder = new ArrayList<>();
+    private List<Picture> instantReplayOrder = new ArrayList<>();
 
     /**
      * Constructs a new PictureGame
@@ -181,7 +182,7 @@ class PictureGame implements Serializable {
         return pictures;
     }
 
-    ArrayList<Picture> getInstantReplayOrder() {
+    List<Picture> getInstantReplayOrder() {
         return instantReplayOrder;
     }
 

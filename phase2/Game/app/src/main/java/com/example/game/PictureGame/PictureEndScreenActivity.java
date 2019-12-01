@@ -14,26 +14,29 @@ import com.example.game.PlayerPackage.Player;
 import com.example.game.PlayerPackage.PlayerDataBase;
 import com.example.game.R;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class PictureEndScreenActivity extends AppCompatActivity {
 
     /**
      * Player object
      */
-    Player newPlayer;
+    private Player newPlayer;
 
-    TextView textView;
-    TextView tempTextView;
-    TextView tempTextView2;
-    CountDownTimer timer; // timer for movie
+    private TextView textView;
+    private TextView tempTextView;
+    private TextView tempTextView2;
+    private CountDownTimer timer; // timer for movie
 
     /**
      * Player database
      */
-    PlayerDataBase playerDataBase;
+    private PlayerDataBase playerDataBase;
 
-    PictureGame p1, p2, p3;
+    private PictureGame p1, p2, p3;
 
-    int level = 1;
+    private int level = 1;
 
     /**
      * Created on run and creates a display for the user to return to the ChooseGame activity.
@@ -133,7 +136,12 @@ public class PictureEndScreenActivity extends AppCompatActivity {
 
     public void instantReplay(View view) {
         nextLevel(level);
-        timer.start();
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                timer.start();
+            }
+        }, 2000);
     }
 
     private void nextLevel(int level) {
