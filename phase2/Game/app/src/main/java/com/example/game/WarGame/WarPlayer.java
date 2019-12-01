@@ -33,9 +33,7 @@ public class WarPlayer implements GeneralPlayer {
      * construct WarPlayer
      */
     WarPlayer() {
-        this.name = "Default";
-        this.password = "1234";
-
+        super();
         hand = new ArrayList<>();
     }
 
