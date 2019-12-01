@@ -43,15 +43,6 @@ public class Card {
     }
 
     /**
-     * get the Card's suit
-     *
-     * @return suit
-     */
-    public Suit getSuit() {
-        return suit;
-    }
-
-    /**
      * Card's toString text
      *
      * @return cardText of suit

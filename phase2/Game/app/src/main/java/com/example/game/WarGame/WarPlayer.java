@@ -47,18 +47,6 @@ public class WarPlayer implements GeneralPlayer {
     }
 
     /**
-     * Give the player half of the game deck
-     *
-     * @param deckOfCards GameDeck
-     */
-    private void addCards(Deck deckOfCards) {
-        //give half the deck to player
-        for (int i = 0; i < 26; i++) {
-            hand.add(deckOfCards.getNextCard());
-        }
-    }
-
-    /**
      * add a list of cards being dealt to hand
      *
      * @param cards a list of cards being dealt
