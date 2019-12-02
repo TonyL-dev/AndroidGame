@@ -117,7 +117,6 @@ public class WarGameEndScreenActivity extends AppCompatActivity {
             getWindow().getDecorView().setBackgroundColor(newPlayer.getBackColour());
         }
 
-        newPlayer.addTime(timeInSeconds);
     }
 
     /**

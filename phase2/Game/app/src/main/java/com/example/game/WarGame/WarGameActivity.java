@@ -154,7 +154,6 @@ public class WarGameActivity extends AppCompatActivity {
         long time = end - start;
         double timeInSeconds = (double) time / 1_000_000_000;
 
-        System.out.println(timeInSeconds);
         Intent intent;
         Bundle bundle = new Bundle();
 

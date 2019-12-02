@@ -77,6 +77,15 @@ public class PlayerStatistics implements Serializable {
     }
 
     /**
+     * get the last time added
+     *
+     * @return this.time.get(time.size()-1)
+     */
+    public double getLastTime() {
+        return this.time.get(time.size()-1);
+    }
+
+    /**
      * remove Player's most recent game time
      */
     public void subtractTime() {
@@ -163,10 +172,11 @@ public class PlayerStatistics implements Serializable {
      * String representation of the Player
      */
     public String toString() {
-        double totalGameTime = 0;
-        for (double gameTime : time)
-            totalGameTime += gameTime;
+        System.out.println(time.get(0));
+        if (time.size()>1)
+            System.out.println(time.get(1));
         return "\nYou have " + getPoints() + " total points now." +
-                "\n\nIn total you have taken " + df.format((totalGameTime)) + " seconds! ";
+                "\nThe last level took " + df.format(getLastTime()) + " seconds." +
+                "\n\nIn total you have taken " + df.format((this.getTotalTime())) + " seconds! ";
     }
 }

@@ -140,6 +140,15 @@ public class Player implements Serializable, GeneralPlayer {
     }
 
     /**
+     * get the last time added
+     *
+     * @return this.time.get(time.size()-1)
+     */
+    public double getLastTime() {
+        return stats.getLastTime();
+    }
+
+    /**
      * remove Player's most recent game time
      */
     public void subtractTime() {
